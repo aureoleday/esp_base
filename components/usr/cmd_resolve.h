@@ -7,5 +7,5 @@ void recv_frame_fsm(void);
 uint16_t cmd_frame_recv(void);
 uint16_t cmd_frame_resolve(void);
 uint16_t report_data(void);
-
+void cmd_thread(void* param);
 #endif //__CMD_H__

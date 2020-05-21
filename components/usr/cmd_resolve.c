@@ -482,5 +482,17 @@ uint16_t report_geo_data(void)
     return err_code;
 }
 
+void cmd_thread(void* param)
+{
+    vTaskDelay(CMD_THREAD_DELAY);
+	cmd_dev_init();
+	while(1)
+	{
+		recv_frame_fsm();
+		cmd_frame_resolve();
+		vTaskDelay(10 / portTICK_PERIOD_MS);
+	}
+}
+
 
 //FINSH_FUNCTION_EXPORT(show_cmd_info, show cmd information.);
