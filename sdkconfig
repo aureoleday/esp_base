@@ -126,6 +126,11 @@ CONFIG_STORE_HISTORY=y
 # end of Example Configuration
 
 #
+# Example Configuration
+#
+# end of Example Configuration
+
+#
 # Compiler options
 #
 CONFIG_COMPILER_OPTIMIZATION_DEFAULT=y

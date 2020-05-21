@@ -1,0 +1,20 @@
+{
+    "project_name":       "bootloader",
+    "project_path":       "/home/aureoleday/esp/esp-idf/components/bootloader/subproject",
+    "build_dir":          "/home/aureoleday/workstation/esp_base/base/build/bootloader",
+    "config_file":        "/home/aureoleday/workstation/esp_base/base/sdkconfig",
+    "config_defaults":    "",
+    "app_elf":            "bootloader.elf",
+    "app_bin":            "bootloader.bin",
+    "git_revision":       "v4.2-dev-1303-gcd4fa46f5-dirty",
+    "target":             "esp32",
+    "phy_data_partition": "",
+    "monitor_baud" :      "115200",
+    "monitor_toolprefix": "xtensa-esp32-elf-",
+    "config_environment" : {
+        "COMPONENT_KCONFIGS" : "/home/aureoleday/esp/esp-idf/components/efuse/Kconfig;/home/aureoleday/esp/esp-idf/components/esp32/Kconfig;/home/aureoleday/esp/esp-idf/components/esp_common/Kconfig;/home/aureoleday/esp/esp-idf/components/log/Kconfig;/home/aureoleday/esp/esp-idf/components/spi_flash/Kconfig",
+        "COMPONENT_KCONFIGS_PROJBUILD" : "/home/aureoleday/esp/esp-idf/components/bootloader/Kconfig.projbuild;/home/aureoleday/esp/esp-idf/components/esptool_py/Kconfig.projbuild;/home/aureoleday/esp/esp-idf/components/partition_table/Kconfig.projbuild"
+    },
+    "build_components" : [ "bootloader", "bootloader_support", "efuse", "esp32", "esp_common", "esp_rom", "esptool_py", "log", "main", "micro-ecc", "partition_table", "soc", "spi_flash", "xtensa", "" ],
+    "build_component_paths" : [ "/home/aureoleday/esp/esp-idf/components/bootloader", "/home/aureoleday/esp/esp-idf/components/bootloader_support", "/home/aureoleday/esp/esp-idf/components/efuse", "/home/aureoleday/esp/esp-idf/components/esp32", "/home/aureoleday/esp/esp-idf/components/esp_common", "/home/aureoleday/esp/esp-idf/components/esp_rom", "/home/aureoleday/esp/esp-idf/components/esptool_py", "/home/aureoleday/esp/esp-idf/components/log", "/home/aureoleday/esp/esp-idf/components/bootloader/subproject/main", "/home/aureoleday/esp/esp-idf/components/bootloader/subproject/components/micro-ecc", "/home/aureoleday/esp/esp-idf/components/partition_table", "/home/aureoleday/esp/esp-idf/components/soc", "/home/aureoleday/esp/esp-idf/components/spi_flash", "/home/aureoleday/esp/esp-idf/components/xtensa", "" ]
+}
