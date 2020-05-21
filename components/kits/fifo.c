@@ -1,5 +1,5 @@
 #include "fifo.h"
-#include "sys_def.h"
+//#include "sys_def.h"
 
 uint32_t fifo32_init(fifo32_cb_td* fifo_cb, uint16_t block_size, uint16_t depth)
 {

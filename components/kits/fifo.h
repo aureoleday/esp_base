@@ -1,6 +1,9 @@
 #ifndef __FIFO_H
 #define	__FIFO_H
-#include "sys_def.h"
+#include "stdlib.h"
+#include "stdio.h"
+#include "stdio.h"
+#include "string.h"
 typedef struct fifo32_cb{
 	uint32_t* buffer_ptr;
 	uint32_t* bhead_ptr;

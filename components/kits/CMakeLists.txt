@@ -1,3 +1,3 @@
-idf_component_register(SRCS "bit_op.c"
-                    INCLUDE_DIRS "." "../usr/" 
+idf_component_register(SRCS "bit_op.c" "kfifo.c" "fifo.c"
+                    INCLUDE_DIRS "."  
                     )

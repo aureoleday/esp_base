@@ -13,6 +13,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "cli.h"
+#include "cmd_resolve.h"
 #include "global_var.h"
 enum
 {
@@ -48,12 +49,12 @@ static void tasks_create(void)
             CLI_THREAD_PRIO,
             NULL);
 
-//    xTaskCreate(&cmd_thread,
-//            "Task_CMD",
-//            CMD_THREAD_STACK_SIZE,
-//            NULL,
-//            CMD_THREAD_PRIO,
-//            NULL);
+    xTaskCreate(&cmd_thread,
+            "Task_CMD",
+            CMD_THREAD_STACK_SIZE,
+            NULL,
+            CMD_THREAD_PRIO,
+            NULL);
 }
 
 void app_main()
