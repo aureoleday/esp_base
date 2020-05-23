@@ -26,7 +26,7 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
 {//id     mapped registers                 min      max         default  type  chk_prt
     {0,   &g_sys.conf.gen.wifi_mode,       0,       1,          0,       0,    NULL},
     {1,   &g_sys.conf.gen.sample_channel,  0,       2,          2,       0,    NULL},
-    {2,   NULL,                            0,       0,          0,       0,    NULL},
+    {2,   &g_sys.conf.gen.mqtt_start,      0,       1,          0,       0,    NULL},
     {3,   &g_sys.conf.geo.enable,          0,       1,          0,       0,    NULL},
     {4,   &g_sys.conf.geo.pkg_period,      0,       1000000,    10,      0,    NULL},
     {5,   &g_sys.conf.geo.sample_period,   0,       1000,       1,       0,    NULL},

@@ -15,11 +15,16 @@
 #include "cli.h"
 #include "cmd_resolve.h"
 #include "global_var.h"
+#include "mqtt_tcp.h"
+#include "argtable3/argtable3.h"
+#include "esp_console.h"
+
 enum
 {
     TEST_THREAD_PRIO=3,
     CLI_THREAD_PRIO,
     CMD_THREAD_PRIO,
+    MQTT_THREAD_PRIO,
     TCP_THREAD_PRIO,
     SPP_THREAD_PRIO,
     GEO_THREAD_PRIO,
@@ -30,8 +35,7 @@ enum
 #define TCP_THREAD_STACK_SIZE 	4096
 #define CLI_THREAD_STACK_SIZE 	4096
 #define CMD_THREAD_STACK_SIZE 	3072
-#define SPP_THREAD_STACK_SIZE 	2048
-#define GEO_THREAD_STACK_SIZE 	3072
+#define MQTT_THREAD_STACK_SIZE  8192	
 
 static void tasks_create(void)
 {
@@ -40,6 +44,13 @@ static void tasks_create(void)
 //            TEST_THREAD_STACK_SIZE,
 //            NULL,
 //            TEST_THREAD_PRIO,
+//            NULL);
+
+//    xTaskCreate(&mqtt_thread,
+//            "Task_mqtt",
+//            MQTT_THREAD_STACK_SIZE,
+//            NULL,
+//            MQTT_THREAD_PRIO,
 //            NULL);
 
     xTaskCreate(&cli_thread,
@@ -61,5 +72,9 @@ void app_main()
 {
     gvar_init();
     gvar_register();
+    mqtt_register();
     tasks_create();
 }
+
+
+

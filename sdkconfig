@@ -126,6 +126,12 @@ CONFIG_PARTITION_TABLE_MD5=y
 # end of Example Configuration
 
 #
+# Example Configuration
+#
+CONFIG_BROKER_URL="mqtt://mqtt.eclipse.org"
+# end of Example Configuration
+
+#
 # Compiler options
 #
 CONFIG_COMPILER_OPTIMIZATION_DEFAULT=y

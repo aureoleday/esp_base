@@ -16,6 +16,7 @@ typedef struct
     uint32_t 		wifi_mode;
     uint32_t 		restart;
     uint32_t 		dbg;
+    uint32_t 		mqtt_start;
 }conf_gen_st;
 
 
