@@ -91,8 +91,15 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
 }
 
 static int mqtt_start(int argc, char **argv)
-//static void mqtt_app_start(void)
 {
+    esp_log_level_set("*", ESP_LOG_INFO);
+    esp_log_level_set("MQTT_CLIENT", ESP_LOG_VERBOSE);
+    esp_log_level_set("MQTT_EXAMPLE", ESP_LOG_VERBOSE);
+    esp_log_level_set("TRANSPORT_TCP", ESP_LOG_VERBOSE);
+    esp_log_level_set("TRANSPORT_SSL", ESP_LOG_VERBOSE);
+    esp_log_level_set("TRANSPORT", ESP_LOG_VERBOSE);
+    esp_log_level_set("OUTBOX", ESP_LOG_VERBOSE);
+
     esp_mqtt_client_config_t mqtt_cfg = {
         //.uri = CONFIG_BROKER_URL,
         .uri = "mqtt://192.168.3.84:1883",
@@ -130,37 +137,26 @@ static int mqtt_start(int argc, char **argv)
     return 0;
 }
 
-void mqtt_send(char* tx_buf, int tx_len)
+
+static struct {
+    struct arg_str *topic;
+    struct arg_str *data;
+    struct arg_end *end;
+} mqtt_tx_args;
+
+static int mqtt_send(int argc, char **argv)
 {
     int msg_id = 0;
-    msg_id = esp_mqtt_client_publish(lc_client, "/topic/qos0", tx_buf, tx_len , 0, 0);
-    printf("mq_msg_id:%d\n",msg_id);
-}
 
-//static struct {
-//    struct arg_str *ssid;
-//    struct arg_end *end;
-//} mqtt_tx_args;
-//
-//static int save_station_arg(int argc, char **argv)
-//{
-//    esp_err_t err;
-//
-//    int nerrors = arg_parse(argc, argv, (void**) &wifi_args);
-//    if (nerrors != 0) {
-//        arg_print_errors(stderr, wifi_args.end, argv[0]);
-//        return 1;
-//    }
-//
-//    err = save_station(wifi_args.ssid->sval[0],wifi_args.pwd->sval[0]);
-//    return err;
-//}
+    int nerrors = arg_parse(argc, argv, (void**) &mqtt_tx_args);
+    if (nerrors != 0) {
+        arg_print_errors(stderr, mqtt_tx_args.end, argv[0]);
+        return 1;
+    }
 
-static int mq_tx(int argc, char **argv)
-{
-    char buf[]="hello mqtt!";
-    mqtt_send(buf,sizeof(buf));
-    return 0;
+    msg_id = esp_mqtt_client_publish(lc_client, mqtt_tx_args.topic->sval[0], mqtt_tx_args.data->sval[0], 0, 0, 0);
+
+    return msg_id; 
 }
 
 static void register_mq_start()
@@ -176,11 +172,16 @@ static void register_mq_start()
 
 static void register_mq_tx()
 {
+    mqtt_tx_args.topic = arg_str1(NULL, NULL, "<topic>", "topic");
+    mqtt_tx_args.data = arg_str0(NULL, NULL, "<data>", "topic data");
+    mqtt_tx_args.end = arg_end(2);
+    
     const esp_console_cmd_t cmd = {
             .command = "mq_tx",
             .help = "send mq sample msg",
             .hint = NULL,
-            .func = &mq_tx
+            .func = &mqtt_send,
+            .argtable = &mqtt_tx_args
     };
     ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
 }
@@ -190,42 +191,5 @@ void mqtt_register(void)
     register_mq_start();
     register_mq_tx();
 }
-
-//void mqtt_thread(void* param)
-//{
-//    extern sys_reg_st  g_sys; 		//global parameter declairation
-//    register_mq_tx();
-//    ESP_LOGI(TAG, "[APP] Startup..");
-//    ESP_LOGI(TAG, "[APP] Free memory: %d bytes", esp_get_free_heap_size());
-//    ESP_LOGI(TAG, "[APP] IDF version: %s", esp_get_idf_version());
-//
-//    esp_log_level_set("*", ESP_LOG_INFO);
-//    esp_log_level_set("MQTT_CLIENT", ESP_LOG_VERBOSE);
-//    esp_log_level_set("MQTT_EXAMPLE", ESP_LOG_VERBOSE);
-//    esp_log_level_set("TRANSPORT_TCP", ESP_LOG_VERBOSE);
-//    esp_log_level_set("TRANSPORT_SSL", ESP_LOG_VERBOSE);
-//    esp_log_level_set("TRANSPORT", ESP_LOG_VERBOSE);
-//    esp_log_level_set("OUTBOX", ESP_LOG_VERBOSE);
-//
-//    //ESP_ERROR_CHECK(nvs_flash_init());
-//    //ESP_ERROR_CHECK(esp_netif_init());
-//    //ESP_ERROR_CHECK(esp_event_loop_create_default());
-//
-//    /* This helper function configures Wi-Fi or Ethernet, as selected in menuconfig.
-//     * Read "Establishing Wi-Fi or Ethernet Connection" section in
-//     * examples/protocols/README.md for more information about this function.
-//     */
-//    //ESP_ERROR_CHECK(example_connect());
-//
-//    while(g_sys.conf.gen.mqtt_start != 1)
-//    {
-//    	vTaskDelay(1000 / portTICK_PERIOD_MS);
-//    }
-//    mqtt_app_start();
-//    while(1)
-//    {
-//    	vTaskDelay(1000 / portTICK_PERIOD_MS);
-//    }
-//}
 
 
