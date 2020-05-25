@@ -249,7 +249,7 @@ static esp_err_t set_value_in_nvs(const char *key, const char *str_type, const c
     return err;
 }
 
-esp_err_t wget_value_from_nvs(const char *key, const char *str_type,void *ret_val, int *ret_len)
+esp_err_t wget_value_from_nvs(const char *dnamespace, const char *key, const char *str_type,void *ret_val, int *ret_len)
 {
     nvs_handle_t nvs;
     esp_err_t err;
@@ -261,7 +261,7 @@ esp_err_t wget_value_from_nvs(const char *key, const char *str_type,void *ret_va
         return ESP_ERR_NVS_TYPE_MISMATCH;
     }
 
-    err = nvs_open(current_namespace, NVS_READONLY, &nvs);
+    err = nvs_open(dnamespace, NVS_READONLY, &nvs);
     if (err != ESP_OK) {
         return err;
     }
@@ -477,9 +477,15 @@ static esp_err_t erase_all(const char *name)
 
 static int list(const char *part, const char *name, const char *str_type)
 {
+    nvs_iterator_t it = NULL;
     nvs_type_t type = str_to_type(str_type);
 
-    nvs_iterator_t it = nvs_entry_find(part, NULL, type);
+    if(name[0] != 0)
+    {
+        it = nvs_entry_find(part, name, type);
+    }
+    else
+        it = nvs_entry_find(part, NULL, type);
     if (it == NULL) {
         ESP_LOGE(TAG, "No such enty was found");
         return 1;
@@ -636,7 +642,7 @@ void register_nvs(void)
     list_args.partition = arg_str1(NULL, NULL, "<partition>", "partition name");
     list_args.namespace = arg_str0("n", "namespace", "<namespace>", "namespace name");
     list_args.type = arg_str0("t", "type", "<type>", ARG_TYPE_STR);
-    list_args.end = arg_end(2);
+    list_args.end = arg_end(3);
 
     const esp_console_cmd_t set_cmd = {
         .command = "nvs_set",
