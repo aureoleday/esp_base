@@ -140,38 +140,28 @@ int mqtt_transmitt(char *topic, void *tx_buf,int tx_len)
     return msg_id; 
 }
 
-static int mqtt_send(int argc, char **argv)
-{
-    int msg_id = 0;
-
-    int nerrors = arg_parse(argc, argv, (void**) &mqtt_tx_args);
-    if (nerrors != 0) {
-        arg_print_errors(stderr, mqtt_tx_args.end, argv[0]);
-        return 1;
-    }
-    
-    msg_id = esp_mqtt_client_publish(lc_client, mqtt_tx_args.topic->sval[0], mqtt_tx_args.data->sval[0], 0, 0, 0);
-
-    return msg_id; 
-}
 static int mqtt_rsend(int argc, char **argv)
 {
     int msg_id = 0;
+    int str_len = 0, tx_len = 0;
+    int i = 0;
 
     int nerrors = arg_parse(argc, argv, (void**) &mqtt_tx_args);
     if (nerrors != 0) {
         arg_print_errors(stderr, mqtt_tx_args.end, argv[0]);
         return 1;
     }
-    char *temp = malloc(strlen(mqtt_tx_args.data->sval[0])*mqtt_tx_args.iteration->ival[0]);
-    for(int i=0;i<mqtt_tx_args.iteration->ival[0];i++)
+    str_len = strlen(mqtt_tx_args.data->sval[0]);
+    char *temp = malloc(str_len*mqtt_tx_args.iteration->ival[0]);
+    for(i=0;i<mqtt_tx_args.iteration->ival[0];i++)
     {
-       memcpy(temp+i*strlen(mqtt_tx_args.data->sval[0]), mqtt_tx_args.data->sval[0],strlen(mqtt_tx_args.data->sval[0]));
+       memcpy(temp+i*str_len, mqtt_tx_args.data->sval[0],str_len);
     }
+       tx_len += i*str_len;
 
     for(int i=0;i<mqtt_tx_args.repeats->ival[0];i++)
     {
-        msg_id = esp_mqtt_client_publish(lc_client, mqtt_tx_args.topic->sval[0], temp, 0, 0, 0);
+        msg_id = esp_mqtt_client_publish(lc_client, mqtt_tx_args.topic->sval[0], temp, tx_len, 0, 0);
     }
 
     free(temp);
@@ -189,23 +179,6 @@ static void register_mq_start()
     };
     ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
 }
-
-static void register_mq_tx()
-{
-    mqtt_tx_args.topic = arg_str1(NULL, NULL, "<topic>", "topic");
-    mqtt_tx_args.data = arg_str1(NULL, NULL, "<data>", "topic data");
-    mqtt_tx_args.end = arg_end(2);
-    
-    const esp_console_cmd_t cmd = {
-            .command = "mq_tx",
-            .help = "send mq sample msg",
-            .hint = NULL,
-            .func = &mqtt_send,
-            .argtable = &mqtt_tx_args
-    };
-    ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
-}
-
 
 static void register_mq_rtx()
 {
@@ -228,7 +201,6 @@ static void register_mq_rtx()
 void mqtt_register(void)
 {
     register_mq_start();
-    register_mq_tx();
     register_mq_rtx();
 }
 
