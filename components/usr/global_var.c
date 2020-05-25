@@ -529,8 +529,6 @@ static void register_wr_reg()
 }
 
 
-
-
 void gvar_register(void)
 {
     register_rd_reg();

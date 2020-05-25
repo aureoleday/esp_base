@@ -14,7 +14,7 @@ extern "C" {
 
 // Register NVS functions
 void register_nvs(void);
-
+esp_err_t wget_value_from_nvs(const char *key, const char *str_type,void *ret_val, int *ret_len);
 #ifdef __cplusplus
 }
 #endif

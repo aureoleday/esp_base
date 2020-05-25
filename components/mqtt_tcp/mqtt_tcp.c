@@ -28,10 +28,13 @@
 #include "lwip/netdb.h"
 
 #include "esp_log.h"
+#include "cmd_nvs.h"
 #include "mqtt_client.h"
 #include "global_var.h"
 
-static const char *TAG = "MQTT_EXAMPLE";
+#define DEFAULT_URI "mqtt://127.0.0.1:1883"
+
+static const char *TAG = "MQTT";
 
 static esp_mqtt_client_handle_t lc_client;
 
@@ -71,9 +74,9 @@ static esp_err_t mqtt_event_handler_cb(esp_mqtt_event_handle_t event)
             ESP_LOGI(TAG, "MQTT_EVENT_PUBLISHED, msg_id=%d", event->msg_id);
             break;
         case MQTT_EVENT_DATA:
-            ESP_LOGI(TAG, "MQTT_EVENT_DATA");
-            printf("TOPIC=%.*s\r\n", event->topic_len, event->topic);
-            printf("DATA=%.*s\r\n", event->data_len, event->data);
+            //ESP_LOGI(TAG, "MQTT_EVENT_DATA");
+            //printf("TOPIC=%.*s\r\n", event->topic_len, event->topic);
+            //printf("DATA=%.*s\r\n", event->data_len, event->data);
             break;
         case MQTT_EVENT_ERROR:
             ESP_LOGI(TAG, "MQTT_EVENT_ERROR");
@@ -92,6 +95,9 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
 
 static int mqtt_start(int argc, char **argv)
 {
+    esp_err_t err;
+    char buri[32];
+    int uri_len;
     esp_log_level_set("*", ESP_LOG_INFO);
     esp_log_level_set("MQTT_CLIENT", ESP_LOG_VERBOSE);
     esp_log_level_set("MQTT_EXAMPLE", ESP_LOG_VERBOSE);
@@ -99,36 +105,17 @@ static int mqtt_start(int argc, char **argv)
     esp_log_level_set("TRANSPORT_SSL", ESP_LOG_VERBOSE);
     esp_log_level_set("TRANSPORT", ESP_LOG_VERBOSE);
     esp_log_level_set("OUTBOX", ESP_LOG_VERBOSE);
+    
+    err = wget_value_from_nvs("broker_uri", "str", buri, &uri_len);
+    if (err != ESP_OK) {
+        printf("No mqtt broker uri saved, load default.\n");
+        strcpy(buri,DEFAULT_URI);
+    }
 
     esp_mqtt_client_config_t mqtt_cfg = {
         //.uri = CONFIG_BROKER_URL,
-        .uri = "mqtt://192.168.3.84:1883",
+        .uri = buri,
     };
-    printf("mqtt uri:%s\n",mqtt_cfg.uri);
-#if CONFIG_BROKER_URL_FROM_STDIN
-    char line[128];
-
-    if (strcmp(mqtt_cfg.uri, "FROM_STDIN") == 0) {
-        int count = 0;
-        printf("Please enter url of mqtt broker\n");
-        while (count < 128) {
-            int c = fgetc(stdin);
-            if (c == '\n') {
-                line[count] = '\0';
-                break;
-            } else if (c > 0 && c < 127) {
-                line[count] = c;
-                ++count;
-            }
-            vTaskDelay(10 / portTICK_PERIOD_MS);
-        }
-        mqtt_cfg.uri = line;
-        printf("Broker url: %s\n", line);
-    } else {
-        ESP_LOGE(TAG, "Configuration mismatch: wrong broker url");
-        abort();
-    }
-#endif /* CONFIG_BROKER_URL_FROM_STDIN */
 
     esp_mqtt_client_handle_t client = esp_mqtt_client_init(&mqtt_cfg);
     lc_client = client;
@@ -141,8 +128,17 @@ static int mqtt_start(int argc, char **argv)
 static struct {
     struct arg_str *topic;
     struct arg_str *data;
+    struct arg_int *iteration;
+    struct arg_int *repeats;
     struct arg_end *end;
 } mqtt_tx_args;
+
+int mqtt_transmitt(char *topic, void *tx_buf,int tx_len)
+{
+    int msg_id = 0;
+    msg_id = esp_mqtt_client_publish(lc_client, topic, tx_buf, tx_len, 0, 0);
+    return msg_id; 
+}
 
 static int mqtt_send(int argc, char **argv)
 {
@@ -153,11 +149,35 @@ static int mqtt_send(int argc, char **argv)
         arg_print_errors(stderr, mqtt_tx_args.end, argv[0]);
         return 1;
     }
-
+    
     msg_id = esp_mqtt_client_publish(lc_client, mqtt_tx_args.topic->sval[0], mqtt_tx_args.data->sval[0], 0, 0, 0);
 
     return msg_id; 
 }
+static int mqtt_rsend(int argc, char **argv)
+{
+    int msg_id = 0;
+
+    int nerrors = arg_parse(argc, argv, (void**) &mqtt_tx_args);
+    if (nerrors != 0) {
+        arg_print_errors(stderr, mqtt_tx_args.end, argv[0]);
+        return 1;
+    }
+    char *temp = malloc(strlen(mqtt_tx_args.data->sval[0])*mqtt_tx_args.iteration->ival[0]);
+    for(int i=0;i<mqtt_tx_args.iteration->ival[0];i++)
+    {
+       memcpy(temp+i*strlen(mqtt_tx_args.data->sval[0]), mqtt_tx_args.data->sval[0],strlen(mqtt_tx_args.data->sval[0]));
+    }
+
+    for(int i=0;i<mqtt_tx_args.repeats->ival[0];i++)
+    {
+        msg_id = esp_mqtt_client_publish(lc_client, mqtt_tx_args.topic->sval[0], temp, 0, 0, 0);
+    }
+
+    free(temp);
+    return msg_id; 
+}
+
 
 static void register_mq_start()
 {
@@ -173,7 +193,7 @@ static void register_mq_start()
 static void register_mq_tx()
 {
     mqtt_tx_args.topic = arg_str1(NULL, NULL, "<topic>", "topic");
-    mqtt_tx_args.data = arg_str0(NULL, NULL, "<data>", "topic data");
+    mqtt_tx_args.data = arg_str1(NULL, NULL, "<data>", "topic data");
     mqtt_tx_args.end = arg_end(2);
     
     const esp_console_cmd_t cmd = {
@@ -186,10 +206,30 @@ static void register_mq_tx()
     ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
 }
 
+
+static void register_mq_rtx()
+{
+    mqtt_tx_args.topic = arg_str1(NULL, NULL, "<topic>", "topic");
+    mqtt_tx_args.data = arg_str1("d", "data", "<data>", "topic data");
+    mqtt_tx_args.iteration = arg_int1(NULL,NULL, "<iteration>", "data iteration");
+    mqtt_tx_args.repeats = arg_int1(NULL, NULL, "<repeats>", "transmission repeats");
+    mqtt_tx_args.end = arg_end(4);
+    
+    const esp_console_cmd_t cmd = {
+            .command = "mq_rtx",
+            .help = "send mq sample msg",
+            .hint = NULL,
+            .func = &mqtt_rsend,
+            .argtable = &mqtt_tx_args
+    };
+    ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
+}
+
 void mqtt_register(void)
 {
     register_mq_start();
     register_mq_tx();
+    register_mq_rtx();
 }
 
 

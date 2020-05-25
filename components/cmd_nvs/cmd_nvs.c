@@ -249,6 +249,111 @@ static esp_err_t set_value_in_nvs(const char *key, const char *str_type, const c
     return err;
 }
 
+esp_err_t wget_value_from_nvs(const char *key, const char *str_type,void *ret_val, int *ret_len)
+{
+    nvs_handle_t nvs;
+    esp_err_t err;
+
+    nvs_type_t type = str_to_type(str_type);
+
+    if (type == NVS_TYPE_ANY) {
+        ESP_LOGE(TAG, "Type '%s' is undefined", str_type);
+        return ESP_ERR_NVS_TYPE_MISMATCH;
+    }
+
+    err = nvs_open(current_namespace, NVS_READONLY, &nvs);
+    if (err != ESP_OK) {
+        return err;
+    }
+
+    if (type == NVS_TYPE_I8) {
+        int8_t value;
+        err = nvs_get_i8(nvs, key, &value);
+        if (err == ESP_OK) {
+            memcpy(ret_val,&value,1);
+            *ret_len = 1;
+            printf("%d\n", value);
+        }
+    } else if (type == NVS_TYPE_U8) {
+        uint8_t value;
+        err = nvs_get_u8(nvs, key, &value);
+        if (err == ESP_OK) {
+            memcpy(ret_val,&value,1);
+            *ret_len = 1;
+            printf("%u\n", value);
+        }
+    } else if (type == NVS_TYPE_I16) {
+        int16_t value;
+        err = nvs_get_i16(nvs, key, &value);
+        if (err == ESP_OK) {
+            memcpy(ret_val,&value,2);
+            *ret_len = 2;
+            printf("%u\n", value);
+        }
+    } else if (type == NVS_TYPE_U16) {
+        uint16_t value;
+        if ((err = nvs_get_u16(nvs, key, &value)) == ESP_OK) {
+            memcpy(ret_val,&value,2);
+            *ret_len = 2;
+            printf("%u\n", value);
+        }
+    } else if (type == NVS_TYPE_I32) {
+        int32_t value;
+        if ((err = nvs_get_i32(nvs, key, &value)) == ESP_OK) {
+            memcpy(ret_val,&value,4);
+            *ret_len = 4;
+            printf("%d\n", value);
+        }
+    } else if (type == NVS_TYPE_U32) {
+        uint32_t value;
+        if ((err = nvs_get_u32(nvs, key, &value)) == ESP_OK) {
+            memcpy(ret_val,&value,4);
+            *ret_len = 4;
+            printf("%u\n", value);
+        }
+    } else if (type == NVS_TYPE_I64) {
+        int64_t value;
+        if ((err = nvs_get_i64(nvs, key, &value)) == ESP_OK) {
+            memcpy(ret_val,&value,8);
+            *ret_len = 8;
+            printf("%lld\n", value);
+        }
+    } else if (type == NVS_TYPE_U64) {
+        uint64_t value;
+        if ( (err = nvs_get_u64(nvs, key, &value)) == ESP_OK) {
+            memcpy(ret_val,&value,8);
+            *ret_len = 8;
+            printf("%llu\n", value);
+        }
+    } else if (type == NVS_TYPE_STR) {
+        size_t len;
+        if ( (err = nvs_get_str(nvs, key, NULL, &len)) == ESP_OK) {
+            char *str = (char *)malloc(len);
+            if ( (err = nvs_get_str(nvs, key, str, &len)) == ESP_OK) {
+                printf("%s\n", str);
+            }
+            memcpy(ret_val,str,len);
+            *ret_len = len;
+            free(str);
+        }
+    } else if (type == NVS_TYPE_BLOB) {
+        size_t len;
+        if ( (err = nvs_get_blob(nvs, key, NULL, &len)) == ESP_OK) {
+            char *blob = (char *)malloc(len);
+            if ( (err = nvs_get_blob(nvs, key, blob, &len)) == ESP_OK) {
+                print_blob(blob, len);
+            }
+            memcpy(ret_val,blob,len);
+            *ret_len = len;
+            free(blob);
+        }
+    }
+
+    nvs_close(nvs);
+    return err;
+}
+
+
 static esp_err_t get_value_from_nvs(const char *key, const char *str_type)
 {
     nvs_handle_t nvs;
