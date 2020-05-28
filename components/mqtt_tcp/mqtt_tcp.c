@@ -31,6 +31,8 @@
 #include "cmd_nvs.h"
 #include "mqtt_client.h"
 #include "global_var.h"
+#include "bit_op.h"
+
 
 #define DEFAULT_URI "mqtt://127.0.0.1:1883"
 #define DEFAULT_PUB_TOPIC "/clt/data"
@@ -99,6 +101,12 @@ static int mqtt_start(int argc, char **argv)
 {
     esp_err_t err;
     int nrd_len;
+    extern sys_reg_st  g_sys;
+    if(bit_op_get(g_sys.stat.gen.status_bm,GBM_WIFI) == 0)
+    {
+        ESP_LOGI(TAG,"WIFI not connected, unable to start MQTT protocal.\n");
+        return 0;
+    }
     esp_log_level_set("*", ESP_LOG_INFO);
     esp_log_level_set("MQTT_CLIENT", ESP_LOG_VERBOSE);
     esp_log_level_set("MQTT_EXAMPLE", ESP_LOG_VERBOSE);
