@@ -33,6 +33,18 @@
 #include "global_var.h"
 
 #define DEFAULT_URI "mqtt://127.0.0.1:1883"
+#define DEFAULT_PUB_TOPIC "/clt/data"
+#define DEFAULT_SUB_TOPIC "/srv/data"
+#define MQ_NVS_STR_SIZE 32
+
+typedef struct
+{
+    char broker_uri[MQ_NVS_STR_SIZE];
+    char pub_topic[MQ_NVS_STR_SIZE];
+    char sub_topic[MQ_NVS_STR_SIZE];
+}mq_nvs_st;
+
+static mq_nvs_st mq_nvs_inst;
 
 static const char *TAG = "MQTT";
 
@@ -46,25 +58,15 @@ static esp_err_t mqtt_event_handler_cb(esp_mqtt_event_handle_t event)
     switch (event->event_id) {
         case MQTT_EVENT_CONNECTED:
             ESP_LOGI(TAG, "MQTT_EVENT_CONNECTED");
-            //msg_id = esp_mqtt_client_publish(client, "/topic/qos1", "data_3", 0, 1, 0);
-            //ESP_LOGI(TAG, "sent publish successful, msg_id=%d", msg_id);
-
-            msg_id = esp_mqtt_client_subscribe(client, "/topic/qos0", 0);
+            msg_id = esp_mqtt_client_subscribe(client, mq_nvs_inst.sub_topic, 0);
             ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
-
-            //msg_id = esp_mqtt_client_subscribe(client, "/topic/qos1", 1);
-            //ESP_LOGI(TAG, "sent subscribe successful, msg_id=%d", msg_id);
-
-            //msg_id = esp_mqtt_client_unsubscribe(client, "/topic/qos1");
-            //ESP_LOGI(TAG, "sent unsubscribe successful, msg_id=%d", msg_id);
             break;
         case MQTT_EVENT_DISCONNECTED:
             ESP_LOGI(TAG, "MQTT_EVENT_DISCONNECTED");
             break;
-
         case MQTT_EVENT_SUBSCRIBED:
             ESP_LOGI(TAG, "MQTT_EVENT_SUBSCRIBED, msg_id=%d", event->msg_id);
-            msg_id = esp_mqtt_client_publish(client, "/topic/qos0", "data", 0, 0, 0);
+            msg_id = esp_mqtt_client_publish(client, mq_nvs_inst.pub_topic, "data", 0, 0, 0);
             ESP_LOGI(TAG, "sent publish successful, msg_id=%d", msg_id);
             break;
         case MQTT_EVENT_UNSUBSCRIBED:
@@ -74,9 +76,9 @@ static esp_err_t mqtt_event_handler_cb(esp_mqtt_event_handle_t event)
             ESP_LOGI(TAG, "MQTT_EVENT_PUBLISHED, msg_id=%d", event->msg_id);
             break;
         case MQTT_EVENT_DATA:
-            //ESP_LOGI(TAG, "MQTT_EVENT_DATA");
-            //printf("TOPIC=%.*s\r\n", event->topic_len, event->topic);
-            //printf("DATA=%.*s\r\n", event->data_len, event->data);
+            ESP_LOGI(TAG, "MQTT_EVENT_DATA");
+            ESP_LOGI(TAG,"TOPIC=%.*s\r\n", event->topic_len, event->topic);
+            ESP_LOGI(TAG,"DATA=%.*s\r\n", event->data_len, event->data);
             break;
         case MQTT_EVENT_ERROR:
             ESP_LOGI(TAG, "MQTT_EVENT_ERROR");
@@ -96,8 +98,7 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
 static int mqtt_start(int argc, char **argv)
 {
     esp_err_t err;
-    char buri[32];
-    int uri_len;
+    int nrd_len;
     esp_log_level_set("*", ESP_LOG_INFO);
     esp_log_level_set("MQTT_CLIENT", ESP_LOG_VERBOSE);
     esp_log_level_set("MQTT_EXAMPLE", ESP_LOG_VERBOSE);
@@ -105,22 +106,45 @@ static int mqtt_start(int argc, char **argv)
     esp_log_level_set("TRANSPORT_SSL", ESP_LOG_VERBOSE);
     esp_log_level_set("TRANSPORT", ESP_LOG_VERBOSE);
     esp_log_level_set("OUTBOX", ESP_LOG_VERBOSE);
-    
-    err = wget_value_from_nvs("mqtt", "broker_uri", "str", buri, &uri_len);
+    err = wget_value_from_nvs("mqtt", "broker_uri", "str", mq_nvs_inst.broker_uri, &nrd_len);
     if (err != ESP_OK) {
-        printf("No mqtt broker uri saved, load default.\n");
-        strcpy(buri,DEFAULT_URI);
+        ESP_LOGD(TAG,"No mqtt broker uri saved, load default.\n");
+        strcpy(mq_nvs_inst.broker_uri,DEFAULT_URI);
+    }
+
+    err = wget_value_from_nvs("mqtt", "pub_topic", "str", mq_nvs_inst.pub_topic, &nrd_len);
+    if (err != ESP_OK) {
+        ESP_LOGD(TAG,"No mqtt broker pub topic saved, load default.\n");
+        strcpy(mq_nvs_inst.pub_topic,DEFAULT_PUB_TOPIC);
+    }
+
+    err = wget_value_from_nvs("mqtt", "sub_topic", "str", mq_nvs_inst.sub_topic, &nrd_len);
+    if (err != ESP_OK) {
+        ESP_LOGD(TAG,"No mqtt broker sub topic saved, load default.\n");
+        strcpy(mq_nvs_inst.sub_topic,DEFAULT_SUB_TOPIC);
     }
 
     esp_mqtt_client_config_t mqtt_cfg = {
         //.uri = CONFIG_BROKER_URL,
-        .uri = buri,
+        .uri = mq_nvs_inst.broker_uri,
     };
 
     esp_mqtt_client_handle_t client = esp_mqtt_client_init(&mqtt_cfg);
     lc_client = client;
     esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt_event_handler, client);
     esp_mqtt_client_start(client);
+    return 0;
+}
+
+int mqtt_connect(void)
+{
+    mqtt_start(0,NULL);
+    return 0;
+}
+
+int mqtt_disconnect(void)
+{
+    esp_mqtt_client_disconnect(lc_client);
     return 0;
 }
 

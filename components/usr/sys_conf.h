@@ -11,12 +11,13 @@
 
 typedef struct
 {	
-    uint32_t 		sample_mode;
-    uint32_t 		sample_channel;
-    uint32_t 		wifi_mode;
-    uint32_t 		restart;
-    uint32_t 		dbg;
-    uint32_t 		mqtt_start;
+    uint32_t    sample_mode;
+    uint32_t    sample_channel;
+    uint32_t    wifi_connect;
+    uint32_t    wifi_mode;
+    uint32_t    restart;
+    uint32_t    dbg;
+    uint32_t    mqtt_start;
 }conf_gen_st;
 
 

@@ -19,21 +19,29 @@
 #include "esp_netif.h"
 #include "esp_event.h"
 #include "cmd_wifi.h"
+#include "sys_conf.h"
+#include "bit_op.h"
 
 #define JOIN_TIMEOUT_MS (10000)
+
+static const char *TAG = "WIFI";
 
 static EventGroupHandle_t wifi_event_group;
 const int CONNECTED_BIT = BIT0;
 
+extern sys_reg_st  g_sys; 															
 
 static void event_handler(void* arg, esp_event_base_t event_base,
                                 int32_t event_id, void* event_data)
 {
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
-        esp_wifi_connect();
+        if(g_sys.conf.gen.wifi_connect == 1)
+            esp_wifi_connect();
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_WIFI,0);
         xEventGroupClearBits(wifi_event_group, CONNECTED_BIT);
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         xEventGroupSetBits(wifi_event_group, CONNECTED_BIT);
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_WIFI,1);
     }
 }
 
@@ -61,7 +69,7 @@ static void initialise_wifi(void)
     initialized = true;
 }
 
-static bool wifi_join(const char *ssid, const char *pass, int timeout_ms)
+bool wifi_join(const char *ssid, const char *pass, int timeout_ms)
 {
     initialise_wifi();
     wifi_config_t wifi_config = { 0 };
@@ -111,6 +119,32 @@ static int connect(int argc, char **argv)
     }
     ESP_LOGI(__func__, "Connected");
     return 0;
+}
+
+int wifi_connect(void)
+{
+    esp_err_t err;
+    char r_ssid[32];
+    char r_pwd[32];
+    int nrd_len;
+    err = wget_value_from_nvs("wifi", "remote_ssid", "str", r_ssid, &nrd_len);
+    if (err != ESP_OK) {
+        ESP_LOGD(TAG,"No remote ssid saved. please update and try again.\n");
+        return 0;
+    }
+    err = wget_value_from_nvs("wifi", "remote_pwd", "str", r_pwd, &nrd_len);
+    if (err != ESP_OK) {
+        ESP_LOGD(TAG,"No remote pwd saved. please update and try again.\n");
+        return 0;
+    }
+    wifi_join(r_ssid, r_pwd, JOIN_TIMEOUT_MS);
+    return 1;
+}
+
+int wifi_disconnect(void)
+{
+    esp_wifi_disconnect();
+    return 1;
 }
 
 void register_wifi(void)

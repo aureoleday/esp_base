@@ -3,6 +3,8 @@
 
 #include "sys_conf.h"
 uint16_t dhcp_trigger(uint32_t pram);
+uint16_t set_wifi_con_opt(uint32_t pram);
+uint16_t set_mqtt_con_opt(uint32_t pram);
 //uint16_t sys_reset_opt(uint32_t pram);
 uint16_t set_boot_opt(uint32_t pram);
 uint16_t save_conf_opt(uint32_t pram);

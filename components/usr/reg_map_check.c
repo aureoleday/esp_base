@@ -1,6 +1,10 @@
 #include "sys_def.h" 
 #include "reg_map_check.h"
 #include "global_var.h"
+#include "mqtt_tcp.h"
+#include "cmd_wifi.h"
+
+
 
 //extern sys_reg_st g_sys;
 //
@@ -10,17 +14,32 @@ uint16_t dhcp_trigger(uint32_t pram)
     return 1;
 }
 
-//static void reset_timeout(void* arg)
-//{
-//	printf("restart1\n");
-//	esp_restart();
-//}
-//
-//static esp_timer_handle_t reset_timer;
-//uint16_t sys_reset_opt(uint32_t pram)
-//{
-//
-//}
+uint16_t set_mqtt_con_opt(uint32_t pram)
+{
+    if(pram == 1)
+    {    
+        mqtt_connect();
+    }
+    else
+    {
+        mqtt_disconnect();
+    }
+    return 1;
+}
+
+uint16_t set_wifi_con_opt(uint32_t pram)
+{
+    if(pram == 1)
+    {
+        wifi_connect();
+    }
+    else
+    {
+        wifi_disconnect();
+    }
+    return 1;
+    
+}
 
 uint16_t set_boot_opt(uint32_t pram)
 {  

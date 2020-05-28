@@ -272,7 +272,7 @@ esp_err_t wget_value_from_nvs(const char *dnamespace, const char *key, const cha
         if (err == ESP_OK) {
             memcpy(ret_val,&value,1);
             *ret_len = 1;
-            printf("%d\n", value);
+            ESP_LOGI(TAG,"%d\n", value);
         }
     } else if (type == NVS_TYPE_U8) {
         uint8_t value;
@@ -280,7 +280,7 @@ esp_err_t wget_value_from_nvs(const char *dnamespace, const char *key, const cha
         if (err == ESP_OK) {
             memcpy(ret_val,&value,1);
             *ret_len = 1;
-            printf("%u\n", value);
+            ESP_LOGI(TAG,"%u\n", value);
         }
     } else if (type == NVS_TYPE_I16) {
         int16_t value;
@@ -288,49 +288,49 @@ esp_err_t wget_value_from_nvs(const char *dnamespace, const char *key, const cha
         if (err == ESP_OK) {
             memcpy(ret_val,&value,2);
             *ret_len = 2;
-            printf("%u\n", value);
+            ESP_LOGI(TAG,"%u\n", value);
         }
     } else if (type == NVS_TYPE_U16) {
         uint16_t value;
         if ((err = nvs_get_u16(nvs, key, &value)) == ESP_OK) {
             memcpy(ret_val,&value,2);
             *ret_len = 2;
-            printf("%u\n", value);
+            ESP_LOGI(TAG,"%u\n", value);
         }
     } else if (type == NVS_TYPE_I32) {
         int32_t value;
         if ((err = nvs_get_i32(nvs, key, &value)) == ESP_OK) {
             memcpy(ret_val,&value,4);
             *ret_len = 4;
-            printf("%d\n", value);
+            ESP_LOGI(TAG,"%d\n", value);
         }
     } else if (type == NVS_TYPE_U32) {
         uint32_t value;
         if ((err = nvs_get_u32(nvs, key, &value)) == ESP_OK) {
             memcpy(ret_val,&value,4);
             *ret_len = 4;
-            printf("%u\n", value);
+            ESP_LOGI(TAG,"%u\n", value);
         }
     } else if (type == NVS_TYPE_I64) {
         int64_t value;
         if ((err = nvs_get_i64(nvs, key, &value)) == ESP_OK) {
             memcpy(ret_val,&value,8);
             *ret_len = 8;
-            printf("%lld\n", value);
+            ESP_LOGI(TAG,"%lld\n", value);
         }
     } else if (type == NVS_TYPE_U64) {
         uint64_t value;
         if ( (err = nvs_get_u64(nvs, key, &value)) == ESP_OK) {
             memcpy(ret_val,&value,8);
             *ret_len = 8;
-            printf("%llu\n", value);
+            ESP_LOGI(TAG,"%llu\n", value);
         }
     } else if (type == NVS_TYPE_STR) {
         size_t len;
         if ( (err = nvs_get_str(nvs, key, NULL, &len)) == ESP_OK) {
             char *str = (char *)malloc(len);
             if ( (err = nvs_get_str(nvs, key, str, &len)) == ESP_OK) {
-                printf("%s\n", str);
+                ESP_LOGI(TAG,"%s", str);
             }
             memcpy(ret_val,str,len);
             *ret_len = len;
