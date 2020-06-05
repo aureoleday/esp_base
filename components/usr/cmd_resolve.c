@@ -26,29 +26,27 @@ enum
 enum
 {
     FRAME_SYNC_POS = 0,
-    FRAME_C_ATL_POS,
-    FRAME_D_AL_POS,
-    FRAME_D_PL_POS
+    FRAME_CTRL_POS = 2,
+    FRAME_C_PLA_POS = 4,
+    FRAME_C_PLD_POS = 5,
 };
+#define FRAME_D_PLD_POS FRAME_C_PLA_POS 
 
+#define CMD_FRAME_OVSIZE        4
 
-#define CMD_FRAME_OVSIZE	3
+#define CMD_RTX_BUF_DEPTH       1024
+#define CMD_FSM_TIMEOUT         2
 
-#define CMD_RTX_BUF_DEPTH	1024
-#define CMD_FSM_TIMEOUT	 	2
+#define CMD_FRAME_TAG_M_SYNC 	0x1bdf
+#define CMD_FRAME_TAG_S_SYNC 	0x9bdf
 
-#define CMD_FRAME_TAG_M_SYNC 	0x1bdf9bdf
-#define CMD_FRAME_TAG_S_SYNC 	0x9bdf1bdf
+#define CMD_FRAME_FSM_SYNC      0x01
+#define CMD_FRAME_FSM_TL        0x02
+#define CMD_FRAME_FSM_DATA      0x04
 
-#define CMD_FRAME_FSM_SYNC	0x01
-#define CMD_FRAME_FSM_TL	0x02
-#define CMD_FRAME_FSM_DATA	0x04
-
-
-#define CMD_RD_REG		0x0001
-#define CMD_WR_REG		0x0002
-#define CMD_RP_PKG		0x0080
-#define CMD_RP_GEO		0x0100
+#define CMD_RD_REG	            0x01
+#define CMD_WR_REG	            0x02
+#define CMD_RP_PKG	            0x80
 
 
 static uint8_t 	cmd_kbuf_tx[CMD_RTX_BUF_DEPTH*16];
@@ -59,8 +57,8 @@ esp_timer_handle_t geo_timer;
 
 typedef struct
 {
-    uint32_t tx_buf[CMD_RTX_BUF_DEPTH*2];
-    uint32_t rx_buf[CMD_RTX_BUF_DEPTH];
+    uint8_t tx_buf[CMD_RTX_BUF_DEPTH*2];
+    uint8_t rx_buf[CMD_RTX_BUF_DEPTH];
     uint16_t tx_cnt;
     uint16_t tx_cmd;
     uint8_t  tx_errcode;
@@ -90,7 +88,7 @@ static void cmd_buf_init(void)
     {
         cmd_reg_inst.rx_buf[i] = 0;
     }
-    cmd_reg_inst.tx_buf[0] = CMD_FRAME_TAG_S_SYNC;
+    *(uint16_t *)&cmd_reg_inst.tx_buf[0] = CMD_FRAME_TAG_S_SYNC;
     cmd_reg_inst.tx_cnt = 0;
     cmd_reg_inst.tx_cmd = 0;
 
@@ -126,8 +124,8 @@ void cmd_dev_init(void)
 			`0: checksum ok
 			`1:	checksum fail
  */
-static uint32_t frame_checksum(void) {
-    uint32_t res, i;
+static int frame_checksum(void) {
+    uint8_t res, i;
     res = 0;
     for (i = 0; i < cmd_reg_inst.rx_cnt; i++)
     {
@@ -145,12 +143,12 @@ static uint32_t frame_checksum(void) {
 						data_num: number of data to be caculated
  * @retval caculated checksum
  */
-static uint32_t frame_checksum_gen(uint32_t* data_ptr, uint16_t data_num) {
-    uint32_t res, i;
+static int frame_checksum_gen(void * data_ptr, uint16_t data_num) {
+    uint8_t res, i;
     res = 0;
     for (i = 0; i < data_num; i++)
     {
-        res ^= *(data_ptr + i);
+        res ^= *((uint8_t *)data_ptr + i);
     }
     return res;
 }
@@ -200,12 +198,13 @@ static void cmd_response(void)
     uint32_t check_sum;
     uint32_t ret;
 
-    cmd_reg_inst.tx_buf[FRAME_SYNC_POS] = CMD_FRAME_TAG_S_SYNC;
+    *((uint16_t *)&cmd_reg_inst.tx_buf[FRAME_SYNC_POS]) = CMD_FRAME_TAG_S_SYNC;
 
-    cmd_reg_inst.tx_buf[FRAME_C_ATL_POS] = (cmd_reg_inst.tx_errcode<<24)|(cmd_reg_inst.tx_cmd<<16)|cmd_reg_inst.tx_cnt;
+    cmd_reg_inst.tx_buf[FRAME_CTRL_POS] = (cmd_reg_inst.tx_cmd<<12)|cmd_reg_inst.tx_cnt;
 
-    check_sum = frame_checksum_gen(&cmd_reg_inst.tx_buf[0],(cmd_reg_inst.tx_cnt+CMD_FRAME_OVSIZE-1));		//response frame checksum caculate
-    cmd_reg_inst.tx_buf[cmd_reg_inst.tx_cnt+CMD_FRAME_OVSIZE-1] = check_sum;
+    check_sum = frame_checksum_gen(&cmd_reg_inst.tx_buf[0],(cmd_reg_inst.tx_cnt+CMD_FRAME_OVSIZE));	
+    //response frame checksum caculate
+    cmd_reg_inst.tx_buf[cmd_reg_inst.tx_cnt+CMD_FRAME_OVSIZE] = check_sum;
     ret = kfifo_in(&kc_buf_tx,cmd_reg_inst.tx_buf,(cmd_reg_inst.tx_cnt+CMD_FRAME_OVSIZE)*4);
     if(ret==0)
     {
@@ -218,8 +217,8 @@ static void cmd_response(void)
  * @brief  cmd command write reg operation
  * @param  none
  * @retval
-		`CMD_ERR_NOERR			 : operation OK
-		`CMD_ERR_ADDR_OR	   : requested address out of range
+	`CMD_ERR_NOERR         : operation OK
+	`CMD_ERR_ADDR_OR	   : requested address out of range
     `CMD_ERR_DATA_OR	   : requested data out of range
     `CMD_ERR_PERM_OR	   : request permission denied
     `CMD_ERR_WR_OR		   : write operation prohibited
@@ -228,22 +227,23 @@ static void cmd_response(void)
 static uint16_t cmd_wr_reg(void)
 {
     uint8_t err_code;
-    uint8_t tx_addr, tx_cnt;
     //extern sys_reg_st g_sys;
-
+    uint32_t reg_data;
+    uint16_t reg_addr;
     err_code = CMD_ERR_NOERR;
-    tx_addr = cmd_reg_inst.rx_buf[FRAME_D_AL_POS] >> 16;
-    tx_cnt = cmd_reg_inst.rx_buf[FRAME_D_AL_POS] & 0x0000ffff;
 
     cmd_reg_inst.rx_cnt = 0;								//clear rx_buffer
     cmd_reg_inst.rx_tag = 0;
 
-    err_code = reg_map_write(tx_addr, &cmd_reg_inst.rx_buf[FRAME_D_PL_POS],	tx_cnt); 									//write conf reg map
+    reg_addr = cmd_reg_inst.rx_buf[FRAME_C_PLA_POS];
+    reg_data = *((uint32_t *)&cmd_reg_inst.rx_buf[FRAME_D_PLD_POS]);
 
-    cmd_reg_inst.tx_buf[FRAME_D_AL_POS] = cmd_reg_inst.rx_buf[FRAME_D_AL_POS];
+    err_code = reg_map_write(reg_addr, &reg_data, 1); //write conf reg map
 
-    cmd_reg_inst.tx_cnt = 1;
-    cmd_reg_inst.tx_cmd = (cmd_reg_inst.rx_buf[FRAME_C_ATL_POS] >> 16) & 0x00ff;
+    *((uint32_t *)&cmd_reg_inst.tx_buf[FRAME_C_PLA_POS]) = err_code;
+
+    cmd_reg_inst.tx_cnt = 4;
+    cmd_reg_inst.tx_cmd = cmd_reg_inst.rx_buf[FRAME_CTRL_POS];
     cmd_reg_inst.tx_errcode = err_code;
 
     cmd_response();
@@ -254,8 +254,8 @@ static uint16_t cmd_wr_reg(void)
  * @brief  cmd command write reg operation
  * @param  none
  * @retval
-		`CMD_ERR_NOERR			 : operation OK
-		`CMD_ERR_ADDR_OR	   : requested address out of range
+	`CMD_ERR_NOERR		   : operation OK
+	`CMD_ERR_ADDR_OR	   : requested address out of range
     `CMD_ERR_DATA_OR	   : requested data out of range
     `CMD_ERR_PERM_OR	   : request permission denied
     `CMD_ERR_WR_OR		   : write operation prohibited
@@ -264,39 +264,65 @@ static uint16_t cmd_wr_reg(void)
 static uint16_t cmd_rd_reg(void)
 {
     uint8_t err_code;
-    uint16_t rd_addr, rd_cnt;
+    uint16_t reg_addr;
+    uint32_t reg_data;
 
     err_code = CMD_ERR_NOERR;
-
-    rd_addr = cmd_reg_inst.rx_buf[FRAME_D_AL_POS] >> 16;
-    rd_cnt = cmd_reg_inst.rx_buf[FRAME_D_AL_POS] & 0x0000ffff;
 
     cmd_reg_inst.rx_cnt = 0;								//clear rx_buffer
     cmd_reg_inst.rx_tag = 0;
 
-    if (rd_cnt > CMD_RTX_BUF_DEPTH) {
-        err_code = CMD_ERR_UNKNOWN;
-        cmd_reg_inst.tx_cnt = 1;
-    } else {
-        err_code = reg_map_read(rd_addr, &cmd_reg_inst.tx_buf[FRAME_D_PL_POS],
-                rd_cnt);
-        cmd_reg_inst.tx_cnt = rd_cnt + 1;
-    }
-    cmd_reg_inst.tx_buf[FRAME_D_AL_POS] = cmd_reg_inst.rx_buf[FRAME_D_AL_POS];
+    reg_addr = cmd_reg_inst.rx_buf[FRAME_C_PLA_POS];
 
-    cmd_reg_inst.tx_cmd = (cmd_reg_inst.rx_buf[FRAME_C_ATL_POS] >> 16) & 0x00ff;
+    err_code = reg_map_read(reg_addr, &reg_data, 1);
+
+    *((uint32_t *)&cmd_reg_inst.tx_buf[FRAME_C_PLA_POS]) = reg_data;
+
+    cmd_reg_inst.tx_cmd = (cmd_reg_inst.rx_buf[FRAME_CTRL_POS] >> 12) & 0x000f;
+    cmd_reg_inst.tx_cnt = 4;
     cmd_reg_inst.tx_errcode = err_code;
     cmd_response();
     return err_code;
 }
+/**
+ * @brief  cmd command write reg operation
+ * @param  none
+ * @retval
+	`CMD_ERR_NOERR		   : operation OK
+	`CMD_ERR_ADDR_OR	   : requested address out of range
+    `CMD_ERR_DATA_OR	   : requested data out of range
+    `CMD_ERR_PERM_OR	   : request permission denied
+    `CMD_ERR_WR_OR		   : write operation prohibited
+    `CMD_ERR_UNKNOWN	   : unknown error
+ */
+int daq_frame(void *dbuf_ptr,int d_len,int size)
+{
+    uint8_t err_code, check_sum;
 
+    err_code = CMD_ERR_NOERR;
+
+    cmd_reg_inst.rx_cnt = 0;								//clear rx_buffer
+    cmd_reg_inst.rx_tag = 0;
+    
+    cmd_reg_inst.tx_cnt = d_len*size;
+    memcpy(&cmd_reg_inst.tx_buf[FRAME_D_PLD_POS],dbuf_ptr,cmd_reg_inst.tx_cnt);
+
+    *((uint16_t *)&cmd_reg_inst.tx_buf[FRAME_SYNC_POS]) = CMD_FRAME_TAG_S_SYNC;
+    cmd_reg_inst.tx_buf[FRAME_CTRL_POS] = (CMD_RP_PKG<<12)|(cmd_reg_inst.tx_cnt);
+
+    check_sum = frame_checksum_gen(&cmd_reg_inst.tx_buf[0],(cmd_reg_inst.tx_cnt+CMD_FRAME_OVSIZE));	
+    //response frame checksum caculate
+    cmd_reg_inst.tx_buf[cmd_reg_inst.tx_cnt+CMD_FRAME_OVSIZE] = check_sum;
+    
+    return err_code;
+}
 
 /**
  * @brief  cmd command write reg operation
  * @param  none
  * @retval
-		`CMD_ERR_NOERR			 : operation OK
-		`CMD_ERR_ADDR_OR	   : requested address out of range
+	`CMD_ERR_NOERR	       : operation OK
+	`CMD_ERR_ADDR_OR	   : requested address out of range
     `CMD_ERR_DATA_OR	   : requested data out of range
     `CMD_ERR_PERM_OR	   : request permission denied
     `CMD_ERR_WR_OR		   : write operation prohibited
@@ -308,7 +334,7 @@ uint16_t cmd_frame_resolve(void)
     uint8_t frame_cmd_type;
 
     err_code = CMD_ERR_NOERR;
-    frame_cmd_type = (cmd_reg_inst.rx_buf[FRAME_C_ATL_POS] >> 16) & 0x00ff;
+    frame_cmd_type = (cmd_reg_inst.rx_buf[FRAME_CTRL_POS] >> 12) & 0x000f;
 
     if (cmd_reg_inst.rx_tag == 0) {
         err_code = CMD_ERR_NOERR;
@@ -348,7 +374,7 @@ void recv_frame_fsm(void)
     while ((fifo32_pop(&cmd_rx_fifo, &rx_data) == 1)
             && (cmd_reg_inst.rx_tag == 0))
     {
-        //printf("tcp: %x\n ",rx_data);
+        //printf("fsm_len\n ");
         switch (cmd_reg_inst.cmd_fsm_cstate)
         {
         case (CMD_FRAME_FSM_SYNC): {
@@ -391,8 +417,8 @@ void recv_frame_fsm(void)
                 cmd_reg_inst.rtx_timeout = 0;
                 cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
                 //printf("cmd timeout\n");
-            } else if (((cmd_reg_inst.rx_buf[FRAME_C_ATL_POS] & 0x0000ffff)
-                    + CMD_FRAME_OVSIZE - 1) > cmd_reg_inst.rx_cnt) {
+            } else if (((cmd_reg_inst.rx_buf[FRAME_CTRL_POS] & 0x0fff)
+                    + CMD_FRAME_OVSIZE ) > cmd_reg_inst.rx_cnt) {
                 cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = rx_data;
                 cmd_reg_inst.rx_cnt++;
                 cmd_reg_inst.rx_tag = 0;
@@ -428,59 +454,6 @@ void recv_frame_fsm(void)
         }
         }
     }
-}
-
-uint16_t report_data(void)
-{
-    extern sys_reg_st	  g_sys;
-    uint8_t err_code;
-    uint16_t rd_cnt;
-
-    err_code = CMD_ERR_NOERR;
-    if(bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) == 0)
-        return CMD_NOT_READY;
-
-    rd_cnt = 0;
-
-    if(rd_cnt == 0)
-        return 0;
-
-    cmd_reg_inst.tx_cmd	= CMD_RP_PKG;
-    cmd_reg_inst.tx_cnt = rd_cnt;
-    cmd_reg_inst.tx_errcode = err_code;
-    cmd_response();
-    return err_code;
-}
-
-
-static int16_t get_geo_fdata(float* buf_ptr)
-{
-    extern kfifo_t kf_s;
-
-    return kfifo_out(&kf_s,buf_ptr,sizeof(uint32_t)*256);
-}
-
-uint16_t report_geo_data(void)
-{
-    extern sys_reg_st	  g_sys;
-    uint8_t err_code;
-    uint16_t rd_cnt;
-
-    err_code = CMD_ERR_NOERR;
-    if((bit_op_get(g_sys.stat.gen.status_bm,GBM_BT) == 0)&&(bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) == 0))
-        return CMD_NOT_READY;
-
-    //    rd_cnt = get_geo_data(&cmd_reg_inst.tx_buf[FRAME_D_AL_POS])/4;
-    rd_cnt = get_geo_fdata((float*)&cmd_reg_inst.tx_buf[FRAME_D_AL_POS])/4;
-
-    if(rd_cnt == 0)
-        return 0;
-
-    cmd_reg_inst.tx_cmd	= CMD_RP_GEO;
-    cmd_reg_inst.tx_cnt = rd_cnt;
-    cmd_reg_inst.tx_errcode = err_code;
-    cmd_response();
-    return err_code;
 }
 
 void cmd_thread(void* param)

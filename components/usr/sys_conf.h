@@ -8,18 +8,37 @@
 #define		BKG_THREAD_DELAY            700
 #define		GEO_THREAD_DELAY            800
 #define		TCPCLIENT_THREAD_DELAY      600
+#define		SAMPLE_CHANNEL_MAX          4
 
 typedef struct
 {	
-    uint32_t    sample_mode;
-    uint32_t    sample_channel;
-    uint32_t    wifi_connect;
-    uint32_t    wifi_mode;
     uint32_t    restart;
     uint32_t    dbg;
-    uint32_t    mqtt_start;
 }conf_gen_st;
 
+
+typedef struct
+{	
+    uint32_t    wifi_connect;
+    uint32_t    wifi_mode;
+}conf_con_st;
+
+typedef struct
+{
+    uint32_t    sample_mode;
+    uint32_t    sample_start;
+    uint32_t    sample_rate;
+    uint32_t    sample_channel_bm;
+    uint32_t    pga_gain[SAMPLE_CHANNEL_MAX];
+    uint32_t    filter_en;
+}conf_daq_st;
+
+typedef struct
+{
+    uint32_t    framing_type;
+    uint32_t    framing_period;
+    uint32_t    samples_per_frame;
+}conf_framing_st;
 
 typedef struct
 {
@@ -30,10 +49,9 @@ typedef struct
 
 typedef struct
 {
-    uint32_t    tcp_en;
-    uint32_t    tcp_period;
     uint32_t    http_en;
-}conf_eth_st;
+    uint32_t    mqtt_en;
+}conf_prt_st;
 
 typedef struct
 {
@@ -77,7 +95,8 @@ typedef struct
 typedef struct
 {
     conf_gen_st gen;
-    conf_eth_st eth;
+    conf_con_st con;
+    conf_prt_st prt;
     conf_geo_st geo;
     conf_mod_st mod;
     conf_fft_st fft;

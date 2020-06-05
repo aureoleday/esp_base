@@ -35,7 +35,7 @@ static void event_handler(void* arg, esp_event_base_t event_base,
                                 int32_t event_id, void* event_data)
 {
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
-        if(g_sys.conf.gen.wifi_connect == 1)
+        if(g_sys.conf.con.wifi_connect == 1)
             esp_wifi_connect();
         bit_op_set(&g_sys.stat.gen.status_bm,GBM_WIFI,0);
         xEventGroupClearBits(wifi_event_group, CONNECTED_BIT);

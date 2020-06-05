@@ -19,14 +19,14 @@
 
 #define CONFIG_NAMESPACE 	"config"
 //configuration parameters
-sys_reg_st  g_sys; 															//global parameter declairation
+sys_reg_st  g_sys; 	    //global parameter declairation
 
 //configuration register map declairation
 const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
 {//id     mapped registers                 min      max         default  type  chk_prt
-    {0,   &g_sys.conf.gen.wifi_mode,       0,       1,          0,       0,    NULL},
-    {1,   &g_sys.conf.gen.wifi_connect,    0,       1,          0,       0,    set_wifi_con_opt},
-    {2,   &g_sys.conf.gen.mqtt_start,      0,       1,          0,       0,    set_mqtt_con_opt},
+    {0,   &g_sys.conf.con.wifi_mode,       0,       1,          0,       0,    NULL},
+    {1,   &g_sys.conf.con.wifi_connect,    0,       1,          0,       0,    set_wifi_con_opt},
+    {2,   &g_sys.conf.prt.mqtt_en,         0,       1,          0,       0,    set_mqtt_con_opt},
     {3,   &g_sys.conf.geo.enable,          0,       1,          0,       0,    NULL},
     {4,   &g_sys.conf.geo.pkg_period,      0,       1000000,    10,      0,    NULL},
     {5,   &g_sys.conf.geo.sample_period,   0,       1000,       1,       0,    NULL},
@@ -34,9 +34,9 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {7,   &g_sys.conf.geo.pkg_en,          0,       1,          1,       0,    NULL},
     {8,   NULL,                            0,       0,          0,       0,    NULL},
     {9,   NULL,                            0,       0,          0,       0,    NULL},
-    {10,  &g_sys.conf.eth.http_en,         0,       1,          1,       0,    NULL},
-    {11,  &g_sys.conf.eth.tcp_en,          0,       1,          1,       0,    NULL},
-    {12,  &g_sys.conf.eth.tcp_period,      1,       0xffffffff, 80,      0,    NULL},
+    {10,  &g_sys.conf.prt.http_en,         0,       1,          1,       0,    NULL},
+    {11,  NULL,                            0,	    0,          0,       0,    NULL},
+    {12,  NULL,                            0,	    0,          0,       0,    NULL},
     {13,  &g_sys.conf.fft.acc_times,       1,       128,        1,       0,    NULL},
     {14,  &g_sys.conf.fft.intv_cnts,       1,       1024,       1,       0,    NULL},
     {15,  &g_sys.conf.gtz.n,               32,      65535,      4000,    0,    NULL},
