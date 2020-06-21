@@ -27,7 +27,7 @@
 #define WITH_TASKS_INFO 1
 #endif
 
-static const char *TAG = "cmd_system";
+static const char *TAG = "CMD_SYS";
 
 static void register_free(void);
 static void register_heap(void);

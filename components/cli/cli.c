@@ -23,7 +23,7 @@
 #include "global_var.h"
 //#include "usr_sys_init.h"
 
-static const char* TAG = "example";
+static const char* TAG = "CLI";
 
 /* Console command history can be stored to and loaded from a file.
  * The easiest way to do this is to use FATFS filesystem on top of
