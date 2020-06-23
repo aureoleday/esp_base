@@ -32,6 +32,7 @@
 #include "mqtt_client.h"
 #include "global_var.h"
 #include "bit_op.h"
+#include "kfifo.h"
 
 
 #define DEFAULT_URI "mqtt://127.0.0.1:1883"
@@ -45,6 +46,8 @@ typedef struct
     char pub_topic[MQ_NVS_STR_SIZE];
     char sub_topic[MQ_NVS_STR_SIZE];
 }mq_nvs_st;
+
+extern kfifo_t 		kc_buf_rx;
 
 static mq_nvs_st mq_nvs_inst;
 
@@ -79,8 +82,14 @@ static esp_err_t mqtt_event_handler_cb(esp_mqtt_event_handle_t event)
             break;
         case MQTT_EVENT_DATA:
             ESP_LOGI(TAG, "MQTT_EVENT_DATA");
-            ESP_LOGI(TAG,"TOPIC=%.*s\r\n", event->topic_len, event->topic);
-            ESP_LOGI(TAG,"DATA=%.*s\r\n", event->data_len, event->data);
+            ESP_LOGI(TAG,"TOPIC=%.*s", event->topic_len, event->topic);
+            ESP_LOGI(TAG,"DATA=%.*s", event->data_len, event->data);
+            
+            kfifo_in(&kc_buf_rx,event->data, event->data_len);
+            for(int i=0;i<event->data_len;i++)
+                    printf("%x ",event->data[i]);
+            printf("len:%d\n",event->data_len);
+
             break;
         case MQTT_EVENT_ERROR:
             ESP_LOGI(TAG, "MQTT_EVENT_ERROR");

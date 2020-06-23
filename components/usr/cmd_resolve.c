@@ -8,6 +8,7 @@
 //#include "esp_log.h"
 #include "kfifo.h"
 #include "fifo.h"
+//#include "tlvparse.h"
 
 //cpad err code
 enum
@@ -50,9 +51,11 @@ enum
 
 
 static uint8_t 	cmd_kbuf_tx[CMD_RTX_BUF_DEPTH*16];
+static uint8_t 	cmd_kbuf_rx[CMD_RTX_BUF_DEPTH];
 kfifo_t 		kc_buf_tx;
+kfifo_t 		kc_buf_rx;
 
-fifo32_cb_td cmd_rx_fifo;
+//fifo32_cb_td cmd_rx_fifo;
 esp_timer_handle_t geo_timer;
 
 typedef struct
@@ -98,10 +101,13 @@ static void cmd_buf_init(void)
     cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
 
     //rx fifo initialization
-    fifo32_init(&cmd_rx_fifo,1,CMD_RTX_BUF_DEPTH);
+    //fifo32_init(&cmd_rx_fifo,1,CMD_RTX_BUF_DEPTH);
 
     memset(&kc_buf_tx, 0, sizeof(kc_buf_tx));
     kfifo_init(&kc_buf_tx, (void *)cmd_kbuf_tx, sizeof(cmd_kbuf_tx));
+
+    memset(&kc_buf_rx, 0, sizeof(kc_buf_rx));
+    kfifo_init(&kc_buf_rx, (void *)cmd_kbuf_rx, sizeof(cmd_kbuf_rx));
 }
 
 
@@ -371,93 +377,148 @@ void recv_frame_fsm(void)
         cmd_reg_inst.rtx_timeout++;
     }
 
-    while ((fifo32_pop(&cmd_rx_fifo, &rx_data) == 1)
+    while ((kfifo_out(&kc_buf_rx, &rx_data, 2) == 2)
+    //while ((fifo32_pop(&cmd_rx_fifo, &rx_data) == 1)
             && (cmd_reg_inst.rx_tag == 0))
     {
+        printf("rcv:%x\n",rx_data);
         //printf("fsm_len\n ");
         switch (cmd_reg_inst.cmd_fsm_cstate)
         {
-        case (CMD_FRAME_FSM_SYNC): {
-            cmd_reg_inst.rx_cnt = 0;
-            if (rx_data == CMD_FRAME_TAG_M_SYNC) {
-                cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = rx_data;
-                cmd_reg_inst.rx_cnt++;
-                cmd_reg_inst.rx_tag = 0;
-                cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_TL;
-            } else {
+            case (CMD_FRAME_FSM_SYNC): {
                 cmd_reg_inst.rx_cnt = 0;
-                cmd_reg_inst.rx_tag = 0;
-                cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
-                cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
-            }
-            cmd_reg_inst.rtx_timeout = 0;
-            break;
-        }
-        case (CMD_FRAME_FSM_TL): {
-            if (cmd_reg_inst.rtx_timeout < CMD_FSM_TIMEOUT) {
-                cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = rx_data;
-                cmd_reg_inst.rx_cnt++;
-                cmd_reg_inst.rx_tag = 0;
-                cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_DATA;
-            } else {
-                cmd_reg_inst.rx_cnt = 0;
-                cmd_reg_inst.rx_tag = 0;
-                cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
-                cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
-            }
-            cmd_reg_inst.rtx_timeout = 0;
-            //printf("fsm_len\n ");
-            break;
-        }
-        case (CMD_FRAME_FSM_DATA): {
-            if (cmd_reg_inst.rtx_timeout > CMD_FSM_TIMEOUT) {
-                cmd_reg_inst.rx_cnt = 0;
-                cmd_reg_inst.rx_tag = 0;
-                cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
-                cmd_reg_inst.rtx_timeout = 0;
-                cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
-                //printf("cmd timeout\n");
-            } else if (((cmd_reg_inst.rx_buf[FRAME_CTRL_POS] & 0x0fff)
-                    + CMD_FRAME_OVSIZE ) > cmd_reg_inst.rx_cnt) {
-                cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = rx_data;
-                cmd_reg_inst.rx_cnt++;
-                cmd_reg_inst.rx_tag = 0;
-                cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_DATA;
-            } else {
-                cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = rx_data;
-                cmd_reg_inst.rx_cnt++;
-                if (frame_checksum() == 1) {
-                    cmd_reg_inst.rx_tag = 1;
-                    cmd_reg_inst.rx_cnt = cmd_reg_inst.rx_cnt;
-                    cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
-                    //printf("chk ok\n");
-                } else {
+                if (rx_data == CMD_FRAME_TAG_M_SYNC) {
+                    cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = rx_data;
+                    cmd_reg_inst.rx_cnt++;
                     cmd_reg_inst.rx_tag = 0;
+                    cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_TL;
+            printf("sync\n");
+                } else {
                     cmd_reg_inst.rx_cnt = 0;
+                    cmd_reg_inst.rx_tag = 0;
                     cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
-                    //printf("chk error\n");
+                    cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
                 }
                 cmd_reg_inst.rtx_timeout = 0;
-                cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
+                break;
             }
-            //printf("fsm_data\n ");
-            break;
-        }
-        default: {
-            cmd_reg_inst.rx_cnt = 0;
-            cmd_reg_inst.rx_tag = 0;
-            cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
-            cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
-            cmd_reg_inst.rtx_timeout = 0;
-            //printf("fsm_default\n ");
-            break;
-        }
+            case (CMD_FRAME_FSM_TL): {
+                if (cmd_reg_inst.rtx_timeout < CMD_FSM_TIMEOUT) {
+                    cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = rx_data;
+                    cmd_reg_inst.rx_cnt++;
+                    cmd_reg_inst.rx_tag = 0;
+                    cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_DATA;
+            printf("tl\n");
+                } else {
+                    cmd_reg_inst.rx_cnt = 0;
+                    cmd_reg_inst.rx_tag = 0;
+                    cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
+                    cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
+                }
+                cmd_reg_inst.rtx_timeout = 0;
+                printf("fsm_tlen\n ");
+                break;
+            }
+            case (CMD_FRAME_FSM_DATA): {
+                if (cmd_reg_inst.rtx_timeout > CMD_FSM_TIMEOUT) {
+                    cmd_reg_inst.rx_cnt = 0;
+                    cmd_reg_inst.rx_tag = 0;
+                    cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
+                    cmd_reg_inst.rtx_timeout = 0;
+                    cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
+                    printf("cmd timeout\n");
+                } else if (((cmd_reg_inst.rx_buf[FRAME_CTRL_POS] & 0x0fff)
+                        + CMD_FRAME_OVSIZE ) > cmd_reg_inst.rx_cnt) {
+                    cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = rx_data;
+                    cmd_reg_inst.rx_cnt++;
+                    cmd_reg_inst.rx_tag = 0;
+                    cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_DATA;
+                } else {
+                    cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = rx_data;
+                    cmd_reg_inst.rx_cnt++;
+                    if (frame_checksum() == 1) {
+                        cmd_reg_inst.rx_tag = 1;
+                        cmd_reg_inst.rx_cnt = cmd_reg_inst.rx_cnt;
+                        cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
+                        printf("chk ok\n");
+                    } else {
+                        cmd_reg_inst.rx_tag = 0;
+                        cmd_reg_inst.rx_cnt = 0;
+                        cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
+                        printf("chk error\n");
+                    }
+                    cmd_reg_inst.rtx_timeout = 0;
+                    cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
+                }
+                printf("fsm_data\n ");
+                break;
+            }
+            default: {
+                cmd_reg_inst.rx_cnt = 0;
+                cmd_reg_inst.rx_tag = 0;
+                cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
+                cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
+                cmd_reg_inst.rtx_timeout = 0;
+                //printf("fsm_default\n ");
+                break;
+            }
         }
     }
 }
 
+
+
+//void tlv_test(void)
+//{
+//	unsigned char buf2[] = {
+//        0x6F,0x22,0x84,0x0E,0x31,0x50,0x41,0x59,0x2E,0x53,0x59,0x53,
+//        0x2E,0x44,0x44,0x46,0x30,0x31,0xA5,0x10,0x88,0x01,0x01,0x5F,
+//        0x2D,0x02,0x7A,0x68,0xBF,0x0C,0x05,0x9F,0x4D,0x02,0x0B,0x0A
+//	};
+//
+//	unsigned char buf3[] = {
+//		0x70,0x1C,0x61,0x1A,0x4F,0x08,0xA0,0x00,0x00,0x03,0x33,0x01,
+//		0x01,0x02,0x50,0x0B,0x50,0x42,0x4F,0x43,0x20,0x43,0x52,0x45,
+//		0x44,0x49,0x54,0x87,0x01,0x01
+//	};
+//
+//
+//	//parse 1
+//	struct TLVNode* node = TLV_Parse(buf2,sizeof(buf2));
+//	TLV_Debug(node);
+//
+//	//parse 2
+//	struct TLVNode* node2 = TLV_Parse(buf3,sizeof(buf3));
+//	TLV_Debug(node2);
+//
+//	TLV_Merge(node,node2);
+//	TLV_Free(node2);
+//
+//	struct TLVNode* found = TLV_Find(node,0x9f4d);
+//	if(found)
+//	{
+//		printf("FOUND! 9f4d\n");
+//	}
+//	else
+//	{
+//		printf("NOT FOUND! 9f4d\n");
+//	}
+//
+//	found = TLV_Find(node,0x4f);
+//	if(found)
+//	{
+//		printf("FOUND! 4f\n");
+//	}
+//	else
+//	{
+//		printf("NOT FOUND! 4f\n");
+//	}
+//}
+
 void cmd_thread(void* param)
 {
+    //vTaskDelay(5000 / portTICK_PERIOD_MS);
+	//tlv_test();
     vTaskDelay(CMD_THREAD_DELAY);
 	cmd_dev_init();
 	while(1)
