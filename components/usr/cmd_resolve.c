@@ -1,13 +1,11 @@
 #include "sys_def.h"
 #include "global_var.h"
 #include "bit_op.h"
-#include "fifo.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 //#include "esp_timer.h"
 //#include "esp_log.h"
 #include "kfifo.h"
-#include "fifo.h"
 //#include "tlvparse.h"
 
 //cpad err code
@@ -55,7 +53,6 @@ static uint8_t 	cmd_kbuf_rx[CMD_RTX_BUF_DEPTH];
 kfifo_t 		kc_buf_tx;
 kfifo_t 		kc_buf_rx;
 
-//fifo32_cb_td cmd_rx_fifo;
 esp_timer_handle_t geo_timer;
 
 typedef struct
@@ -99,9 +96,6 @@ static void cmd_buf_init(void)
     cmd_reg_inst.rx_tag = 0;
     cmd_reg_inst.rtx_timeout = 0;
     cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
-
-    //rx fifo initialization
-    //fifo32_init(&cmd_rx_fifo,1,CMD_RTX_BUF_DEPTH);
 
     memset(&kc_buf_tx, 0, sizeof(kc_buf_tx));
     kfifo_init(&kc_buf_tx, (void *)cmd_kbuf_tx, sizeof(cmd_kbuf_tx));
