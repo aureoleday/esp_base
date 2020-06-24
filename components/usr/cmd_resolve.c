@@ -4,10 +4,12 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 //#include "esp_timer.h"
-//#include "esp_log.h"
+#include "esp_log.h"
 #include "kfifo.h"
+#include "mqtt_tcp.h"
 //#include "tlvparse.h"
 
+static const char *TAG = "CMD_RSV";
 //cpad err code
 enum
 {
@@ -26,18 +28,14 @@ enum
 {
     FRAME_SYNC_POS = 0,
     FRAME_CTRL_POS = 2,
-    FRAME_C_PLA_POS = 4,
-    FRAME_C_PLD_POS = 5,
+    FRAME_PLD_APOS = 0,
+    FRAME_PLD_DPOS = 1,
 };
-#define FRAME_D_PLD_POS FRAME_C_PLA_POS 
 
 #define CMD_FRAME_OVSIZE        4
 
 #define CMD_RTX_BUF_DEPTH       1024
 #define CMD_FSM_TIMEOUT         2
-
-#define CMD_FRAME_TAG_M_SYNC 	0x1bdf
-#define CMD_FRAME_TAG_S_SYNC 	0x9bdf
 
 #define CMD_FRAME_FSM_SYNC      0x01
 #define CMD_FRAME_FSM_TL        0x02
@@ -47,6 +45,9 @@ enum
 #define CMD_WR_REG	            0x02
 #define CMD_RP_PKG	            0x80
 
+
+const static unsigned char CMD_FRAME_TAG_M_SYNC[2]={0x1b,0xdf};
+const static unsigned char CMD_FRAME_TAG_S_SYNC[2]={0x9b,0xdf};
 
 static uint8_t 	cmd_kbuf_tx[CMD_RTX_BUF_DEPTH*16];
 static uint8_t 	cmd_kbuf_rx[CMD_RTX_BUF_DEPTH];
@@ -63,6 +64,8 @@ typedef struct
     uint16_t tx_cmd;
     uint8_t  tx_errcode;
     uint16_t rx_cnt;
+    uint16_t rx_len;
+    uint16_t rx_cmd;
     uint16_t rx_tag;
     uint16_t rtx_timeout;
     uint8_t cmd_fsm_cstate;
@@ -88,11 +91,13 @@ static void cmd_buf_init(void)
     {
         cmd_reg_inst.rx_buf[i] = 0;
     }
-    *(uint16_t *)&cmd_reg_inst.tx_buf[0] = CMD_FRAME_TAG_S_SYNC;
+    *(uint16_t *)&cmd_reg_inst.tx_buf[0] = *(uint16_t*)CMD_FRAME_TAG_S_SYNC;
     cmd_reg_inst.tx_cnt = 0;
     cmd_reg_inst.tx_cmd = 0;
 
     cmd_reg_inst.rx_cnt = 0;
+    cmd_reg_inst.rx_len = 0;
+    cmd_reg_inst.rx_cmd = 0;
     cmd_reg_inst.rx_tag = 0;
     cmd_reg_inst.rtx_timeout = 0;
     cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
@@ -198,19 +203,21 @@ static void cmd_response(void)
     uint32_t check_sum;
     uint32_t ret;
 
-    *((uint16_t *)&cmd_reg_inst.tx_buf[FRAME_SYNC_POS]) = CMD_FRAME_TAG_S_SYNC;
+    *((uint16_t *)&cmd_reg_inst.tx_buf[FRAME_SYNC_POS]) = *(uint16_t*)CMD_FRAME_TAG_S_SYNC;
 
-    cmd_reg_inst.tx_buf[FRAME_CTRL_POS] = (cmd_reg_inst.tx_cmd<<12)|cmd_reg_inst.tx_cnt;
+    cmd_reg_inst.tx_buf[2] = (cmd_reg_inst.tx_cmd<<4)|(cmd_reg_inst.tx_cnt>>8);
+    cmd_reg_inst.tx_buf[3] = cmd_reg_inst.tx_cnt&0x00ff;
 
-    check_sum = frame_checksum_gen(&cmd_reg_inst.tx_buf[0],(cmd_reg_inst.tx_cnt+CMD_FRAME_OVSIZE));	
+    check_sum = frame_checksum_gen(&cmd_reg_inst.tx_buf[4],cmd_reg_inst.tx_cnt);	
     //response frame checksum caculate
-    cmd_reg_inst.tx_buf[cmd_reg_inst.tx_cnt+CMD_FRAME_OVSIZE] = check_sum;
-    ret = kfifo_in(&kc_buf_tx,cmd_reg_inst.tx_buf,(cmd_reg_inst.tx_cnt+CMD_FRAME_OVSIZE)*4);
-    if(ret==0)
-    {
-        kfifo_reset(&kc_buf_tx);
-        printf("etf\n");
-    }
+    cmd_reg_inst.tx_buf[cmd_reg_inst.tx_cnt+4] = check_sum;
+    mqtt_transmitt("/clt/data",cmd_reg_inst.tx_buf,cmd_reg_inst.tx_cnt+5);
+    //ret = kfifo_in(&kc_buf_tx,cmd_reg_inst.tx_buf,cmd_reg_inst.tx_cnt*4);
+    //if(ret==0)
+    //{
+    //    kfifo_reset(&kc_buf_tx);
+    //    ESP_LOGI(TAG,"etf\n");
+    //}
 }
 
 /**
@@ -235,15 +242,16 @@ static uint16_t cmd_wr_reg(void)
     cmd_reg_inst.rx_cnt = 0;								//clear rx_buffer
     cmd_reg_inst.rx_tag = 0;
 
-    reg_addr = cmd_reg_inst.rx_buf[FRAME_C_PLA_POS];
-    reg_data = *((uint32_t *)&cmd_reg_inst.rx_buf[FRAME_D_PLD_POS]);
+    reg_addr = cmd_reg_inst.rx_buf[0];
+    reg_data = *((uint32_t *)&cmd_reg_inst.rx_buf[1]);
 
     err_code = reg_map_write(reg_addr, &reg_data, 1); //write conf reg map
 
-    *((uint32_t *)&cmd_reg_inst.tx_buf[FRAME_C_PLA_POS]) = err_code;
+    cmd_reg_inst.tx_buf[4] = reg_addr;
+    cmd_reg_inst.tx_buf[5] = err_code;
 
-    cmd_reg_inst.tx_cnt = 4;
-    cmd_reg_inst.tx_cmd = cmd_reg_inst.rx_buf[FRAME_CTRL_POS];
+    cmd_reg_inst.tx_cnt = 2;
+    cmd_reg_inst.tx_cmd = cmd_reg_inst.rx_cmd;
     cmd_reg_inst.tx_errcode = err_code;
 
     cmd_response();
@@ -272,14 +280,15 @@ static uint16_t cmd_rd_reg(void)
     cmd_reg_inst.rx_cnt = 0;								//clear rx_buffer
     cmd_reg_inst.rx_tag = 0;
 
-    reg_addr = cmd_reg_inst.rx_buf[FRAME_C_PLA_POS];
+    reg_addr = cmd_reg_inst.rx_buf[0];
 
+    cmd_reg_inst.tx_buf[4] = reg_addr;
     err_code = reg_map_read(reg_addr, &reg_data, 1);
 
-    *((uint32_t *)&cmd_reg_inst.tx_buf[FRAME_C_PLA_POS]) = reg_data;
+    *((uint32_t *)&cmd_reg_inst.tx_buf[5]) = reg_data;
 
-    cmd_reg_inst.tx_cmd = (cmd_reg_inst.rx_buf[FRAME_CTRL_POS] >> 12) & 0x000f;
-    cmd_reg_inst.tx_cnt = 4;
+    cmd_reg_inst.tx_cmd = cmd_reg_inst.rx_cmd;
+    cmd_reg_inst.tx_cnt = 5;
     cmd_reg_inst.tx_errcode = err_code;
     cmd_response();
     return err_code;
@@ -305,9 +314,9 @@ int daq_frame(void *dbuf_ptr,int d_len,int size)
     cmd_reg_inst.rx_tag = 0;
     
     cmd_reg_inst.tx_cnt = d_len*size;
-    memcpy(&cmd_reg_inst.tx_buf[FRAME_D_PLD_POS],dbuf_ptr,cmd_reg_inst.tx_cnt);
+    memcpy(&cmd_reg_inst.tx_buf[0],dbuf_ptr,cmd_reg_inst.tx_cnt);
 
-    *((uint16_t *)&cmd_reg_inst.tx_buf[FRAME_SYNC_POS]) = CMD_FRAME_TAG_S_SYNC;
+    *((uint16_t *)&cmd_reg_inst.tx_buf[0]) = *(uint16_t*)CMD_FRAME_TAG_S_SYNC;
     cmd_reg_inst.tx_buf[FRAME_CTRL_POS] = (CMD_RP_PKG<<12)|(cmd_reg_inst.tx_cnt);
 
     check_sum = frame_checksum_gen(&cmd_reg_inst.tx_buf[0],(cmd_reg_inst.tx_cnt+CMD_FRAME_OVSIZE));	
@@ -331,28 +340,35 @@ int daq_frame(void *dbuf_ptr,int d_len,int size)
 uint16_t cmd_frame_resolve(void)
 {
     uint8_t err_code;
-    uint8_t frame_cmd_type;
 
     err_code = CMD_ERR_NOERR;
-    frame_cmd_type = (cmd_reg_inst.rx_buf[FRAME_CTRL_POS] >> 12) & 0x000f;
 
     if (cmd_reg_inst.rx_tag == 0) {
         err_code = CMD_ERR_NOERR;
         return err_code;
     }
 
-    switch (frame_cmd_type) {
+    switch (cmd_reg_inst.rx_cmd) {
     case (CMD_RD_REG): {
         err_code = cmd_rd_reg();
-        printf("console: read reg.\n");
+        ESP_LOGI(TAG,"console: read reg.");
         break;
     }
     case (CMD_WR_REG): {
         err_code = cmd_wr_reg();
-        printf("console: write reg.\n");
+        ESP_LOGI(TAG,"console: write reg.");
         break;
     }
     default: {
+        cmd_reg_inst.rx_cnt = 0;								//clear rx_buffer
+        cmd_reg_inst.rx_tag = 0;
+        ESP_LOGI(TAG,"console: unknow cmd.");
+        printf("cmd:%x\n",cmd_reg_inst.rx_cmd);
+        printf("len:%x\n",cmd_reg_inst.rx_len);
+        for(int i=0;i<cmd_reg_inst.rx_len;i++)
+                printf("%x ",cmd_reg_inst.rx_buf[i]);
+
+        printf("\n");
         err_code = CMD_ERR_UNKNOWN;
         break;
     }
@@ -362,98 +378,106 @@ uint16_t cmd_frame_resolve(void)
 
 void recv_frame_fsm(void)
 {
-    uint32_t rx_data;
+    uint16_t rx_data;
+    static uint16_t rd_cnt = 2;
 
     if (cmd_reg_inst.rx_tag == 1)
         return;
 
     if (cmd_reg_inst.cmd_fsm_cstate == CMD_FRAME_FSM_DATA) {
         cmd_reg_inst.rtx_timeout++;
+        if(cmd_reg_inst.rtx_timeout >=10)
+        {
+            cmd_reg_inst.rx_cnt = 0;
+            cmd_reg_inst.rx_tag = 0;
+            cmd_reg_inst.rx_len = 0;
+            cmd_reg_inst.rx_cmd = 0;
+            cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
+            cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
+            cmd_reg_inst.rtx_timeout = 0;
+            rd_cnt = 2;
+            ESP_LOGW(TAG,"frame timeout");
+            return;
+        }
     }
 
-    while ((kfifo_out(&kc_buf_rx, &rx_data, 2) == 2)
-    //while ((fifo32_pop(&cmd_rx_fifo, &rx_data) == 1)
+    while ((kfifo_out(&kc_buf_rx, &rx_data, rd_cnt ) == rd_cnt)
             && (cmd_reg_inst.rx_tag == 0))
     {
-        printf("rcv:%x\n",rx_data);
-        //printf("fsm_len\n ");
         switch (cmd_reg_inst.cmd_fsm_cstate)
         {
             case (CMD_FRAME_FSM_SYNC): {
                 cmd_reg_inst.rx_cnt = 0;
-                if (rx_data == CMD_FRAME_TAG_M_SYNC) {
-                    cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = rx_data;
-                    cmd_reg_inst.rx_cnt++;
+                if (rx_data == *(uint16_t*)CMD_FRAME_TAG_M_SYNC) {
+                    cmd_reg_inst.rx_cnt = 0;
                     cmd_reg_inst.rx_tag = 0;
                     cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_TL;
-            printf("sync\n");
                 } else {
                     cmd_reg_inst.rx_cnt = 0;
                     cmd_reg_inst.rx_tag = 0;
                     cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
                     cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
                 }
+                rd_cnt = 2;
                 cmd_reg_inst.rtx_timeout = 0;
                 break;
             }
             case (CMD_FRAME_FSM_TL): {
                 if (cmd_reg_inst.rtx_timeout < CMD_FSM_TIMEOUT) {
                     cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = rx_data;
-                    cmd_reg_inst.rx_cnt++;
+                    cmd_reg_inst.rx_cnt = 0;
+                    cmd_reg_inst.rx_cmd = (rx_data>>4)&0x000f;
+                    cmd_reg_inst.rx_len = (rx_data>>8)|((rx_data<<8)&0x0f00);
                     cmd_reg_inst.rx_tag = 0;
                     cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_DATA;
-            printf("tl\n");
+                    rd_cnt = 1;
+                    //ESP_LOGI(TAG,"rx_len:%x,rx_cmd:%x",cmd_reg_inst.rx_len,cmd_reg_inst.rx_cmd);
                 } else {
                     cmd_reg_inst.rx_cnt = 0;
                     cmd_reg_inst.rx_tag = 0;
                     cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
                     cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
+                    rd_cnt = 2;
                 }
                 cmd_reg_inst.rtx_timeout = 0;
-                printf("fsm_tlen\n ");
                 break;
             }
             case (CMD_FRAME_FSM_DATA): {
-                if (cmd_reg_inst.rtx_timeout > CMD_FSM_TIMEOUT) {
-                    cmd_reg_inst.rx_cnt = 0;
-                    cmd_reg_inst.rx_tag = 0;
-                    cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
-                    cmd_reg_inst.rtx_timeout = 0;
-                    cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
-                    printf("cmd timeout\n");
-                } else if (((cmd_reg_inst.rx_buf[FRAME_CTRL_POS] & 0x0fff)
-                        + CMD_FRAME_OVSIZE ) > cmd_reg_inst.rx_cnt) {
+                if (cmd_reg_inst.rx_len > cmd_reg_inst.rx_cnt) {
                     cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = rx_data;
                     cmd_reg_inst.rx_cnt++;
                     cmd_reg_inst.rx_tag = 0;
                     cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_DATA;
+                    rd_cnt = 1;
                 } else {
                     cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = rx_data;
                     cmd_reg_inst.rx_cnt++;
                     if (frame_checksum() == 1) {
                         cmd_reg_inst.rx_tag = 1;
                         cmd_reg_inst.rx_cnt = cmd_reg_inst.rx_cnt;
-                        cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
-                        printf("chk ok\n");
+                        ESP_LOGD(TAG,"chk ok");
                     } else {
                         cmd_reg_inst.rx_tag = 0;
                         cmd_reg_inst.rx_cnt = 0;
-                        cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
-                        printf("chk error\n");
+                        ESP_LOGD(TAG,"chk error");
                     }
                     cmd_reg_inst.rtx_timeout = 0;
                     cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
+                    rd_cnt = 2;
                 }
-                printf("fsm_data\n ");
+                //ESP_LOGD(TAG,"fsm_data");
                 break;
             }
             default: {
                 cmd_reg_inst.rx_cnt = 0;
                 cmd_reg_inst.rx_tag = 0;
+                cmd_reg_inst.rx_len = 0;
+                cmd_reg_inst.rx_cmd = 0;
                 cmd_reg_inst.rx_buf[cmd_reg_inst.rx_cnt] = 0;
                 cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_SYNC;
                 cmd_reg_inst.rtx_timeout = 0;
-                //printf("fsm_default\n ");
+                rd_cnt = 2;
+                //ESP_LOGI(TAG,"fsm_default ");
                 break;
             }
         }
@@ -491,21 +515,21 @@ void recv_frame_fsm(void)
 //	struct TLVNode* found = TLV_Find(node,0x9f4d);
 //	if(found)
 //	{
-//		printf("FOUND! 9f4d\n");
+//		ESP_LOGI(TAG,"FOUND! 9f4d\n");
 //	}
 //	else
 //	{
-//		printf("NOT FOUND! 9f4d\n");
+//		ESP_LOGI(TAG,"NOT FOUND! 9f4d\n");
 //	}
 //
 //	found = TLV_Find(node,0x4f);
 //	if(found)
 //	{
-//		printf("FOUND! 4f\n");
+//		ESP_LOGI(TAG,"FOUND! 4f\n");
 //	}
 //	else
 //	{
-//		printf("NOT FOUND! 4f\n");
+//		ESP_LOGI(TAG,"NOT FOUND! 4f\n");
 //	}
 //}
 

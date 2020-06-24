@@ -86,9 +86,9 @@ static esp_err_t mqtt_event_handler_cb(esp_mqtt_event_handle_t event)
             ESP_LOGI(TAG,"DATA=%.*s", event->data_len, event->data);
             
             kfifo_in(&kc_buf_rx,event->data, event->data_len);
-            for(int i=0;i<event->data_len;i++)
-                    printf("%x ",event->data[i]);
-            printf("len:%d\n",event->data_len);
+            //for(int i=0;i<event->data_len;i++)
+            //        printf("%x ",event->data[i]);
+            //printf("len:%d\n",event->data_len);
 
             break;
         case MQTT_EVENT_ERROR:
