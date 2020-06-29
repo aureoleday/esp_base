@@ -111,10 +111,10 @@ CONFIG_ESPTOOLPY_MONITOR_BAUD=115200
 # Partition Table
 #
 # CONFIG_PARTITION_TABLE_SINGLE_APP is not set
-# CONFIG_PARTITION_TABLE_TWO_OTA is not set
-CONFIG_PARTITION_TABLE_CUSTOM=y
-CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions_example.csv"
-CONFIG_PARTITION_TABLE_FILENAME="partitions_example.csv"
+CONFIG_PARTITION_TABLE_TWO_OTA=y
+# CONFIG_PARTITION_TABLE_CUSTOM is not set
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+CONFIG_PARTITION_TABLE_FILENAME="partitions_two_ota.csv"
 CONFIG_PARTITION_TABLE_OFFSET=0x8000
 CONFIG_PARTITION_TABLE_MD5=y
 # end of Partition Table
@@ -122,12 +122,13 @@ CONFIG_PARTITION_TABLE_MD5=y
 #
 # Example Configuration
 #
-CONFIG_STORE_HISTORY=y
+# CONFIG_STORE_HISTORY is not set
 # end of Example Configuration
 
 #
 # Example Configuration
 #
+CONFIG_BROKER_URL="mqtt://mqtt.eclipse.org"
 # end of Example Configuration
 
 #

@@ -9,6 +9,7 @@
 #include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "freertos/semphr.h"
 #include "freertos/ringbuf.h"
 #include "esp_system.h"
 #include "driver/spi_master.h"
@@ -157,7 +158,7 @@ uint8_t adxl_wr_reg(uint8_t addr, uint8_t data)
 
     memset(&t, 0, sizeof(t));
 
-//    xSemaphoreTake( geospi_mutex, portMAX_DELAY );
+    xSemaphoreTake( geospi_mutex, portMAX_DELAY );
 
     t.length=8*2;
     t.user=(void*)0;
@@ -170,7 +171,7 @@ uint8_t adxl_wr_reg(uint8_t addr, uint8_t data)
 
     esp_err_t ret = spi_device_polling_transmit(spi_geo_dev_inst.spi_device_h, &t);
 
-//    xSemaphoreGive( geospi_mutex );
+    xSemaphoreGive( geospi_mutex );
     return ret;
 }
 
@@ -181,7 +182,7 @@ uint8_t adxl_rd_reg(uint8_t addr, uint8_t * rx_buf, uint8_t cnt)
 
     memset(&t, 0, sizeof(t));
 
-//    xSemaphoreTake( geospi_mutex, portMAX_DELAY );
+    xSemaphoreTake( geospi_mutex, portMAX_DELAY );
 
     t.length=8*(cnt+1);
     t.rx_buffer = rx_buf;
@@ -197,7 +198,7 @@ uint8_t adxl_rd_reg(uint8_t addr, uint8_t * rx_buf, uint8_t cnt)
 
     spi_device_transmit(spi_geo_dev_inst.spi_device_h, &t);
 
-//    xSemaphoreGive( geospi_mutex );
+    xSemaphoreGive( geospi_mutex );
 
     return *(rx_buf+1);
 }
