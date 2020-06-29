@@ -25,12 +25,14 @@ typedef struct
 
 typedef struct
 {
-    uint32_t    sample_mode;
-    uint32_t    sample_start;
-    uint32_t    sample_rate;
+    uint32_t    enable;
+    uint32_t    pkg_en;
+    uint32_t    sample_period;
     uint32_t    sample_channel_bm;
     uint32_t    pga_gain[SAMPLE_CHANNEL_MAX];
-    uint32_t    filter_en;
+    uint32_t    pkg_period;
+    uint32_t    pkg_size;
+    uint32_t    filter;
 }conf_daq_st;
 
 typedef struct
@@ -95,6 +97,7 @@ typedef struct
 typedef struct
 {
     conf_gen_st gen;
+    conf_daq_st daq;
     conf_con_st con;
     conf_prt_st prt;
     conf_geo_st geo;

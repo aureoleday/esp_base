@@ -1,0 +1,78 @@
+#include "freertos/FreeRTOS.h"
+#include "esp_log.h"
+#include "esp_timer.h"
+#include "kfifo.h"
+#include "cmd_resolve.h"
+#include "mqtt_tcp.h"
+#include "sys_conf.h"
+
+
+
+#define     DAQ_RX_BUF_DEPTH    1024
+#define     DAQ_TX_BUF_DEPTH    1024
+#define     DAQ_CHANNEL_MAX     16 
+
+const uint8_t test_buf[1024]={0};
+
+typedef struct
+{
+    uint8_t  tx_buf[DAQ_TX_BUF_DEPTH];
+    uint8_t  rx_buf[DAQ_RX_BUF_DEPTH];
+    uint16_t sample_rate;
+    uint16_t channel_bm;
+    uint32_t pkg_period;
+    uint16_t gain[DAQ_CHANNEL_MAX];
+}daq_st;
+
+static daq_st daq_inst;
+esp_timer_handle_t daq_timer;
+
+/**
+ * @brief  cmd rtx buffer initialization
+ * @param  none
+ * @retval none
+ */
+static void daq_buf_init(void)
+{
+    memset(daq_inst.tx_buf,0,DAQ_TX_BUF_DEPTH);
+    memset(daq_inst.rx_buf,0,DAQ_RX_BUF_DEPTH);
+
+    daq_inst.sample_rate = 4096;
+    daq_inst.pkg_period = 1000000;
+    daq_inst.channel_bm = 0x0001;
+}
+
+
+static void daq_timeout(void* arg)
+{
+    extern sys_reg_st  g_sys;
+    daq_frame(test_buf, g_sys.conf.daq.pkg_size);
+}
+
+void daq_tim_stop(void)
+{
+    esp_timer_stop(daq_timer);
+}
+
+void daq_tim_start(int32_t tim_period)
+{
+    ESP_ERROR_CHECK(esp_timer_start_periodic(daq_timer, tim_period));
+}
+
+static int daq_timer_init(void)
+{
+    const esp_timer_create_args_t daq_timer_args = {
+            .callback = &daq_timeout,
+            /* name is optional, but may help identify the timer when debugging */
+            .name = "periodic"
+    };
+
+    ESP_ERROR_CHECK(esp_timer_create(&daq_timer_args, &daq_timer));
+    return 0;
+}
+
+void daq_init(void)
+{
+    daq_buf_init();
+    daq_timer_init();
+}

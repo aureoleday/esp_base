@@ -1,6 +1,4 @@
-#include "sys_def.h"
 #include "global_var.h"
-#include "bit_op.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 //#include "esp_timer.h"
@@ -10,7 +8,7 @@
 //#include "tlvparse.h"
 
 static const char *TAG = "CMD_RSV";
-//cpad err code
+//cmd err code
 enum
 {
     CMD_ERR_NOERR = 0,
@@ -53,8 +51,6 @@ static uint8_t 	cmd_kbuf_tx[CMD_RTX_BUF_DEPTH*16];
 static uint8_t 	cmd_kbuf_rx[CMD_RTX_BUF_DEPTH];
 kfifo_t 		kc_buf_tx;
 kfifo_t 		kc_buf_rx;
-
-esp_timer_handle_t geo_timer;
 
 typedef struct
 {
@@ -109,6 +105,12 @@ static void cmd_buf_init(void)
     kfifo_init(&kc_buf_rx, (void *)cmd_kbuf_rx, sizeof(cmd_kbuf_rx));
 }
 
+int cmd_stream_in(void * src_data, int data_len)
+{
+    int i=0;
+    i = kfifo_in(&kc_buf_rx, src_data, data_len);
+    return i;
+}
 
 /**
  * @brief  cmd uart send interface
@@ -149,7 +151,8 @@ static int frame_checksum(void) {
  * @retval caculated checksum
  */
 static int frame_checksum_gen(void * data_ptr, uint16_t data_num) {
-    uint8_t res, i;
+    uint8_t res;
+    int i;
     res = 0;
     for (i = 0; i < data_num; i++)
     {
@@ -192,6 +195,10 @@ uint16_t cmd_frame_recv(void)
     }
 }
 
+//int cmd_pkg_out(void *src_data, int data_len, int (* transmitt)(void*,int))
+//{
+//   return  (*transmitt)(src_data, data_len);
+//}
 
 /**
  * @brief  cmd send response frame
@@ -201,7 +208,6 @@ uint16_t cmd_frame_recv(void)
 static void cmd_response(void)
 {
     uint32_t check_sum;
-    uint32_t ret;
 
     *((uint16_t *)&cmd_reg_inst.tx_buf[FRAME_SYNC_POS]) = *(uint16_t*)CMD_FRAME_TAG_S_SYNC;
 
@@ -211,13 +217,7 @@ static void cmd_response(void)
     check_sum = frame_checksum_gen(&cmd_reg_inst.tx_buf[4],cmd_reg_inst.tx_cnt);	
     //response frame checksum caculate
     cmd_reg_inst.tx_buf[cmd_reg_inst.tx_cnt+4] = check_sum;
-    mqtt_transmitt("/clt/data",cmd_reg_inst.tx_buf,cmd_reg_inst.tx_cnt+5);
-    //ret = kfifo_in(&kc_buf_tx,cmd_reg_inst.tx_buf,cmd_reg_inst.tx_cnt*4);
-    //if(ret==0)
-    //{
-    //    kfifo_reset(&kc_buf_tx);
-    //    ESP_LOGI(TAG,"etf\n");
-    //}
+    mqtt_transmitt(cmd_reg_inst.tx_buf,cmd_reg_inst.tx_cnt+5);
 }
 
 /**
@@ -234,7 +234,6 @@ static void cmd_response(void)
 static uint16_t cmd_wr_reg(void)
 {
     uint8_t err_code;
-    //extern sys_reg_st g_sys;
     uint32_t reg_data;
     uint16_t reg_addr;
     err_code = CMD_ERR_NOERR;
@@ -304,25 +303,21 @@ static uint16_t cmd_rd_reg(void)
     `CMD_ERR_WR_OR		   : write operation prohibited
     `CMD_ERR_UNKNOWN	   : unknown error
  */
-int daq_frame(void *dbuf_ptr,int d_len,int size)
+int daq_frame(const void *dbuf_ptr,int d_len)
 {
-    uint8_t err_code, check_sum;
+    uint8_t err_code;
 
     err_code = CMD_ERR_NOERR;
 
     cmd_reg_inst.rx_cnt = 0;								//clear rx_buffer
     cmd_reg_inst.rx_tag = 0;
     
-    cmd_reg_inst.tx_cnt = d_len*size;
-    memcpy(&cmd_reg_inst.tx_buf[0],dbuf_ptr,cmd_reg_inst.tx_cnt);
+    cmd_reg_inst.tx_cnt = d_len;
+    memcpy(&cmd_reg_inst.tx_buf[4],dbuf_ptr,cmd_reg_inst.tx_cnt);
 
-    *((uint16_t *)&cmd_reg_inst.tx_buf[0]) = *(uint16_t*)CMD_FRAME_TAG_S_SYNC;
-    cmd_reg_inst.tx_buf[FRAME_CTRL_POS] = (CMD_RP_PKG<<12)|(cmd_reg_inst.tx_cnt);
-
-    check_sum = frame_checksum_gen(&cmd_reg_inst.tx_buf[0],(cmd_reg_inst.tx_cnt+CMD_FRAME_OVSIZE));	
-    //response frame checksum caculate
-    cmd_reg_inst.tx_buf[cmd_reg_inst.tx_cnt+CMD_FRAME_OVSIZE] = check_sum;
-    
+    cmd_reg_inst.tx_cmd = CMD_RP_PKG;
+    cmd_reg_inst.tx_errcode = err_code;
+    cmd_response();
     return err_code;
 }
 
@@ -536,7 +531,6 @@ void recv_frame_fsm(void)
 void cmd_thread(void* param)
 {
     //vTaskDelay(5000 / portTICK_PERIOD_MS);
-	//tlv_test();
     vTaskDelay(CMD_THREAD_DELAY);
 	cmd_dev_init();
 	while(1)

@@ -3,14 +3,24 @@
 #include "global_var.h"
 #include "mqtt_tcp.h"
 #include "cmd_wifi.h"
+#include "daq.h"
 
 
 
-//extern sys_reg_st g_sys;
+extern sys_reg_st g_sys;
 //
 uint16_t dhcp_trigger(uint32_t pram)
 {  
     //    usr_dhcp_action(pram);
+    return 1;
+}
+
+uint16_t daq_pkg_en(uint32_t pram)
+{  
+    if(pram == 1)
+       daq_tim_start(g_sys.conf.daq.pkg_period);
+    else
+       daq_tim_stop();
     return 1;
 }
 

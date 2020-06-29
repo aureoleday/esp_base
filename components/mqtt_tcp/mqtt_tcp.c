@@ -32,8 +32,7 @@
 #include "mqtt_client.h"
 #include "global_var.h"
 #include "bit_op.h"
-#include "kfifo.h"
-
+#include "cmd_resolve.h"
 
 #define DEFAULT_URI "mqtt://127.0.0.1:1883"
 #define DEFAULT_PUB_TOPIC "/clt/data"
@@ -46,8 +45,6 @@ typedef struct
     char pub_topic[MQ_NVS_STR_SIZE];
     char sub_topic[MQ_NVS_STR_SIZE];
 }mq_nvs_st;
-
-extern kfifo_t 		kc_buf_rx;
 
 static mq_nvs_st mq_nvs_inst;
 
@@ -84,12 +81,8 @@ static esp_err_t mqtt_event_handler_cb(esp_mqtt_event_handle_t event)
             ESP_LOGI(TAG, "MQTT_EVENT_DATA");
             ESP_LOGI(TAG,"TOPIC=%.*s", event->topic_len, event->topic);
             ESP_LOGI(TAG,"DATA=%.*s", event->data_len, event->data);
-            
-            kfifo_in(&kc_buf_rx,event->data, event->data_len);
-            //for(int i=0;i<event->data_len;i++)
-            //        printf("%x ",event->data[i]);
-            //printf("len:%d\n",event->data_len);
-
+            //kfifo_in(&kc_buf_rx,event->data, event->data_len);
+            cmd_stream_in(event->data, event->data_len);
             break;
         case MQTT_EVENT_ERROR:
             ESP_LOGI(TAG, "MQTT_EVENT_ERROR");
@@ -144,6 +137,7 @@ static int mqtt_start(int argc, char **argv)
     esp_mqtt_client_config_t mqtt_cfg = {
         //.uri = CONFIG_BROKER_URL,
         .uri = mq_nvs_inst.broker_uri,
+        .buffer_size = 4096
     };
 
     esp_mqtt_client_handle_t client = esp_mqtt_client_init(&mqtt_cfg);
@@ -173,10 +167,17 @@ static struct {
     struct arg_end *end;
 } mqtt_tx_args;
 
-int mqtt_transmitt(char *topic, void *tx_buf,int tx_len)
+//int mqtt_transmitt(char *topic, void *tx_buf,int tx_len)
+//{
+//    int msg_id = 0;
+//    msg_id = esp_mqtt_client_publish(lc_client, topic, tx_buf, tx_len, 0, 0);
+//    return msg_id; 
+//}
+
+int mqtt_transmitt(void *tx_buf,int tx_len)
 {
     int msg_id = 0;
-    msg_id = esp_mqtt_client_publish(lc_client, topic, tx_buf, tx_len, 0, 0);
+    msg_id = esp_mqtt_client_publish(lc_client, mq_nvs_inst.pub_topic, tx_buf, tx_len, 0, 0);
     return msg_id; 
 }
 

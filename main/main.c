@@ -18,6 +18,9 @@
 #include "mqtt_tcp.h"
 #include "argtable3/argtable3.h"
 #include "esp_console.h"
+#include "daq.h"
+#include "adxl_drv.h"
+#include "led_drv.h"
 
 enum
 {
@@ -35,7 +38,6 @@ enum
 #define TCP_THREAD_STACK_SIZE 	4096
 #define CLI_THREAD_STACK_SIZE 	4096
 #define CMD_THREAD_STACK_SIZE 	3072
-#define MQTT_THREAD_STACK_SIZE  8192	
 
 static void tasks_create(void)
 {
@@ -44,13 +46,6 @@ static void tasks_create(void)
 //            TEST_THREAD_STACK_SIZE,
 //            NULL,
 //            TEST_THREAD_PRIO,
-//            NULL);
-
-//    xTaskCreate(&mqtt_thread,
-//            "Task_mqtt",
-//            MQTT_THREAD_STACK_SIZE,
-//            NULL,
-//            MQTT_THREAD_PRIO,
 //            NULL);
 
     xTaskCreate(&cli_thread,
@@ -71,8 +66,12 @@ static void tasks_create(void)
 void app_main()
 {
     gvar_init();
+    adxl_init();
+    usr_led_init();
+    daq_init();
     gvar_register();
     mqtt_register();
+    adxl_register();
     tasks_create();
 }
 

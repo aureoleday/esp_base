@@ -18,6 +18,7 @@
 #include "esp_wifi.h"
 #include "esp_netif.h"
 #include "esp_event.h"
+#include "mdns.h"
 #include "cmd_wifi.h"
 #include "sys_conf.h"
 #include "bit_op.h"
@@ -31,6 +32,36 @@ const int CONNECTED_BIT = BIT0;
 
 extern sys_reg_st  g_sys; 															
 
+
+static void start_mdns_service(void)
+{
+    esp_err_t err;
+    char hostname[20];
+    int nrd_len;
+
+    //initialize mDNS service
+    err = mdns_init();
+    if (err) {
+        ESP_LOGW(TAG,"MDNS Init failed: %d\n", err);
+        return;
+    }
+    
+    err = wget_value_from_nvs("wifi", "mdns_hostname", "str", hostname, &nrd_len);
+    if (err != ESP_OK) {
+        ESP_LOGW(TAG,"No mdns hostname saved. please update and try again.\n");
+        return;
+    }
+    //set hostname
+    mdns_hostname_set(hostname);
+    ESP_LOGI(TAG,"mDNS hostname:%s", hostname); 
+
+    //set default instance
+    mdns_instance_name_set("ez-DAQ");
+
+    mdns_service_add(NULL, "_http", "_tcp", 80, NULL, 0);
+    mdns_service_add(NULL, "_mqtt", "_tcp", 1883, NULL, 0);
+}
+
 static void event_handler(void* arg, esp_event_base_t event_base,
                                 int32_t event_id, void* event_data)
 {
@@ -42,6 +73,7 @@ static void event_handler(void* arg, esp_event_base_t event_base,
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         xEventGroupSetBits(wifi_event_group, CONNECTED_BIT);
         bit_op_set(&g_sys.stat.gen.status_bm,GBM_WIFI,1);
+        start_mdns_service();
     }
 }
 
