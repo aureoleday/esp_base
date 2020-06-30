@@ -8,8 +8,8 @@
 //#include "freertos/FreeRTOS.h"
 //#include "esp_console.h"
 #include <stdlib.h>     /* qsort */
-#include "global_var.h"
 #include <math.h>
+#include "sys_conf.h"
 
 #define FREQ_SPAN_MAX	65
 

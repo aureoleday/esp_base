@@ -16,6 +16,7 @@
 #include "global_var.h"
 #include "reg_map_check.h"
 
+static const char *TAG = "GVAR";
 
 #define CONFIG_NAMESPACE 	"config"
 //configuration parameters
@@ -28,15 +29,15 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {1,   &g_sys.conf.con.wifi_connect,    0,       1,          0,       0,    set_wifi_con_opt},
     {2,   &g_sys.conf.prt.mqtt_en,         0,       1,          0,       0,    set_mqtt_con_opt},
     {3,   &g_sys.conf.daq.enable,          0,       1,          0,       0,    NULL},
-    {4,   &g_sys.conf.daq.pkg_period,      0,       9000000,    1000000, 0,    NULL},
+    {4,   &g_sys.conf.daq.pkg_period,      0,       9000000,    50000,   0,    NULL},
     {5,   &g_sys.conf.daq.sample_period,   0,       1000,       1,       0,    NULL},
     {6,   &g_sys.conf.daq.filter,          0,       255,        64,      0,    NULL},
     {7,   &g_sys.conf.daq.pkg_en,          0,       1,          0,       0,    daq_pkg_en},
-    {8,   &g_sys.conf.daq.pkg_size,        0,       1500,       128,     0,    NULL},
-    {9,   NULL,                            0,       0,          0,       0,    NULL},
-    {10,  &g_sys.conf.prt.http_en,         0,       1,          1,       0,    NULL},
-    {11,  &g_sys.conf.geo.pkg_en,          0,       1,          0,       0,    NULL},
-    {12,  &g_sys.conf.geo.filter,          0,       1,          0,       0,    NULL},
+    {8,   &g_sys.conf.daq.pkg_size,        0,       1500,       1024,    0,    NULL},
+    {9,   &g_sys.conf.geo.scan_period,     100,     1000000,    3000,    0,    NULL},
+    {10,  &g_sys.conf.geo.axis,            0,       2,          0,       0,    NULL},
+    {11,  &g_sys.conf.geo.pkg_en,          0,       1,          0,       0,    geo_sample_en},
+    {12,  &g_sys.conf.geo.filter,          0,       255,        1,       0,    NULL},
     {13,  &g_sys.conf.fft.acc_times,       1,       128,        1,       0,    NULL},
     {14,  &g_sys.conf.fft.intv_cnts,       1,       1024,       1,       0,    NULL},
     {15,  &g_sys.conf.gtz.n,               32,      65535,      4000,    0,    NULL},
@@ -48,7 +49,7 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {21,  &g_sys.conf.bat.mav_cnt,         1,	    128,        16,      0,    NULL},
     {22,  &g_sys.conf.bat.up_lim,          3700,    4500,       4150,    0,    NULL},
     {23,  &g_sys.conf.bat.low_lim,         2700,    3500,       3200,    0,    NULL},
-    {24,  NULL,                            0,	    0,          0,       0,    NULL},
+    {24,  &g_sys.conf.prt.http_en,         0,       1,          0,       0,    NULL},
     {25,  NULL,                            0,	    0,          0,       0,    NULL},
     {26,  NULL,                            0,	    0,          0,       0,    NULL},
     {27,  NULL,                            0,	    0,          0,       0,    NULL},
@@ -149,7 +150,7 @@ uint16 reg_map_write(uint16 reg_addr, uint32_t *wr_data, uint8_t wr_cnt)
     if((reg_addr+wr_cnt) > CONF_REG_MAP_NUM)	//address range check
     {
         err_code = REGMAP_ERR_ADDR_OR;
-        printf("MB_SLAVE REGMAP_ERR_ADDR_OR1 failed\n");
+        ESP_LOGW(TAG,"MB_SLAVE REGMAP_ERR_ADDR_OR1 failed");
         return err_code;
     }
 
@@ -158,7 +159,7 @@ uint16 reg_map_write(uint16 reg_addr, uint32_t *wr_data, uint8_t wr_cnt)
         if((*(wr_data+i)>conf_reg_map_inst[reg_addr+i].max)||(*(wr_data+i)<conf_reg_map_inst[reg_addr+i].min))		//min_max limit check
         {
             err_code = REGMAP_ERR_DATA_OR;
-            printf("REGMAP_ERR_WR_OR03 failed\n");
+            ESP_LOGW(TAG,"REGMAP_ERR_WR_OR03 failed");
             return err_code;	
         }
 
@@ -167,7 +168,7 @@ uint16 reg_map_write(uint16 reg_addr, uint32_t *wr_data, uint8_t wr_cnt)
             if(conf_reg_map_inst[reg_addr+i].chk_ptr(*(wr_data+i))==0)
             {
                 err_code = REGMAP_ERR_CONFLICT_OR;
-                printf("CHK_PTR:REGMAP_ERR_WR_OR failed\n");
+                ESP_LOGW(TAG,"CHK_PTR:REGMAP_ERR_WR_OR failed");
                 return err_code;	
             }
         }
@@ -285,14 +286,14 @@ int load_conf(const char *load_type)
 
     if (required_size == 0) {
         init_load_default();
-        printf("Nothing saved as '%s' yet,load default.\n",load_type);
+        ESP_LOGW(TAG,"Nothing saved as '%s' yet,load default.",load_type);
 
     }
     else if(required_size != CONF_REG_MAP_NUM*sizeof(uint32_t))
     {
         init_load_default();
         err = -1;
-        printf("Save data mismatch, '%s',load default.\n",load_type);
+        ESP_LOGW(TAG,"Save data mismatch, '%s',load default.",load_type);
     }
     else {
         config = malloc(required_size);
@@ -306,7 +307,7 @@ int load_conf(const char *load_type)
             if(conf_reg_map_inst[i].reg_ptr != NULL)
                 *(conf_reg_map_inst[i].reg_ptr) = config[i];
         }
-        printf("Load '%s' success.\n",load_type);
+        ESP_LOGI(TAG,"Load '%s' success.",load_type);
         free(config);
     }
 
@@ -389,9 +390,9 @@ static int print_config(int argc, char **argv)
     // obtain required memory space to store blob being read from NVS
     err = nvs_get_blob(my_handle, savconf_args.data->sval[0], NULL, &required_size);
     if (err != ESP_OK && err != ESP_ERR_NVS_NOT_FOUND) return err;
-    printf("Config '%s': \n",savconf_args.data->sval[0]);
+    ESP_LOGI(TAG,"Config '%s': ",savconf_args.data->sval[0]);
     if (required_size == 0) {
-        printf("Nothing saved yet!\n");
+        ESP_LOGW(TAG,"Nothing saved yet!");
     } else {
         uint32_t* config = malloc(required_size);
         err = nvs_get_blob(my_handle, savconf_args.data->sval[0], config, &required_size);
@@ -400,7 +401,7 @@ static int print_config(int argc, char **argv)
             return err;
         }
         for (int i = 0; i < required_size / sizeof(uint32_t); i++) {
-            printf("%d: %x\n", i, config[i]);
+            printf("%d: %d\n", i, config[i]);
         }
         free(config);
     }
@@ -478,7 +479,7 @@ static int rd_reg(int argc, char **argv)
 
     i=0;
     for(i=0;i<regmap_args.data->ival[0];i++)
-        printf("reg %d: %x\n",(i+regmap_args.addr->ival[0])&0x3fff,rx_buf[i]);
+        printf("reg %d: %d\n",(i+regmap_args.addr->ival[0])&0x3fff,rx_buf[i]);
     return 0;
 }
 

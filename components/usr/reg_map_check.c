@@ -4,6 +4,7 @@
 #include "mqtt_tcp.h"
 #include "cmd_wifi.h"
 #include "daq.h"
+#include "adxl_drv.h"
 
 
 
@@ -21,6 +22,22 @@ uint16_t daq_pkg_en(uint32_t pram)
        daq_tim_start(g_sys.conf.daq.pkg_period);
     else
        daq_tim_stop();
+    return 1;
+}
+
+uint16_t geo_sample_en(uint32_t pram)
+{  
+    if(pram == 1)
+    {
+       adxl_wr_reg(ADXL_FILTER,g_sys.conf.geo.filter);
+       adxl_wr_reg(ADXL_POWER_CTL,0);
+       adxl_tim_start(g_sys.conf.geo.scan_period);
+    }
+    else
+    {
+       adxl_wr_reg(ADXL_POWER_CTL,1);
+       adxl_tim_stop();
+    }
     return 1;
 }
 

@@ -3,16 +3,16 @@
 #include "esp_timer.h"
 #include "kfifo.h"
 #include "cmd_resolve.h"
-#include "mqtt_tcp.h"
+//#include "mqtt_tcp.h"
 #include "sys_conf.h"
-
+#include "adxl_drv.h"
 
 
 #define     DAQ_RX_BUF_DEPTH    1024
-#define     DAQ_TX_BUF_DEPTH    1024
+#define     DAQ_TX_BUF_DEPTH    1536 
 #define     DAQ_CHANNEL_MAX     16 
 
-const uint8_t test_buf[1024]={0};
+uint8_t test_buf[1024]={0};
 
 typedef struct
 {
@@ -46,7 +46,15 @@ static void daq_buf_init(void)
 static void daq_timeout(void* arg)
 {
     extern sys_reg_st  g_sys;
-    daq_frame(test_buf, g_sys.conf.daq.pkg_size);
+    int out_len = 0;
+    out_len = adxl_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
+    if(out_len == 0)
+//        printf("daq no d\n");
+        ;
+    else 
+    {
+        daq_frame(daq_inst.tx_buf, out_len);
+    }
 }
 
 void daq_tim_stop(void)

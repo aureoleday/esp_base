@@ -75,6 +75,21 @@ static void event_handler(void* arg, esp_event_base_t event_base,
         bit_op_set(&g_sys.stat.gen.status_bm,GBM_WIFI,1);
         start_mdns_service();
     }
+    else if (event_id == WIFI_EVENT_AP_STACONNECTED) {
+        wifi_event_ap_staconnected_t* event = (wifi_event_ap_staconnected_t*) event_data;
+        xEventGroupSetBits(wifi_event_group, CONNECTED_BIT);
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_WIFI,1);
+        start_mdns_service();
+        ESP_LOGI(TAG, "station "MACSTR" join, AID=%d",
+                 MAC2STR(event->mac), event->aid);
+    } else if (event_id == WIFI_EVENT_AP_STADISCONNECTED) {
+        wifi_event_ap_stadisconnected_t* event = (wifi_event_ap_stadisconnected_t*) event_data;
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_WIFI,0);
+        xEventGroupClearBits(wifi_event_group, CONNECTED_BIT);
+        ESP_LOGI(TAG, "station "MACSTR" leave, AID=%d",
+                 MAC2STR(event->mac), event->aid);
+    }
+
 }
 
 static void initialise_wifi(void)
@@ -96,6 +111,12 @@ static void initialise_wifi(void)
     ESP_ERROR_CHECK( esp_event_handler_register(WIFI_EVENT, WIFI_EVENT_STA_DISCONNECTED, &event_handler, NULL) );
     ESP_ERROR_CHECK( esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &event_handler, NULL) );
     ESP_ERROR_CHECK( esp_wifi_set_storage(WIFI_STORAGE_RAM) );
+    ESP_ERROR_CHECK(esp_event_handler_instance_register(WIFI_EVENT,
+                                                        ESP_EVENT_ANY_ID,
+                                                        &event_handler,
+                                                        NULL,
+                                                        NULL));
+
     ESP_ERROR_CHECK( esp_wifi_set_mode(WIFI_MODE_NULL) );
     ESP_ERROR_CHECK( esp_wifi_start() );
     initialized = true;
@@ -104,19 +125,53 @@ static void initialise_wifi(void)
 bool wifi_join(const char *ssid, const char *pass, int timeout_ms)
 {
     initialise_wifi();
+
     wifi_config_t wifi_config = { 0 };
-    strlcpy((char *) wifi_config.sta.ssid, ssid, sizeof(wifi_config.sta.ssid));
-    if (pass) {
-        strlcpy((char *) wifi_config.sta.password, pass, sizeof(wifi_config.sta.password));
+
+    if(g_sys.conf.con.wifi_mode == 1)
+    {
+        //wifi_config = {
+        //    .ap = {
+        //        .ssid = *ssid,
+        //        .ssid_len = strlen(ssid),
+        //        //.channel = CONFIG_ESP_WIFI_CHANNEL,
+        //        .password = *pass,
+        //        .max_connection = 2,
+        //        .authmode = WIFI_AUTH_WPA_WPA2_PSK
+        //    },
+        //};
+        //if (strlen(pass) == 0) {
+        //    wifi_config.ap.authmode = WIFI_AUTH_OPEN;
+        //}
+
+        strlcpy((char *) wifi_config.ap.ssid, ssid, sizeof(wifi_config.ap.ssid));
+        strlcpy((char *) wifi_config.ap.password, pass, sizeof(wifi_config.ap.password));
+        wifi_config.ap.authmode = WIFI_AUTH_WPA_WPA2_PSK; 
+        wifi_config.ap.max_connection = 3; 
+
+        ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
+        ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_AP, &wifi_config));
+        ESP_ERROR_CHECK(esp_wifi_start());
+
+        //ESP_LOGI(TAG, "wifi_init_softap finished. SSID:%s password:%s channel:%d",
+        //         ssid, pass, CONFIG_ESP_WIFI_CHANNEL);
     }
+    else
+    {
+        strlcpy((char *) wifi_config.sta.ssid, ssid, sizeof(wifi_config.sta.ssid));
+        if (pass) {
+            strlcpy((char *) wifi_config.sta.password, pass, sizeof(wifi_config.sta.password));
+        }
 
-    ESP_ERROR_CHECK( esp_wifi_set_mode(WIFI_MODE_STA) );
-    ESP_ERROR_CHECK( esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config) );
-    ESP_ERROR_CHECK( esp_wifi_connect() );
+        ESP_ERROR_CHECK( esp_wifi_set_mode(WIFI_MODE_STA) );
+        ESP_ERROR_CHECK( esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config) );
+        ESP_ERROR_CHECK( esp_wifi_connect() );
 
-    int bits = xEventGroupWaitBits(wifi_event_group, CONNECTED_BIT,
-                                   pdFALSE, pdTRUE, timeout_ms / portTICK_PERIOD_MS);
-    return (bits & CONNECTED_BIT) != 0;
+        int bits = xEventGroupWaitBits(wifi_event_group, CONNECTED_BIT,
+                                       pdFALSE, pdTRUE, timeout_ms / portTICK_PERIOD_MS);
+        return (bits & CONNECTED_BIT) != 0;
+    }
+    return 0;
 }
 
 /** Arguments used by 'join' function */
@@ -156,20 +211,36 @@ static int connect(int argc, char **argv)
 int wifi_connect(void)
 {
     esp_err_t err;
-    char r_ssid[32];
-    char r_pwd[32];
+    char ssid[32];
+    char pwd[32];
     int nrd_len;
-    err = wget_value_from_nvs("wifi", "remote_ssid", "str", r_ssid, &nrd_len);
-    if (err != ESP_OK) {
-        ESP_LOGD(TAG,"No remote ssid saved. please update and try again.\n");
-        return 0;
+    if(g_sys.conf.con.wifi_mode == 0)
+    {
+        err = wget_value_from_nvs("wifi", "remote_ssid", "str", ssid, &nrd_len);
+        if (err != ESP_OK) {
+            ESP_LOGD(TAG,"No remote ssid saved. please update and try again.\n");
+            return 0;
+        }
+        err = wget_value_from_nvs("wifi", "remote_pwd", "str", pwd, &nrd_len);
+        if (err != ESP_OK) {
+            ESP_LOGD(TAG,"No remote pwd saved. please update and try again.\n");
+            return 0;
+        }
     }
-    err = wget_value_from_nvs("wifi", "remote_pwd", "str", r_pwd, &nrd_len);
-    if (err != ESP_OK) {
-        ESP_LOGD(TAG,"No remote pwd saved. please update and try again.\n");
-        return 0;
+    else
+    {
+        err = wget_value_from_nvs("wifi", "local_ssid", "str", ssid, &nrd_len);
+        if (err != ESP_OK) {
+            ESP_LOGD(TAG,"No local ssid saved. please update and try again.\n");
+            return 0;
+        }
+        err = wget_value_from_nvs("wifi", "local_pwd", "str", pwd, &nrd_len);
+        if (err != ESP_OK) {
+            ESP_LOGD(TAG,"No local pwd saved. please update and try again.\n");
+            return 0;
+        }
     }
-    wifi_join(r_ssid, r_pwd, JOIN_TIMEOUT_MS);
+    wifi_join(ssid, pwd, JOIN_TIMEOUT_MS);
     return 1;
 }
 

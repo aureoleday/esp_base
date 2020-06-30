@@ -17,6 +17,7 @@
 #include "driver/gpio.h"
 #include "argtable3/argtable3.h"
 #include "esp_console.h"
+#include "esp_log.h"
 #include "adxl_drv.h"
 #include "my_fft.h"
 #include "sys_conf.h"
@@ -30,11 +31,15 @@
 #define PIN_NUM_CLK  18
 #define PIN_NUM_CS   5
 
+static const char *TAG = "ADXL";
+
 static uint8_t 	rxd_temp[DEV_GEO_RTX_SIZE];
-static uint8_t 	kf_buf_s[DEV_GEO_FIFO_SIZE*4];
+static uint8_t 	kf_buf_s[DEV_GEO_FIFO_SIZE];
 kfifo_t 		kf_s;
 
 static SemaphoreHandle_t geospi_mutex = NULL;
+
+esp_timer_handle_t adxl_timer;
 
 typedef struct
 {
@@ -45,6 +50,35 @@ typedef struct
 
 spi_geo_device_st spi_geo_dev_inst;
 fft_st fft_inst;
+
+static int16_t adxl355_scanfifo(void);
+
+static void adxl_timeout(void* arg)
+{
+    adxl355_scanfifo();
+}
+
+static int adxl_timer_init(void)
+{
+    const esp_timer_create_args_t adxl_timer_args = {
+            .callback = &adxl_timeout,
+            /* name is optional, but may help identify the timer when debugging */
+            .name = "periodic"
+    };
+
+    ESP_ERROR_CHECK(esp_timer_create(&adxl_timer_args, &adxl_timer));
+    return 0;
+}
+
+void adxl_tim_stop(void)
+{
+    esp_timer_stop(adxl_timer);
+}
+
+void adxl_tim_start(int32_t tim_period)
+{
+    ESP_ERROR_CHECK(esp_timer_start_periodic(adxl_timer, tim_period));
+}
 
 static void kf_init(void)
 {
@@ -169,7 +203,8 @@ uint8_t adxl_wr_reg(uint8_t addr, uint8_t data)
 
     t.tx_buffer=spi_geo_dev_inst.txd;
 
-    esp_err_t ret = spi_device_polling_transmit(spi_geo_dev_inst.spi_device_h, &t);
+    esp_err_t ret = spi_device_transmit(spi_geo_dev_inst.spi_device_h, &t);
+//    esp_err_t ret = spi_device_polling_transmit(spi_geo_dev_inst.spi_device_h, &t);
 
     xSemaphoreGive( geospi_mutex );
     return ret;
@@ -227,6 +262,7 @@ void adxl_init(void)
     //Initialize the SPI bus
     ret=spi_bus_initialize(VSPI_HOST, &buscfg, 1);
     geo_ds_init();
+    adxl_timer_init();
     ESP_ERROR_CHECK(ret);
     //Attach the device to the SPI bus
     ret=spi_bus_add_device(VSPI_HOST, &devcfg, &spi_geo_dev_inst.spi_device_h);
@@ -244,7 +280,7 @@ void adxl355_reset(void)
 static int16_t raw_data_buf(uint32_t din, uint8_t axis)
 {
     extern sys_reg_st  g_sys;
-    static uint8_t stage = 0;  //0: idle;1: x;2:y;3:z;
+    static uint8_t stage = 0;  //0: idle;1:x;2:y;3:z;
     static uint32_t dbuf[3]={0,0,0};
     float temp;
     uint32_t dummy;
@@ -303,6 +339,7 @@ static int16_t raw_data_buf(uint32_t din, uint8_t axis)
         {
             dbuf[2] = din;
             temp = (float)decode(dbuf[axis])*0.0000039;
+            //printf("%f\n",temp);
             goertzel_lfilt(temp);
             if(g_sys.conf.geo.pkg_en)
             {
@@ -336,7 +373,7 @@ static int16_t raw_data_buf(uint32_t din, uint8_t axis)
     return ret;
 }
 
-int16_t adxl355_scanfifo(void)
+static int16_t adxl355_scanfifo(void)
 {
     static int16_t cooldown = 0;
     extern sys_reg_st  g_sys;
@@ -354,7 +391,7 @@ int16_t adxl355_scanfifo(void)
         if(cooldown==0)
         {
             cooldown = 1000;
-            printf("F_OVR!\n");
+            ESP_LOGW(TAG,"F_OVR!");
         }
         adxl_rd_reg(ADXL_FIFO_DATA, rxd_temp, 96*2);
         err_no = -1;
@@ -367,6 +404,7 @@ int16_t adxl355_scanfifo(void)
     sample_cnt = rxd_temp[2];
 
     total_cnt = sample_cnt*3;
+    //printf("%d\n",sample_cnt);
 
     if(status > 0)
     {
@@ -374,10 +412,20 @@ int16_t adxl355_scanfifo(void)
         for(i=0;i<sample_cnt;i++)
         {
             buf_temp = (rxd_temp[1+i*3]<<16)|(rxd_temp[2+i*3]<<8)|(rxd_temp[3+i*3]);
-            err_no = raw_data_buf(buf_temp,g_sys.conf.prt.http_en);
+            err_no = raw_data_buf(buf_temp,g_sys.conf.geo.axis);
         }
     }
     return err_no;
+}
+
+int adxl_dout(uint8_t * dst_ptr, uint16_t max_len)
+{
+    int rd_len = 0;
+    int fifo_len = kfifo_len(&kf_s);
+    rd_len = (fifo_len<max_len)? fifo_len:max_len;
+    kfifo_out(&kf_s, dst_ptr ,rd_len);
+    //printf("f_len:%d,max_len:%d,r_len:%d\n",fifo_len,max_len,rd_len);
+    return rd_len; 
 }
 
 static int adxl_info(int argc, char **argv)

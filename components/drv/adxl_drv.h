@@ -11,8 +11,8 @@
 #include <stdio.h>
 #include <my_fft.h>
 
-#define DEV_GEO_RTX_SIZE    512
-#define DEV_GEO_FIFO_SIZE   FFT_MAX_ORD
+#define DEV_GEO_RTX_SIZE    2048 
+#define DEV_GEO_FIFO_SIZE   8192 
 
 typedef struct
 {
@@ -67,7 +67,9 @@ typedef enum {
 void adxl_init(void);
 void adxl_register(void);
 void adxl355_reset(void);
-int16_t adxl355_scanfifo(void);
+void adxl_tim_start(int32_t tim_period);
+void adxl_tim_stop(void);
+int adxl_dout(uint8_t * dst_ptr, uint16_t max_len);
 uint8_t adxl_rd_reg(uint8_t addr, uint8_t * rx_buf, uint8_t cnt);
 uint8_t adxl_wr_reg(uint8_t addr, uint8_t data);
 float* geo_get_fft(uint16_t* sample_cnts);
