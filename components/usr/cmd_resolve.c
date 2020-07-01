@@ -427,7 +427,7 @@ void recv_frame_fsm(void)
                     cmd_reg_inst.rx_tag = 0;
                     cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_DATA;
                     rd_cnt = 1;
-                    //ESP_LOGI(TAG,"rx_len:%x,rx_cmd:%x",cmd_reg_inst.rx_len,cmd_reg_inst.rx_cmd);
+                    ESP_LOGI(TAG,"rx_len:%x,rx_cmd:%x",cmd_reg_inst.rx_len,cmd_reg_inst.rx_cmd);
                 } else {
                     cmd_reg_inst.rx_cnt = 0;
                     cmd_reg_inst.rx_tag = 0;

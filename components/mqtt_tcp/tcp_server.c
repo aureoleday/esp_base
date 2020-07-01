@@ -22,6 +22,7 @@
 #include "lwip/opt.h"
 #include "lwip/sys.h"
 #include <lwip/netdb.h>
+#include "cmd_resolve.h"
 
 
 #define PORT 9996 
@@ -58,14 +59,15 @@ static void do_retransmit(const int sock)
 
             // send() can return less bytes than supplied length.
             // Walk-around for robust implementation. 
-            int to_write = len;
-            while (to_write > 0) {
-                int written = send(sock, rx_buffer + (len - to_write), to_write, 0);
-                if (written < 0) {
-                    ESP_LOGE(TAG, "Error occurred during sending: errno %d", errno);
-                }
-                to_write -= written;
-            }
+            //int to_write = len;
+            cmd_stream_in(rx_buffer, len);
+            //while (to_write > 0) {
+            //    int written = send(sock, rx_buffer + (len - to_write), to_write, 0);
+            //    if (written < 0) {
+            //        ESP_LOGE(TAG, "Error occurred during sending: errno %d", errno);
+            //    }
+            //    to_write -= written;
+            //}
         }
     } while (len > 0);
 }
