@@ -15,6 +15,7 @@
 #include "cli.h"
 #include "cmd_resolve.h"
 #include "global_var.h"
+#include "bit_op.h"
 #include "mqtt_tcp.h"
 #include "argtable3/argtable3.h"
 #include "esp_console.h"
@@ -27,10 +28,8 @@ enum
     TEST_THREAD_PRIO=3,
     CLI_THREAD_PRIO,
     CMD_THREAD_PRIO,
-    MQTT_THREAD_PRIO,
     TCP_THREAD_PRIO,
     SPP_THREAD_PRIO,
-    GEO_THREAD_PRIO,
     USR_MAX_PRIO
 };
 
@@ -46,6 +45,13 @@ static void tasks_create(void)
 //            TEST_THREAD_STACK_SIZE,
 //            NULL,
 //            TEST_THREAD_PRIO,
+//            NULL);
+
+//    xTaskCreate(&tcp_thread,
+//            "Task_tcp",
+//            TCP_THREAD_STACK_SIZE,
+//            NULL,
+//            TCP_THREAD_PRIO,
 //            NULL);
 
     xTaskCreate(&cli_thread,
@@ -65,6 +71,7 @@ static void tasks_create(void)
 
 void app_main()
 {
+    extern sys_reg_st  g_sys;
     gvar_init();
     adxl_init();
     usr_led_init();
@@ -73,6 +80,23 @@ void app_main()
     mqtt_register();
     adxl_register();
     tasks_create();
+    while(1)
+    {
+ 	    if(!bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP)&&bit_op_get(g_sys.stat.gen.status_bm,GBM_WIFI) == 1)
+	    {
+            xTaskCreate(&tcp_thread,
+                        "Task_TCP",
+                        8192,
+                        NULL,
+                        5,
+                        NULL);
+            bit_op_set(&g_sys.stat.gen.status_bm,GBM_TCP,1);
+	    }
+        toggle_led(0);
+		vTaskDelay(1000 / portTICK_PERIOD_MS);
+		if(g_sys.conf.gen.restart == 9527)
+			esp_restart();
+	}
 }
 
 

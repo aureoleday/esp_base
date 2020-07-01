@@ -217,7 +217,8 @@ static void cmd_response(void)
     check_sum = frame_checksum_gen(&cmd_reg_inst.tx_buf[4],cmd_reg_inst.tx_cnt);	
     //response frame checksum caculate
     cmd_reg_inst.tx_buf[cmd_reg_inst.tx_cnt+4] = check_sum;
-    mqtt_transmitt(cmd_reg_inst.tx_buf,cmd_reg_inst.tx_cnt+5);
+    //mqtt_transmitt(cmd_reg_inst.tx_buf,cmd_reg_inst.tx_cnt+5);
+    tcp_transmitt(cmd_reg_inst.tx_buf,cmd_reg_inst.tx_cnt+5);
 }
 
 /**

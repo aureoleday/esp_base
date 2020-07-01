@@ -80,7 +80,6 @@ static esp_err_t mqtt_event_handler_cb(esp_mqtt_event_handle_t event)
             ESP_LOGI(TAG, "MQTT_EVENT_DATA");
             ESP_LOGI(TAG,"TOPIC=%.*s", event->topic_len, event->topic);
             ESP_LOGI(TAG,"DATA=%.*s", event->data_len, event->data);
-            //kfifo_in(&kc_buf_rx,event->data, event->data_len);
             cmd_stream_in(event->data, event->data_len);
             break;
         case MQTT_EVENT_ERROR:
