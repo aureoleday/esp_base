@@ -307,14 +307,17 @@ static uint16_t cmd_rd_reg(void)
 int daq_frame(const void *dbuf_ptr,int d_len)
 {
     uint8_t err_code;
+    static uint8_t index=0;
 
     err_code = CMD_ERR_NOERR;
 
     cmd_reg_inst.rx_cnt = 0;								//clear rx_buffer
     cmd_reg_inst.rx_tag = 0;
     
-    cmd_reg_inst.tx_cnt = d_len;
-    memcpy(&cmd_reg_inst.tx_buf[4],dbuf_ptr,cmd_reg_inst.tx_cnt);
+    cmd_reg_inst.tx_cnt = d_len + 1;
+    cmd_reg_inst.tx_buf[4] = index;
+    index++;
+    memcpy(&cmd_reg_inst.tx_buf[5],dbuf_ptr,d_len);
 
     cmd_reg_inst.tx_cmd = CMD_RP_PKG;
     cmd_reg_inst.tx_errcode = err_code;

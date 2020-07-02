@@ -27,7 +27,7 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
 {//id     mapped registers                 min      max         default  type  chk_prt
     {0,   &g_sys.conf.con.wifi_mode,       0,       1,          0,       0,    NULL},
     {1,   &g_sys.conf.con.wifi_connect,    0,       1,          0,       0,    set_wifi_con_opt},
-    {2,   &g_sys.conf.prt.mqtt_en,         0,       1,          0,       0,    set_mqtt_con_opt},
+    {2,   NULL,                            0,	    0,          0,       0,    NULL},
     {3,   &g_sys.conf.daq.enable,          0,       1,          0,       0,    NULL},
     {4,   &g_sys.conf.daq.pkg_period,      0,       9000000,    50000,   0,    NULL},
     {5,   &g_sys.conf.daq.sample_period,   0,       1000,       1,       0,    NULL},
@@ -51,7 +51,7 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {23,  &g_sys.conf.bat.low_lim,         2700,    3500,       3200,    0,    NULL},
     {24,  &g_sys.conf.prt.http_en,         0,       1,          0,       0,    NULL},
     {25,  &g_sys.conf.prt.tcp_en,          0,       1,          0,       0,    NULL},
-    {26,  NULL,                            0,	    0,          0,       0,    NULL},
+    {26,  &g_sys.conf.prt.mqtt_en,         0,       1,          0,       0,    set_mqtt_con_opt},
     {27,  NULL,                            0,	    0,          0,       0,    NULL},
     {28,  &g_sys.conf.gen.dbg,             0,       1,          0,       0,    NULL},
     {29,  NULL,                            0,	    1,          0,       1,    save_conf_opt},
