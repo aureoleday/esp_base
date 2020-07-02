@@ -19,6 +19,7 @@
 #include "mqtt_tcp.h"
 #include "argtable3/argtable3.h"
 #include "esp_console.h"
+#include "cmd_wifi.h"
 #include "daq.h"
 #include "adxl_drv.h"
 #include "led_drv.h"
@@ -80,17 +81,17 @@ void app_main()
     mqtt_register();
     adxl_register();
     tasks_create();
+	vTaskDelay(1000 / portTICK_PERIOD_MS);
+    if(g_sys.conf.con.wifi_connect == 1)
+    {
+        wifi_connect();
+        tcp_srv_start();
+    }
     while(1)
     {
  	    if(!bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP)&&bit_op_get(g_sys.stat.gen.status_bm,GBM_WIFI) == 1)
 	    {
-            xTaskCreate(&tcp_thread,
-                        "Task_TCP",
-                        8192,
-                        NULL,
-                        5,
-                        NULL);
-            bit_op_set(&g_sys.stat.gen.status_bm,GBM_TCP,1);
+            tcp_srv_start();
 	    }
         toggle_led(0);
 		vTaskDelay(1000 / portTICK_PERIOD_MS);

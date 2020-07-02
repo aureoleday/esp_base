@@ -5,3 +5,4 @@ int tcp_transmitt(void *tx_buf,int tx_len);
 int mqtt_connect(void);
 int mqtt_disconnect(void);
 void tcp_thread(void *param);
+void tcp_srv_start(void);

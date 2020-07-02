@@ -23,6 +23,8 @@
 #include "lwip/sys.h"
 #include <lwip/netdb.h>
 #include "cmd_resolve.h"
+#include "bit_op.h"
+#include "global_var.h"
 
 
 #define PORT 9996 
@@ -33,13 +35,7 @@ static int sock;
 
 int tcp_transmitt(void *tx_buf,int tx_len)
 {
-	//struct tcp_info info; 
-	//int len=sizeof(info); 
-
-	//getsockopt(sock, IPPROTO_TCP, TCP_INFO, &info, (socklen_t *)&len); 
-	//if((info.tcpi_state==TCP_ESTABLISHED))  
     return  send(sock, tx_buf, tx_len, 0);
-
 }
 
 static void do_retransmit(const int sock)
@@ -56,18 +52,7 @@ static void do_retransmit(const int sock)
         } else {
             rx_buffer[len] = 0; // Null-terminate whatever is received and treat it like a string
             ESP_LOGI(TAG, "Received %d bytes: %s", len, rx_buffer);
-
-            // send() can return less bytes than supplied length.
-            // Walk-around for robust implementation. 
-            //int to_write = len;
             cmd_stream_in(rx_buffer, len);
-            //while (to_write > 0) {
-            //    int written = send(sock, rx_buffer + (len - to_write), to_write, 0);
-            //    if (written < 0) {
-            //        ESP_LOGE(TAG, "Error occurred during sending: errno %d", errno);
-            //    }
-            //    to_write -= written;
-            //}
         }
     } while (len > 0);
 }
@@ -151,6 +136,18 @@ void tcp_thread(void *param)
 CLEAN_UP:
     close(listen_sock);
     vTaskDelete(NULL);
+}
+
+void tcp_srv_start(void)
+{
+    extern sys_reg_st  g_sys;
+    xTaskCreate(&tcp_thread,
+               "Task_TCP",
+               8192,
+               NULL,
+               5,
+               NULL);
+    bit_op_set(&g_sys.stat.gen.status_bm,GBM_TCP,1);
 }
 
 

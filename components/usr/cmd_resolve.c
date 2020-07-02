@@ -39,9 +39,9 @@ enum
 #define CMD_FRAME_FSM_TL        0x02
 #define CMD_FRAME_FSM_DATA      0x04
 
-#define CMD_RD_REG	            0x01
-#define CMD_WR_REG	            0x02
-#define CMD_RP_PKG	            0x80
+#define CMD_RD_REG	            0x1
+#define CMD_WR_REG	            0x2
+#define CMD_RP_PKG	            0x8
 
 
 const static unsigned char CMD_FRAME_TAG_M_SYNC[2]={0x1b,0xdf};

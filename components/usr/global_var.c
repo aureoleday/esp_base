@@ -50,12 +50,12 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {22,  &g_sys.conf.bat.up_lim,          3700,    4500,       4150,    0,    NULL},
     {23,  &g_sys.conf.bat.low_lim,         2700,    3500,       3200,    0,    NULL},
     {24,  &g_sys.conf.prt.http_en,         0,       1,          0,       0,    NULL},
-    {25,  NULL,                            0,	    0,          0,       0,    NULL},
+    {25,  &g_sys.conf.prt.tcp_en,          0,       1,          0,       0,    NULL},
     {26,  NULL,                            0,	    0,          0,       0,    NULL},
     {27,  NULL,                            0,	    0,          0,       0,    NULL},
     {28,  &g_sys.conf.gen.dbg,             0,       1,          0,       0,    NULL},
     {29,  NULL,                            0,	    1,          0,       1,    save_conf_opt},
-    {30,  NULL,                            0,	    1,          0,       1,    NULL},
+    {30,  NULL,                            0,	    1,          0,       1,    load_conf_opt},
     {31,  &g_sys.conf.gen.restart,         0,	    0xffffffff, 0,       1,    NULL}
 };
 

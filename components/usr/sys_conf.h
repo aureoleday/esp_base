@@ -53,6 +53,7 @@ typedef struct
 {
     uint32_t    http_en;
     uint32_t    mqtt_en;
+    uint32_t    tcp_en;
 }conf_prt_st;
 
 typedef struct
