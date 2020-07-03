@@ -32,7 +32,7 @@ int16_t geo_pkg_en(uint32_t pram)
     uint16_t ret = 0;
     if((pram == 1)&&((0 == bit_op_get(g_sys.stat.gen.status_bm,GBM_GEO))))
     {
-        adxl_wr_reg(ADXL_FILTER,g_sys.conf.geo.filter);
+        adxl_wr_reg(ADXL_FILTER,(g_sys.conf.geo.filter<<4)|g_sys.conf.geo.sample_rate);
         adxl_wr_reg(ADXL_POWER_CTL,0);
         adxl_tim_start(g_sys.conf.geo.scan_period);
         bit_op_set(&g_sys.stat.gen.status_bm,GBM_GEO,1);

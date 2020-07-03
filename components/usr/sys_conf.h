@@ -83,7 +83,9 @@ typedef struct
     uint32_t    pkg_period;
     uint32_t    scan_period;
     uint32_t    filter;
+    uint32_t    sample_rate;
     uint32_t    axis;
+    uint32_t    gain;
 }conf_geo_st;
 
 typedef struct
