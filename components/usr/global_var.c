@@ -25,19 +25,19 @@ sys_reg_st  g_sys; 	    //global parameter declairation
 //configuration register map declairation
 const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
 {//id     mapped registers                 min      max         default  type  chk_prt
-    {0,   &g_sys.conf.con.wifi_mode,       0,       1,          0,       0,    NULL},
-    {1,   &g_sys.conf.con.wifi_connect,    0,       1,          0,       0,    set_wifi_con_opt},
-    {2,   NULL,                            0,	    0,          0,       0,    NULL},
-    {3,   &g_sys.conf.daq.enable,          0,       1,          0,       0,    NULL},
+    {0,   &g_sys.conf.con.wifi_mode,       0,       1,          1,       0,    NULL},
+    {1,   &g_sys.conf.con.wifi_connect,    0,       1,          1,       0,    set_wifi_con_opt},
+    {2,   &g_sys.conf.prt.service_bm,      0,       0xffffffff, 0x1,     0,    NULL},
+    {3,   NULL,                            0,	    0,          0,       0,    NULL},
     {4,   &g_sys.conf.daq.pkg_period,      0,       9000000,    50000,   0,    NULL},
     {5,   &g_sys.conf.daq.sample_period,   0,       1000,       1,       0,    NULL},
     {6,   &g_sys.conf.daq.filter,          0,       255,        64,      0,    NULL},
-    {7,   &g_sys.conf.daq.pkg_en,          0,       1,          0,       0,    daq_pkg_en},
+    {7,   &g_sys.conf.daq.pkg_en,          0,       1,          1,       0,    daq_pkg_en},
     {8,   &g_sys.conf.daq.pkg_size,        0,       1500,       1024,    0,    NULL},
     {9,   &g_sys.conf.geo.scan_period,     100,     1000000,    3000,    0,    NULL},
-    {10,  &g_sys.conf.geo.axis,            0,       2,          0,       0,    NULL},
-    {11,  &g_sys.conf.geo.pkg_en,          0,       1,          0,       0,    geo_sample_en},
-    {12,  &g_sys.conf.geo.filter,          0,       255,        1,       0,    NULL},
+    {10,  &g_sys.conf.geo.axis,            0,       2,          2,       0,    NULL},
+    {11,  &g_sys.conf.geo.pkg_en,          0,       1,          1,       0,    geo_pkg_en},
+    {12,  &g_sys.conf.geo.filter,          0,       255,        0,       0,    NULL},
     {13,  &g_sys.conf.fft.acc_times,       1,       128,        1,       0,    NULL},
     {14,  &g_sys.conf.fft.intv_cnts,       1,       1024,       1,       0,    NULL},
     {15,  &g_sys.conf.gtz.n,               32,      65535,      4000,    0,    NULL},
@@ -49,10 +49,10 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {21,  &g_sys.conf.bat.mav_cnt,         1,	    128,        16,      0,    NULL},
     {22,  &g_sys.conf.bat.up_lim,          3700,    4500,       4150,    0,    NULL},
     {23,  &g_sys.conf.bat.low_lim,         2700,    3500,       3200,    0,    NULL},
-    {24,  &g_sys.conf.prt.http_en,         0,       1,          0,       0,    NULL},
-    {25,  &g_sys.conf.prt.tcp_en,          0,       1,          0,       0,    NULL},
-    {26,  &g_sys.conf.prt.mqtt_en,         0,       1,          0,       0,    set_mqtt_con_opt},
-    {27,  NULL,                            0,	    0,          0,       0,    NULL},
+    {24,  NULL,                            0,	    0,          0,       0,    NULL},
+    {25,  NULL,                            0,	    0,          0,       0,    NULL},
+    {26,  NULL,                            0,	    0,          0,       0,    NULL},
+    {27,  NULL,                            0,	    1,          0,       0,    service_opt},
     {28,  &g_sys.conf.gen.dbg,             0,       1,          0,       0,    NULL},
     {29,  NULL,                            0,	    1,          0,       1,    save_conf_opt},
     {30,  NULL,                            0,	    1,          0,       1,    load_conf_opt},
@@ -165,7 +165,7 @@ uint16 reg_map_write(uint16 reg_addr, uint32_t *wr_data, uint8_t wr_cnt)
 
         if(conf_reg_map_inst[reg_addr+i].chk_ptr != NULL)
         {
-            if(conf_reg_map_inst[reg_addr+i].chk_ptr(*(wr_data+i))==0)
+            if(conf_reg_map_inst[reg_addr+i].chk_ptr(*(wr_data+i))<0)
             {
                 err_code = REGMAP_ERR_CONFLICT_OR;
                 ESP_LOGW(TAG,"CHK_PTR:REGMAP_ERR_WR_OR failed");

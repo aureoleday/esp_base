@@ -5,48 +5,78 @@
 #include "cmd_wifi.h"
 #include "daq.h"
 #include "adxl_drv.h"
+#include "bit_op.h"
 
 extern sys_reg_st g_sys;
 
-uint16_t daq_pkg_en(uint32_t pram)
+int16_t daq_pkg_en(uint32_t pram)
 {  
-    if(pram == 1)
-       daq_tim_start(g_sys.conf.daq.pkg_period);
-    else
-       daq_tim_stop();
-    return 1;
+    uint16_t ret = 0;
+    if((pram == 1)&&((0 == bit_op_get(g_sys.stat.gen.status_bm,GBM_DAQ))))
+    {
+        daq_tim_start(g_sys.conf.daq.pkg_period);
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_DAQ,1);
+        ret = 1;
+    }
+    else if((pram == 0)&&((1 == bit_op_get(g_sys.stat.gen.status_bm,GBM_DAQ))))
+    {
+        daq_tim_stop();
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_DAQ,0);
+        ret = 0;
+    }
+    return ret;
 }
 
-uint16_t geo_sample_en(uint32_t pram)
+int16_t geo_pkg_en(uint32_t pram)
 {  
-    if(pram == 1)
+    uint16_t ret = 0;
+    if((pram == 1)&&((0 == bit_op_get(g_sys.stat.gen.status_bm,GBM_GEO))))
     {
-       adxl_wr_reg(ADXL_FILTER,g_sys.conf.geo.filter);
-       adxl_wr_reg(ADXL_POWER_CTL,0);
-       adxl_tim_start(g_sys.conf.geo.scan_period);
+        adxl_wr_reg(ADXL_FILTER,g_sys.conf.geo.filter);
+        adxl_wr_reg(ADXL_POWER_CTL,0);
+        adxl_tim_start(g_sys.conf.geo.scan_period);
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_GEO,1);
+        ret = 1;
     }
-    else
+    else if((pram == 0)&&((1 == bit_op_get(g_sys.stat.gen.status_bm,GBM_GEO))))
     {
-       adxl_wr_reg(ADXL_POWER_CTL,1);
-       adxl_tim_stop();
+        adxl_wr_reg(ADXL_POWER_CTL,1);
+        adxl_tim_stop();
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_GEO,0);
+        ret = 0;
     }
-    return 1;
+    return ret;
 }
 
-uint16_t set_mqtt_con_opt(uint32_t pram)
+int16_t service_opt(uint32_t pram)
 {
-    if(pram == 1)
-    {    
-        mqtt_connect();
+    if(bit_op_get(g_sys.conf.prt.service_bm,SERVICE_TCP)&&(0 == bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP)))
+    {
+        tcp_srv_start();
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_TCP,1);
     }
-    else
+
+    if(bit_op_get(g_sys.conf.prt.service_bm,SERVICE_MQTT)&&(0==bit_op_get(g_sys.stat.gen.status_bm,GBM_MQTT)))
+    {
+        mqtt_connect();
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_MQTT,1);
+    }
+    else if(0==bit_op_get(g_sys.conf.prt.service_bm,SERVICE_MQTT)&&bit_op_get(g_sys.stat.gen.status_bm,GBM_MQTT))
     {
         mqtt_disconnect();
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_MQTT,0);
     }
+
+    if(bit_op_get(g_sys.conf.prt.service_bm,SERVICE_HTTP)&&(0==bit_op_get(g_sys.stat.gen.status_bm,GBM_HTTP)))
+    {}
+        
+    daq_pkg_en(g_sys.conf.daq.pkg_en);
+
+    geo_pkg_en(g_sys.conf.geo.pkg_en);
     return 1;
 }
 
-uint16_t set_wifi_con_opt(uint32_t pram)
+int16_t set_wifi_con_opt(uint32_t pram)
 {
     if(pram == 1)
     {
@@ -57,10 +87,9 @@ uint16_t set_wifi_con_opt(uint32_t pram)
         wifi_disconnect();
     }
     return 1;
-    
 }
 
-uint16_t save_conf_opt(uint32_t pram)
+int16_t save_conf_opt(uint32_t pram)
 {  
     if(pram == 1)
     {
@@ -69,7 +98,7 @@ uint16_t save_conf_opt(uint32_t pram)
     return 1;
 }
 
-uint16_t load_conf_opt(uint32_t pram)
+int16_t load_conf_opt(uint32_t pram)
 {
     if(pram == 1)
     {

@@ -23,6 +23,7 @@
 #include "daq.h"
 #include "adxl_drv.h"
 #include "led_drv.h"
+#include "reg_map_check.h"
 
 enum
 {
@@ -85,14 +86,10 @@ void app_main()
     if(g_sys.conf.con.wifi_connect == 1)
     {
         wifi_connect();
-        tcp_srv_start();
+        service_opt(g_sys.conf.prt.service_bm);
     }
     while(1)
     {
- 	    if(!bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP)&&bit_op_get(g_sys.stat.gen.status_bm,GBM_WIFI) == 1)
-	    {
-            tcp_srv_start();
-	    }
         toggle_led(0);
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
 		if(g_sys.conf.gen.restart == 9527)

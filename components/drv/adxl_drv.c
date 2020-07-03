@@ -339,7 +339,6 @@ static int16_t raw_data_buf(uint32_t din, uint8_t axis)
         {
             dbuf[2] = din;
             temp = (float)decode(dbuf[axis])*0.0000039;
-            //printf("%f\n",temp);
             //goertzel_lfilt(temp);
             if(g_sys.conf.geo.pkg_en)
             {
@@ -467,7 +466,6 @@ static int fft_info(int argc, char **argv)
     }
     return 0;
 }
-
 
 /** Arguments used by 'join' function */
 static struct {

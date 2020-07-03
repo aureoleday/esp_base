@@ -54,6 +54,7 @@ typedef struct
     uint32_t    http_en;
     uint32_t    mqtt_en;
     uint32_t    tcp_en;
+    uint32_t    service_bm;
 }conf_prt_st;
 
 typedef struct
@@ -176,7 +177,7 @@ typedef struct
     uint32_t	max;
     uint32_t	dft;
     uint8_t	    type;                     //0:RW, 1:WO
-    uint16_t    (*chk_ptr)(uint32_t pram);
+    int16_t     (*chk_ptr)(uint32_t pram);
 }conf_reg_map_st;
 
 typedef struct 

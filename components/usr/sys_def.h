@@ -69,17 +69,22 @@ enum
 
 enum
 {    
-    GBM_FLASH = 0,    
-    GBM_LINK,
-    GBM_DHCP,
-    GBM_TCP,
-    GBM_DNS,
-    GBM_LCD,
+    GBM_LINK = 0,
     GBM_BT,
     GBM_WIFI,
+    GBM_DHCP,
+    GBM_DNS,
+    GBM_TCP,
     GBM_MQTT,
     GBM_HTTP,
-    GBM_MBM,
+    GBM_DAQ,
+    GBM_GEO,
 };
 
+enum
+{    
+    SERVICE_TCP = 0,    
+    SERVICE_MQTT,
+    SERVICE_HTTP,
+};
 #endif //__SYS_DEF
