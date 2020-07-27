@@ -148,7 +148,7 @@ ARCHITECTURE_ID	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXComp
 ARG_TYPE_STR	components/cmd_nvs/cmd_nvs.c	/^static const char *ARG_TYPE_STR = "type can be: i8, u8, i16, u16 i32, u32 i64, u64, str, blob";$/;"	v	file:
 BKG_THREAD_DELAY	components/usr/sys_conf.h	8;"	d
 CLI_THREAD_PRIO	main/main.c	/^    CLI_THREAD_PRIO,$/;"	e	enum:__anon1	file:
-CLI_THREAD_STACK_SIZE	main/main.c	39;"	d	file:
+CLI_THREAD_STACK_SIZE	main/main.c	40;"	d	file:
 CMD_ERR_ADDR_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_ADDR_OR,$/;"	e	enum:__anon31	file:
 CMD_ERR_CONFLICT_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_CONFLICT_OR,$/;"	e	enum:__anon31	file:
 CMD_ERR_DATA_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_DATA_OR,$/;"	e	enum:__anon31	file:
@@ -169,7 +169,7 @@ CMD_RP_PKG	components/usr/cmd_resolve.c	44;"	d	file:
 CMD_RTX_BUF_DEPTH	components/usr/cmd_resolve.c	35;"	d	file:
 CMD_THREAD_DELAY	components/usr/sys_conf.h	6;"	d
 CMD_THREAD_PRIO	main/main.c	/^    CMD_THREAD_PRIO,$/;"	e	enum:__anon1	file:
-CMD_THREAD_STACK_SIZE	main/main.c	40;"	d	file:
+CMD_THREAD_STACK_SIZE	main/main.c	41;"	d	file:
 CMD_WRFIFO_FULL	components/usr/cmd_resolve.c	/^    CMD_WRFIFO_FULL,$/;"	e	enum:__anon31	file:
 CMD_WR_REG	components/usr/cmd_resolve.c	43;"	d	file:
 COMPILER_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	101;"	d	file:
@@ -1673,13 +1673,12 @@ FRAME_PLD_DPOS	components/usr/cmd_resolve.c	/^    FRAME_PLD_DPOS = 1,$/;"	e	enum
 FRAME_SYNC_POS	components/usr/cmd_resolve.c	/^    FRAME_SYNC_POS = 0,$/;"	e	enum:__anon32	file:
 FREQ_SPAN_MAX	components/kits/goertzel.c	14;"	d	file:
 GBM_BT	components/usr/sys_def.h	/^    GBM_BT,$/;"	e	enum:__anon39
+GBM_DAQ	components/usr/sys_def.h	/^    GBM_DAQ,$/;"	e	enum:__anon39
 GBM_DHCP	components/usr/sys_def.h	/^    GBM_DHCP,$/;"	e	enum:__anon39
 GBM_DNS	components/usr/sys_def.h	/^    GBM_DNS,$/;"	e	enum:__anon39
-GBM_FLASH	components/usr/sys_def.h	/^    GBM_FLASH = 0,    $/;"	e	enum:__anon39
+GBM_GEO	components/usr/sys_def.h	/^    GBM_GEO,$/;"	e	enum:__anon39
 GBM_HTTP	components/usr/sys_def.h	/^    GBM_HTTP,$/;"	e	enum:__anon39
-GBM_LCD	components/usr/sys_def.h	/^    GBM_LCD,$/;"	e	enum:__anon39
-GBM_LINK	components/usr/sys_def.h	/^    GBM_LINK,$/;"	e	enum:__anon39
-GBM_MBM	components/usr/sys_def.h	/^    GBM_MBM,$/;"	e	enum:__anon39
+GBM_LINK	components/usr/sys_def.h	/^    GBM_LINK = 0,$/;"	e	enum:__anon39
 GBM_MQTT	components/usr/sys_def.h	/^    GBM_MQTT,$/;"	e	enum:__anon39
 GBM_TCP	components/usr/sys_def.h	/^    GBM_TCP,$/;"	e	enum:__anon39
 GBM_WIFI	components/usr/sys_def.h	/^    GBM_WIFI,$/;"	e	enum:__anon39
@@ -2113,9 +2112,9 @@ TAG	components/usr/cmd_resolve.c	/^static const char *TAG = "CMD_RSV";$/;"	v	fil
 TAG	components/usr/global_var.c	/^static const char *TAG = "GVAR";$/;"	v	file:
 TCPCLIENT_THREAD_DELAY	components/usr/sys_conf.h	10;"	d
 TCP_THREAD_PRIO	main/main.c	/^    TCP_THREAD_PRIO,$/;"	e	enum:__anon1	file:
-TCP_THREAD_STACK_SIZE	main/main.c	38;"	d	file:
+TCP_THREAD_STACK_SIZE	main/main.c	39;"	d	file:
 TEST_THREAD_PRIO	main/main.c	/^    TEST_THREAD_PRIO=3,$/;"	e	enum:__anon1	file:
-TEST_THREAD_STACK_SIZE	main/main.c	37;"	d	file:
+TEST_THREAD_STACK_SIZE	main/main.c	38;"	d	file:
 TLVNode	components/kits/tlvparse.h	/^struct TLVNode{$/;"	s
 TLV_Copy	components/kits/tlvparse.c	/^static void TLV_Copy(struct TLVNode* dst,struct TLVNode* src)$/;"	f	file:
 TLV_CreateNode	components/kits/tlvparse.c	/^static struct TLVNode* TLV_CreateNode(void)$/;"	f	file:
@@ -2187,7 +2186,7 @@ broker_uri	components/mqtt_tcp/mqtt_tcp.c	/^    char broker_uri[MQ_NVS_STR_SIZE]
 buffer	components/kits/kfifo.h	/^    unsigned char *buffer;\/* the buffer holding the data *\/$/;"	m	struct:kfifo
 calc_snr	components/kits/goertzel.c	/^static float calc_snr(float* dbuf, uint16_t cnt, snr_sts_st* snr_sts_ptr)$/;"	f	file:
 channel_bm	components/usr/daq.c	/^    uint16_t channel_bm;$/;"	m	struct:__anon41	file:
-chk_ptr	components/usr/sys_conf.h	/^    uint16_t    (*chk_ptr)(uint32_t pram);$/;"	m	struct:__anon29
+chk_ptr	components/usr/sys_conf.h	/^    int16_t     (*chk_ptr)(uint32_t pram);$/;"	m	struct:__anon29
 cli_thread	components/cli/cli.c	/^void cli_thread(void* param)$/;"	f
 cmd_buf_init	components/usr/cmd_resolve.c	/^static void cmd_buf_init(void)$/;"	f	file:
 cmd_dev_init	components/usr/cmd_resolve.c	/^void cmd_dev_init(void)$/;"	f
@@ -2235,7 +2234,7 @@ daq_buf_init	components/usr/daq.c	/^static void daq_buf_init(void)$/;"	f	file:
 daq_frame	components/usr/cmd_resolve.c	/^int daq_frame(const void *dbuf_ptr,int d_len)$/;"	f
 daq_init	components/usr/daq.c	/^void daq_init(void)$/;"	f
 daq_inst	components/usr/daq.c	/^static daq_st daq_inst;$/;"	v	file:
-daq_pkg_en	components/usr/reg_map_check.c	/^uint16_t daq_pkg_en(uint32_t pram)$/;"	f
+daq_pkg_en	components/usr/reg_map_check.c	/^int16_t daq_pkg_en(uint32_t pram)$/;"	f
 daq_st	components/usr/daq.c	/^}daq_st;$/;"	t	typeref:struct:__anon41	file:
 daq_tim_start	components/usr/daq.c	/^void daq_tim_start(int32_t tim_period)$/;"	f
 daq_tim_stop	components/usr/daq.c	/^void daq_tim_stop(void)$/;"	f
@@ -2307,6 +2306,7 @@ freq_bar	components/usr/sys_conf.h	/^    float	   	freq_bar[33];$/;"	m	struct:__
 freq_bins	components/kits/goertzel.c	/^    float		freq_bins[FREQ_SPAN_MAX];$/;"	m	struct:__anon9	file:
 g_sys	components/usr/global_var.c	/^sys_reg_st  g_sys; 	    \/\/global parameter declairation$/;"	v
 gain	components/usr/daq.c	/^    uint16_t gain[DAQ_CHANNEL_MAX];$/;"	m	struct:__anon41	file:
+gain	components/usr/sys_conf.h	/^    uint32_t    gain;$/;"	m	struct:__anon19
 gen	components/usr/sys_conf.h	/^    conf_gen_st gen;$/;"	m	struct:__anon21
 gen	components/usr/sys_conf.h	/^    stat_gen_st 	gen;$/;"	m	struct:__anon27
 geo	components/usr/sys_conf.h	/^    conf_geo_st geo;$/;"	m	struct:__anon21
@@ -2314,7 +2314,7 @@ geo	components/usr/sys_conf.h	/^    stat_geo_st		geo;$/;"	m	struct:__anon27
 geo_ds_init	components/drv/adxl_drv.c	/^void geo_ds_init(void)$/;"	f
 geo_get_fft	components/drv/adxl_drv.c	/^float* geo_get_fft(uint16_t* fft_len)$/;"	f
 geo_get_time	components/drv/adxl_drv.c	/^int16_t geo_get_time(float* dst_ptr,uint16_t len)$/;"	f
-geo_sample_en	components/usr/reg_map_check.c	/^uint16_t geo_sample_en(uint32_t pram)$/;"	f
+geo_pkg_en	components/usr/reg_map_check.c	/^int16_t geo_pkg_en(uint32_t pram)$/;"	f
 geospi_mutex	components/drv/adxl_drv.c	/^static SemaphoreHandle_t geospi_mutex = NULL;$/;"	v	file:
 get_args	components/cmd_nvs/cmd_nvs.c	/^} get_args;$/;"	v	typeref:struct:__anon44	file:
 get_value	components/cmd_nvs/cmd_nvs.c	/^static int get_value(int argc, char **argv)$/;"	f	file:
@@ -2450,7 +2450,7 @@ list	components/cmd_nvs/cmd_nvs.c	/^static int list(const char *part, const char
 list_args	components/cmd_nvs/cmd_nvs.c	/^} list_args;$/;"	v	typeref:struct:__anon48	file:
 list_entries	components/cmd_nvs/cmd_nvs.c	/^static int list_entries(int argc, char **argv)$/;"	f	file:
 load_conf	components/usr/global_var.c	/^int load_conf(const char *load_type)$/;"	f
-load_conf_opt	components/usr/reg_map_check.c	/^uint16_t load_conf_opt(uint32_t pram)$/;"	f
+load_conf_opt	components/usr/reg_map_check.c	/^int16_t load_conf_opt(uint32_t pram)$/;"	f
 load_config_arg	components/usr/global_var.c	/^static int load_config_arg(int argc, char **argv)$/;"	f	file:
 low_lim	components/usr/sys_conf.h	/^    uint32_t    low_lim;$/;"	m	struct:__anon15
 main	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
@@ -2625,22 +2625,22 @@ sample_channel_bm	components/usr/sys_conf.h	/^    uint32_t    sample_channel_bm;
 sample_freq	components/usr/sys_conf.h	/^    uint32_t    sample_freq;$/;"	m	struct:__anon18
 sample_period	components/usr/sys_conf.h	/^    uint32_t    sample_period;$/;"	m	struct:__anon13
 sample_rate	components/usr/daq.c	/^    uint16_t sample_rate;$/;"	m	struct:__anon41	file:
+sample_rate	components/usr/sys_conf.h	/^    uint32_t    sample_rate;$/;"	m	struct:__anon19
 samples_per_frame	components/usr/sys_conf.h	/^    uint32_t    samples_per_frame;$/;"	m	struct:__anon14
 savconf_args	components/usr/global_var.c	/^} savconf_args;$/;"	v	typeref:struct:__anon34	file:
 save_conf	components/usr/global_var.c	/^int save_conf(const char *save_type)$/;"	f
-save_conf_opt	components/usr/reg_map_check.c	/^uint16_t save_conf_opt(uint32_t pram)$/;"	f
+save_conf_opt	components/usr/reg_map_check.c	/^int16_t save_conf_opt(uint32_t pram)$/;"	f
 save_config_arg	components/usr/global_var.c	/^static int save_config_arg(int argc, char **argv)$/;"	f	file:
 scan_period	components/usr/sys_conf.h	/^    uint32_t    scan_period;$/;"	m	struct:__anon19
 serial_no	components/usr/sys_conf.h	/^    uint32_t    serial_no;$/;"	m	struct:__anon23
 service_bm	components/usr/sys_conf.h	/^    uint32_t    service_bm;$/;"	m	struct:__anon16
-service_opt	components/usr/reg_map_check.c	/^uint16_t service_opt(uint32_t pram)$/;"	f
+service_opt	components/usr/reg_map_check.c	/^int16_t service_opt(uint32_t pram)$/;"	f
 set_args	components/cmd_nvs/cmd_nvs.c	/^} set_args;$/;"	v	typeref:struct:__anon43	file:
 set_led	components/drv/led_drv.c	/^void set_led(uint8_t pin_num, uint8_t value)$/;"	f
-set_mqtt_con_opt	components/usr/reg_map_check.c	/^uint16_t set_mqtt_con_opt(uint32_t pram)$/;"	f
 set_namespace	components/cmd_nvs/cmd_nvs.c	/^static int set_namespace(int argc, char **argv)$/;"	f	file:
 set_value	components/cmd_nvs/cmd_nvs.c	/^static int set_value(int argc, char **argv)$/;"	f	file:
 set_value_in_nvs	components/cmd_nvs/cmd_nvs.c	/^static esp_err_t set_value_in_nvs(const char *key, const char *str_type, const char *str_value)$/;"	f	file:
-set_wifi_con_opt	components/usr/reg_map_check.c	/^uint16_t set_wifi_con_opt(uint32_t pram)$/;"	f
+set_wifi_con_opt	components/usr/reg_map_check.c	/^int16_t set_wifi_con_opt(uint32_t pram)$/;"	f
 setup_time	components/usr/sys_conf.h	/^    uint32_t    setup_time;$/;"	m	struct:__anon20
 signal_level	components/kits/goertzel.c	/^    float 		signal_level;$/;"	m	struct:__anon8	file:
 signal_level	components/usr/sys_conf.h	/^    float		signal_level;$/;"	m	struct:__anon26

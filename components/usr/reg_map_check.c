@@ -9,6 +9,19 @@
 
 extern sys_reg_st g_sys;
 
+int16_t set_wifi_con_opt(uint32_t pram)
+{
+    if(pram == 1)
+    {
+        wifi_connect();
+    }
+    else
+    {
+        wifi_disconnect();
+    }
+    return 1;
+}
+
 int16_t daq_pkg_en(uint32_t pram)
 {  
     uint16_t ret = 0;
@@ -76,18 +89,6 @@ int16_t service_opt(uint32_t pram)
     return 1;
 }
 
-int16_t set_wifi_con_opt(uint32_t pram)
-{
-    if(pram == 1)
-    {
-        wifi_connect();
-    }
-    else
-    {
-        wifi_disconnect();
-    }
-    return 1;
-}
 
 int16_t save_conf_opt(uint32_t pram)
 {  
