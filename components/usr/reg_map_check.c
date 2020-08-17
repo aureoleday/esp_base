@@ -25,18 +25,18 @@ int16_t set_wifi_con_opt(uint32_t pram)
 int16_t daq_pkg_en(uint32_t pram)
 {  
     uint16_t ret = 0;
-    if((pram == 1)&&((0 == bit_op_get(g_sys.stat.gen.status_bm,GBM_DAQ))))
-    {
-        daq_tim_start(g_sys.conf.daq.pkg_period);
-        bit_op_set(&g_sys.stat.gen.status_bm,GBM_DAQ,1);
-        ret = 1;
-    }
-    else if((pram == 0)&&((1 == bit_op_get(g_sys.stat.gen.status_bm,GBM_DAQ))))
-    {
-        daq_tim_stop();
-        bit_op_set(&g_sys.stat.gen.status_bm,GBM_DAQ,0);
-        ret = 0;
-    }
+//    if((pram == 1)&&((0 == bit_op_get(g_sys.stat.gen.status_bm,GBM_DAQ))))
+//    {
+//        daq_tim_start(g_sys.conf.daq.pkg_period);
+//        bit_op_set(&g_sys.stat.gen.status_bm,GBM_DAQ,1);
+//        ret = 1;
+//    }
+//    else if((pram == 0)&&((1 == bit_op_get(g_sys.stat.gen.status_bm,GBM_DAQ))))
+//    {
+//        daq_tim_stop();
+//        bit_op_set(&g_sys.stat.gen.status_bm,GBM_DAQ,0);
+//        ret = 0;
+//    }
     return ret;
 }
 

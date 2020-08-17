@@ -21,8 +21,10 @@
 #include "esp_console.h"
 #include "cmd_wifi.h"
 #include "daq.h"
+#include "ads131_drv.h"
+#include "io_drv.h"
+#include "bat_drv.h"
 #include "adxl_drv.h"
-#include "led_drv.h"
 #include "reg_map_check.h"
 
 enum
@@ -42,20 +44,6 @@ enum
 
 static void tasks_create(void)
 {
-//    xTaskCreate(&test_thread,
-//            "Task_test",
-//            TEST_THREAD_STACK_SIZE,
-//            NULL,
-//            TEST_THREAD_PRIO,
-//            NULL);
-
-//    xTaskCreate(&tcp_thread,
-//            "Task_tcp",
-//            TCP_THREAD_STACK_SIZE,
-//            NULL,
-//            TCP_THREAD_PRIO,
-//            NULL);
-
     xTaskCreate(&cli_thread,
             "Task_cli",
             CLI_THREAD_STACK_SIZE,
@@ -75,12 +63,13 @@ void app_main()
 {
     extern sys_reg_st  g_sys;
     gvar_init();
-    adxl_init();
-    usr_led_init();
+//    adxl_init();
+    adc_init();
+    io_init();
     daq_init();
+    bat_init();
     gvar_register();
     mqtt_register();
-    adxl_register();
     tasks_create();
 	vTaskDelay(1000 / portTICK_PERIOD_MS);
     if(g_sys.conf.con.wifi_connect == 1)
@@ -90,7 +79,6 @@ void app_main()
     }
     while(1)
     {
-        toggle_led(0);
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
 		if(g_sys.conf.gen.restart == 9527)
 			esp_restart();

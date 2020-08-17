@@ -90,7 +90,6 @@ static void event_handler(void* arg, esp_event_base_t event_base,
         ESP_LOGI(TAG, "station "MACSTR" leave, AID=%d",
                  MAC2STR(event->mac), event->aid);
     }
-
 }
 
 static void initialise_wifi(void)

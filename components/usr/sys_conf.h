@@ -78,6 +78,14 @@ typedef struct
 
 typedef struct
 {
+    uint32_t    adc_offset;
+    uint32_t    dac_offset;
+    uint32_t    dac_setval;
+}conf_per_st;
+
+
+typedef struct
+{
     uint32_t    enable;
     uint32_t    pkg_en;
     uint32_t    pkg_period;
@@ -106,6 +114,7 @@ typedef struct
     conf_con_st con;
     conf_prt_st prt;
     conf_geo_st geo;
+    conf_per_st per;
     conf_mod_st mod;
     conf_fft_st fft;
     conf_gtz_st gtz;
