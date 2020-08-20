@@ -28,8 +28,8 @@ typedef long				int32;
 #define DEFAULT_SDN             "www.baidu.com"
 
 //#define SYS_DEBUG
-#define STAT_REG_MAP_NUM        32
-#define CONF_REG_MAP_NUM        32
+#define STAT_REG_MAP_NUM        64 
+#define CONF_REG_MAP_NUM        64 
 #define SOFTWARE_VER            0x00020002
 #define HARDWARE_VER            0x00020000
 #define SERIAL_NO               0

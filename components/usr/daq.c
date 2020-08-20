@@ -6,6 +6,7 @@
 //#include "mqtt_tcp.h"
 #include "sys_conf.h"
 #include "adxl_drv.h"
+#include "ads131_drv.h"
 
 
 #define     DAQ_RX_BUF_DEPTH    1024
@@ -47,7 +48,13 @@ static void daq_timeout(void* arg)
 {
     extern sys_reg_st  g_sys;
     int out_len = 0;
-    out_len = adxl_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
+    //out_len = adxl_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
+    out_len = adc_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
+    //for(int i=0;i<(out_len>>2),i++)
+    //{
+    //    printf(" %f ",(float)*(daq_inst.tx_buf+4*i));
+    //}
+    //printf(" %f\n",(float)*(daq_inst.tx_buf)*0.000000596);
     if(out_len == 0)
 //        printf("daq no d\n");
         ;

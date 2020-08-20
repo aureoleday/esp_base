@@ -123,16 +123,16 @@ void bat_update(void)
 static void drv_dac_en(uint8_t enable)
 {
     if(enable == 1)
-        dac_output_enable(DAC_CHANNEL_1);
+        dac_output_enable(DAC_CHANNEL_2);
     else
-        dac_output_disable(DAC_CHANNEL_1);
+        dac_output_disable(DAC_CHANNEL_2);
 }
 
 static void dac_init(void)
 {
 	extern sys_reg_st g_sys;
     drv_dac_en(1);
-    dac_output_voltage(DAC_CHANNEL_1,g_sys.conf.per.dac_setval);
+    dac_output_voltage(DAC_CHANNEL_2,g_sys.conf.per.dac_setval);
 }
 
 static void bat_register(void);
@@ -164,7 +164,7 @@ static int dac_set(int argc, char **argv)
         return 1;
     }
 
-    dac_output_voltage(DAC_CHANNEL_1,analog_args.val->ival[0]);
+    dac_output_voltage(DAC_CHANNEL_2,analog_args.val->ival[0]);
 
     return 0;
 }

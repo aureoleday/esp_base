@@ -33,6 +33,6 @@ void adc_reset(void);
 int adc_dout(uint8_t * dst_ptr, uint16_t max_len);
 uint16_t adc_rd_reg(uint8_t addr);
 uint16_t adc_wr_reg(uint8_t addr, uint8_t data);
-
+int adc_dout(uint8_t * dst_ptr, uint16_t max_len);
 
 #endif /* COMPONENTS_DRV_ADC_DRV_H_ */

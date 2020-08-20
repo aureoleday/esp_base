@@ -1,5 +1,10 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/timers.h"
+#include "argtable3/argtable3.h"
+#include "esp_console.h"
 #include "driver/gpio.h"
 #include "sys_conf.h"
 
@@ -21,8 +26,7 @@
 
 #define ESP_INTR_FLAG_DEFAULT 0
 #define GPIO_INPUT_PIN_SEL ( (1ULL<<PWR_ON) | (1ULL<<BAT_CHRG) | (1ULL<<VI_EF) )
-//#define GPIO_OUTPUT_PIN_SEL (  (1ULL<<PWR_EN) | (1ULL<<LOCAL_LED) | (1ULL<<WIFI_LED0) | (1ULL<<WIFI_LED1) | (1ULL<<LOW_PWR) | (1ULL<<VI_OD) | (1ULL<<PGA_GAIN0) | (1ULL<<PGA_GAIN1) ) 
-#define GPIO_OUTPUT_PIN_SEL (  (1ULL<<PWR_EN) | (1ULL<<LOCAL_LED) | (1ULL<<WIFI_LED1) | (1ULL<<LOW_PWR) | (1ULL<<VI_OD) | (1ULL<<PGA_GAIN0) | (1ULL<<PGA_GAIN1) ) 
+#define GPIO_OUTPUT_PIN_SEL (  (1ULL<<PWR_EN) | (1ULL<<LOCAL_LED) | (1ULL<<WIFI_LED0) | (1ULL<<WIFI_LED1) | (1ULL<<LOW_PWR) | (1ULL<<VI_OD) | (1ULL<<PGA_GAIN0) | (1ULL<<PGA_GAIN1) ) 
 
 enum
 {
@@ -36,6 +40,7 @@ typedef struct
 }io_st;
 
 static io_st io_inst;
+static void io_register(void);
 
 void power_fsm(void* param)
 {
@@ -214,7 +219,7 @@ static void led_tim_init(void)
 
     led_tim = xTimerCreate(   
               "Led_Timer",       // Just a text name, not used by the kernel.
-               ( 20 ),   // The timer period in ticks.
+               ( 50 ),   // The timer period in ticks.
                pdTRUE,    // The timers will auto-reload themselves when they expire.
                NULL,  // Assign each timer a unique id equal to its array index.
                led_timer_cb // Each timer calls the same callback when it expires.
@@ -222,23 +227,64 @@ static void led_tim_init(void)
     xTimerStart(led_tim,0);
 }
 
+void pga_gain(uint8_t gain_ind)
+{
+    gpio_set_level(PGA_GAIN0, gain_ind&0x01);
+    gpio_set_level(PGA_GAIN1, (gain_ind>>1)&0x01);
+}
+
 void io_init(void)
 {
     input_init();
     output_init();
     led_tim_init();
-    xTaskCreate(&power_fsm,
-            "Task_pwr_fsm",
-            1024,
-            NULL,
-            31,
-            NULL);
+    io_register(); 
+    pga_gain(1);
+//    xTaskCreate(&power_fsm,
+//            "Task_pwr_fsm",
+//            1024,
+//            NULL,
+//            31,
+//            NULL);
 
 }
 
-void pga_gain(uint8_t gain_ind)
+
+static struct {
+    struct arg_int *gain;
+    struct arg_end *end;
+} pga_args;
+
+static int cmd_pga_gain(int argc, char **argv)
 {
-    gpio_set_level(PGA_GAIN0, gain_ind&0x01);
-    gpio_set_level(PGA_GAIN1, (gain_ind>>1)&0x01);
+    int nerrors = arg_parse(argc, argv, (void**) &pga_args);
+    if (nerrors != 0) {
+        arg_print_errors(stderr, pga_args.end, argv[0]);
+        return 1;
+    }
+    pga_gain(pga_args.gain->ival[0]);
+
+    printf("%d\n",pga_args.gain->ival[0]);
+
+    return 0;
+}
+
+static void register_pga_gain()
+{
+    pga_args.gain = arg_int1(NULL, NULL, "<g>", "gain ind");
+    pga_args.end = arg_end(2);
+    const esp_console_cmd_t cmd = {
+            .command = "adc_gain",
+            .help = "adc gain set",
+            .hint = NULL,
+            .func = &cmd_pga_gain,
+            .argtable = &pga_args
+    };
+    ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
+}
+
+static void io_register(void)
+{
+    register_pga_gain();
 }
 

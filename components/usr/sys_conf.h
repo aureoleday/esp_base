@@ -83,6 +83,13 @@ typedef struct
     uint32_t    dac_setval;
 }conf_per_st;
 
+typedef struct
+{
+    uint32_t    enable;
+    uint32_t    filter;
+    uint32_t    sps;
+    uint32_t    gain;
+}conf_adc_st;
 
 typedef struct
 {
@@ -114,6 +121,7 @@ typedef struct
     conf_con_st con;
     conf_prt_st prt;
     conf_geo_st geo;
+    conf_adc_st adc;
     conf_per_st per;
     conf_mod_st mod;
     conf_fft_st fft;
