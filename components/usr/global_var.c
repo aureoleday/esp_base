@@ -548,7 +548,7 @@ static int rd_reg(int argc, char **argv)
 
     i=0;
     for(i=0;i<regmap_args.data->ival[0];i++)
-        printf("reg %d: %d\n",(i+regmap_args.addr->ival[0])&0x3fff,rx_buf[i]);
+        printf("reg %d: %d\t %x\n",(i+regmap_args.addr->ival[0])&0x3fff,rx_buf[i],rx_buf[i]);
     return 0;
 }
 

@@ -87,4 +87,14 @@ enum
     SERVICE_MQTT,
     SERVICE_HTTP,
 };
+
+enum
+{    
+    PWR_MODE_IDLE = 0,    
+    PWR_MODE_PRON,
+    PWR_MODE_ON,
+    PWR_MODE_ONGAP,
+    PWR_MODE_PROFF,
+    PWR_MODE_OFF,
+};
 #endif //__SYS_DEF

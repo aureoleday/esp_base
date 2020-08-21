@@ -66,18 +66,18 @@ int16_t service_opt(uint32_t pram)
     if(bit_op_get(g_sys.conf.prt.service_bm,SERVICE_TCP)&&(0 == bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP)))
     {
         tcp_srv_start();
-        bit_op_set(&g_sys.stat.gen.status_bm,GBM_TCP,1);
+        //bit_op_set(&g_sys.stat.gen.status_bm,GBM_TCP,1);
     }
 
     if(bit_op_get(g_sys.conf.prt.service_bm,SERVICE_MQTT)&&(0==bit_op_get(g_sys.stat.gen.status_bm,GBM_MQTT)))
     {
         mqtt_connect();
-        bit_op_set(&g_sys.stat.gen.status_bm,GBM_MQTT,1);
+        //bit_op_set(&g_sys.stat.gen.status_bm,GBM_MQTT,1);
     }
     else if(0==bit_op_get(g_sys.conf.prt.service_bm,SERVICE_MQTT)&&bit_op_get(g_sys.stat.gen.status_bm,GBM_MQTT))
     {
         mqtt_disconnect();
-        bit_op_set(&g_sys.stat.gen.status_bm,GBM_MQTT,0);
+        //bit_op_set(&g_sys.stat.gen.status_bm,GBM_MQTT,0);
     }
 
     if(bit_op_get(g_sys.conf.prt.service_bm,SERVICE_HTTP)&&(0==bit_op_get(g_sys.stat.gen.status_bm,GBM_HTTP)))

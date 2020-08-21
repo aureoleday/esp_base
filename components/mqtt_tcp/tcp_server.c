@@ -59,6 +59,7 @@ static void do_retransmit(const int sock)
 
 void tcp_thread(void *param)
 {
+    extern sys_reg_st  g_sys;
     char addr_str[128];
     int addr_family = (int)param;
     int ip_protocol = 0;
@@ -119,6 +120,7 @@ void tcp_thread(void *param)
             break;
         }
 
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_TCP,1);
         // Convert ip address to string
         if (source_addr.sin6_family == PF_INET) {
             inet_ntoa_r(((struct sockaddr_in *)&source_addr)->sin_addr.s_addr, addr_str, sizeof(addr_str) - 1);
@@ -129,6 +131,7 @@ void tcp_thread(void *param)
 
         do_retransmit(sock);
 
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_TCP,0);
         shutdown(sock, 0);
         close(sock);
     }
@@ -140,14 +143,14 @@ CLEAN_UP:
 
 void tcp_srv_start(void)
 {
-    extern sys_reg_st  g_sys;
+    //extern sys_reg_st  g_sys;
     xTaskCreate(&tcp_thread,
                "Task_TCP",
                8192,
                NULL,
                5,
                NULL);
-    bit_op_set(&g_sys.stat.gen.status_bm,GBM_TCP,1);
+    //bit_op_set(&g_sys.stat.gen.status_bm,GBM_TCP,1);
 }
 
 

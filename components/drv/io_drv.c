@@ -7,6 +7,7 @@
 #include "esp_console.h"
 #include "driver/gpio.h"
 #include "sys_conf.h"
+#include "bit_op.h"
 
 #define     PWR_ON          35 
 #define     BAT_CHRG        34	
@@ -34,119 +35,136 @@ enum
     WIFI_CONNECTED,
     DATA_TRANSMITTING
 };
+
 typedef struct
 {	
     uint8_t 		led_sts;
+    uint8_t 		pwr_fsm;
 }io_st;
+
 
 static io_st io_inst;
 static void io_register(void);
 
+static void io_ds_init(void)
+{
+    io_inst.led_sts = WIFI_STDBY ;
+    io_inst.pwr_fsm = PWR_MODE_IDLE;
+}
+
 void power_fsm(void* param)
 {
-    uint8_t pfsm = 0;
     uint8_t delay_cnt = 0;
     while(1)
     {
-        switch(pfsm)
+        switch(io_inst.pwr_fsm)
         {
-            case (0):
+            case (PWR_MODE_IDLE ):
             {
                 if(gpio_get_level(PWR_ON) == 1)
                 {
-                    pfsm = 1;
+                    io_inst.pwr_fsm = PWR_MODE_PRON;
                     delay_cnt = 1;
-                    printf("to case1\n");
+                    printf("to PWR_MODE_PRON\n");
                 }
                 else
                 {
-                    pfsm = 0;
+                    io_inst.pwr_fsm = PWR_MODE_IDLE ;
                     delay_cnt = 0;
                 }
                 break;
             }
-            case (1):
+            case (PWR_MODE_PRON):
+            {
+                if(gpio_get_level(PWR_ON) == 1)
+                {
+                    if(delay_cnt <= 1)
+                    {
+                        delay_cnt++;
+                        io_inst.pwr_fsm = PWR_MODE_PRON;
+                    }
+                    else
+                    {
+                        delay_cnt = 0;
+                        io_inst.pwr_fsm = PWR_MODE_ON;
+                        gpio_set_level(PWR_EN, 1);
+                        printf("to PWR_MODE_ON\n");
+                    }
+                }
+                else
+                {
+                    delay_cnt = 0;
+                    io_inst.pwr_fsm = PWR_MODE_IDLE;
+                    printf("to PWR_MOD_IDLE\n");
+                }
+                break;
+            }
+            case (PWR_MODE_ON):
+            {
+                if(gpio_get_level(PWR_ON) == 0)
+                {
+                    io_inst.pwr_fsm = PWR_MODE_ONGAP;
+                    delay_cnt = 0;
+                    printf("to PWR_MOD_ONGAP\n");
+                }
+                else
+                {
+                    io_inst.pwr_fsm = PWR_MODE_ON;
+                    delay_cnt = 0;
+                }
+                break;
+            }
+            case (PWR_MODE_ONGAP):
+            {
+                if(gpio_get_level(PWR_ON) == 1)
+                {
+                    io_inst.pwr_fsm = PWR_MODE_PROFF;
+                    delay_cnt = 0;
+                    printf("to PWR_MODE_PROFF\n");
+                }
+                else
+                {
+                    io_inst.pwr_fsm = PWR_MODE_ONGAP;
+                    delay_cnt = 0;
+                }
+                break;
+            }
+            case (PWR_MODE_PROFF):
             {
                 if(gpio_get_level(PWR_ON) == 1)
                 {
                     if(delay_cnt <= 3)
                     {
                         delay_cnt++;
-                        pfsm = 1;
+                        io_inst.pwr_fsm = PWR_MODE_PROFF;
                     }
                     else
                     {
                         delay_cnt = 0;
-                        pfsm = 2;
-                        gpio_set_level(PWR_EN, 1);
-                        printf("to case2\n");
-                    }
-                }
-                else
-                {
-                    delay_cnt = 0;
-                    pfsm = 0;
-                }
-                break;
-            }
-            case (2):
-            {
-                if(gpio_get_level(PWR_ON) == 0)
-                {
-                    pfsm = 3;
-                    delay_cnt = 0;
-                    printf("to case3\n");
-                }
-                else
-                {
-                    pfsm = 2;
-                    delay_cnt = 0;
-                }
-                break;
-            }
-            case (3):
-            {
-                if(gpio_get_level(PWR_ON) == 1)
-                {
-                    pfsm = 4;
-                    delay_cnt = 0;
-                    printf("to case4\n");
-                }
-                else
-                {
-                    pfsm = 3;
-                    delay_cnt = 0;
-                }
-                break;
-            }
-            case (4):
-            {
-                if(gpio_get_level(PWR_ON) == 1)
-                {
-                    if(delay_cnt <= 4)
-                    {
-                        delay_cnt++;
-                        pfsm = 4;
-                    }
-                    else
-                    {
-                        delay_cnt = 0;
-                        pfsm = 0;
+                        io_inst.pwr_fsm = PWR_MODE_OFF;
                         gpio_set_level(PWR_EN, 0);
-                        printf("to case0\n");
+                        printf("to PWR_MODE_OFF\n");
                     }
                 }
                 else
                 {
                     delay_cnt = 0;
-                    pfsm = 3;
+                    io_inst.pwr_fsm = PWR_MODE_ONGAP;
+                    printf("to PWR_MOD_ONGAP\n");
                 }
+                break;
+            }
+            case (PWR_MODE_OFF):
+            {
+                delay_cnt = 0;
+                io_inst.pwr_fsm = PWR_MODE_OFF;
+                gpio_set_level(PWR_EN, 0);
                 break;
             }
             default:
             {
                 delay_cnt = 0;
-                pfsm = 0;
+                io_inst.pwr_fsm = PWR_MODE_IDLE;
                 gpio_set_level(PWR_EN, 0);
                 break;
             }
@@ -170,7 +188,7 @@ static void output_init(void)
     //configure GPIO with the given settings
     gpio_config(&io_conf);
     gpio_set_level(LOCAL_LED, 1);
-//    gpio_set_level(WIFI_LED0, 0);
+    gpio_set_level(WIFI_LED0, 0);
     gpio_set_level(WIFI_LED1, 0);
     gpio_set_level(LOW_PWR, 0);
     gpio_set_level(PWR_EN, 0);
@@ -197,39 +215,47 @@ static void input_init(void)
 
 static void led_timer_cb(void* arg)
 {
+	extern sys_reg_st g_sys;
     static uint8_t flag=0;
-//    switch(io_inst.led_sts)
-//    {
-//        case(WIFI_STDBY):
-//        {
-//            gpio_set_level(WIFI_LED0, flag);
-//            gpio_set_level(WIFI_LED1, 0);
-//            break;
-//        }
-//        case(WIFI_CONNECTED):
-//        {
-//            gpio_set_level(WIFI_LED0, 1);
-//            gpio_set_level(WIFI_LED1, 0);
-//            break;
-//        }
-//        case(DATA_TRANSMITTING):
-//        {
-//            gpio_set_level(WIFI_LED0, 1);
-//            gpio_set_level(WIFI_LED1, 1);
-//            break;
-//        }
-//        default:
-//        {
-//            gpio_set_level(WIFI_LED0, 0);
-//            gpio_set_level(WIFI_LED1, 0);
-//            break;
-//        }
-//    }
+    if(io_inst.pwr_fsm == PWR_MODE_OFF) 
+    {
+        gpio_set_level(WIFI_LED0, 0);
+        gpio_set_level(WIFI_LED1, 0);
+        gpio_set_level(LOCAL_LED, 1);
+    }
+    else if(io_inst.pwr_fsm >= PWR_MODE_ON) 
+    {
+        if(bit_op_get(g_sys.stat.gen.status_bm,GBM_WIFI) == 0)
+        {
+            gpio_set_level(WIFI_LED0, flag);
+        }
+        else
+        {
+            gpio_set_level(WIFI_LED0, 1);
+        }
+
+        if(bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) == 0)
+        {
+            gpio_set_level(WIFI_LED1, !flag);
+        }
+        else
+        {
+            gpio_set_level(WIFI_LED1, 1);
+        }
+            
+        gpio_set_level(LOCAL_LED, flag);
+    }
+    else 
+    {
+        gpio_set_level(WIFI_LED0, 0);
+        gpio_set_level(WIFI_LED1, 0);
+        gpio_set_level(LOCAL_LED, 1);
+    }
+
     if(flag == 0)
         flag = 1;
     else
         flag = 0;
-    gpio_set_level(LOCAL_LED, flag);
 }
 
 static void led_tim_init(void)
@@ -238,7 +264,7 @@ static void led_tim_init(void)
 
     led_tim = xTimerCreate(   
               "Led_Timer",       // Just a text name, not used by the kernel.
-               ( 50 ),   // The timer period in ticks.
+               ( 30 ),   // The timer period in ticks.
                pdTRUE,    // The timers will auto-reload themselves when they expire.
                NULL,  // Assign each timer a unique id equal to its array index.
                led_timer_cb // Each timer calls the same callback when it expires.
@@ -255,17 +281,18 @@ void pga_gain(uint8_t gain_ind)
 void io_init(void)
 {
 	extern sys_reg_st g_sys;
+    io_ds_init();
     input_init();
     output_init();
     led_tim_init();
     io_register(); 
     pga_gain(g_sys.conf.adc.gain);
-//    xTaskCreate(&power_fsm,
-//            "Task_pwr_fsm",
-//            1024,
-//            NULL,
-//            31,
-//            NULL);
+    xTaskCreate(&power_fsm,
+            "Task_pwr_fsm",
+            1024,
+            NULL,
+            31,
+            NULL);
 
 }
 
