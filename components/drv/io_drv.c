@@ -56,6 +56,7 @@ void power_fsm(void* param)
                 {
                     pfsm = 1;
                     delay_cnt = 1;
+                    printf("to case1\n");
                 }
                 else
                 {
@@ -78,6 +79,7 @@ void power_fsm(void* param)
                         delay_cnt = 0;
                         pfsm = 2;
                         gpio_set_level(PWR_EN, 1);
+                        printf("to case2\n");
                     }
                 }
                 else
@@ -89,10 +91,11 @@ void power_fsm(void* param)
             }
             case (2):
             {
-                if(gpio_get_level(PWR_ON) == 1)
+                if(gpio_get_level(PWR_ON) == 0)
                 {
                     pfsm = 3;
-                    delay_cnt = 1;
+                    delay_cnt = 0;
+                    printf("to case3\n");
                 }
                 else
                 {
@@ -105,22 +108,38 @@ void power_fsm(void* param)
             {
                 if(gpio_get_level(PWR_ON) == 1)
                 {
+                    pfsm = 4;
+                    delay_cnt = 0;
+                    printf("to case4\n");
+                }
+                else
+                {
+                    pfsm = 3;
+                    delay_cnt = 0;
+                }
+                break;
+            }
+            case (4):
+            {
+                if(gpio_get_level(PWR_ON) == 1)
+                {
                     if(delay_cnt <= 4)
                     {
                         delay_cnt++;
-                        pfsm = 3;
+                        pfsm = 4;
                     }
                     else
                     {
                         delay_cnt = 0;
                         pfsm = 0;
                         gpio_set_level(PWR_EN, 0);
+                        printf("to case0\n");
                     }
                 }
                 else
                 {
                     delay_cnt = 0;
-                    pfsm = 0;
+                    pfsm = 3;
                 }
                 break;
             }
@@ -179,33 +198,33 @@ static void input_init(void)
 static void led_timer_cb(void* arg)
 {
     static uint8_t flag=0;
-    switch(io_inst.led_sts)
-    {
-        case(WIFI_STDBY):
-        {
-            gpio_set_level(WIFI_LED0, flag);
-            gpio_set_level(WIFI_LED1, 0);
-            break;
-        }
-        case(WIFI_CONNECTED):
-        {
-            gpio_set_level(WIFI_LED0, 1);
-            gpio_set_level(WIFI_LED1, 0);
-            break;
-        }
-        case(DATA_TRANSMITTING):
-        {
-            gpio_set_level(WIFI_LED0, 1);
-            gpio_set_level(WIFI_LED1, 1);
-            break;
-        }
-        default:
-        {
-            gpio_set_level(WIFI_LED0, 0);
-            gpio_set_level(WIFI_LED1, 0);
-            break;
-        }
-    }
+//    switch(io_inst.led_sts)
+//    {
+//        case(WIFI_STDBY):
+//        {
+//            gpio_set_level(WIFI_LED0, flag);
+//            gpio_set_level(WIFI_LED1, 0);
+//            break;
+//        }
+//        case(WIFI_CONNECTED):
+//        {
+//            gpio_set_level(WIFI_LED0, 1);
+//            gpio_set_level(WIFI_LED1, 0);
+//            break;
+//        }
+//        case(DATA_TRANSMITTING):
+//        {
+//            gpio_set_level(WIFI_LED0, 1);
+//            gpio_set_level(WIFI_LED1, 1);
+//            break;
+//        }
+//        default:
+//        {
+//            gpio_set_level(WIFI_LED0, 0);
+//            gpio_set_level(WIFI_LED1, 0);
+//            break;
+//        }
+//    }
     if(flag == 0)
         flag = 1;
     else
@@ -235,11 +254,12 @@ void pga_gain(uint8_t gain_ind)
 
 void io_init(void)
 {
+	extern sys_reg_st g_sys;
     input_init();
     output_init();
     led_tim_init();
     io_register(); 
-    pga_gain(1);
+    pga_gain(g_sys.conf.adc.gain);
 //    xTaskCreate(&power_fsm,
 //            "Task_pwr_fsm",
 //            1024,
@@ -248,7 +268,6 @@ void io_init(void)
 //            NULL);
 
 }
-
 
 static struct {
     struct arg_int *gain;

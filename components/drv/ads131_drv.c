@@ -66,7 +66,6 @@ static void IRAM_ATTR gpio_isr_handler(void* arg)
 }
 static int32_t decode(uint32_t din)
 {
-	extern sys_reg_st g_sys;
     uint32_t temp;
     temp = din;
     if((temp&0x800000) != 0)
