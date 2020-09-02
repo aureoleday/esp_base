@@ -5,19 +5,24 @@
 #include "cmd_wifi.h"
 #include "daq.h"
 #include "adxl_drv.h"
+#include "ads131_drv.h"
 #include "bit_op.h"
 
 extern sys_reg_st g_sys;
+
+int16_t service_opt(uint32_t pram);
 
 int16_t set_wifi_con_opt(uint32_t pram)
 {
     if(pram == 1)
     {
         wifi_connect();
+        service_opt(pram);
     }
     else
     {
         wifi_disconnect();
+        service_opt(pram);
     }
     return 1;
 }
@@ -89,6 +94,12 @@ int16_t service_opt(uint32_t pram)
     return 1;
 }
 
+int16_t adc_sps_opt(uint32_t pram)
+{
+    int16_t ret;
+    ret = adc_set_sps(pram);
+    return ret;
+}
 
 int16_t save_conf_opt(uint32_t pram)
 {  

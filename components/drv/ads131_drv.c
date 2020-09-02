@@ -213,16 +213,97 @@ static uint16_t adc_sread(void)
     return ret;
 }
 
+static uint16_t calc_sps(uint16_t freq_mode)
+{
+    uint16_t clk1_reg,clk2_reg,clk_reg;
+    switch(freq_mode)
+    {
+        case(0):
+        {
+            //512 SPS
+            clk1_reg = 0x0a;    //      /10
+            clk2_reg = 0x86;    //      /8/400
+            break;
+        }
+        case(1):
+        {
+            //1024 SPS
+            clk1_reg = 0x0a;    //      /10
+            clk2_reg = 0x89;    //      /8/200
+            break;
+        }
+        case(2):
+        {
+            //2048 SPS
+            clk1_reg = 0x0a;    //      /10
+            clk2_reg = 0x49;    //      /4/200
+            break;
+        }
+        case(3):
+        {
+            //4096 SPS
+            clk1_reg = 0x0a;    //      /10
+            clk2_reg = 0x29;    //      /2/200
+            break;
+        }
+        case(4):
+        {
+            //8k SPS
+            clk1_reg = 0x04;    //      /4
+            clk2_reg = 0x4b;    //      /4/128
+            break;
+        }
+        case(5):
+        {
+            //16k SPS
+            clk1_reg = 0x04;    //      /4
+            clk2_reg = 0x4d;    //      /4/64
+            break;
+        }
+        case(6):
+        {
+            //32k SPS
+            clk1_reg = 0x04;    //      /4
+            clk2_reg = 0x4f;    //      /4/32
+            break;
+        }
+        case(7):
+        {
+            //64k SPS
+            clk1_reg = 0x04;    //      /4
+            clk2_reg = 0x2f;    //      /2/32
+            break;
+        }
+        default:
+        {
+            //4096 SPS
+            clk1_reg = 0x0a;    //      /10
+            clk2_reg = 0x29;    //      /2/200
+            break;
+        }
+    }
+    clk_reg = (clk1_reg<<8)|clk2_reg;
+    return clk_reg;
+}
+
+uint16_t adc_set_sps(uint16_t adc_sps_mode)
+{
+    uint16_t ret,freq_mod;
+    freq_mod = calc_sps(adc_sps_mode);
+    ret = adc_wr_reg(13, (freq_mod>>8)&0x00ff);//f_iclk = f_clkin/10 
+    ret = adc_wr_reg(14, freq_mod&0x00ff);//f_mod = f_iclk/2, f_data = f_mode/200
+    return ret;
+}
+
 static uint16_t adc_init_conf(void)
 {
+	extern sys_reg_st g_sys;
     uint16_t ret;
     ret = adc_cmd(CMD_NULL);
     printf("adc:%x\n",ret);
     ret = adc_cmd(CMD_UNLOCK);
     printf("adc:%x\n",ret);
-    //set sample rate 4096 SPS
-    ret = adc_wr_reg(13, 0x0a);//f_iclk = f_clkin/10 
-    ret = adc_wr_reg(14, 0x29);//f_mod = f_iclk/2, f_data = f_mode/200
+    adc_set_sps(g_sys.conf.adc.sps);
     ret = adc_wr_reg(15, 0x03);//adc enable 
     printf("adc:%x\n",ret);
     ret = adc_cmd(CMD_WAKEUP);

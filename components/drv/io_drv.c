@@ -190,7 +190,7 @@ static void output_init(void)
     gpio_set_level(LOCAL_LED, 1);
     gpio_set_level(WIFI_LED0, 0);
     gpio_set_level(WIFI_LED1, 0);
-    gpio_set_level(LOW_PWR, 0);
+    gpio_set_level(LOW_PWR, 1);
     gpio_set_level(PWR_EN, 0);
     gpio_set_level(PGA_GAIN0, 0);
     gpio_set_level(PGA_GAIN0, 0);

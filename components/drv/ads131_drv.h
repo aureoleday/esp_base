@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 
-#define ADC_FIFO_SIZE  1024 
+#define ADC_FIFO_SIZE 8192 
 
 //typedef struct
 //{
@@ -31,6 +31,7 @@ void adc_reset(void);
 //void adc_tim_start(int32_t tim_period);
 //void adc_tim_stop(void);
 int adc_dout(uint8_t * dst_ptr, uint16_t max_len);
+uint16_t adc_set_sps(uint16_t freq_mode);
 uint16_t adc_rd_reg(uint8_t addr);
 uint16_t adc_wr_reg(uint8_t addr, uint8_t data);
 int adc_dout(uint8_t * dst_ptr, uint16_t max_len);

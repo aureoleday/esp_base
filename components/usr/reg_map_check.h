@@ -6,6 +6,7 @@ int16_t daq_pkg_en(uint32_t pram);
 int16_t service_opt(uint32_t pram);
 int16_t geo_pkg_en(uint32_t pram);
 int16_t set_wifi_con_opt(uint32_t pram);
+int16_t adc_sps_opt(uint32_t pram);
 int16_t set_boot_opt(uint32_t pram);
 int16_t save_conf_opt(uint32_t pram);
 int16_t load_conf_opt(uint32_t pram);
