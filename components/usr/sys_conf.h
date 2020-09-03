@@ -89,6 +89,7 @@ typedef struct
     uint32_t    filter;
     uint32_t    sps;
     uint32_t    gain;
+    uint32_t    ch_bm;
 }conf_adc_st;
 
 typedef struct

@@ -77,20 +77,28 @@ static int32_t decode(uint32_t din)
 static void IRAM_ATTR adc_read_pcb(spi_transaction_t* t)
 {
 	extern sys_reg_st g_sys;
-    int32_t temp;
-    uint32_t dummy;
-    dummy=((spi_geo_dev_inst.rxd[3]<<16)|(spi_geo_dev_inst.rxd[4]<<8)|spi_geo_dev_inst.rxd[5]);
-    temp = decode(dummy);
+    int32_t temp[4];
+    uint32_t dummy[4];
+    uint8_t cnt=0;
+    for(int i=0;i<3;i++)
+    {
+        if(((g_sys.conf.adc.ch_bm>>i)&0x01) == 1)
+        {
+            dummy[i]=((spi_geo_dev_inst.rxd[i*3+3]<<16)|(spi_geo_dev_inst.rxd[i*3+4]<<8)|spi_geo_dev_inst.rxd[i*3+5]);
+            temp[cnt] = decode(dummy[i]);
+            cnt++;
+        }
+    }
 
     if(g_sys.conf.adc.enable == 1)
     {
         if(kfifo_len(&kf_s) >= kf_s.size)
         {
-            kfifo_out(&kf_s,&dummy,sizeof(int32_t));
+            kfifo_out(&kf_s,&dummy,cnt*sizeof(int32_t));
             g_sys.stat.geo.kfifo_drop_cnt++;
         }
-        kfifo_in(&kf_s,&temp,sizeof(int32_t));
-        spi_geo_dev_inst.adc_val = temp;
+        kfifo_in(&kf_s,&temp,cnt*sizeof(int32_t));
+        spi_geo_dev_inst.adc_val = temp[0];
     }
 }
 
@@ -193,7 +201,7 @@ static uint16_t adc_sread(void)
     memset(&adc_t, 0, sizeof(adc_t));
     //xSemaphoreTake( adcspi_mutex, portMAX_DELAY );
 
-    adc_t.length=72;//8*3*3bits
+    adc_t.length=72;//8*3*3 bits
     adc_t.rx_buffer = spi_geo_dev_inst.rxd;
 
     spi_geo_dev_inst.txd[0] = (spi_geo_dev_inst.adc_cmd>>8)&0x00ff;
@@ -365,7 +373,7 @@ void adc_init(void)
     };
     spi_device_interface_config_t devcfg=
     {
-            .clock_speed_hz=16*1000*1000,           //Clock out at 16 MHz
+            .clock_speed_hz=32*1000*1000,           //Clock out at 40 MHz
             .mode=1,                                //SPI mode 1
             .spics_io_num=PIN_NUM_CS,               //CS pin
             .post_cb = adc_read_pcb,

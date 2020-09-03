@@ -242,7 +242,6 @@ static void led_timer_cb(void* arg)
         {
             gpio_set_level(WIFI_LED1, 1);
         }
-            
         gpio_set_level(LOCAL_LED, flag);
     }
     else 
@@ -293,7 +292,6 @@ void io_init(void)
             NULL,
             31,
             NULL);
-
 }
 
 static struct {

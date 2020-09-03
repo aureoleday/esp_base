@@ -8,6 +8,7 @@
 
 #define DEFAULT_VREF    1100
 #define MAV_MAX_CNT		128
+#define ADC_CH          ADC1_CHANNEL_0
 static esp_adc_cal_characteristics_t *adc_chars;
 
 typedef struct
@@ -52,9 +53,8 @@ static void print_char_val_type(esp_adc_cal_value_t val_type)
 static void adc_init(void)
 {
     check_efuse();
-
     adc1_config_width(ADC_WIDTH_BIT_12);
-    adc1_config_channel_atten(ADC1_CHANNEL_0,ADC_ATTEN_DB_11);
+    adc1_config_channel_atten(ADC_CH,ADC_ATTEN_DB_11);
     adc_chars = calloc(1, sizeof(esp_adc_cal_characteristics_t));
     esp_adc_cal_value_t val_type = esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_DB_11, ADC_WIDTH_BIT_12, DEFAULT_VREF, adc_chars);
     print_char_val_type(val_type);
@@ -62,14 +62,14 @@ static void adc_init(void)
 
 //static uint32_t adc_get_raw(void)
 //{
-//    return adc1_get_raw(ADC1_CHANNEL_0);
+//    return adc1_get_raw(ADC_CH);
 //}
 
 static uint32_t adc_get_volt(void)
 {
 	extern sys_reg_st g_sys;
     uint32_t temp,volt;
-    temp = adc1_get_raw(ADC1_CHANNEL_0);
+    temp = adc1_get_raw(ADC_CH);
     volt = esp_adc_cal_raw_to_voltage(temp, adc_chars) - g_sys.conf.per.adc_offset;
     return volt;
 }
@@ -100,7 +100,7 @@ static uint32_t bat_mav_calc(uint16_t mav_cnt_set)
        	 	bat_inst.mav_cnt = 0;
 		bat_mav_volt = bat_inst.accum_sum/mav_cnt_set;
 	}
-	return bat_mav_volt*105/50;
+	return bat_mav_volt*2;
 }
 
 static uint32_t bat_pwr_calc(uint32_t up_lim, uint32_t low_lim, uint32_t bat_volt)

@@ -80,6 +80,7 @@ void app_main()
     while(1)
     {
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
+        bat_update();
 		if(g_sys.conf.gen.restart == 9527)
 			esp_restart();
 	}
