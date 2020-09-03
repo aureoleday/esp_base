@@ -4,6 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ADC_CH	components/drv/bat_drv.c	11;"	d	file:
 ADC_DEVID_LSB	components/drv/ads131_drv.h	/^   ADC_DEVID_LSB = 0x01$/;"	e	enum:__anon59
 ADC_DEVID_MSB	components/drv/ads131_drv.h	/^   ADC_DEVID_MSB = 0x00,$/;"	e	enum:__anon59
 ADC_FIFO_SIZE	components/drv/ads131_drv.h	13;"	d
@@ -1663,9 +1664,9 @@ C_DIALECT	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	5
 C_DIALECT	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	531;"	d	file:
 CheckBit	components/kits/tlvparse.c	/^static inline int CheckBit(unsigned char value, int bit)$/;"	f	file:
 Complex	components/kits/meow_fft.h	/^typedef const Meow_FFT_Complex Complex;$/;"	t
-DAQ_CHANNEL_MAX	components/usr/daq.c	14;"	d	file:
-DAQ_RX_BUF_DEPTH	components/usr/daq.c	12;"	d	file:
-DAQ_TX_BUF_DEPTH	components/usr/daq.c	13;"	d	file:
+DAQ_CHANNEL_MAX	components/usr/daq.c	15;"	d	file:
+DAQ_RX_BUF_DEPTH	components/usr/daq.c	13;"	d	file:
+DAQ_TX_BUF_DEPTH	components/usr/daq.c	14;"	d	file:
 DATA_TRANSMITTING	components/drv/io_drv.c	/^    DATA_TRANSMITTING$/;"	e	enum:__anon62	file:
 DEC	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	453;"	d	file:
 DEC	build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	438;"	d	file:
@@ -2270,6 +2271,7 @@ buffer	components/kits/kfifo.h	/^    unsigned char *buffer;\/* the buffer holdin
 buffer_ff	components/drv/bat_drv.c	/^	uint32_t	buffer_ff;$/;"	m	struct:__anon60	file:
 calc_snr	components/kits/goertzel.c	/^static float calc_snr(float* dbuf, uint16_t cnt, snr_sts_st* snr_sts_ptr)$/;"	f	file:
 calc_sps	components/drv/ads131_drv.c	/^static uint16_t calc_sps(uint16_t freq_mode)$/;"	f	file:
+ch_bm	components/usr/sys_conf.h	/^    uint32_t    ch_bm;$/;"	m	struct:__anon20
 channel_bm	components/usr/daq.c	/^    uint16_t channel_bm;$/;"	m	struct:__anon44	file:
 check_efuse	components/drv/bat_drv.c	/^static void check_efuse(void)$/;"	f	file:
 chk_ptr	components/usr/sys_conf.h	/^    int16_t     (*chk_ptr)(uint32_t pram);$/;"	m	struct:__anon31

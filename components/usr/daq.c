@@ -7,6 +7,7 @@
 #include "sys_conf.h"
 #include "adxl_drv.h"
 #include "ads131_drv.h"
+#include "goertzel.h"
 
 
 #define     DAQ_RX_BUF_DEPTH    1024
@@ -38,6 +39,8 @@ static void daq_buf_init(void)
     memset(daq_inst.tx_buf,0,DAQ_TX_BUF_DEPTH);
     memset(daq_inst.rx_buf,0,DAQ_RX_BUF_DEPTH);
 
+    goertzel_init();
+
     daq_inst.sample_rate = 4096;
     daq_inst.pkg_period = 1000000;
     daq_inst.channel_bm = 0x0001;
@@ -50,6 +53,10 @@ static void daq_timeout(void* arg)
     int out_len = 0;
     //out_len = adxl_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
     out_len = adc_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
+    for(int i=0;i<(out_len>>2);i++)
+    {
+        goertzel_lfilt((float)*(daq_inst.tx_buf+4*i)*0.00000009933);
+    }
     //for(int i=0;i<(out_len>>2),i++)
     //{
     //    printf(" %f ",(float)*(daq_inst.tx_buf+4*i));

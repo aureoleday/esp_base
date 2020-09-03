@@ -11,7 +11,7 @@
 #include <math.h>
 #include "sys_conf.h"
 
-#define FREQ_SPAN_MAX	65
+#define FREQ_SPAN_MAX 17	
 
 typedef struct
 {
@@ -152,7 +152,13 @@ static int32_t gtz_snr(float* dbuf, uint16_t cnt)
     g_sys.stat.gtz.acc_offset = snr_acc_inst.offset;
     g_sys.stat.gtz.acc_signal_level = snr_acc_inst.signal_level;
     g_sys.stat.gtz.acc_noise_level = snr_acc_inst.noise_level;
-
+    
+    //printf("gtz snr:%f\n",g_sys.stat.gtz.ins_snr);
+    for(i=0;i<(2*g_sys.conf.gtz.target_span+1);i++)
+    {
+        printf("%f\t",gtz_inst.res[i]); 
+    }
+    printf("\n");
     return 0;
 }
 
