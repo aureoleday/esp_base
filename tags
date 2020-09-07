@@ -152,11 +152,11 @@ ARCHITECTURE_ID	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXComp
 ARCHITECTURE_ID	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	434;"	d	file:
 ARG_TYPE_STR	components/cmd_nvs/cmd_nvs.c	/^static const char *ARG_TYPE_STR = "type can be: i8, u8, i16, u16 i32, u32 i64, u64, str, blob";$/;"	v	file:
 BAT_CHRG	components/drv/io_drv.c	13;"	d	file:
-BKG_THREAD_DELAY	components/usr/sys_conf.h	8;"	d
+BKG_THREAD_DELAY	components/usr/sys_conf.h	9;"	d
 Bit_RESET	components/drv/io_drv.c	25;"	d	file:
 Bit_SET	components/drv/io_drv.c	26;"	d	file:
 CLI_THREAD_PRIO	main/main.c	/^    CLI_THREAD_PRIO,$/;"	e	enum:__anon1	file:
-CLI_THREAD_STACK_SIZE	main/main.c	42;"	d	file:
+CLI_THREAD_STACK_SIZE	main/main.c	44;"	d	file:
 CMD_ERR_ADDR_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_ADDR_OR,$/;"	e	enum:__anon33	file:
 CMD_ERR_CONFLICT_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_CONFLICT_OR,$/;"	e	enum:__anon33	file:
 CMD_ERR_DATA_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_DATA_OR,$/;"	e	enum:__anon33	file:
@@ -179,9 +179,9 @@ CMD_RP_PKG	components/usr/cmd_resolve.c	44;"	d	file:
 CMD_RST	components/drv/ads131_drv.c	32;"	d	file:
 CMD_RTX_BUF_DEPTH	components/usr/cmd_resolve.c	35;"	d	file:
 CMD_STDBY	components/drv/ads131_drv.c	36;"	d	file:
-CMD_THREAD_DELAY	components/usr/sys_conf.h	6;"	d
+CMD_THREAD_DELAY	components/usr/sys_conf.h	7;"	d
 CMD_THREAD_PRIO	main/main.c	/^    CMD_THREAD_PRIO,$/;"	e	enum:__anon1	file:
-CMD_THREAD_STACK_SIZE	main/main.c	43;"	d	file:
+CMD_THREAD_STACK_SIZE	main/main.c	45;"	d	file:
 CMD_UNLOCK	components/drv/ads131_drv.c	34;"	d	file:
 CMD_WAKEUP	components/drv/ads131_drv.c	35;"	d	file:
 CMD_WRFIFO_FULL	components/usr/cmd_resolve.c	/^    CMD_WRFIFO_FULL,$/;"	e	enum:__anon33	file:
@@ -1664,9 +1664,9 @@ C_DIALECT	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	5
 C_DIALECT	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	531;"	d	file:
 CheckBit	components/kits/tlvparse.c	/^static inline int CheckBit(unsigned char value, int bit)$/;"	f	file:
 Complex	components/kits/meow_fft.h	/^typedef const Meow_FFT_Complex Complex;$/;"	t
-DAQ_CHANNEL_MAX	components/usr/daq.c	15;"	d	file:
-DAQ_RX_BUF_DEPTH	components/usr/daq.c	13;"	d	file:
-DAQ_TX_BUF_DEPTH	components/usr/daq.c	14;"	d	file:
+DAQ_CHANNEL_MAX	components/usr/daq.c	16;"	d	file:
+DAQ_RX_BUF_DEPTH	components/usr/daq.c	14;"	d	file:
+DAQ_TX_BUF_DEPTH	components/usr/daq.c	15;"	d	file:
 DATA_TRANSMITTING	components/drv/io_drv.c	/^    DATA_TRANSMITTING$/;"	e	enum:__anon62	file:
 DEC	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	453;"	d	file:
 DEC	build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	438;"	d	file:
@@ -1702,11 +1702,12 @@ GBM_LINK	components/usr/sys_def.h	/^    GBM_LINK = 0,$/;"	e	enum:__anon41
 GBM_MQTT	components/usr/sys_def.h	/^    GBM_MQTT,$/;"	e	enum:__anon41
 GBM_TCP	components/usr/sys_def.h	/^    GBM_TCP,$/;"	e	enum:__anon41
 GBM_WIFI	components/usr/sys_def.h	/^    GBM_WIFI,$/;"	e	enum:__anon41
-GEO_THREAD_DELAY	components/usr/sys_conf.h	9;"	d
+GEO_THREAD_DELAY	components/usr/sys_conf.h	10;"	d
 GPIO_INPUT_PIN_SEL	components/drv/ads131_drv.c	28;"	d	file:
 GPIO_INPUT_PIN_SEL	components/drv/io_drv.c	29;"	d	file:
 GPIO_OUTPUT_PIN_SEL	components/drv/ads131_drv.c	29;"	d	file:
 GPIO_OUTPUT_PIN_SEL	components/drv/io_drv.c	30;"	d	file:
+GTZ_FLOWS_MAX	components/kits/goertzel.c	15;"	d	file:
 HARDWARE_VER	components/usr/sys_def.h	34;"	d
 HEX	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	464;"	d	file:
 HEX	build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	449;"	d	file:
@@ -1725,6 +1726,9 @@ INIT_MODE_DEBUT	components/usr/sys_def.h	/^    INIT_MODE_DEBUT,$/;"	e	enum:__ano
 INIT_MODE_DEFAULT	components/usr/sys_def.h	/^    INIT_MODE_DEFAULT$/;"	e	enum:__anon39
 INIT_MODE_FACTORY	components/usr/sys_def.h	/^    INIT_MODE_FACTORY,$/;"	e	enum:__anon39
 INIT_MODE_USR	components/usr/sys_def.h	/^    INIT_MODE_USR = 0,    $/;"	e	enum:__anon39
+INIT_THREAD_DELAY	components/usr/sys_conf.h	6;"	d
+INIT_THREAD_PRIO	main/main.c	/^    INIT_THREAD_PRIO,$/;"	e	enum:__anon1	file:
+INIT_THREAD_STACK_SIZE	main/main.c	46;"	d	file:
 JOIN_TIMEOUT_MS	components/cli/cmd_wifi.c	26;"	d	file:
 KFIFO_EXT	components/kits/kfifo.h	11;"	d
 LOCAL_LED	components/drv/io_drv.c	23;"	d	file:
@@ -2036,7 +2040,7 @@ REGMAP_ERR_DATA_OR	components/usr/sys_def.h	/^    REGMAP_ERR_DATA_OR,$/;"	e	enum
 REGMAP_ERR_NOERR	components/usr/sys_def.h	/^    REGMAP_ERR_NOERR = 0,$/;"	e	enum:__anon38
 REGMAP_ERR_PERM_OR	components/usr/sys_def.h	/^    REGMAP_ERR_PERM_OR,$/;"	e	enum:__anon38
 REGMAP_ERR_WR_OR	components/usr/sys_def.h	/^    REGMAP_ERR_WR_OR,$/;"	e	enum:__anon38
-SAMPLE_CHANNEL_MAX	components/usr/sys_conf.h	11;"	d
+SAMPLE_CHANNEL_MAX	components/usr/sys_conf.h	12;"	d
 SENSOR_ADDR2	components/usr/sys_def.h	/^    SENSOR_ADDR2,$/;"	e	enum:__anon40
 SENSOR_BT	components/usr/sys_def.h	/^    SENSOR_BT,$/;"	e	enum:__anon40
 SENSOR_DO2	components/usr/sys_def.h	/^    SENSOR_DO2$/;"	e	enum:__anon40
@@ -2151,11 +2155,11 @@ TAG	components/mqtt_tcp/mqtt_tcp.c	/^static const char *TAG = "MQTT";$/;"	v	file
 TAG	components/mqtt_tcp/tcp_server.c	/^static const char *TAG = "TCP_SRV";$/;"	v	file:
 TAG	components/usr/cmd_resolve.c	/^static const char *TAG = "CMD_RSV";$/;"	v	file:
 TAG	components/usr/global_var.c	/^static const char *TAG = "GVAR";$/;"	v	file:
-TCPCLIENT_THREAD_DELAY	components/usr/sys_conf.h	10;"	d
+TCPCLIENT_THREAD_DELAY	components/usr/sys_conf.h	11;"	d
 TCP_THREAD_PRIO	main/main.c	/^    TCP_THREAD_PRIO,$/;"	e	enum:__anon1	file:
-TCP_THREAD_STACK_SIZE	main/main.c	41;"	d	file:
+TCP_THREAD_STACK_SIZE	main/main.c	43;"	d	file:
 TEST_THREAD_PRIO	main/main.c	/^    TEST_THREAD_PRIO=3,$/;"	e	enum:__anon1	file:
-TEST_THREAD_STACK_SIZE	main/main.c	40;"	d	file:
+TEST_THREAD_STACK_SIZE	main/main.c	42;"	d	file:
 TLVNode	components/kits/tlvparse.h	/^struct TLVNode{$/;"	s
 TLV_Copy	components/kits/tlvparse.c	/^static void TLV_Copy(struct TLVNode* dst,struct TLVNode* src)$/;"	f	file:
 TLV_CreateNode	components/kits/tlvparse.c	/^static struct TLVNode* TLV_CreateNode(void)$/;"	f	file:
@@ -2182,7 +2186,7 @@ WIFI_LED0	components/drv/io_drv.c	19;"	d	file:
 WIFI_LED1	components/drv/io_drv.c	20;"	d	file:
 WIFI_STDBY	components/drv/io_drv.c	/^    WIFI_STDBY = 0,$/;"	e	enum:__anon62	file:
 WITH_TASKS_INFO	components/cmd_system/cmd_system.c	27;"	d	file:
-WS_THREAD_DELAY	components/usr/sys_conf.h	7;"	d
+WS_THREAD_DELAY	components/usr/sys_conf.h	8;"	d
 _REG_MAP_CHECK_H	components/usr/reg_map_check.h	2;"	d
 _USE_MATH_DEFINES	components/kits/my_fft.c	9;"	d	file:
 __BIT_OP_H	components/kits/bit_op.h	2;"	d
@@ -2423,6 +2427,7 @@ get_value_from_nvs	components/cmd_nvs/cmd_nvs.c	/^static esp_err_t get_value_fro
 get_version	components/cmd_system/cmd_system.c	/^static int get_version(int argc, char **argv)$/;"	f	file:
 goertzel_calc	components/kits/goertzel.c	/^float goertzel_calc(float* din)$/;"	f
 goertzel_coef	components/kits/goertzel.c	/^static float goertzel_coef(uint32_t target_freq, uint32_t sample_freq, uint32_t N)$/;"	f	file:
+goertzel_coef_init	components/kits/goertzel.c	/^static void goertzel_coef_init(void)$/;"	f	file:
 goertzel_init	components/kits/goertzel.c	/^void goertzel_init(void)$/;"	f
 goertzel_lfilt	components/kits/goertzel.c	/^int16_t goertzel_lfilt(float din)$/;"	f
 gpio_isr_handler	components/drv/ads131_drv.c	/^static void IRAM_ATTR gpio_isr_handler(void* arg)$/;"	f	file:
@@ -2430,7 +2435,7 @@ gtz	components/usr/sys_conf.h	/^    conf_gtz_st gtz;$/;"	m	struct:__anon23
 gtz	components/usr/sys_conf.h	/^    stat_gtz_st		gtz;$/;"	m	struct:__anon29
 gtz_freq_bins	components/kits/goertzel.c	/^int32_t gtz_freq_bins(float* dst_buf, uint16_t *num)$/;"	f
 gtz_inst	components/kits/goertzel.c	/^gtz_st gtz_inst;$/;"	v
-gtz_reset	components/kits/goertzel.c	/^void gtz_reset(void)$/;"	f
+gtz_rst_opt	components/usr/reg_map_check.c	/^int16_t gtz_rst_opt(uint32_t pram)$/;"	f
 gtz_snr	components/kits/goertzel.c	/^static int32_t gtz_snr(float* dbuf, uint16_t cnt)$/;"	f	file:
 gtz_st	components/kits/goertzel.c	/^}gtz_st;$/;"	t	typeref:struct:__anon7	file:
 gvar_init	components/usr/global_var.c	/^int32_t gvar_init(void)$/;"	f
@@ -2440,7 +2445,7 @@ hardware_ver	components/usr/sys_conf.h	/^    uint32_t    hardware_ver;$/;"	m	str
 heap_size	components/cmd_system/cmd_system.c	/^static int heap_size(int argc, char **argv)$/;"	f	file:
 hold_time	components/usr/sys_conf.h	/^    uint32_t    hold_time;$/;"	m	struct:__anon22
 http_en	components/usr/sys_conf.h	/^    uint32_t    http_en;$/;"	m	struct:__anon16
-icnt	components/kits/goertzel.c	/^    uint32_t 	icnt;$/;"	m	struct:__anon7	file:
+icnt	components/kits/goertzel.c	/^    uint32_t 	icnt[GTZ_FLOWS_MAX];$/;"	m	struct:__anon7	file:
 id	components/usr/sys_conf.h	/^    uint16_t 	id;$/;"	m	struct:__anon31
 id	components/usr/sys_conf.h	/^    uint16_t 	id;$/;"	m	struct:__anon32
 in	components/kits/kfifo.h	/^    unsigned int in;\/* data is added at offset (in % size) *\/$/;"	m	struct:kfifo
@@ -2511,6 +2516,7 @@ info_version	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.
 info_version	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v
 init_load_default	components/usr/global_var.c	/^static uint16_t init_load_default(void)$/;"	f	file:
 init_load_status	components/usr/global_var.c	/^void init_load_status(void)$/;"	f
+init_thread	main/main.c	/^void init_thread(void* param)$/;"	f
 initialise_wifi	components/cli/cmd_wifi.c	/^static void initialise_wifi(void)$/;"	f	file:
 initialize_console	components/cli/cli.c	/^static void initialize_console(void)$/;"	f	file:
 initialize_filesystem	components/cli/cli.c	/^static void initialize_filesystem(void)$/;"	f	file:
@@ -2520,6 +2526,7 @@ ins_snr	components/usr/sys_conf.h	/^    float	   	ins_snr;$/;"	m	struct:__anon28
 int16	components/usr/sys_def.h	/^typedef short				int16;$/;"	t
 int32	components/usr/sys_def.h	/^typedef long				int32;$/;"	t
 int8	components/usr/sys_def.h	/^typedef char 				int8;$/;"	t
+intv	components/usr/sys_conf.h	/^    uint32_t    intv;$/;"	m	struct:__anon18
 intv_cnts	components/usr/sys_conf.h	/^    uint32_t    intv_cnts;$/;"	m	struct:__anon17
 io_ds_init	components/drv/io_drv.c	/^static void io_ds_init(void)$/;"	f	file:
 io_init	components/drv/io_drv.c	/^void io_init(void)$/;"	f
@@ -2682,9 +2689,9 @@ pub_topic	components/mqtt_tcp/mqtt_tcp.c	/^    char pub_topic[MQ_NVS_STR_SIZE];$
 pwr_fsm	components/drv/io_drv.c	/^    uint8_t 		pwr_fsm;$/;"	m	struct:__anon63	file:
 pwr_sts	components/usr/sys_conf.h	/^    uint32_t   	pwr_sts;$/;"	m	struct:__anon26
 pwr_val	components/usr/sys_conf.h	/^    uint32_t   	pwr_val;$/;"	m	struct:__anon26
-q0	components/kits/goertzel.c	/^    float 		q0[FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
-q1	components/kits/goertzel.c	/^    float 		q1[FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
-q2	components/kits/goertzel.c	/^    float 		q2[FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
+q0	components/kits/goertzel.c	/^    float 		q0[GTZ_FLOWS_MAX][FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
+q1	components/kits/goertzel.c	/^    float 		q1[GTZ_FLOWS_MAX][FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
+q2	components/kits/goertzel.c	/^    float 		q2[GTZ_FLOWS_MAX][FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
 qnxnto	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 qnxnto	build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 qnxnto	build/bootloader/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
@@ -2736,7 +2743,7 @@ register_wr_reg	components/usr/global_var.c	/^static void register_wr_reg()$/;"	
 regmap_args	components/usr/global_var.c	/^} regmap_args;$/;"	v	typeref:struct:__anon37	file:
 remainder	components/kits/meow_fft.h	/^    unsigned* remainder;$/;"	m	struct:Meow_Fft_Stages
 repeats	components/mqtt_tcp/mqtt_tcp.c	/^    struct arg_int *repeats;$/;"	m	struct:__anon5	typeref:struct:__anon5::arg_int	file:
-res	components/kits/goertzel.c	/^    float		res[FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
+res	components/kits/goertzel.c	/^    float		res[GTZ_FLOWS_MAX][FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
 reset	components/usr/sys_conf.h	/^    uint32_t    reset;$/;"	m	struct:__anon18
 restart	components/cmd_system/cmd_system.c	/^static int restart(int argc, char **argv)$/;"	f	file:
 restart	components/usr/sys_conf.h	/^    uint32_t    restart;$/;"	m	struct:__anon11

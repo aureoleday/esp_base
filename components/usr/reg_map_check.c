@@ -7,6 +7,7 @@
 #include "adxl_drv.h"
 #include "ads131_drv.h"
 #include "bit_op.h"
+#include "goertzel.h"
 
 extern sys_reg_st g_sys;
 
@@ -92,6 +93,12 @@ int16_t service_opt(uint32_t pram)
 
     //geo_pkg_en(g_sys.conf.geo.pkg_en);
     return 1;
+}
+
+int16_t gtz_rst_opt(uint32_t pram)
+{
+    goertzel_init();
+    return 0;
 }
 
 int16_t adc_sps_opt(uint32_t pram)

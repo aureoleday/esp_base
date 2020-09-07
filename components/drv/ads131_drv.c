@@ -373,7 +373,7 @@ void adc_init(void)
     };
     spi_device_interface_config_t devcfg=
     {
-            .clock_speed_hz=32*1000*1000,           //Clock out at 40 MHz
+            .clock_speed_hz=16*1000*1000,           //Clock out at 16 MHz
             .mode=1,                                //SPI mode 1
             .spics_io_num=PIN_NUM_CS,               //CS pin
             .post_cb = adc_read_pcb,

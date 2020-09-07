@@ -3,6 +3,7 @@
 #include "sys_def.h"
 
 //application delay
+#define		INIT_THREAD_DELAY           1
 #define		CMD_THREAD_DELAY            400
 #define		WS_THREAD_DELAY           	500
 #define		BKG_THREAD_DELAY            700
@@ -68,6 +69,7 @@ typedef struct
 typedef struct
 {
     uint32_t    n;
+    uint32_t    intv;
     uint32_t    target_freq;
     uint32_t    sample_freq;
     uint32_t    target_span;

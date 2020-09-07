@@ -5,6 +5,7 @@
 #include "cmd_resolve.h"
 //#include "mqtt_tcp.h"
 #include "sys_conf.h"
+#include "bit_op.h"
 #include "adxl_drv.h"
 #include "ads131_drv.h"
 #include "goertzel.h"
@@ -51,23 +52,21 @@ static void daq_timeout(void* arg)
 {
     extern sys_reg_st  g_sys;
     int out_len = 0;
+    int o_len = 0;
     //out_len = adxl_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
     out_len = adc_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
-    for(int i=0;i<(out_len>>2);i++)
-    {
-        goertzel_lfilt((float)*(daq_inst.tx_buf+4*i)*0.00000009933);
-    }
-    //for(int i=0;i<(out_len>>2),i++)
-    //{
-    //    printf(" %f ",(float)*(daq_inst.tx_buf+4*i));
-    //}
-    //printf(" %f\n",(float)*(daq_inst.tx_buf)*0.000000596);
+    o_len = out_len>>2;
     if(out_len == 0)
 //        printf("daq no d\n");
         ;
     else 
     {
-        daq_frame(daq_inst.tx_buf, out_len);
+        for(int i=0;i<o_len;i++)
+        {
+            goertzel_lfilt(*((int32_t *)daq_inst.tx_buf+i)*0.00000009933);
+        }
+        if(bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) == 1)
+            daq_frame(daq_inst.tx_buf, out_len);
     }
 }
 

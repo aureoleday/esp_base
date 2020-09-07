@@ -25,11 +25,13 @@
 #include "io_drv.h"
 #include "bat_drv.h"
 #include "adxl_drv.h"
+#include "goertzel.h"
 #include "reg_map_check.h"
 
 enum
 {
     TEST_THREAD_PRIO=3,
+    INIT_THREAD_PRIO,
     CLI_THREAD_PRIO,
     CMD_THREAD_PRIO,
     TCP_THREAD_PRIO,
@@ -41,35 +43,55 @@ enum
 #define TCP_THREAD_STACK_SIZE 	4096
 #define CLI_THREAD_STACK_SIZE 	4096
 #define CMD_THREAD_STACK_SIZE 	3072
+#define INIT_THREAD_STACK_SIZE 	3072
 
-static void tasks_create(void)
+void init_thread(void* param)
 {
-    xTaskCreate(&cli_thread,
-            "Task_cli",
-            CLI_THREAD_STACK_SIZE,
-            NULL,
-            CLI_THREAD_PRIO,
-            NULL);
-
-    xTaskCreate(&cmd_thread,
-            "Task_CMD",
-            CMD_THREAD_STACK_SIZE,
-            NULL,
-            CMD_THREAD_PRIO,
-            NULL);
-}
-
-void app_main()
-{
-    extern sys_reg_st  g_sys;
-    gvar_init();
-//    adxl_init();
+    vTaskDelay(INIT_THREAD_DELAY);
     adc_init();
     io_init();
     daq_init();
     bat_init();
     gvar_register();
     mqtt_register();
+    while(1)
+    {
+		vTaskDelay(100000 / portTICK_PERIOD_MS);
+    }
+}
+
+static void tasks_create(void)
+{
+    xTaskCreatePinnedToCore(&cli_thread,
+            "Task_cli",
+            CLI_THREAD_STACK_SIZE,
+            NULL,
+            CLI_THREAD_PRIO,
+            NULL,
+            0);
+
+    xTaskCreatePinnedToCore(&cmd_thread,
+            "Task_CMD",
+            CMD_THREAD_STACK_SIZE,
+            NULL,
+            CMD_THREAD_PRIO,
+            NULL,
+            1);
+
+    xTaskCreatePinnedToCore(&init_thread,
+            "Task_INIT",
+            INIT_THREAD_STACK_SIZE,
+            NULL,
+            INIT_THREAD_PRIO,
+            NULL,
+            1);
+}
+
+
+void app_main()
+{
+    extern sys_reg_st  g_sys;
+    gvar_init();
     tasks_create();
 	vTaskDelay(1000 / portTICK_PERIOD_MS);
     if(g_sys.conf.con.wifi_connect == 1)
@@ -80,6 +102,7 @@ void app_main()
     while(1)
     {
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
+        //print_gtz_snr();
         bat_update();
 		if(g_sys.conf.gen.restart == 9527)
 			esp_restart();

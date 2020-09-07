@@ -541,7 +541,7 @@ void cmd_thread(void* param)
 	{
 		recv_frame_fsm();
 		cmd_frame_resolve();
-		vTaskDelay(10 / portTICK_PERIOD_MS);
+		vTaskDelay(20 / portTICK_PERIOD_MS);
 	}
 }
 
