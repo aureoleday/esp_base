@@ -109,7 +109,7 @@ const sts_reg_map_st status_reg_map_inst[STAT_REG_MAP_NUM]=
     {	6,      &g_sys.stat.man.dev_type,               DEVICE_TYPE},
     {	7,      &g_sys.stat.gen.status_bm,              0},
     {	8,      &g_sys.stat.geo.kfifo_drop_cnt,         0},
-    {	9,      NULL,                                   0},
+    {	9,      &g_sys.stat.adc.drop_cnt,               0},
     {	10,     NULL,                                   0},
     {	11,  	(void*)&g_sys.stat.gtz.acc_snr,         0},
     {	12,  	(void*)&g_sys.stat.gtz.signal_level,    0},

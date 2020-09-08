@@ -111,11 +111,11 @@ int16_t goertzel_lfilt(float din)
     int16_t ret = 0;
     uint32_t i,j;
    
-    //x = din * window(gtz_inst.icnt,g_sys.conf.gtz.n);
     n = 1<<g_sys.conf.gtz.intv;
     gtz_n = g_sys.conf.gtz.n; 
     //gtz_n = 1<<g_sys.conf.gtz.n; 
     x = din; 
+    //x = din * window(gtz_inst.icnt[0],g_sys.conf.gtz.n);
     for(i=0;i<n;i++)
     {
         for(j=0;j<(2*g_sys.conf.gtz.target_span+1);j++)

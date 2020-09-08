@@ -74,12 +74,12 @@ static void daq_timeout(void* arg)
             ;
         else 
         {
+            if(bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) != 0)
+                daq_frame(daq_inst.tx_buf, out_len);
             for(int i=0;i<o_len;i++)
             {
                 goertzel_lfilt(*((int32_t *)daq_inst.tx_buf+i)*0.00000009933);
             }
-            //if(bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) == 1)
-                daq_frame(daq_inst.tx_buf, out_len);
         }   
     }
 }

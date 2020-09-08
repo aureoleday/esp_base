@@ -5,47 +5,47 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 ADC_CH	components/drv/bat_drv.c	11;"	d	file:
-ADC_DEVID_LSB	components/drv/ads131_drv.h	/^   ADC_DEVID_LSB = 0x01$/;"	e	enum:__anon59
-ADC_DEVID_MSB	components/drv/ads131_drv.h	/^   ADC_DEVID_MSB = 0x00,$/;"	e	enum:__anon59
+ADC_DEVID_LSB	components/drv/ads131_drv.h	/^   ADC_DEVID_LSB = 0x01$/;"	e	enum:__anon60
+ADC_DEVID_MSB	components/drv/ads131_drv.h	/^   ADC_DEVID_MSB = 0x00,$/;"	e	enum:__anon60
 ADC_FIFO_SIZE	components/drv/ads131_drv.h	13;"	d
-ADC_register_t	components/drv/ads131_drv.h	/^} ADC_register_t;$/;"	t	typeref:enum:__anon59
-ADXL355_register_t	components/drv/adxl_drv.h	/^} ADXL355_register_t;$/;"	t	typeref:enum:__anon52
-ADXL_ACT_COUNT	components/drv/adxl_drv.h	/^   ADXL_ACT_COUNT = 0x27,$/;"	e	enum:__anon52
-ADXL_ACT_EN	components/drv/adxl_drv.h	/^   ADXL_ACT_EN = 0x24,$/;"	e	enum:__anon52
-ADXL_ACT_THRESH_H	components/drv/adxl_drv.h	/^   ADXL_ACT_THRESH_H = 0x25,$/;"	e	enum:__anon52
-ADXL_ACT_THRESH_L	components/drv/adxl_drv.h	/^   ADXL_ACT_THRESH_L = 0x26,$/;"	e	enum:__anon52
-ADXL_DEVID_AD	components/drv/adxl_drv.h	/^   ADXL_DEVID_AD = 0x00,$/;"	e	enum:__anon52
-ADXL_DEVID_MST	components/drv/adxl_drv.h	/^   ADXL_DEVID_MST = 0x01,$/;"	e	enum:__anon52
-ADXL_FIFO_DATA	components/drv/adxl_drv.h	/^   ADXL_FIFO_DATA = 0x11,$/;"	e	enum:__anon52
-ADXL_FIFO_ENTRIES	components/drv/adxl_drv.h	/^   ADXL_FIFO_ENTRIES = 0x05,$/;"	e	enum:__anon52
-ADXL_FIFO_SAMPLES	components/drv/adxl_drv.h	/^   ADXL_FIFO_SAMPLES = 0x29,$/;"	e	enum:__anon52
-ADXL_FILTER	components/drv/adxl_drv.h	/^   ADXL_FILTER = 0x28,$/;"	e	enum:__anon52
-ADXL_INT_MAP	components/drv/adxl_drv.h	/^   ADXL_INT_MAP = 0x2A,$/;"	e	enum:__anon52
-ADXL_OFFSET_X_H	components/drv/adxl_drv.h	/^   ADXL_OFFSET_X_H = 0x1E,$/;"	e	enum:__anon52
-ADXL_OFFSET_X_L	components/drv/adxl_drv.h	/^   ADXL_OFFSET_X_L = 0x1F,$/;"	e	enum:__anon52
-ADXL_OFFSET_Y_H	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Y_H = 0x20,$/;"	e	enum:__anon52
-ADXL_OFFSET_Y_L	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Y_L = 0x21,$/;"	e	enum:__anon52
-ADXL_OFFSET_Z_H	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Z_H = 0x22,$/;"	e	enum:__anon52
-ADXL_OFFSET_Z_L	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Z_L = 0x23,$/;"	e	enum:__anon52
-ADXL_PARTID	components/drv/adxl_drv.h	/^   ADXL_PARTID = 0x02,$/;"	e	enum:__anon52
-ADXL_POWER_CTL	components/drv/adxl_drv.h	/^   ADXL_POWER_CTL = 0x2D,$/;"	e	enum:__anon52
-ADXL_RANGE	components/drv/adxl_drv.h	/^   ADXL_RANGE = 0x2C,$/;"	e	enum:__anon52
-ADXL_RESET	components/drv/adxl_drv.h	/^   ADXL_RESET = 0x2F$/;"	e	enum:__anon52
-ADXL_REVID	components/drv/adxl_drv.h	/^   ADXL_REVID = 0x03,$/;"	e	enum:__anon52
-ADXL_SELF_TEST	components/drv/adxl_drv.h	/^   ADXL_SELF_TEST = 0x2E,$/;"	e	enum:__anon52
-ADXL_STATUS	components/drv/adxl_drv.h	/^   ADXL_STATUS = 0x04,$/;"	e	enum:__anon52
-ADXL_SYNC	components/drv/adxl_drv.h	/^   ADXL_SYNC = 0x2B,$/;"	e	enum:__anon52
-ADXL_TEMP1	components/drv/adxl_drv.h	/^   ADXL_TEMP1 = 0x07,$/;"	e	enum:__anon52
-ADXL_TEMP2	components/drv/adxl_drv.h	/^   ADXL_TEMP2 = 0x06,$/;"	e	enum:__anon52
-ADXL_XDATA1	components/drv/adxl_drv.h	/^   ADXL_XDATA1 = 0x0A,$/;"	e	enum:__anon52
-ADXL_XDATA2	components/drv/adxl_drv.h	/^   ADXL_XDATA2 = 0x09,$/;"	e	enum:__anon52
-ADXL_XDATA3	components/drv/adxl_drv.h	/^   ADXL_XDATA3 = 0x08,$/;"	e	enum:__anon52
-ADXL_YDATA1	components/drv/adxl_drv.h	/^   ADXL_YDATA1 = 0x0D,$/;"	e	enum:__anon52
-ADXL_YDATA2	components/drv/adxl_drv.h	/^   ADXL_YDATA2 = 0x0C,$/;"	e	enum:__anon52
-ADXL_YDATA3	components/drv/adxl_drv.h	/^   ADXL_YDATA3 = 0x0B,$/;"	e	enum:__anon52
-ADXL_ZDATA1	components/drv/adxl_drv.h	/^   ADXL_ZDATA1 = 0x10,$/;"	e	enum:__anon52
-ADXL_ZDATA2	components/drv/adxl_drv.h	/^   ADXL_ZDATA2 = 0x0F,$/;"	e	enum:__anon52
-ADXL_ZDATA3	components/drv/adxl_drv.h	/^   ADXL_ZDATA3 = 0x0E,$/;"	e	enum:__anon52
+ADC_register_t	components/drv/ads131_drv.h	/^} ADC_register_t;$/;"	t	typeref:enum:__anon60
+ADXL355_register_t	components/drv/adxl_drv.h	/^} ADXL355_register_t;$/;"	t	typeref:enum:__anon53
+ADXL_ACT_COUNT	components/drv/adxl_drv.h	/^   ADXL_ACT_COUNT = 0x27,$/;"	e	enum:__anon53
+ADXL_ACT_EN	components/drv/adxl_drv.h	/^   ADXL_ACT_EN = 0x24,$/;"	e	enum:__anon53
+ADXL_ACT_THRESH_H	components/drv/adxl_drv.h	/^   ADXL_ACT_THRESH_H = 0x25,$/;"	e	enum:__anon53
+ADXL_ACT_THRESH_L	components/drv/adxl_drv.h	/^   ADXL_ACT_THRESH_L = 0x26,$/;"	e	enum:__anon53
+ADXL_DEVID_AD	components/drv/adxl_drv.h	/^   ADXL_DEVID_AD = 0x00,$/;"	e	enum:__anon53
+ADXL_DEVID_MST	components/drv/adxl_drv.h	/^   ADXL_DEVID_MST = 0x01,$/;"	e	enum:__anon53
+ADXL_FIFO_DATA	components/drv/adxl_drv.h	/^   ADXL_FIFO_DATA = 0x11,$/;"	e	enum:__anon53
+ADXL_FIFO_ENTRIES	components/drv/adxl_drv.h	/^   ADXL_FIFO_ENTRIES = 0x05,$/;"	e	enum:__anon53
+ADXL_FIFO_SAMPLES	components/drv/adxl_drv.h	/^   ADXL_FIFO_SAMPLES = 0x29,$/;"	e	enum:__anon53
+ADXL_FILTER	components/drv/adxl_drv.h	/^   ADXL_FILTER = 0x28,$/;"	e	enum:__anon53
+ADXL_INT_MAP	components/drv/adxl_drv.h	/^   ADXL_INT_MAP = 0x2A,$/;"	e	enum:__anon53
+ADXL_OFFSET_X_H	components/drv/adxl_drv.h	/^   ADXL_OFFSET_X_H = 0x1E,$/;"	e	enum:__anon53
+ADXL_OFFSET_X_L	components/drv/adxl_drv.h	/^   ADXL_OFFSET_X_L = 0x1F,$/;"	e	enum:__anon53
+ADXL_OFFSET_Y_H	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Y_H = 0x20,$/;"	e	enum:__anon53
+ADXL_OFFSET_Y_L	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Y_L = 0x21,$/;"	e	enum:__anon53
+ADXL_OFFSET_Z_H	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Z_H = 0x22,$/;"	e	enum:__anon53
+ADXL_OFFSET_Z_L	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Z_L = 0x23,$/;"	e	enum:__anon53
+ADXL_PARTID	components/drv/adxl_drv.h	/^   ADXL_PARTID = 0x02,$/;"	e	enum:__anon53
+ADXL_POWER_CTL	components/drv/adxl_drv.h	/^   ADXL_POWER_CTL = 0x2D,$/;"	e	enum:__anon53
+ADXL_RANGE	components/drv/adxl_drv.h	/^   ADXL_RANGE = 0x2C,$/;"	e	enum:__anon53
+ADXL_RESET	components/drv/adxl_drv.h	/^   ADXL_RESET = 0x2F$/;"	e	enum:__anon53
+ADXL_REVID	components/drv/adxl_drv.h	/^   ADXL_REVID = 0x03,$/;"	e	enum:__anon53
+ADXL_SELF_TEST	components/drv/adxl_drv.h	/^   ADXL_SELF_TEST = 0x2E,$/;"	e	enum:__anon53
+ADXL_STATUS	components/drv/adxl_drv.h	/^   ADXL_STATUS = 0x04,$/;"	e	enum:__anon53
+ADXL_SYNC	components/drv/adxl_drv.h	/^   ADXL_SYNC = 0x2B,$/;"	e	enum:__anon53
+ADXL_TEMP1	components/drv/adxl_drv.h	/^   ADXL_TEMP1 = 0x07,$/;"	e	enum:__anon53
+ADXL_TEMP2	components/drv/adxl_drv.h	/^   ADXL_TEMP2 = 0x06,$/;"	e	enum:__anon53
+ADXL_XDATA1	components/drv/adxl_drv.h	/^   ADXL_XDATA1 = 0x0A,$/;"	e	enum:__anon53
+ADXL_XDATA2	components/drv/adxl_drv.h	/^   ADXL_XDATA2 = 0x09,$/;"	e	enum:__anon53
+ADXL_XDATA3	components/drv/adxl_drv.h	/^   ADXL_XDATA3 = 0x08,$/;"	e	enum:__anon53
+ADXL_YDATA1	components/drv/adxl_drv.h	/^   ADXL_YDATA1 = 0x0D,$/;"	e	enum:__anon53
+ADXL_YDATA2	components/drv/adxl_drv.h	/^   ADXL_YDATA2 = 0x0C,$/;"	e	enum:__anon53
+ADXL_YDATA3	components/drv/adxl_drv.h	/^   ADXL_YDATA3 = 0x0B,$/;"	e	enum:__anon53
+ADXL_ZDATA1	components/drv/adxl_drv.h	/^   ADXL_ZDATA1 = 0x10,$/;"	e	enum:__anon53
+ADXL_ZDATA2	components/drv/adxl_drv.h	/^   ADXL_ZDATA2 = 0x0F,$/;"	e	enum:__anon53
+ADXL_ZDATA3	components/drv/adxl_drv.h	/^   ADXL_ZDATA3 = 0x0E,$/;"	e	enum:__anon53
 ARCHITECTURE_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	410;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	413;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	416;"	d	file:
@@ -157,12 +157,12 @@ Bit_RESET	components/drv/io_drv.c	25;"	d	file:
 Bit_SET	components/drv/io_drv.c	26;"	d	file:
 CLI_THREAD_PRIO	main/main.c	/^    CLI_THREAD_PRIO,$/;"	e	enum:__anon1	file:
 CLI_THREAD_STACK_SIZE	main/main.c	44;"	d	file:
-CMD_ERR_ADDR_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_ADDR_OR,$/;"	e	enum:__anon33	file:
-CMD_ERR_CONFLICT_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_CONFLICT_OR,$/;"	e	enum:__anon33	file:
-CMD_ERR_DATA_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_DATA_OR,$/;"	e	enum:__anon33	file:
-CMD_ERR_NOERR	components/usr/cmd_resolve.c	/^    CMD_ERR_NOERR = 0,$/;"	e	enum:__anon33	file:
-CMD_ERR_UNKNOWN	components/usr/cmd_resolve.c	/^    CMD_ERR_UNKNOWN$/;"	e	enum:__anon33	file:
-CMD_ERR_WR_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_WR_OR,$/;"	e	enum:__anon33	file:
+CMD_ERR_ADDR_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_ADDR_OR,$/;"	e	enum:__anon34	file:
+CMD_ERR_CONFLICT_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_CONFLICT_OR,$/;"	e	enum:__anon34	file:
+CMD_ERR_DATA_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_DATA_OR,$/;"	e	enum:__anon34	file:
+CMD_ERR_NOERR	components/usr/cmd_resolve.c	/^    CMD_ERR_NOERR = 0,$/;"	e	enum:__anon34	file:
+CMD_ERR_UNKNOWN	components/usr/cmd_resolve.c	/^    CMD_ERR_UNKNOWN$/;"	e	enum:__anon34	file:
+CMD_ERR_WR_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_WR_OR,$/;"	e	enum:__anon34	file:
 CMD_FRAME_FSM_DATA	components/usr/cmd_resolve.c	40;"	d	file:
 CMD_FRAME_FSM_SYNC	components/usr/cmd_resolve.c	38;"	d	file:
 CMD_FRAME_FSM_TL	components/usr/cmd_resolve.c	39;"	d	file:
@@ -171,9 +171,9 @@ CMD_FRAME_TAG_M_SYNC	components/usr/cmd_resolve.c	/^const static unsigned char C
 CMD_FRAME_TAG_S_SYNC	components/usr/cmd_resolve.c	/^const static unsigned char CMD_FRAME_TAG_S_SYNC[2]={0x9b,0xdf};$/;"	v	file:
 CMD_FSM_TIMEOUT	components/usr/cmd_resolve.c	36;"	d	file:
 CMD_LOCK	components/drv/ads131_drv.c	33;"	d	file:
-CMD_NOT_READY	components/usr/cmd_resolve.c	/^    CMD_NOT_READY,$/;"	e	enum:__anon33	file:
+CMD_NOT_READY	components/usr/cmd_resolve.c	/^    CMD_NOT_READY,$/;"	e	enum:__anon34	file:
 CMD_NULL	components/drv/ads131_drv.c	31;"	d	file:
-CMD_RDFIFO_EMPTY	components/usr/cmd_resolve.c	/^    CMD_RDFIFO_EMPTY,$/;"	e	enum:__anon33	file:
+CMD_RDFIFO_EMPTY	components/usr/cmd_resolve.c	/^    CMD_RDFIFO_EMPTY,$/;"	e	enum:__anon34	file:
 CMD_RD_REG	components/usr/cmd_resolve.c	42;"	d	file:
 CMD_RP_PKG	components/usr/cmd_resolve.c	44;"	d	file:
 CMD_RST	components/drv/ads131_drv.c	32;"	d	file:
@@ -184,7 +184,7 @@ CMD_THREAD_PRIO	main/main.c	/^    CMD_THREAD_PRIO,$/;"	e	enum:__anon1	file:
 CMD_THREAD_STACK_SIZE	main/main.c	45;"	d	file:
 CMD_UNLOCK	components/drv/ads131_drv.c	34;"	d	file:
 CMD_WAKEUP	components/drv/ads131_drv.c	35;"	d	file:
-CMD_WRFIFO_FULL	components/usr/cmd_resolve.c	/^    CMD_WRFIFO_FULL,$/;"	e	enum:__anon33	file:
+CMD_WRFIFO_FULL	components/usr/cmd_resolve.c	/^    CMD_WRFIFO_FULL,$/;"	e	enum:__anon34	file:
 CMD_WR_REG	components/usr/cmd_resolve.c	43;"	d	file:
 COMPILER_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	101;"	d	file:
 COMPILER_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	108;"	d	file:
@@ -1667,7 +1667,7 @@ Complex	components/kits/meow_fft.h	/^typedef const Meow_FFT_Complex Complex;$/;"
 DAQ_CHANNEL_MAX	components/usr/daq.c	16;"	d	file:
 DAQ_RX_BUF_DEPTH	components/usr/daq.c	14;"	d	file:
 DAQ_TX_BUF_DEPTH	components/usr/daq.c	15;"	d	file:
-DATA_TRANSMITTING	components/drv/io_drv.c	/^    DATA_TRANSMITTING$/;"	e	enum:__anon62	file:
+DATA_TRANSMITTING	components/drv/io_drv.c	/^    DATA_TRANSMITTING$/;"	e	enum:__anon63	file:
 DEC	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	453;"	d	file:
 DEC	build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	438;"	d	file:
 DEC	build/bootloader/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	453;"	d	file:
@@ -1687,21 +1687,21 @@ DEV_GEO_RTX_SIZE	components/drv/adxl_drv.h	14;"	d
 ESP_INTR_FLAG_DEFAULT	components/drv/ads131_drv.c	37;"	d	file:
 ESP_INTR_FLAG_DEFAULT	components/drv/io_drv.c	28;"	d	file:
 FFT_MAX_ORD	components/kits/my_fft.h	14;"	d
-FRAME_CTRL_POS	components/usr/cmd_resolve.c	/^    FRAME_CTRL_POS = 2,$/;"	e	enum:__anon34	file:
-FRAME_PLD_APOS	components/usr/cmd_resolve.c	/^    FRAME_PLD_APOS = 0,$/;"	e	enum:__anon34	file:
-FRAME_PLD_DPOS	components/usr/cmd_resolve.c	/^    FRAME_PLD_DPOS = 1,$/;"	e	enum:__anon34	file:
-FRAME_SYNC_POS	components/usr/cmd_resolve.c	/^    FRAME_SYNC_POS = 0,$/;"	e	enum:__anon34	file:
+FRAME_CTRL_POS	components/usr/cmd_resolve.c	/^    FRAME_CTRL_POS = 2,$/;"	e	enum:__anon35	file:
+FRAME_PLD_APOS	components/usr/cmd_resolve.c	/^    FRAME_PLD_APOS = 0,$/;"	e	enum:__anon35	file:
+FRAME_PLD_DPOS	components/usr/cmd_resolve.c	/^    FRAME_PLD_DPOS = 1,$/;"	e	enum:__anon35	file:
+FRAME_SYNC_POS	components/usr/cmd_resolve.c	/^    FRAME_SYNC_POS = 0,$/;"	e	enum:__anon35	file:
 FREQ_SPAN_MAX	components/kits/goertzel.c	14;"	d	file:
-GBM_BT	components/usr/sys_def.h	/^    GBM_BT,$/;"	e	enum:__anon41
-GBM_DAQ	components/usr/sys_def.h	/^    GBM_DAQ,$/;"	e	enum:__anon41
-GBM_DHCP	components/usr/sys_def.h	/^    GBM_DHCP,$/;"	e	enum:__anon41
-GBM_DNS	components/usr/sys_def.h	/^    GBM_DNS,$/;"	e	enum:__anon41
-GBM_GEO	components/usr/sys_def.h	/^    GBM_GEO,$/;"	e	enum:__anon41
-GBM_HTTP	components/usr/sys_def.h	/^    GBM_HTTP,$/;"	e	enum:__anon41
-GBM_LINK	components/usr/sys_def.h	/^    GBM_LINK = 0,$/;"	e	enum:__anon41
-GBM_MQTT	components/usr/sys_def.h	/^    GBM_MQTT,$/;"	e	enum:__anon41
-GBM_TCP	components/usr/sys_def.h	/^    GBM_TCP,$/;"	e	enum:__anon41
-GBM_WIFI	components/usr/sys_def.h	/^    GBM_WIFI,$/;"	e	enum:__anon41
+GBM_BT	components/usr/sys_def.h	/^    GBM_BT,$/;"	e	enum:__anon42
+GBM_DAQ	components/usr/sys_def.h	/^    GBM_DAQ,$/;"	e	enum:__anon42
+GBM_DHCP	components/usr/sys_def.h	/^    GBM_DHCP,$/;"	e	enum:__anon42
+GBM_DNS	components/usr/sys_def.h	/^    GBM_DNS,$/;"	e	enum:__anon42
+GBM_GEO	components/usr/sys_def.h	/^    GBM_GEO,$/;"	e	enum:__anon42
+GBM_HTTP	components/usr/sys_def.h	/^    GBM_HTTP,$/;"	e	enum:__anon42
+GBM_LINK	components/usr/sys_def.h	/^    GBM_LINK = 0,$/;"	e	enum:__anon42
+GBM_MQTT	components/usr/sys_def.h	/^    GBM_MQTT,$/;"	e	enum:__anon42
+GBM_TCP	components/usr/sys_def.h	/^    GBM_TCP,$/;"	e	enum:__anon42
+GBM_WIFI	components/usr/sys_def.h	/^    GBM_WIFI,$/;"	e	enum:__anon42
 GEO_THREAD_DELAY	components/usr/sys_conf.h	10;"	d
 GPIO_INPUT_PIN_SEL	components/drv/ads131_drv.c	28;"	d	file:
 GPIO_INPUT_PIN_SEL	components/drv/io_drv.c	29;"	d	file:
@@ -1722,10 +1722,10 @@ ID_VOID_MAIN	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
 ID_VOID_MAIN	build/bootloader/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
 ID_VOID_MAIN	components/cmd_nvs/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
 ID_VOID_MAIN	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
-INIT_MODE_DEBUT	components/usr/sys_def.h	/^    INIT_MODE_DEBUT,$/;"	e	enum:__anon39
-INIT_MODE_DEFAULT	components/usr/sys_def.h	/^    INIT_MODE_DEFAULT$/;"	e	enum:__anon39
-INIT_MODE_FACTORY	components/usr/sys_def.h	/^    INIT_MODE_FACTORY,$/;"	e	enum:__anon39
-INIT_MODE_USR	components/usr/sys_def.h	/^    INIT_MODE_USR = 0,    $/;"	e	enum:__anon39
+INIT_MODE_DEBUT	components/usr/sys_def.h	/^    INIT_MODE_DEBUT,$/;"	e	enum:__anon40
+INIT_MODE_DEFAULT	components/usr/sys_def.h	/^    INIT_MODE_DEFAULT$/;"	e	enum:__anon40
+INIT_MODE_FACTORY	components/usr/sys_def.h	/^    INIT_MODE_FACTORY,$/;"	e	enum:__anon40
+INIT_MODE_USR	components/usr/sys_def.h	/^    INIT_MODE_USR = 0,    $/;"	e	enum:__anon40
 INIT_THREAD_DELAY	components/usr/sys_conf.h	6;"	d
 INIT_THREAD_PRIO	main/main.c	/^    INIT_THREAD_PRIO,$/;"	e	enum:__anon1	file:
 INIT_THREAD_STACK_SIZE	main/main.c	46;"	d	file:
@@ -2027,30 +2027,30 @@ PLATFORM_ID	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompiler
 PORT	components/mqtt_tcp/tcp_server.c	30;"	d	file:
 PROJECT_NAME	Makefile	/^PROJECT_NAME := console$/;"	m
 PWR_EN	components/drv/io_drv.c	17;"	d	file:
-PWR_MODE_IDLE	components/usr/sys_def.h	/^    PWR_MODE_IDLE = 0,    $/;"	e	enum:__anon43
-PWR_MODE_OFF	components/usr/sys_def.h	/^    PWR_MODE_OFF,$/;"	e	enum:__anon43
-PWR_MODE_ON	components/usr/sys_def.h	/^    PWR_MODE_ON,$/;"	e	enum:__anon43
-PWR_MODE_ONGAP	components/usr/sys_def.h	/^    PWR_MODE_ONGAP,$/;"	e	enum:__anon43
-PWR_MODE_PROFF	components/usr/sys_def.h	/^    PWR_MODE_PROFF,$/;"	e	enum:__anon43
-PWR_MODE_PRON	components/usr/sys_def.h	/^    PWR_MODE_PRON,$/;"	e	enum:__anon43
+PWR_MODE_IDLE	components/usr/sys_def.h	/^    PWR_MODE_IDLE = 0,    $/;"	e	enum:__anon44
+PWR_MODE_OFF	components/usr/sys_def.h	/^    PWR_MODE_OFF,$/;"	e	enum:__anon44
+PWR_MODE_ON	components/usr/sys_def.h	/^    PWR_MODE_ON,$/;"	e	enum:__anon44
+PWR_MODE_ONGAP	components/usr/sys_def.h	/^    PWR_MODE_ONGAP,$/;"	e	enum:__anon44
+PWR_MODE_PROFF	components/usr/sys_def.h	/^    PWR_MODE_PROFF,$/;"	e	enum:__anon44
+PWR_MODE_PRON	components/usr/sys_def.h	/^    PWR_MODE_PRON,$/;"	e	enum:__anon44
 PWR_ON	components/drv/io_drv.c	12;"	d	file:
-REGMAP_ERR_ADDR_OR	components/usr/sys_def.h	/^    REGMAP_ERR_ADDR_OR,$/;"	e	enum:__anon38
-REGMAP_ERR_CONFLICT_OR	components/usr/sys_def.h	/^    REGMAP_ERR_CONFLICT_OR$/;"	e	enum:__anon38
-REGMAP_ERR_DATA_OR	components/usr/sys_def.h	/^    REGMAP_ERR_DATA_OR,$/;"	e	enum:__anon38
-REGMAP_ERR_NOERR	components/usr/sys_def.h	/^    REGMAP_ERR_NOERR = 0,$/;"	e	enum:__anon38
-REGMAP_ERR_PERM_OR	components/usr/sys_def.h	/^    REGMAP_ERR_PERM_OR,$/;"	e	enum:__anon38
-REGMAP_ERR_WR_OR	components/usr/sys_def.h	/^    REGMAP_ERR_WR_OR,$/;"	e	enum:__anon38
+REGMAP_ERR_ADDR_OR	components/usr/sys_def.h	/^    REGMAP_ERR_ADDR_OR,$/;"	e	enum:__anon39
+REGMAP_ERR_CONFLICT_OR	components/usr/sys_def.h	/^    REGMAP_ERR_CONFLICT_OR$/;"	e	enum:__anon39
+REGMAP_ERR_DATA_OR	components/usr/sys_def.h	/^    REGMAP_ERR_DATA_OR,$/;"	e	enum:__anon39
+REGMAP_ERR_NOERR	components/usr/sys_def.h	/^    REGMAP_ERR_NOERR = 0,$/;"	e	enum:__anon39
+REGMAP_ERR_PERM_OR	components/usr/sys_def.h	/^    REGMAP_ERR_PERM_OR,$/;"	e	enum:__anon39
+REGMAP_ERR_WR_OR	components/usr/sys_def.h	/^    REGMAP_ERR_WR_OR,$/;"	e	enum:__anon39
 SAMPLE_CHANNEL_MAX	components/usr/sys_conf.h	12;"	d
-SENSOR_ADDR2	components/usr/sys_def.h	/^    SENSOR_ADDR2,$/;"	e	enum:__anon40
-SENSOR_BT	components/usr/sys_def.h	/^    SENSOR_BT,$/;"	e	enum:__anon40
-SENSOR_DO2	components/usr/sys_def.h	/^    SENSOR_DO2$/;"	e	enum:__anon40
-SENSOR_MULTI	components/usr/sys_def.h	/^    SENSOR_MULTI,$/;"	e	enum:__anon40
-SENSOR_NONE	components/usr/sys_def.h	/^    SENSOR_NONE = 0,    $/;"	e	enum:__anon40
-SENSOR_PH	components/usr/sys_def.h	/^    SENSOR_PH,$/;"	e	enum:__anon40
+SENSOR_ADDR2	components/usr/sys_def.h	/^    SENSOR_ADDR2,$/;"	e	enum:__anon41
+SENSOR_BT	components/usr/sys_def.h	/^    SENSOR_BT,$/;"	e	enum:__anon41
+SENSOR_DO2	components/usr/sys_def.h	/^    SENSOR_DO2$/;"	e	enum:__anon41
+SENSOR_MULTI	components/usr/sys_def.h	/^    SENSOR_MULTI,$/;"	e	enum:__anon41
+SENSOR_NONE	components/usr/sys_def.h	/^    SENSOR_NONE = 0,    $/;"	e	enum:__anon41
+SENSOR_PH	components/usr/sys_def.h	/^    SENSOR_PH,$/;"	e	enum:__anon41
 SERIAL_NO	components/usr/sys_def.h	35;"	d
-SERVICE_HTTP	components/usr/sys_def.h	/^    SERVICE_HTTP,$/;"	e	enum:__anon42
-SERVICE_MQTT	components/usr/sys_def.h	/^    SERVICE_MQTT,$/;"	e	enum:__anon42
-SERVICE_TCP	components/usr/sys_def.h	/^    SERVICE_TCP = 0,    $/;"	e	enum:__anon42
+SERVICE_HTTP	components/usr/sys_def.h	/^    SERVICE_HTTP,$/;"	e	enum:__anon43
+SERVICE_MQTT	components/usr/sys_def.h	/^    SERVICE_MQTT,$/;"	e	enum:__anon43
+SERVICE_TCP	components/usr/sys_def.h	/^    SERVICE_TCP = 0,    $/;"	e	enum:__anon43
 SIMULATE_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	163;"	d	file:
 SIMULATE_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	178;"	d	file:
 SIMULATE_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	21;"	d	file:
@@ -2181,10 +2181,10 @@ USR_MAX_PRIO	main/main.c	/^    USR_MAX_PRIO$/;"	e	enum:__anon1	file:
 VI_EF	components/drv/io_drv.c	15;"	d	file:
 VI_OD	components/drv/io_drv.c	14;"	d	file:
 Value	components/kits/tlvparse.h	/^	unsigned char* Value;		\/*	V 	*\/$/;"	m	struct:TLVNode
-WIFI_CONNECTED	components/drv/io_drv.c	/^    WIFI_CONNECTED,$/;"	e	enum:__anon62	file:
+WIFI_CONNECTED	components/drv/io_drv.c	/^    WIFI_CONNECTED,$/;"	e	enum:__anon63	file:
 WIFI_LED0	components/drv/io_drv.c	19;"	d	file:
 WIFI_LED1	components/drv/io_drv.c	20;"	d	file:
-WIFI_STDBY	components/drv/io_drv.c	/^    WIFI_STDBY = 0,$/;"	e	enum:__anon62	file:
+WIFI_STDBY	components/drv/io_drv.c	/^    WIFI_STDBY = 0,$/;"	e	enum:__anon63	file:
 WITH_TASKS_INFO	components/cmd_system/cmd_system.c	27;"	d	file:
 WS_THREAD_DELAY	components/usr/sys_conf.h	8;"	d
 _REG_MAP_CHECK_H	components/usr/reg_map_check.h	2;"	d
@@ -2199,28 +2199,29 @@ __SYS_DEF	components/usr/sys_def.h	2;"	d
 __TLVPARSE__H__	components/kits/tlvparse.h	8;"	d
 _binary_x509_crt_bundle_end	build/x509_crt_bundle.S	/^_binary_x509_crt_bundle_end: \/* for objcopy compatibility *\/$/;"	l
 _binary_x509_crt_bundle_start	build/x509_crt_bundle.S	/^_binary_x509_crt_bundle_start: \/* for objcopy compatibility *\/$/;"	l
-acc_noise_level	components/usr/sys_conf.h	/^    float		acc_noise_level;$/;"	m	struct:__anon28
-acc_offset	components/usr/sys_conf.h	/^    int32_t		acc_offset;$/;"	m	struct:__anon28
+acc_noise_level	components/usr/sys_conf.h	/^    float		acc_noise_level;$/;"	m	struct:__anon29
+acc_offset	components/usr/sys_conf.h	/^    int32_t		acc_offset;$/;"	m	struct:__anon29
 acc_q	components/usr/sys_conf.h	/^    uint32_t    acc_q;$/;"	m	struct:__anon18
-acc_rank	components/usr/sys_conf.h	/^    uint32_t   	acc_rank;$/;"	m	struct:__anon28
-acc_signal_level	components/usr/sys_conf.h	/^    float		acc_signal_level;$/;"	m	struct:__anon28
-acc_snr	components/usr/sys_conf.h	/^    float	   	acc_snr;$/;"	m	struct:__anon28
+acc_signal_level	components/usr/sys_conf.h	/^    float		acc_signal_level;$/;"	m	struct:__anon29
+acc_snr	components/usr/sys_conf.h	/^    float	   	acc_snr;$/;"	m	struct:__anon29
 acc_times	components/usr/sys_conf.h	/^    uint32_t    acc_times;$/;"	m	struct:__anon17
-accum_sum	components/drv/bat_drv.c	/^	uint32_t	accum_sum;$/;"	m	struct:__anon60	file:
+accum_sum	components/drv/bat_drv.c	/^	uint32_t	accum_sum;$/;"	m	struct:__anon61	file:
 adc	components/usr/sys_conf.h	/^    conf_adc_st adc;$/;"	m	struct:__anon23
-adc_args	components/drv/ads131_drv.c	/^} adc_args;$/;"	v	typeref:struct:__anon55	file:
+adc	components/usr/sys_conf.h	/^    stat_adc_st		adc;$/;"	m	struct:__anon30
+adc_args	components/drv/ads131_drv.c	/^} adc_args;$/;"	v	typeref:struct:__anon56	file:
 adc_chars	components/drv/bat_drv.c	/^static esp_adc_cal_characteristics_t *adc_chars;$/;"	v	file:
-adc_cmd	components/drv/ads131_drv.c	/^    volatile uint16_t               adc_cmd;$/;"	m	struct:__anon53	file:
+adc_cmd	components/drv/ads131_drv.c	/^    volatile uint16_t               adc_cmd;$/;"	m	struct:__anon54	file:
 adc_cmd	components/drv/ads131_drv.c	/^static uint16_t adc_cmd(uint16_t cmd_type)$/;"	f	file:
-adc_cmd_args	components/drv/ads131_drv.c	/^} adc_cmd_args;$/;"	v	typeref:struct:__anon56	file:
+adc_cmd_args	components/drv/ads131_drv.c	/^} adc_cmd_args;$/;"	v	typeref:struct:__anon57	file:
 adc_cmd_r	components/drv/ads131_drv.c	/^static int adc_cmd_r(int argc, char **argv)$/;"	f	file:
 adc_dout	components/drv/ads131_drv.c	/^int adc_dout(uint8_t * dst_ptr, uint16_t max_len)$/;"	f
+adc_drop_opt	components/usr/reg_map_check.c	/^int16_t adc_drop_opt(uint32_t pram)$/;"	f
 adc_ds_init	components/drv/ads131_drv.c	/^void adc_ds_init(void)$/;"	f
 adc_get_volt	components/drv/bat_drv.c	/^static uint32_t adc_get_volt(void)$/;"	f	file:
 adc_init	components/drv/ads131_drv.c	/^void adc_init(void)$/;"	f
 adc_init	components/drv/bat_drv.c	/^static void adc_init(void)$/;"	f	file:
 adc_init_conf	components/drv/ads131_drv.c	/^static uint16_t adc_init_conf(void)$/;"	f	file:
-adc_init_done	components/drv/ads131_drv.c	/^    uint16_t                        adc_init_done;$/;"	m	struct:__anon53	file:
+adc_init_done	components/drv/ads131_drv.c	/^    uint16_t                        adc_init_done;$/;"	m	struct:__anon54	file:
 adc_offset	components/usr/sys_conf.h	/^    uint32_t    adc_offset;$/;"	m	struct:__anon19
 adc_pin_init	components/drv/ads131_drv.c	/^static void adc_pin_init(void)$/;"	f	file:
 adc_raw	components/usr/sys_conf.h	/^    uint32_t   	adc_raw;$/;"	m	struct:__anon26
@@ -2232,17 +2233,17 @@ adc_set_sps	components/drv/ads131_drv.c	/^uint16_t adc_set_sps(uint16_t adc_sps_
 adc_sps_opt	components/usr/reg_map_check.c	/^int16_t adc_sps_opt(uint32_t pram)$/;"	f
 adc_sread	components/drv/ads131_drv.c	/^static uint16_t adc_sread(void)$/;"	f	file:
 adc_t	components/drv/ads131_drv.c	/^static spi_transaction_t adc_t;$/;"	v	file:
-adc_val	components/drv/ads131_drv.c	/^    int32_t                         adc_val;$/;"	m	struct:__anon53	file:
-adc_wargs	components/drv/ads131_drv.c	/^} adc_wargs;$/;"	v	typeref:struct:__anon54	file:
+adc_val	components/drv/ads131_drv.c	/^    int32_t                         adc_val;$/;"	m	struct:__anon54	file:
+adc_wargs	components/drv/ads131_drv.c	/^} adc_wargs;$/;"	v	typeref:struct:__anon55	file:
 adc_wr_reg	components/drv/ads131_drv.c	/^uint16_t adc_wr_reg(uint8_t addr, uint8_t data)$/;"	f
 adcspi_mutex	components/drv/ads131_drv.c	/^static SemaphoreHandle_t adcspi_mutex = NULL;$/;"	v	file:
-addr	components/drv/ads131_drv.c	/^    struct arg_int *addr;$/;"	m	struct:__anon54	typeref:struct:__anon54::arg_int	file:
 addr	components/drv/ads131_drv.c	/^    struct arg_int *addr;$/;"	m	struct:__anon55	typeref:struct:__anon55::arg_int	file:
-addr	components/drv/adxl_drv.c	/^    struct arg_int *addr;$/;"	m	struct:__anon58	typeref:struct:__anon58::arg_int	file:
-addr	components/usr/global_var.c	/^    struct arg_int *addr;$/;"	m	struct:__anon37	typeref:struct:__anon37::arg_int	file:
+addr	components/drv/ads131_drv.c	/^    struct arg_int *addr;$/;"	m	struct:__anon56	typeref:struct:__anon56::arg_int	file:
+addr	components/drv/adxl_drv.c	/^    struct arg_int *addr;$/;"	m	struct:__anon59	typeref:struct:__anon59::arg_int	file:
+addr	components/usr/global_var.c	/^    struct arg_int *addr;$/;"	m	struct:__anon38	typeref:struct:__anon38::arg_int	file:
 adxl355_reset	components/drv/adxl_drv.c	/^void adxl355_reset(void)$/;"	f
 adxl355_scanfifo	components/drv/adxl_drv.c	/^static int16_t adxl355_scanfifo(void)$/;"	f	file:
-adxl_args	components/drv/adxl_drv.c	/^} adxl_args;$/;"	v	typeref:struct:__anon58	file:
+adxl_args	components/drv/adxl_drv.c	/^} adxl_args;$/;"	v	typeref:struct:__anon59	file:
 adxl_dout	components/drv/adxl_drv.c	/^int adxl_dout(uint8_t * dst_ptr, uint16_t max_len)$/;"	f
 adxl_info	components/drv/adxl_drv.c	/^static int adxl_info(int argc, char **argv)$/;"	f	file:
 adxl_init	components/drv/adxl_drv.c	/^void adxl_init(void)$/;"	f
@@ -2254,38 +2255,38 @@ adxl_timeout	components/drv/adxl_drv.c	/^static void adxl_timeout(void* arg)$/;"
 adxl_timer	components/drv/adxl_drv.c	/^esp_timer_handle_t adxl_timer;$/;"	v
 adxl_timer_init	components/drv/adxl_drv.c	/^static int adxl_timer_init(void)$/;"	f	file:
 adxl_wr_reg	components/drv/adxl_drv.c	/^uint8_t adxl_wr_reg(uint8_t addr, uint8_t data)$/;"	f
-analog_args	components/drv/bat_drv.c	/^} analog_args;$/;"	v	typeref:struct:__anon61	file:
+analog_args	components/drv/bat_drv.c	/^} analog_args;$/;"	v	typeref:struct:__anon62	file:
 app_main	main/main.c	/^void app_main()$/;"	f
 ard_reg	components/drv/adxl_drv.c	/^static int ard_reg(int argc, char **argv)$/;"	f	file:
 awr_reg	components/drv/adxl_drv.c	/^static int awr_reg(int argc, char **argv)$/;"	f	file:
 axis	components/usr/sys_conf.h	/^    uint32_t    axis;$/;"	m	struct:__anon21
 bat	components/usr/sys_conf.h	/^	conf_bat_st bat;$/;"	m	struct:__anon23
-bat	components/usr/sys_conf.h	/^    stat_bat_st		bat;$/;"	m	struct:__anon29
+bat	components/usr/sys_conf.h	/^    stat_bat_st		bat;$/;"	m	struct:__anon30
 bat_init	components/drv/bat_drv.c	/^void bat_init(void) $/;"	f
 bat_inst	components/drv/bat_drv.c	/^static bat_st bat_inst;$/;"	v	file:
 bat_mav_calc	components/drv/bat_drv.c	/^static uint32_t bat_mav_calc(uint16_t mav_cnt_set)$/;"	f	file:
 bat_pwr_calc	components/drv/bat_drv.c	/^static uint32_t bat_pwr_calc(uint32_t up_lim, uint32_t low_lim, uint32_t bat_volt)$/;"	f	file:
 bat_register	components/drv/bat_drv.c	/^static void bat_register(void)$/;"	f	file:
-bat_st	components/drv/bat_drv.c	/^}bat_st;$/;"	t	typeref:struct:__anon60	file:
+bat_st	components/drv/bat_drv.c	/^}bat_st;$/;"	t	typeref:struct:__anon61	file:
 bat_update	components/drv/bat_drv.c	/^void bat_update(void)$/;"	f
 bit_op_get	components/kits/bit_op.c	/^int32_t bit_op_get(const uint32_t data, uint16_t offset) $/;"	f
 bit_op_set	components/kits/bit_op.c	/^void bit_op_set(uint32_t *data, uint16_t offset, uint8_t option) $/;"	f
 broker_uri	components/mqtt_tcp/mqtt_tcp.c	/^    char broker_uri[MQ_NVS_STR_SIZE];$/;"	m	struct:__anon4	file:
 buffer	components/kits/kfifo.h	/^    unsigned char *buffer;\/* the buffer holding the data *\/$/;"	m	struct:kfifo
-buffer_ff	components/drv/bat_drv.c	/^	uint32_t	buffer_ff;$/;"	m	struct:__anon60	file:
-calc_snr	components/kits/goertzel.c	/^static float calc_snr(float* dbuf, uint16_t cnt, snr_sts_st* snr_sts_ptr)$/;"	f	file:
+buffer_ff	components/drv/bat_drv.c	/^	uint32_t	buffer_ff;$/;"	m	struct:__anon61	file:
+calc_snr	components/kits/goertzel.c	/^static float calc_snr(float* dbuf, uint16_t cnt)$/;"	f	file:
 calc_sps	components/drv/ads131_drv.c	/^static uint16_t calc_sps(uint16_t freq_mode)$/;"	f	file:
 ch_bm	components/usr/sys_conf.h	/^    uint32_t    ch_bm;$/;"	m	struct:__anon20
-channel_bm	components/usr/daq.c	/^    uint16_t channel_bm;$/;"	m	struct:__anon44	file:
+channel_bm	components/usr/daq.c	/^    uint16_t channel_bm;$/;"	m	struct:__anon45	file:
 check_efuse	components/drv/bat_drv.c	/^static void check_efuse(void)$/;"	f	file:
-chk_ptr	components/usr/sys_conf.h	/^    int16_t     (*chk_ptr)(uint32_t pram);$/;"	m	struct:__anon31
+chk_ptr	components/usr/sys_conf.h	/^    int16_t     (*chk_ptr)(uint32_t pram);$/;"	m	struct:__anon32
 cli_thread	components/cli/cli.c	/^void cli_thread(void* param)$/;"	f
-cmd	components/drv/ads131_drv.c	/^    struct arg_int *cmd;$/;"	m	struct:__anon56	typeref:struct:__anon56::arg_int	file:
+cmd	components/drv/ads131_drv.c	/^    struct arg_int *cmd;$/;"	m	struct:__anon57	typeref:struct:__anon57::arg_int	file:
 cmd_buf_init	components/usr/cmd_resolve.c	/^static void cmd_buf_init(void)$/;"	f	file:
 cmd_dev_init	components/usr/cmd_resolve.c	/^void cmd_dev_init(void)$/;"	f
 cmd_frame_recv	components/usr/cmd_resolve.c	/^uint16_t cmd_frame_recv(void)$/;"	f
 cmd_frame_resolve	components/usr/cmd_resolve.c	/^uint16_t cmd_frame_resolve(void)$/;"	f
-cmd_fsm_cstate	components/usr/cmd_resolve.c	/^    uint8_t cmd_fsm_cstate;$/;"	m	struct:__anon35	file:
+cmd_fsm_cstate	components/usr/cmd_resolve.c	/^    uint8_t cmd_fsm_cstate;$/;"	m	struct:__anon36	file:
 cmd_get_comm_sts	components/usr/cmd_resolve.c	/^uint16_t cmd_get_comm_sts(void)$/;"	f
 cmd_get_rx_fsm	components/usr/cmd_resolve.c	/^uint8_t cmd_get_rx_fsm(void)$/;"	f
 cmd_kbuf_rx	components/usr/cmd_resolve.c	/^static uint8_t 	cmd_kbuf_rx[CMD_RTX_BUF_DEPTH];$/;"	v	file:
@@ -2293,7 +2294,7 @@ cmd_kbuf_tx	components/usr/cmd_resolve.c	/^static uint8_t 	cmd_kbuf_tx[CMD_RTX_B
 cmd_pga_gain	components/drv/io_drv.c	/^static int cmd_pga_gain(int argc, char **argv)$/;"	f	file:
 cmd_rd_reg	components/usr/cmd_resolve.c	/^static uint16_t cmd_rd_reg(void)$/;"	f	file:
 cmd_reg_inst	components/usr/cmd_resolve.c	/^static cmd_reg_st cmd_reg_inst;$/;"	v	file:
-cmd_reg_st	components/usr/cmd_resolve.c	/^}cmd_reg_st;$/;"	t	typeref:struct:__anon35	file:
+cmd_reg_st	components/usr/cmd_resolve.c	/^}cmd_reg_st;$/;"	t	typeref:struct:__anon36	file:
 cmd_response	components/usr/cmd_resolve.c	/^static void cmd_response(void)$/;"	f	file:
 cmd_stream_in	components/usr/cmd_resolve.c	/^int cmd_stream_in(void * src_data, int data_len)$/;"	f
 cmd_thread	components/usr/cmd_resolve.c	/^void cmd_thread(void* param)$/;"	f
@@ -2301,7 +2302,7 @@ cmd_wr_reg	components/usr/cmd_resolve.c	/^static uint16_t cmd_wr_reg(void)$/;"	f
 coef	components/kits/goertzel.c	/^    float 		coef[FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
 compare	components/kits/goertzel.c	/^int compare(const void * a, const void * b)$/;"	f
 con	components/usr/sys_conf.h	/^    conf_con_st con;$/;"	m	struct:__anon23
-conf	components/usr/sys_conf.h	/^    config_st   conf;$/;"	m	struct:__anon30
+conf	components/usr/sys_conf.h	/^    config_st   conf;$/;"	m	struct:__anon31
 conf_adc_st	components/usr/sys_conf.h	/^}conf_adc_st;$/;"	t	typeref:struct:__anon20
 conf_bat_st	components/usr/sys_conf.h	/^}conf_bat_st;$/;"	t	typeref:struct:__anon15
 conf_con_st	components/usr/sys_conf.h	/^}conf_con_st;$/;"	t	typeref:struct:__anon12
@@ -2315,7 +2316,7 @@ conf_mod_st	components/usr/sys_conf.h	/^}conf_mod_st;$/;"	t	typeref:struct:__ano
 conf_per_st	components/usr/sys_conf.h	/^}conf_per_st;$/;"	t	typeref:struct:__anon19
 conf_prt_st	components/usr/sys_conf.h	/^}conf_prt_st;$/;"	t	typeref:struct:__anon16
 conf_reg_map_inst	components/usr/global_var.c	/^const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=$/;"	v
-conf_reg_map_st	components/usr/sys_conf.h	/^}conf_reg_map_st;$/;"	t	typeref:struct:__anon31
+conf_reg_map_st	components/usr/sys_conf.h	/^}conf_reg_map_st;$/;"	t	typeref:struct:__anon32
 config_reg_num	components/usr/sys_conf.h	/^    uint32_t    config_reg_num;$/;"	m	struct:__anon24
 config_st	components/usr/sys_conf.h	/^}config_st;$/;"	t	typeref:struct:__anon23
 connect	components/cli/cmd_wifi.c	/^static int connect(int argc, char **argv)$/;"	f	file:
@@ -2335,53 +2336,55 @@ daq_frame	components/usr/cmd_resolve.c	/^int daq_frame(const void *dbuf_ptr,int 
 daq_init	components/usr/daq.c	/^void daq_init(void)$/;"	f
 daq_inst	components/usr/daq.c	/^static daq_st daq_inst;$/;"	v	file:
 daq_pkg_en	components/usr/reg_map_check.c	/^int16_t daq_pkg_en(uint32_t pram)$/;"	f
-daq_st	components/usr/daq.c	/^}daq_st;$/;"	t	typeref:struct:__anon44	file:
+daq_st	components/usr/daq.c	/^}daq_st;$/;"	t	typeref:struct:__anon45	file:
 daq_tim_start	components/usr/daq.c	/^void daq_tim_start(int32_t tim_period)$/;"	f
 daq_tim_stop	components/usr/daq.c	/^void daq_tim_stop(void)$/;"	f
 daq_timeout	components/usr/daq.c	/^static void daq_timeout(void* arg)$/;"	f	file:
 daq_timer	components/usr/daq.c	/^esp_timer_handle_t daq_timer;$/;"	v
 daq_timer_init	components/usr/daq.c	/^static int daq_timer_init(void)$/;"	f	file:
-data	components/drv/ads131_drv.c	/^    struct arg_int *data;$/;"	m	struct:__anon54	typeref:struct:__anon54::arg_int	file:
-data	components/drv/adxl_drv.c	/^    struct arg_int *data;$/;"	m	struct:__anon58	typeref:struct:__anon58::arg_int	file:
+data	components/drv/ads131_drv.c	/^    struct arg_int *data;$/;"	m	struct:__anon55	typeref:struct:__anon55::arg_int	file:
+data	components/drv/adxl_drv.c	/^    struct arg_int *data;$/;"	m	struct:__anon59	typeref:struct:__anon59::arg_int	file:
 data	components/mqtt_tcp/mqtt_tcp.c	/^    struct arg_str *data;$/;"	m	struct:__anon5	typeref:struct:__anon5::arg_str	file:
-data	components/usr/global_var.c	/^    struct arg_int *data;$/;"	m	struct:__anon37	typeref:struct:__anon37::arg_int	file:
-data	components/usr/global_var.c	/^    struct arg_str *data;$/;"	m	struct:__anon36	typeref:struct:__anon36::arg_str	file:
+data	components/usr/global_var.c	/^    struct arg_int *data;$/;"	m	struct:__anon38	typeref:struct:__anon38::arg_int	file:
+data	components/usr/global_var.c	/^    struct arg_str *data;$/;"	m	struct:__anon37	typeref:struct:__anon37::arg_str	file:
 dbg	components/usr/sys_conf.h	/^    uint32_t    dbg;$/;"	m	struct:__anon11
 decode	components/drv/ads131_drv.c	/^static int32_t decode(uint32_t din)$/;"	f	file:
 decode	components/drv/adxl_drv.c	/^static int32_t decode(uint32_t din)$/;"	f	file:
 deep_sleep	components/cmd_system/cmd_system.c	/^static int deep_sleep(int argc, char **argv)$/;"	f	file:
 deep_sleep_args	components/cmd_system/cmd_system.c	/^} deep_sleep_args;$/;"	v	typeref:struct:__anon2	file:
 dev_type	components/usr/sys_conf.h	/^    uint32_t    dev_type;$/;"	m	struct:__anon25
-dft	components/usr/sys_conf.h	/^    uint32_t	dft;$/;"	m	struct:__anon31
-dft	components/usr/sys_conf.h	/^    uint32_t  	dft;$/;"	m	struct:__anon32
+dft	components/usr/sys_conf.h	/^    uint32_t	dft;$/;"	m	struct:__anon32
+dft	components/usr/sys_conf.h	/^    uint32_t  	dft;$/;"	m	struct:__anon33
 do_retransmit	components/mqtt_tcp/tcp_server.c	/^static void do_retransmit(const int sock)$/;"	f	file:
+drop	components/usr/sys_conf.h	/^    uint32_t    drop;$/;"	m	struct:__anon20
+drop_cnt	components/usr/sys_conf.h	/^    uint32_t   	drop_cnt;$/;"	m	struct:__anon27
 drv_dac_en	components/drv/bat_drv.c	/^static void drv_dac_en(uint8_t enable)$/;"	f	file:
 enable	components/usr/sys_conf.h	/^    uint32_t    enable;$/;"	m	struct:__anon13
 enable	components/usr/sys_conf.h	/^    uint32_t    enable;$/;"	m	struct:__anon20
 enable	components/usr/sys_conf.h	/^    uint32_t    enable;$/;"	m	struct:__anon21
 enable	components/usr/sys_conf.h	/^    uint32_t    enable;$/;"	m	struct:__anon22
 end	components/cli/cmd_wifi.c	/^    struct arg_end *end;$/;"	m	struct:__anon6	typeref:struct:__anon6::arg_end	file:
-end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon46	typeref:struct:__anon46::arg_end	file:
 end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon47	typeref:struct:__anon47::arg_end	file:
 end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon48	typeref:struct:__anon48::arg_end	file:
 end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon49	typeref:struct:__anon49::arg_end	file:
 end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon50	typeref:struct:__anon50::arg_end	file:
 end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon51	typeref:struct:__anon51::arg_end	file:
+end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon52	typeref:struct:__anon52::arg_end	file:
 end	components/cmd_system/cmd_system.c	/^    struct arg_end *end;$/;"	m	struct:__anon2	typeref:struct:__anon2::arg_end	file:
 end	components/cmd_system/cmd_system.c	/^    struct arg_end *end;$/;"	m	struct:__anon3	typeref:struct:__anon3::arg_end	file:
-end	components/drv/ads131_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon54	typeref:struct:__anon54::arg_end	file:
 end	components/drv/ads131_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon55	typeref:struct:__anon55::arg_end	file:
 end	components/drv/ads131_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon56	typeref:struct:__anon56::arg_end	file:
-end	components/drv/adxl_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon58	typeref:struct:__anon58::arg_end	file:
-end	components/drv/bat_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon61	typeref:struct:__anon61::arg_end	file:
-end	components/drv/io_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon64	typeref:struct:__anon64::arg_end	file:
+end	components/drv/ads131_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon57	typeref:struct:__anon57::arg_end	file:
+end	components/drv/adxl_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon59	typeref:struct:__anon59::arg_end	file:
+end	components/drv/bat_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon62	typeref:struct:__anon62::arg_end	file:
+end	components/drv/io_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon65	typeref:struct:__anon65::arg_end	file:
 end	components/mqtt_tcp/mqtt_tcp.c	/^    struct arg_end *end;$/;"	m	struct:__anon5	typeref:struct:__anon5::arg_end	file:
-end	components/usr/global_var.c	/^    struct arg_end *end;$/;"	m	struct:__anon36	typeref:struct:__anon36::arg_end	file:
 end	components/usr/global_var.c	/^    struct arg_end *end;$/;"	m	struct:__anon37	typeref:struct:__anon37::arg_end	file:
+end	components/usr/global_var.c	/^    struct arg_end *end;$/;"	m	struct:__anon38	typeref:struct:__anon38::arg_end	file:
 erase	components/cmd_nvs/cmd_nvs.c	/^static esp_err_t erase(const char *key)$/;"	f	file:
 erase_all	components/cmd_nvs/cmd_nvs.c	/^static esp_err_t erase_all(const char *name)$/;"	f	file:
-erase_all_args	components/cmd_nvs/cmd_nvs.c	/^} erase_all_args;$/;"	v	typeref:struct:__anon49	file:
-erase_args	components/cmd_nvs/cmd_nvs.c	/^} erase_args;$/;"	v	typeref:struct:__anon48	file:
+erase_all_args	components/cmd_nvs/cmd_nvs.c	/^} erase_all_args;$/;"	v	typeref:struct:__anon50	file:
+erase_args	components/cmd_nvs/cmd_nvs.c	/^} erase_args;$/;"	v	typeref:struct:__anon49	file:
 erase_namespace	components/cmd_nvs/cmd_nvs.c	/^static int erase_namespace(int argc, char **argv)$/;"	f	file:
 erase_value	components/cmd_nvs/cmd_nvs.c	/^static int erase_value(int argc, char **argv)$/;"	f	file:
 event_handler	components/cli/cmd_wifi.c	/^static void event_handler(void* arg, esp_event_base_t event_base,$/;"	f	file:
@@ -2407,36 +2410,33 @@ framing_period	components/usr/sys_conf.h	/^    uint32_t    framing_period;$/;"	m
 framing_type	components/usr/sys_conf.h	/^    uint32_t    framing_type;$/;"	m	struct:__anon14
 free_mem	components/cmd_system/cmd_system.c	/^static int free_mem(int argc, char **argv)$/;"	f	file:
 freq	components/usr/sys_conf.h	/^    uint32_t    freq;$/;"	m	struct:__anon22
-freq_bar	components/usr/sys_conf.h	/^    float	   	freq_bar[33];$/;"	m	struct:__anon28
+freq_bar	components/usr/sys_conf.h	/^    float	   	freq_bar[33];$/;"	m	struct:__anon29
 freq_bins	components/kits/goertzel.c	/^    float		freq_bins[FREQ_SPAN_MAX];$/;"	m	struct:__anon9	file:
 g_sys	components/usr/global_var.c	/^sys_reg_st  g_sys; 	    \/\/global parameter declairation$/;"	v
-gain	components/drv/io_drv.c	/^    struct arg_int *gain;$/;"	m	struct:__anon64	typeref:struct:__anon64::arg_int	file:
-gain	components/usr/daq.c	/^    uint16_t gain[DAQ_CHANNEL_MAX];$/;"	m	struct:__anon44	file:
+gain	components/drv/io_drv.c	/^    struct arg_int *gain;$/;"	m	struct:__anon65	typeref:struct:__anon65::arg_int	file:
+gain	components/usr/daq.c	/^    uint16_t gain[DAQ_CHANNEL_MAX];$/;"	m	struct:__anon45	file:
 gain	components/usr/sys_conf.h	/^    uint32_t    gain;$/;"	m	struct:__anon20
 gain	components/usr/sys_conf.h	/^    uint32_t    gain;$/;"	m	struct:__anon21
 gen	components/usr/sys_conf.h	/^    conf_gen_st gen;$/;"	m	struct:__anon23
-gen	components/usr/sys_conf.h	/^    stat_gen_st 	gen;$/;"	m	struct:__anon29
+gen	components/usr/sys_conf.h	/^    stat_gen_st 	gen;$/;"	m	struct:__anon30
 geo	components/usr/sys_conf.h	/^    conf_geo_st geo;$/;"	m	struct:__anon23
-geo	components/usr/sys_conf.h	/^    stat_geo_st		geo;$/;"	m	struct:__anon29
+geo	components/usr/sys_conf.h	/^    stat_geo_st		geo;$/;"	m	struct:__anon30
 geo_ds_init	components/drv/adxl_drv.c	/^void geo_ds_init(void)$/;"	f
 geo_pkg_en	components/usr/reg_map_check.c	/^int16_t geo_pkg_en(uint32_t pram)$/;"	f
 geospi_mutex	components/drv/adxl_drv.c	/^static SemaphoreHandle_t geospi_mutex = NULL;$/;"	v	file:
-get_args	components/cmd_nvs/cmd_nvs.c	/^} get_args;$/;"	v	typeref:struct:__anon47	file:
+get_args	components/cmd_nvs/cmd_nvs.c	/^} get_args;$/;"	v	typeref:struct:__anon48	file:
 get_value	components/cmd_nvs/cmd_nvs.c	/^static int get_value(int argc, char **argv)$/;"	f	file:
 get_value_from_nvs	components/cmd_nvs/cmd_nvs.c	/^static esp_err_t get_value_from_nvs(const char *key, const char *str_type)$/;"	f	file:
 get_version	components/cmd_system/cmd_system.c	/^static int get_version(int argc, char **argv)$/;"	f	file:
-goertzel_calc	components/kits/goertzel.c	/^float goertzel_calc(float* din)$/;"	f
 goertzel_coef	components/kits/goertzel.c	/^static float goertzel_coef(uint32_t target_freq, uint32_t sample_freq, uint32_t N)$/;"	f	file:
 goertzel_coef_init	components/kits/goertzel.c	/^static void goertzel_coef_init(void)$/;"	f	file:
 goertzel_init	components/kits/goertzel.c	/^void goertzel_init(void)$/;"	f
 goertzel_lfilt	components/kits/goertzel.c	/^int16_t goertzel_lfilt(float din)$/;"	f
 gpio_isr_handler	components/drv/ads131_drv.c	/^static void IRAM_ATTR gpio_isr_handler(void* arg)$/;"	f	file:
 gtz	components/usr/sys_conf.h	/^    conf_gtz_st gtz;$/;"	m	struct:__anon23
-gtz	components/usr/sys_conf.h	/^    stat_gtz_st		gtz;$/;"	m	struct:__anon29
-gtz_freq_bins	components/kits/goertzel.c	/^int32_t gtz_freq_bins(float* dst_buf, uint16_t *num)$/;"	f
+gtz	components/usr/sys_conf.h	/^    stat_gtz_st		gtz;$/;"	m	struct:__anon30
 gtz_inst	components/kits/goertzel.c	/^gtz_st gtz_inst;$/;"	v
 gtz_rst_opt	components/usr/reg_map_check.c	/^int16_t gtz_rst_opt(uint32_t pram)$/;"	f
-gtz_snr	components/kits/goertzel.c	/^static int32_t gtz_snr(float* dbuf, uint16_t cnt)$/;"	f	file:
 gtz_st	components/kits/goertzel.c	/^}gtz_st;$/;"	t	typeref:struct:__anon7	file:
 gvar_init	components/usr/global_var.c	/^int32_t gvar_init(void)$/;"	f
 gvar_register	components/usr/global_var.c	/^void gvar_register(void)$/;"	f
@@ -2446,8 +2446,8 @@ heap_size	components/cmd_system/cmd_system.c	/^static int heap_size(int argc, ch
 hold_time	components/usr/sys_conf.h	/^    uint32_t    hold_time;$/;"	m	struct:__anon22
 http_en	components/usr/sys_conf.h	/^    uint32_t    http_en;$/;"	m	struct:__anon16
 icnt	components/kits/goertzel.c	/^    uint32_t 	icnt[GTZ_FLOWS_MAX];$/;"	m	struct:__anon7	file:
-id	components/usr/sys_conf.h	/^    uint16_t 	id;$/;"	m	struct:__anon31
 id	components/usr/sys_conf.h	/^    uint16_t 	id;$/;"	m	struct:__anon32
+id	components/usr/sys_conf.h	/^    uint16_t 	id;$/;"	m	struct:__anon33
 in	components/kits/kfifo.h	/^    unsigned int in;\/* data is added at offset (in % size) *\/$/;"	m	struct:kfifo
 inbuf	components/kits/my_fft.c	/^	float*					inbuf;$/;"	m	struct:__anon10	file:
 info_arch	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
@@ -2522,7 +2522,6 @@ initialize_console	components/cli/cli.c	/^static void initialize_console(void)$/
 initialize_filesystem	components/cli/cli.c	/^static void initialize_filesystem(void)$/;"	f	file:
 initialize_nvs	components/usr/global_var.c	/^static void initialize_nvs(void)$/;"	f	file:
 input_init	components/drv/io_drv.c	/^static void input_init(void)$/;"	f	file:
-ins_snr	components/usr/sys_conf.h	/^    float	   	ins_snr;$/;"	m	struct:__anon28
 int16	components/usr/sys_def.h	/^typedef short				int16;$/;"	t
 int32	components/usr/sys_def.h	/^typedef long				int32;$/;"	t
 int8	components/usr/sys_def.h	/^typedef char 				int8;$/;"	t
@@ -2532,16 +2531,16 @@ io_ds_init	components/drv/io_drv.c	/^static void io_ds_init(void)$/;"	f	file:
 io_init	components/drv/io_drv.c	/^void io_init(void)$/;"	f
 io_inst	components/drv/io_drv.c	/^static io_st io_inst;$/;"	v	file:
 io_register	components/drv/io_drv.c	/^static void io_register(void)$/;"	f	file:
-io_st	components/drv/io_drv.c	/^}io_st;$/;"	t	typeref:struct:__anon63	file:
+io_st	components/drv/io_drv.c	/^}io_st;$/;"	t	typeref:struct:__anon64	file:
 is_slow	components/kits/meow_fft.h	/^    unsigned is_slow;$/;"	m	struct:Meow_Stage_Info
 iteration	components/mqtt_tcp/mqtt_tcp.c	/^    struct arg_int *iteration;$/;"	m	struct:__anon5	typeref:struct:__anon5::arg_int	file:
 j	components/kits/meow_fft.h	/^    float j;$/;"	m	struct:Meow_FFT_Complex
 join_args	components/cli/cmd_wifi.c	/^} join_args;$/;"	v	typeref:struct:__anon6	file:
 kc_buf_rx	components/usr/cmd_resolve.c	/^kfifo_t 		kc_buf_rx;$/;"	v
 kc_buf_tx	components/usr/cmd_resolve.c	/^kfifo_t 		kc_buf_tx;$/;"	v
-key	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *key;$/;"	m	struct:__anon46	typeref:struct:__anon46::arg_str	file:
 key	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *key;$/;"	m	struct:__anon47	typeref:struct:__anon47::arg_str	file:
 key	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *key;$/;"	m	struct:__anon48	typeref:struct:__anon48::arg_str	file:
+key	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *key;$/;"	m	struct:__anon49	typeref:struct:__anon49::arg_str	file:
 kf_buf_s	components/drv/ads131_drv.c	/^static uint8_t 	kf_buf_s[ADC_FIFO_SIZE];$/;"	v	file:
 kf_buf_s	components/drv/adxl_drv.c	/^static uint8_t 	kf_buf_s[DEV_GEO_FIFO_SIZE];$/;"	v	file:
 kf_init	components/drv/ads131_drv.c	/^static void kf_init(void)$/;"	f	file:
@@ -2550,7 +2549,7 @@ kf_s	components/drv/ads131_drv.c	/^kfifo_t 		kf_s;$/;"	v
 kf_s	components/drv/adxl_drv.c	/^kfifo_t 		kf_s;$/;"	v
 kfifo	components/kits/kfifo.h	/^typedef struct kfifo {$/;"	s
 kfifo_alloc	components/kits/kfifo.c	/^int kfifo_alloc(struct kfifo *fifo, unsigned int size\/*, gfp_t gfp_mask*\/)$/;"	f
-kfifo_drop_cnt	components/usr/sys_conf.h	/^    uint32_t   	kfifo_drop_cnt;$/;"	m	struct:__anon27
+kfifo_drop_cnt	components/usr/sys_conf.h	/^    uint32_t   	kfifo_drop_cnt;$/;"	m	struct:__anon28
 kfifo_in	components/kits/kfifo.c	/^unsigned int kfifo_in(struct kfifo *fifo, const void *from,$/;"	f
 kfifo_init	components/kits/kfifo.c	/^void kfifo_init(struct kfifo *fifo, void *buffer, unsigned int size)$/;"	f
 kfifo_len	components/kits/kfifo.c	/^unsigned int kfifo_len(struct kfifo *fifo)$/;"	f
@@ -2560,13 +2559,13 @@ kfifo_out_peek	components/kits/kfifo.c	/^unsigned int kfifo_out_peek(struct kfif
 kfifo_reset	components/kits/kfifo.c	/^void kfifo_reset(struct kfifo *fifo)$/;"	f
 kfifo_t	components/kits/kfifo.h	/^}kfifo_t;$/;"	t	typeref:struct:kfifo
 lc_client	components/mqtt_tcp/mqtt_tcp.c	/^static esp_mqtt_client_handle_t lc_client;$/;"	v	file:
-led_sts	components/drv/io_drv.c	/^    uint8_t 		led_sts;$/;"	m	struct:__anon63	file:
+led_sts	components/drv/io_drv.c	/^    uint8_t 		led_sts;$/;"	m	struct:__anon64	file:
 led_tim_init	components/drv/io_drv.c	/^static void led_tim_init(void)$/;"	f	file:
 led_timer_cb	components/drv/io_drv.c	/^static void led_timer_cb(void* arg)$/;"	f	file:
 light_sleep	components/cmd_system/cmd_system.c	/^static int light_sleep(int argc, char **argv)$/;"	f	file:
 light_sleep_args	components/cmd_system/cmd_system.c	/^} light_sleep_args;$/;"	v	typeref:struct:__anon3	file:
 list	components/cmd_nvs/cmd_nvs.c	/^static int list(const char *part, const char *name, const char *str_type)$/;"	f	file:
-list_args	components/cmd_nvs/cmd_nvs.c	/^} list_args;$/;"	v	typeref:struct:__anon51	file:
+list_args	components/cmd_nvs/cmd_nvs.c	/^} list_args;$/;"	v	typeref:struct:__anon52	file:
 list_entries	components/cmd_nvs/cmd_nvs.c	/^static int list_entries(int argc, char **argv)$/;"	f	file:
 load_conf	components/usr/global_var.c	/^int load_conf(const char *load_type)$/;"	f
 load_conf_opt	components/usr/reg_map_check.c	/^int16_t load_conf_opt(uint32_t pram)$/;"	f
@@ -2592,12 +2591,12 @@ main	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	/^void
 main	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
 main	components/usr/build/CMakeFiles/feature_tests.c	/^int main(int argc, char** argv) { (void)argv; return features[argc]; }$/;"	f
 main	components/usr/build/CMakeFiles/feature_tests.cxx	/^int main(int argc, char** argv) { (void)argv; return features[argc]; }$/;"	f
-man	components/usr/sys_conf.h	/^    stat_man_st 	man;$/;"	m	struct:__anon29
+man	components/usr/sys_conf.h	/^    stat_man_st 	man;$/;"	m	struct:__anon30
 man_date	components/usr/sys_conf.h	/^    uint32_t    man_date;$/;"	m	struct:__anon25
-mav_buffer	components/drv/bat_drv.c	/^	uint32_t	mav_buffer[MAV_MAX_CNT];$/;"	m	struct:__anon60	file:
-mav_cnt	components/drv/bat_drv.c	/^    uint32_t    mav_cnt;$/;"	m	struct:__anon60	file:
+mav_buffer	components/drv/bat_drv.c	/^	uint32_t	mav_buffer[MAV_MAX_CNT];$/;"	m	struct:__anon61	file:
+mav_cnt	components/drv/bat_drv.c	/^    uint32_t    mav_cnt;$/;"	m	struct:__anon61	file:
 mav_cnt	components/usr/sys_conf.h	/^    uint32_t    mav_cnt;$/;"	m	struct:__anon15
-max	components/usr/sys_conf.h	/^    uint32_t	max;$/;"	m	struct:__anon31
+max	components/usr/sys_conf.h	/^    uint32_t	max;$/;"	m	struct:__anon32
 meow_add	components/kits/meow_fft.h	/^Meow_FFT_Complex inline meow_add$/;"	f
 meow_calculate_stages	components/kits/meow_fft.h	/^Meow_Stage_Info meow_calculate_stages(unsigned n, Meow_FFT_Workset* workset)$/;"	f
 meow_conjugate	components/kits/meow_fft.h	/^Meow_FFT_Complex inline meow_conjugate(const Meow_FFT_Complex lhs)$/;"	f
@@ -2636,7 +2635,7 @@ meow_sub	components/kits/meow_fft.h	/^Meow_FFT_Complex inline meow_sub$/;"	f
 min	components/drv/ads131_drv.c	19;"	d	file:
 min	components/drv/adxl_drv.c	27;"	d	file:
 min	components/kits/kfifo.c	36;"	d	file:
-min	components/usr/sys_conf.h	/^    int32_t	    min;$/;"	m	struct:__anon31
+min	components/usr/sys_conf.h	/^    int32_t	    min;$/;"	m	struct:__anon32
 mod	components/usr/sys_conf.h	/^    conf_mod_st mod;$/;"	m	struct:__anon23
 mod_freq_off	components/usr/sys_conf.h	/^    uint32_t	mod_freq_off;$/;"	m	struct:__anon22
 mq_nvs_inst	components/mqtt_tcp/mqtt_tcp.c	/^static mq_nvs_st mq_nvs_inst;$/;"	v	file:
@@ -2655,28 +2654,28 @@ my_fft_inst	components/kits/my_fft.c	/^my_fft_st 		my_fft_inst;$/;"	v
 my_fft_st	components/kits/my_fft.c	/^}my_fft_st;$/;"	t	typeref:struct:__anon10	file:
 n	components/usr/sys_conf.h	/^    uint32_t    n;$/;"	m	struct:__anon17
 n	components/usr/sys_conf.h	/^    uint32_t    n;$/;"	m	struct:__anon18
-namespace	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *namespace;$/;"	m	struct:__anon49	typeref:struct:__anon49::arg_str	file:
 namespace	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *namespace;$/;"	m	struct:__anon50	typeref:struct:__anon50::arg_str	file:
 namespace	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *namespace;$/;"	m	struct:__anon51	typeref:struct:__anon51::arg_str	file:
-namespace_args	components/cmd_nvs/cmd_nvs.c	/^} namespace_args;$/;"	v	typeref:struct:__anon50	file:
+namespace	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *namespace;$/;"	m	struct:__anon52	typeref:struct:__anon52::arg_str	file:
+namespace_args	components/cmd_nvs/cmd_nvs.c	/^} namespace_args;$/;"	v	typeref:struct:__anon51	file:
 noise_level	components/kits/goertzel.c	/^    float 		noise_level;$/;"	m	struct:__anon8	file:
-noise_level	components/usr/sys_conf.h	/^    float		noise_level;$/;"	m	struct:__anon28
+noise_level	components/usr/sys_conf.h	/^    float		noise_level;$/;"	m	struct:__anon29
 offset	components/kits/goertzel.c	/^    int16_t		offset;$/;"	m	struct:__anon8	file:
-offset	components/usr/sys_conf.h	/^    int32_t		offset;$/;"	m	struct:__anon28
+offset	components/usr/sys_conf.h	/^    int32_t		offset;$/;"	m	struct:__anon29
 offsets	components/kits/meow_fft.h	/^    unsigned* offsets;$/;"	m	struct:Meow_Fft_Stages
 ord	components/kits/my_fft.c	/^	uint16_t				ord;$/;"	m	struct:__anon10	file:
 out	components/kits/kfifo.h	/^    unsigned int out;\/* data is extracted from off. (out % size) *\/$/;"	m	struct:kfifo
 out_dbuf_ptr	components/kits/my_fft.c	/^	Meow_FFT_Complex*		out_dbuf_ptr;$/;"	m	struct:__anon10	file:
 output_init	components/drv/io_drv.c	/^static void output_init(void)$/;"	f	file:
-partition	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *partition;$/;"	m	struct:__anon51	typeref:struct:__anon51::arg_str	file:
+partition	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *partition;$/;"	m	struct:__anon52	typeref:struct:__anon52::arg_str	file:
 password	components/cli/cmd_wifi.c	/^    struct arg_str *password;$/;"	m	struct:__anon6	typeref:struct:__anon6::arg_str	file:
 per	components/usr/sys_conf.h	/^    conf_per_st per;$/;"	m	struct:__anon23
-pga_args	components/drv/io_drv.c	/^} pga_args;$/;"	v	typeref:struct:__anon64	file:
+pga_args	components/drv/io_drv.c	/^} pga_args;$/;"	v	typeref:struct:__anon65	file:
 pga_gain	components/drv/io_drv.c	/^void pga_gain(uint8_t gain_ind)$/;"	f
 pga_gain	components/usr/sys_conf.h	/^    uint32_t    pga_gain[SAMPLE_CHANNEL_MAX];$/;"	m	struct:__anon13
 pkg_en	components/usr/sys_conf.h	/^    uint32_t    pkg_en;$/;"	m	struct:__anon13
 pkg_en	components/usr/sys_conf.h	/^    uint32_t    pkg_en;$/;"	m	struct:__anon21
-pkg_period	components/usr/daq.c	/^    uint32_t pkg_period;$/;"	m	struct:__anon44	file:
+pkg_period	components/usr/daq.c	/^    uint32_t pkg_period;$/;"	m	struct:__anon45	file:
 pkg_period	components/usr/sys_conf.h	/^    uint32_t    pkg_period;$/;"	m	struct:__anon13
 pkg_period	components/usr/sys_conf.h	/^    uint32_t    pkg_period;$/;"	m	struct:__anon21
 pkg_size	components/usr/sys_conf.h	/^    uint32_t    pkg_size;$/;"	m	struct:__anon13
@@ -2686,7 +2685,7 @@ print_char_val_type	components/drv/bat_drv.c	/^static void print_char_val_type(e
 print_config	components/usr/global_var.c	/^static int print_config(int argc, char **argv)$/;"	f	file:
 prt	components/usr/sys_conf.h	/^    conf_prt_st prt;$/;"	m	struct:__anon23
 pub_topic	components/mqtt_tcp/mqtt_tcp.c	/^    char pub_topic[MQ_NVS_STR_SIZE];$/;"	m	struct:__anon4	file:
-pwr_fsm	components/drv/io_drv.c	/^    uint8_t 		pwr_fsm;$/;"	m	struct:__anon63	file:
+pwr_fsm	components/drv/io_drv.c	/^    uint8_t 		pwr_fsm;$/;"	m	struct:__anon64	file:
 pwr_sts	components/usr/sys_conf.h	/^    uint32_t   	pwr_sts;$/;"	m	struct:__anon26
 pwr_val	components/usr/sys_conf.h	/^    uint32_t   	pwr_val;$/;"	m	struct:__anon26
 q0	components/kits/goertzel.c	/^    float 		q0[GTZ_FLOWS_MAX][FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
@@ -2704,14 +2703,13 @@ r	components/kits/meow_fft.h	/^    float r;$/;"	m	struct:Meow_FFT_Complex
 radc_reg	components/drv/ads131_drv.c	/^static int radc_reg(int argc, char **argv)$/;"	f	file:
 radix	components/kits/meow_fft.h	/^    unsigned* radix;$/;"	m	struct:Meow_Fft_Stages
 rank	components/kits/goertzel.c	/^    uint16_t 	rank;$/;"	m	struct:__anon8	file:
-rank	components/usr/sys_conf.h	/^    uint32_t   	rank;$/;"	m	struct:__anon28
 raw_data_buf	components/drv/adxl_drv.c	/^static int16_t raw_data_buf(uint32_t din, uint8_t axis)$/;"	f	file:
 rd_reg	components/usr/global_var.c	/^static int rd_reg(int argc, char **argv)$/;"	f	file:
 recv_frame_fsm	components/usr/cmd_resolve.c	/^void recv_frame_fsm(void)$/;"	f
 reg_map_read	components/usr/global_var.c	/^uint16 reg_map_read(uint16 reg_addr,uint32_t* reg_data,uint8_t read_cnt)$/;"	f
 reg_map_write	components/usr/global_var.c	/^uint16 reg_map_write(uint16 reg_addr, uint32_t *wr_data, uint8_t wr_cnt)$/;"	f
-reg_ptr	components/usr/sys_conf.h	/^    uint32_t*	reg_ptr;$/;"	m	struct:__anon31
 reg_ptr	components/usr/sys_conf.h	/^    uint32_t*	reg_ptr;$/;"	m	struct:__anon32
+reg_ptr	components/usr/sys_conf.h	/^    uint32_t*	reg_ptr;$/;"	m	struct:__anon33
 register_adc_cmd	components/drv/ads131_drv.c	/^static void register_adc_cmd()$/;"	f	file:
 register_adc_cmd_r	components/drv/ads131_drv.c	/^static void register_adc_cmd_r()$/;"	f	file:
 register_adc_data	components/drv/ads131_drv.c	/^static void register_adc_data()$/;"	f	file:
@@ -2740,7 +2738,7 @@ register_tasks	components/cmd_system/cmd_system.c	/^static void register_tasks(v
 register_version	components/cmd_system/cmd_system.c	/^static void register_version(void)$/;"	f	file:
 register_wifi	components/cli/cmd_wifi.c	/^void register_wifi(void)$/;"	f
 register_wr_reg	components/usr/global_var.c	/^static void register_wr_reg()$/;"	f	file:
-regmap_args	components/usr/global_var.c	/^} regmap_args;$/;"	v	typeref:struct:__anon37	file:
+regmap_args	components/usr/global_var.c	/^} regmap_args;$/;"	v	typeref:struct:__anon38	file:
 remainder	components/kits/meow_fft.h	/^    unsigned* remainder;$/;"	m	struct:Meow_Fft_Stages
 repeats	components/mqtt_tcp/mqtt_tcp.c	/^    struct arg_int *repeats;$/;"	m	struct:__anon5	typeref:struct:__anon5::arg_int	file:
 res	components/kits/goertzel.c	/^    float		res[GTZ_FLOWS_MAX][FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
@@ -2748,24 +2746,24 @@ reset	components/usr/sys_conf.h	/^    uint32_t    reset;$/;"	m	struct:__anon18
 restart	components/cmd_system/cmd_system.c	/^static int restart(int argc, char **argv)$/;"	f	file:
 restart	components/usr/sys_conf.h	/^    uint32_t    restart;$/;"	m	struct:__anon11
 roundup_pow_of_two	components/kits/kfifo.c	38;"	d	file:
-rtx_timeout	components/usr/cmd_resolve.c	/^    uint16_t rtx_timeout;$/;"	m	struct:__anon35	file:
-rx_buf	components/usr/cmd_resolve.c	/^    uint8_t rx_buf[CMD_RTX_BUF_DEPTH];$/;"	m	struct:__anon35	file:
-rx_buf	components/usr/daq.c	/^    uint8_t  rx_buf[DAQ_RX_BUF_DEPTH];$/;"	m	struct:__anon44	file:
-rx_cmd	components/usr/cmd_resolve.c	/^    uint16_t rx_cmd;$/;"	m	struct:__anon35	file:
-rx_cnt	components/usr/cmd_resolve.c	/^    uint16_t rx_cnt;$/;"	m	struct:__anon35	file:
-rx_len	components/usr/cmd_resolve.c	/^    uint16_t rx_len;$/;"	m	struct:__anon35	file:
-rx_tag	components/usr/cmd_resolve.c	/^    uint16_t rx_tag;$/;"	m	struct:__anon35	file:
-rxd	components/drv/ads131_drv.c	/^    uint8_t                         rxd[16];$/;"	m	struct:__anon53	file:
-rxd	components/drv/adxl_drv.c	/^    uint8_t                         rxd[DEV_GEO_RTX_SIZE];$/;"	m	struct:__anon57	file:
+rtx_timeout	components/usr/cmd_resolve.c	/^    uint16_t rtx_timeout;$/;"	m	struct:__anon36	file:
+rx_buf	components/usr/cmd_resolve.c	/^    uint8_t rx_buf[CMD_RTX_BUF_DEPTH];$/;"	m	struct:__anon36	file:
+rx_buf	components/usr/daq.c	/^    uint8_t  rx_buf[DAQ_RX_BUF_DEPTH];$/;"	m	struct:__anon45	file:
+rx_cmd	components/usr/cmd_resolve.c	/^    uint16_t rx_cmd;$/;"	m	struct:__anon36	file:
+rx_cnt	components/usr/cmd_resolve.c	/^    uint16_t rx_cnt;$/;"	m	struct:__anon36	file:
+rx_len	components/usr/cmd_resolve.c	/^    uint16_t rx_len;$/;"	m	struct:__anon36	file:
+rx_tag	components/usr/cmd_resolve.c	/^    uint16_t rx_tag;$/;"	m	struct:__anon36	file:
+rxd	components/drv/ads131_drv.c	/^    uint8_t                         rxd[16];$/;"	m	struct:__anon54	file:
+rxd	components/drv/adxl_drv.c	/^    uint8_t                         rxd[DEV_GEO_RTX_SIZE];$/;"	m	struct:__anon58	file:
 rxd_temp	components/drv/adxl_drv.c	/^static uint8_t 	rxd_temp[DEV_GEO_RTX_SIZE];$/;"	v	file:
 sadc_data	components/drv/ads131_drv.c	/^static int sadc_data(int argc, char **argv)$/;"	f	file:
 sample_channel_bm	components/usr/sys_conf.h	/^    uint32_t    sample_channel_bm;$/;"	m	struct:__anon13
 sample_freq	components/usr/sys_conf.h	/^    uint32_t    sample_freq;$/;"	m	struct:__anon18
 sample_period	components/usr/sys_conf.h	/^    uint32_t    sample_period;$/;"	m	struct:__anon13
-sample_rate	components/usr/daq.c	/^    uint16_t sample_rate;$/;"	m	struct:__anon44	file:
+sample_rate	components/usr/daq.c	/^    uint16_t sample_rate;$/;"	m	struct:__anon45	file:
 sample_rate	components/usr/sys_conf.h	/^    uint32_t    sample_rate;$/;"	m	struct:__anon21
 samples_per_frame	components/usr/sys_conf.h	/^    uint32_t    samples_per_frame;$/;"	m	struct:__anon14
-savconf_args	components/usr/global_var.c	/^} savconf_args;$/;"	v	typeref:struct:__anon36	file:
+savconf_args	components/usr/global_var.c	/^} savconf_args;$/;"	v	typeref:struct:__anon37	file:
 save_conf	components/usr/global_var.c	/^int save_conf(const char *save_type)$/;"	f
 save_conf_opt	components/usr/reg_map_check.c	/^int16_t save_conf_opt(uint32_t pram)$/;"	f
 save_config_arg	components/usr/global_var.c	/^static int save_config_arg(int argc, char **argv)$/;"	f	file:
@@ -2773,50 +2771,52 @@ scan_period	components/usr/sys_conf.h	/^    uint32_t    scan_period;$/;"	m	struc
 serial_no	components/usr/sys_conf.h	/^    uint32_t    serial_no;$/;"	m	struct:__anon25
 service_bm	components/usr/sys_conf.h	/^    uint32_t    service_bm;$/;"	m	struct:__anon16
 service_opt	components/usr/reg_map_check.c	/^int16_t service_opt(uint32_t pram)$/;"	f
-set_args	components/cmd_nvs/cmd_nvs.c	/^} set_args;$/;"	v	typeref:struct:__anon46	file:
+set_args	components/cmd_nvs/cmd_nvs.c	/^} set_args;$/;"	v	typeref:struct:__anon47	file:
 set_namespace	components/cmd_nvs/cmd_nvs.c	/^static int set_namespace(int argc, char **argv)$/;"	f	file:
 set_value	components/cmd_nvs/cmd_nvs.c	/^static int set_value(int argc, char **argv)$/;"	f	file:
 set_value_in_nvs	components/cmd_nvs/cmd_nvs.c	/^static esp_err_t set_value_in_nvs(const char *key, const char *str_type, const char *str_value)$/;"	f	file:
 set_wifi_con_opt	components/usr/reg_map_check.c	/^int16_t set_wifi_con_opt(uint32_t pram)$/;"	f
 setup_time	components/usr/sys_conf.h	/^    uint32_t    setup_time;$/;"	m	struct:__anon22
 signal_level	components/kits/goertzel.c	/^    float 		signal_level;$/;"	m	struct:__anon8	file:
-signal_level	components/usr/sys_conf.h	/^    float		signal_level;$/;"	m	struct:__anon28
+signal_level	components/usr/sys_conf.h	/^    float		signal_level;$/;"	m	struct:__anon29
 signal_th	components/usr/sys_conf.h	/^    uint32_t    signal_th;$/;"	m	struct:__anon18
 size	components/kits/kfifo.h	/^    unsigned int size;\/* the size of the allocated buffer *\/$/;"	m	struct:kfifo
 snr	components/kits/goertzel.c	/^    float		snr;$/;"	m	struct:__anon8	file:
+snr	components/usr/sys_conf.h	/^    float	   	snr;$/;"	m	struct:__anon29
 snr_buf_inst	components/kits/goertzel.c	/^snr_buf_st snr_buf_inst;$/;"	v
 snr_buf_st	components/kits/goertzel.c	/^}snr_buf_st;$/;"	t	typeref:struct:__anon9	file:
 snr_sts_st	components/kits/goertzel.c	/^}snr_sts_st;$/;"	t	typeref:struct:__anon8	file:
 sock	components/mqtt_tcp/tcp_server.c	/^static int sock;$/;"	v	file:
 software_ver	components/usr/sys_conf.h	/^    uint32_t    software_ver;$/;"	m	struct:__anon24
-spi_device_h	components/drv/ads131_drv.c	/^    spi_device_handle_t     		spi_device_h;$/;"	m	struct:__anon53	file:
-spi_device_h	components/drv/adxl_drv.c	/^    spi_device_handle_t     		spi_device_h;$/;"	m	struct:__anon57	file:
+spi_device_h	components/drv/ads131_drv.c	/^    spi_device_handle_t     		spi_device_h;$/;"	m	struct:__anon54	file:
+spi_device_h	components/drv/adxl_drv.c	/^    spi_device_handle_t     		spi_device_h;$/;"	m	struct:__anon58	file:
 spi_geo_dev_inst	components/drv/ads131_drv.c	/^spi_geo_device_st spi_geo_dev_inst;$/;"	v
 spi_geo_dev_inst	components/drv/adxl_drv.c	/^spi_geo_device_st spi_geo_dev_inst;$/;"	v
-spi_geo_device_st	components/drv/ads131_drv.c	/^}spi_geo_device_st;$/;"	t	typeref:struct:__anon53	file:
-spi_geo_device_st	components/drv/adxl_drv.c	/^}spi_geo_device_st;$/;"	t	typeref:struct:__anon57	file:
+spi_geo_device_st	components/drv/ads131_drv.c	/^}spi_geo_device_st;$/;"	t	typeref:struct:__anon54	file:
+spi_geo_device_st	components/drv/adxl_drv.c	/^}spi_geo_device_st;$/;"	t	typeref:struct:__anon58	file:
 sps	components/usr/sys_conf.h	/^    uint32_t    sps;$/;"	m	struct:__anon20
 ssid	components/cli/cmd_wifi.c	/^    struct arg_str *ssid;$/;"	m	struct:__anon6	typeref:struct:__anon6::arg_str	file:
 stage_count	components/kits/meow_fft.h	/^    unsigned stage_count;$/;"	m	struct:Meow_Stage_Info
 stages	components/kits/meow_fft.h	/^    Meow_Fft_Stages   stages;$/;"	m	struct:Meow_FFT_Workset
 start_mdns_service	components/cli/cmd_wifi.c	/^static void start_mdns_service(void)$/;"	f	file:
-stat	components/usr/sys_conf.h	/^    status_st   stat;$/;"	m	struct:__anon30
+stat	components/usr/sys_conf.h	/^    status_st   stat;$/;"	m	struct:__anon31
+stat_adc_st	components/usr/sys_conf.h	/^}stat_adc_st;$/;"	t	typeref:struct:__anon27
 stat_bat_st	components/usr/sys_conf.h	/^}stat_bat_st;$/;"	t	typeref:struct:__anon26
 stat_gen_st	components/usr/sys_conf.h	/^}stat_gen_st;$/;"	t	typeref:struct:__anon24
-stat_geo_st	components/usr/sys_conf.h	/^}stat_geo_st;$/;"	t	typeref:struct:__anon27
-stat_gtz_st	components/usr/sys_conf.h	/^}stat_gtz_st;$/;"	t	typeref:struct:__anon28
+stat_geo_st	components/usr/sys_conf.h	/^}stat_geo_st;$/;"	t	typeref:struct:__anon28
+stat_gtz_st	components/usr/sys_conf.h	/^}stat_gtz_st;$/;"	t	typeref:struct:__anon29
 stat_man_st	components/usr/sys_conf.h	/^}stat_man_st;$/;"	t	typeref:struct:__anon25
 status_bm	components/usr/sys_conf.h	/^    uint32_t    status_bm;$/;"	m	struct:__anon24
 status_reg_map_inst	components/usr/global_var.c	/^const sts_reg_map_st status_reg_map_inst[STAT_REG_MAP_NUM]=$/;"	v
 status_reg_num	components/usr/sys_conf.h	/^    uint32_t    status_reg_num;$/;"	m	struct:__anon24
-status_st	components/usr/sys_conf.h	/^}status_st;$/;"	t	typeref:struct:__anon29
+status_st	components/usr/sys_conf.h	/^}status_st;$/;"	t	typeref:struct:__anon30
 store_blob	components/cmd_nvs/cmd_nvs.c	/^static esp_err_t store_blob(nvs_handle_t nvs, const char *key, const char *str_values)$/;"	f	file:
-str	components/cmd_nvs/cmd_nvs.c	/^    const char *str;$/;"	m	struct:__anon45	file:
+str	components/cmd_nvs/cmd_nvs.c	/^    const char *str;$/;"	m	struct:__anon46	file:
 str_to_type	components/cmd_nvs/cmd_nvs.c	/^static nvs_type_t str_to_type(const char *type)$/;"	f	file:
-sts_reg_map_st	components/usr/sys_conf.h	/^}sts_reg_map_st;$/;"	t	typeref:struct:__anon32
+sts_reg_map_st	components/usr/sys_conf.h	/^}sts_reg_map_st;$/;"	t	typeref:struct:__anon33
 sub_topic	components/mqtt_tcp/mqtt_tcp.c	/^    char sub_topic[MQ_NVS_STR_SIZE];$/;"	m	struct:__anon4	file:
 symbol_period	components/usr/sys_conf.h	/^    uint32_t	symbol_period;$/;"	m	struct:__anon22
-sys_reg_st	components/usr/sys_conf.h	/^}sys_reg_st;$/;"	t	typeref:struct:__anon30
+sys_reg_st	components/usr/sys_conf.h	/^}sys_reg_st;$/;"	t	typeref:struct:__anon31
 target_freq	components/usr/sys_conf.h	/^    uint32_t    target_freq;$/;"	m	struct:__anon18
 target_span	components/usr/sys_conf.h	/^    uint32_t    target_span;$/;"	m	struct:__anon18
 tasks_create	main/main.c	/^static void tasks_create(void)$/;"	f	file:
@@ -2829,27 +2829,27 @@ test_buf	components/usr/daq.c	/^uint8_t test_buf[1024]={0};$/;"	v
 test_examples_system_console	example_test.py	/^def test_examples_system_console(env, extra_data):$/;"	f
 timeout	components/cli/cmd_wifi.c	/^    struct arg_int *timeout;$/;"	m	struct:__anon6	typeref:struct:__anon6::arg_int	file:
 topic	components/mqtt_tcp/mqtt_tcp.c	/^    struct arg_str *topic;$/;"	m	struct:__anon5	typeref:struct:__anon5::arg_str	file:
-tx_buf	components/usr/cmd_resolve.c	/^    uint8_t tx_buf[CMD_RTX_BUF_DEPTH*2];$/;"	m	struct:__anon35	file:
-tx_buf	components/usr/daq.c	/^    uint8_t  tx_buf[DAQ_TX_BUF_DEPTH];$/;"	m	struct:__anon44	file:
-tx_cmd	components/usr/cmd_resolve.c	/^    uint16_t tx_cmd;$/;"	m	struct:__anon35	file:
-tx_cnt	components/usr/cmd_resolve.c	/^    uint16_t tx_cnt;$/;"	m	struct:__anon35	file:
-tx_errcode	components/usr/cmd_resolve.c	/^    uint8_t  tx_errcode;$/;"	m	struct:__anon35	file:
-txd	components/drv/ads131_drv.c	/^    uint8_t                         txd[16];$/;"	m	struct:__anon53	file:
-txd	components/drv/adxl_drv.c	/^    uint8_t                         txd[DEV_GEO_RTX_SIZE];$/;"	m	struct:__anon57	file:
-type	components/cmd_nvs/cmd_nvs.c	/^    nvs_type_t type;$/;"	m	struct:__anon45	file:
-type	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *type;$/;"	m	struct:__anon46	typeref:struct:__anon46::arg_str	file:
+tx_buf	components/usr/cmd_resolve.c	/^    uint8_t tx_buf[CMD_RTX_BUF_DEPTH*2];$/;"	m	struct:__anon36	file:
+tx_buf	components/usr/daq.c	/^    uint8_t  tx_buf[DAQ_TX_BUF_DEPTH];$/;"	m	struct:__anon45	file:
+tx_cmd	components/usr/cmd_resolve.c	/^    uint16_t tx_cmd;$/;"	m	struct:__anon36	file:
+tx_cnt	components/usr/cmd_resolve.c	/^    uint16_t tx_cnt;$/;"	m	struct:__anon36	file:
+tx_errcode	components/usr/cmd_resolve.c	/^    uint8_t  tx_errcode;$/;"	m	struct:__anon36	file:
+txd	components/drv/ads131_drv.c	/^    uint8_t                         txd[16];$/;"	m	struct:__anon54	file:
+txd	components/drv/adxl_drv.c	/^    uint8_t                         txd[DEV_GEO_RTX_SIZE];$/;"	m	struct:__anon58	file:
+type	components/cmd_nvs/cmd_nvs.c	/^    nvs_type_t type;$/;"	m	struct:__anon46	file:
 type	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *type;$/;"	m	struct:__anon47	typeref:struct:__anon47::arg_str	file:
-type	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *type;$/;"	m	struct:__anon51	typeref:struct:__anon51::arg_str	file:
-type	components/usr/sys_conf.h	/^    uint8_t	    type;                     \/\/0:RW, 1:WO$/;"	m	struct:__anon31
+type	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *type;$/;"	m	struct:__anon48	typeref:struct:__anon48::arg_str	file:
+type	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *type;$/;"	m	struct:__anon52	typeref:struct:__anon52::arg_str	file:
+type	components/usr/sys_conf.h	/^    uint8_t	    type;                     \/\/0:RW, 1:WO$/;"	m	struct:__anon32
 type_str_pair	components/cmd_nvs/cmd_nvs.c	/^static const type_str_pair_t type_str_pair[] = {$/;"	v	file:
-type_str_pair_t	components/cmd_nvs/cmd_nvs.c	/^} type_str_pair_t;$/;"	t	typeref:struct:__anon45	file:
+type_str_pair_t	components/cmd_nvs/cmd_nvs.c	/^} type_str_pair_t;$/;"	t	typeref:struct:__anon46	file:
 type_to_str	components/cmd_nvs/cmd_nvs.c	/^static const char *type_to_str(nvs_type_t type)$/;"	f	file:
 uint16	components/usr/sys_def.h	/^typedef unsigned short 		uint16;$/;"	t
 uint32	components/usr/sys_def.h	/^typedef unsigned long 		uint32;$/;"	t
 uint8	components/usr/sys_def.h	/^typedef unsigned char 		uint8;$/;"	t
 up_lim	components/usr/sys_conf.h	/^    uint32_t    up_lim;$/;"	m	struct:__anon15
-val	components/drv/bat_drv.c	/^    struct arg_int *val;$/;"	m	struct:__anon61	typeref:struct:__anon61::arg_int	file:
-value	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *value;$/;"	m	struct:__anon46	typeref:struct:__anon46::arg_str	file:
+val	components/drv/bat_drv.c	/^    struct arg_int *val;$/;"	m	struct:__anon62	typeref:struct:__anon62::arg_int	file:
+value	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *value;$/;"	m	struct:__anon47	typeref:struct:__anon47::arg_str	file:
 volatile	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	11;"	d	file:
 volatile	build/bootloader/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	11;"	d	file:
 volatile	components/cmd_nvs/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	11;"	d	file:
