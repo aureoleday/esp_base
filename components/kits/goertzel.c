@@ -64,89 +64,38 @@ int compare(const void * a, const void * b)
     return (fa-fb)>0? -1:1;
 }
 
-static float calc_snr(float* dbuf, uint16_t cnt, snr_sts_st* snr_sts_ptr)
-{
-    float buf[FREQ_SPAN_MAX];
-    float buf_2nd[4];
-    float signal_psd=0.0;
-    float noise_psd=0.0;
-    float snr = 0.0;
-
-    uint16_t i;
-    int16_t ind = 0;
-    uint16_t mid = cnt/2;
-
-    for(i=0;i<cnt;i++)
-    {
-        buf[i] = *(dbuf+i);
-    }
-
-    qsort(buf,cnt,sizeof(float),compare);
-    for(i=0;i<cnt;i++)
-        if(buf[0] == dbuf[i])
-            break;
-    snr_sts_ptr->offset = i - mid;
-
-    buf_2nd[0] = *(dbuf+mid-1);
-    buf_2nd[1] = *(dbuf+mid);
-    buf_2nd[2] = *(dbuf+mid+1);
-    buf_2nd[3] = buf[3];
-
-    qsort(buf_2nd,4,sizeof(float),compare);
-
-    for(i=0;i<4;i++)
-    {
-        if(buf_2nd[i]<=buf[3])
-        {
-            ind = i;
-            break;
-        }
-    }
-
-    if(ind != 0)
-    {
-        for(i=0;i<ind;i++)
-            signal_psd += buf_2nd[i]*buf_2nd[i];
-        signal_psd = sqrtf(signal_psd);
-    }
-    else
-        signal_psd = *(dbuf+mid);
-
-    for(i=ind;i<cnt;i++)
-        noise_psd += buf[i];
-    noise_psd /=(cnt-ind);
-
-    snr = signal_psd/noise_psd;
-
-    snr_sts_ptr->signal_level = signal_psd;
-    snr_sts_ptr->noise_level = noise_psd;
-    snr_sts_ptr->rank = ind;
-    snr_sts_ptr->snr = snr;
-
-    return snr;
-}
-
-static int32_t gtz_snr(float* dbuf, uint16_t cnt)
+static float calc_snr(float* dbuf, uint16_t cnt)
 {
     extern sys_reg_st  g_sys;
+    float buf[2*FREQ_SPAN_MAX];
+
     uint16_t i;
-   
+    for(i=0;i<cnt;i++)
+        buf[i] = *(dbuf+i);
+
+    qsort(buf,cnt,sizeof(float),compare);
+    g_sys.stat.gtz.signal_level = *(dbuf+(cnt>>1));
+    if((buf[0]-*(dbuf+(cnt>>1))) < 0.0000001)
+        g_sys.stat.gtz.noise_level = (*(buf+(cnt>>1)) + *(buf+(cnt>>1)+1))/2;
+    else
+        g_sys.stat.gtz.noise_level = *(buf+(cnt>>1)); 
+    g_sys.stat.gtz.snr = g_sys.stat.gtz.signal_level/g_sys.stat.gtz.noise_level;
+
     printf("\n");
-    for(i=0;i<(2*g_sys.conf.gtz.target_span+1);i++)
-    {
-        //printf(" %f ",gtz_inst.res[i]); 
-        printf(" %f ",*(dbuf+i)); 
-    }
+    //for(i=0;i<cnt;i++)
+    //    printf(" %f ",buf[i]);
+    printf("\nsl:%f, nl:%f, snr:%f\n",g_sys.stat.gtz.signal_level,g_sys.stat.gtz.noise_level,g_sys.stat.gtz.snr);
     printf("\n");
-    return 0;
+    return g_sys.stat.gtz.snr;
 }
+
 
 static void goertzel_coef_init(void)
 {
     extern sys_reg_st  g_sys;
     int i;
     uint32_t gtz_n;
-    gtz_n = 1<<g_sys.conf.gtz.n;
+    gtz_n = g_sys.conf.gtz.n;
     for(i=0;i<(2*g_sys.conf.gtz.target_span+1);i++)
     {
         gtz_inst.coef[i] = goertzel_coef(g_sys.conf.gtz.target_freq-g_sys.conf.gtz.target_span+i,g_sys.conf.gtz.sample_freq, gtz_n);
@@ -164,7 +113,8 @@ int16_t goertzel_lfilt(float din)
    
     //x = din * window(gtz_inst.icnt,g_sys.conf.gtz.n);
     n = 1<<g_sys.conf.gtz.intv;
-    gtz_n = 1<<g_sys.conf.gtz.n; 
+    gtz_n = g_sys.conf.gtz.n; 
+    //gtz_n = 1<<g_sys.conf.gtz.n; 
     x = din; 
     for(i=0;i<n;i++)
     {
@@ -184,7 +134,7 @@ int16_t goertzel_lfilt(float din)
                 gtz_inst.q1[i][j] = 0.0;
                 gtz_inst.q2[i][j] = 0.0;
             }
-            gtz_snr(gtz_inst.res[i],2*g_sys.conf.gtz.target_span+1);
+            calc_snr(gtz_inst.res[i],2*g_sys.conf.gtz.target_span+1);
             printf("--%d--\n",i);
             gtz_inst.icnt[i]=0;
             ret = 1;
@@ -193,48 +143,54 @@ int16_t goertzel_lfilt(float din)
     return ret;
 }
 
-float goertzel_calc(float* din)
-{
-    extern sys_reg_st  g_sys;
-    
-    float coef = goertzel_coef(g_sys.conf.gtz.target_freq,g_sys.conf.gtz.sample_freq, (1<<g_sys.conf.gtz.n));
-    float q0 = 0.0;
-    float q1 = 0.0;
-    float q2 = 0.0;
+//float goertzel_calc(float* din)
+//{
+//    extern sys_reg_st  g_sys;
+//    uint32_t gtz_n = 0;
+//    gtz_n = g_sys.conf.gtz.n; 
+//    float coef; 
+//
+//    coef = goertzel_coef(g_sys.conf.gtz.target_freq,g_sys.conf.gtz.sample_freq, gtz_n);
+//    float q0 = 0.0;
+//    float q1 = 0.0;
+//    float q2 = 0.0;
+//
+//    uint32_t i=0;
+//    float x = 0.0;
+//
+//    for(i=0;i<(2<<g_sys.conf.gtz.n);i++)
+//    {
+//        x = *(din+i); 
+//        q0 = coef * q1 - q2 + x;
+//        q2 = q1;
+//        q1 = q0;
+//    }
+//    return sqrtf((q1*q1 + q2*q2 - q1*q2*coef)*2/(1<<g_sys.conf.gtz.n));
+//}
 
-    uint32_t i=0;
-    float x = 0.0;
-
-    for(i=0;i<(2<<g_sys.conf.gtz.n);i++)
-    {
-        x = *(din+i); 
-        q0 = coef * q1 - q2 + x;
-        q2 = q1;
-        q1 = q0;
-    }
-    return sqrtf((q1*q1 + q2*q2 - q1*q2*coef)*2/(1<<g_sys.conf.gtz.n));
-}
-
-int32_t gtz_freq_bins(float* dst_buf, uint16_t *num)
-{
-    extern sys_reg_st  g_sys;
-    uint16_t i;
-    *num = 2*g_sys.conf.gtz.target_span+1;
-    for(i=0;i<*num;i++)
-        *(dst_buf+i) = gtz_inst.res[0][i];
-    return 0;
-}
+//int32_t gtz_freq_bins(float* dst_buf, uint16_t *num)
+//{
+//    extern sys_reg_st  g_sys;
+//    uint16_t i;
+//    *num = 2*g_sys.conf.gtz.target_span+1;
+//    for(i=0;i<*num;i++)
+//        *(dst_buf+i) = gtz_inst.res[0][i];
+//    return 0;
+//}
 
 void goertzel_init(void)
 {
     extern sys_reg_st  g_sys;
     int32_t i,n;
+    uint32_t gtz_gap = 0;
 
+    gtz_gap = g_sys.conf.gtz.n >> g_sys.conf.gtz.intv;
+    
     n = 1<<g_sys.conf.gtz.intv;
     
     for(i=0;i<n;i++)
     {
-        gtz_inst.icnt[i]=i*(1<<(g_sys.conf.gtz.n-g_sys.conf.gtz.intv));
+        gtz_inst.icnt[i]=i*gtz_gap;
         //printf("icnt[%d]:%d\n",i,gtz_inst.icnt[i]);
     }
     goertzel_coef_init();

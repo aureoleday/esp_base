@@ -14,4 +14,5 @@ int16_t geo_timer_opt(uint32_t pram);
 int16_t geo_pwr_opt(uint32_t pram);
 int16_t geo_filter_opt(uint32_t pram);
 int16_t gtz_rst_opt(uint32_t pram);
+int16_t adc_drop_opt(uint32_t pram);
 #endif

@@ -92,6 +92,7 @@ typedef struct
     uint32_t    sps;
     uint32_t    gain;
     uint32_t    ch_bm;
+    uint32_t    drop;
 }conf_adc_st;
 
 typedef struct
@@ -158,20 +159,23 @@ typedef struct
 
 typedef struct
 {
+    uint32_t   	drop_cnt;
+}stat_adc_st;
+
+typedef struct
+{
     uint32_t   	kfifo_drop_cnt;
 }stat_geo_st;
 
 typedef struct
 {
     float	   	freq_bar[33];
-    float	   	ins_snr;
+    float	   	snr;
     float	   	acc_snr;
     float		signal_level;
     float		noise_level;
     float		acc_signal_level;
     float		acc_noise_level;
-    uint32_t   	rank;
-    uint32_t   	acc_rank;
     int32_t		offset;
     int32_t		acc_offset;
 }stat_gtz_st;
@@ -181,6 +185,7 @@ typedef struct
     stat_gen_st 	gen;
     stat_man_st 	man;
     stat_geo_st		geo;
+    stat_adc_st		adc;
     stat_gtz_st		gtz;
     stat_bat_st		bat;
 }status_st;

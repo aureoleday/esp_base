@@ -95,6 +95,14 @@ int16_t service_opt(uint32_t pram)
     return 1;
 }
 
+int16_t adc_drop_opt(uint32_t pram)
+{
+    g_sys.conf.adc.drop = pram;
+    g_sys.stat.adc.drop_cnt = pram;
+
+    return 0;
+}
+
 int16_t gtz_rst_opt(uint32_t pram)
 {
     goertzel_init();

@@ -53,20 +53,34 @@ static void daq_timeout(void* arg)
     extern sys_reg_st  g_sys;
     int out_len = 0;
     int o_len = 0;
-    //out_len = adxl_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
-    out_len = adc_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
-    o_len = out_len>>2;
-    if(out_len == 0)
-//        printf("daq no d\n");
-        ;
-    else 
+    uint32_t drop_cnt;
+    drop_cnt = g_sys.stat.adc.drop_cnt<<2;
+    if(drop_cnt>0)
     {
-        for(int i=0;i<o_len;i++)
+        if(drop_cnt > g_sys.conf.daq.pkg_size)
+            out_len = adc_dout(daq_inst.tx_buf,g_sys.conf.daq.pkg_size);
+        else
+            out_len = adc_dout(daq_inst.tx_buf,drop_cnt);
+        drop_cnt-=out_len;
+        g_sys.stat.adc.drop_cnt = drop_cnt>>2;
+    }
+    //out_len = adxl_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
+    else
+    {
+        out_len = adc_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
+        o_len = out_len>>2;
+        if(out_len == 0)
+//            printf("daq no d\n");
+            ;
+        else 
         {
-            goertzel_lfilt(*((int32_t *)daq_inst.tx_buf+i)*0.00000009933);
-        }
-        if(bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) == 1)
-            daq_frame(daq_inst.tx_buf, out_len);
+            for(int i=0;i<o_len;i++)
+            {
+                goertzel_lfilt(*((int32_t *)daq_inst.tx_buf+i)*0.00000009933);
+            }
+            //if(bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) == 1)
+                daq_frame(daq_inst.tx_buf, out_len);
+        }   
     }
 }
 
