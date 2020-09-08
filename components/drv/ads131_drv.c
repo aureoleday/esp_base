@@ -228,58 +228,58 @@ static uint16_t calc_sps(uint16_t freq_mode)
     {
         case(0):
         {
-            //512 SPS
-            clk1_reg = 0x0a;    //      /10
-            clk2_reg = 0x86;    //      /8/400
-            break;
-        }
-        case(1):
-        {
             //1024 SPS
             clk1_reg = 0x0a;    //      /10
             clk2_reg = 0x89;    //      /8/200
             break;
         }
-        case(2):
+        case(1):
         {
             //2048 SPS
             clk1_reg = 0x0a;    //      /10
             clk2_reg = 0x49;    //      /4/200
             break;
         }
-        case(3):
+        case(2):
         {
             //4096 SPS
             clk1_reg = 0x0a;    //      /10
             clk2_reg = 0x29;    //      /2/200
             break;
         }
+        case(3):
+        {
+            //1k SPS
+            clk1_reg = 0x08;    //      /8
+            clk2_reg = 0x88;    //      /8/256
+            break;
+        }
         case(4):
         {
-            //8k SPS
-            clk1_reg = 0x04;    //      /4
-            clk2_reg = 0x4b;    //      /4/128
+            //2k SPS
+            clk1_reg = 0x08;    //      /8
+            clk2_reg = 0x8b;    //      /8/128
             break;
         }
         case(5):
         {
-            //16k SPS
-            clk1_reg = 0x04;    //      /4
-            clk2_reg = 0x4d;    //      /4/64
+            //4k SPS
+            clk1_reg = 0x08;    //      /8
+            clk2_reg = 0x8d;    //      /8/64
             break;
         }
         case(6):
         {
-            //32k SPS
-            clk1_reg = 0x04;    //      /4
-            clk2_reg = 0x4f;    //      /4/32
+            //8k SPS
+            clk1_reg = 0x08;    //      /8
+            clk2_reg = 0x8f;    //      /8/32
             break;
         }
         case(7):
         {
-            //64k SPS
-            clk1_reg = 0x04;    //      /4
-            clk2_reg = 0x2f;    //      /2/32
+            //16k SPS
+            clk1_reg = 0x08;    //      /8
+            clk2_reg = 0x4f;    //      /4/32
             break;
         }
         default:

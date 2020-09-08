@@ -273,22 +273,29 @@ static uint16_t cmd_rd_reg(void)
 {
     uint8_t err_code;
     uint16_t reg_addr;
-    uint32_t reg_data;
+    uint16_t reg_cnt;
+    uint32_t reg_data[16];
 
     err_code = CMD_ERR_NOERR;
 
     cmd_reg_inst.rx_cnt = 0;								//clear rx_buffer
     cmd_reg_inst.rx_tag = 0;
 
-    reg_addr = cmd_reg_inst.rx_buf[0];
+    if((cmd_reg_inst.rx_buf[0]&0x80) != 0)
+        reg_addr = 0x8000 + (cmd_reg_inst.rx_buf[0]&0x007f);
+    else
+        reg_addr =  cmd_reg_inst.rx_buf[0];
 
-    cmd_reg_inst.tx_buf[4] = reg_addr;
-    err_code = reg_map_read(reg_addr, &reg_data, 1);
+    reg_cnt = cmd_reg_inst.rx_buf[1];
 
-    *((uint32_t *)&cmd_reg_inst.tx_buf[5]) = reg_data;
+    cmd_reg_inst.tx_buf[4] = cmd_reg_inst.rx_buf[0];
+    err_code = reg_map_read(reg_addr, reg_data, reg_cnt);
+
+    //*((uint32_t *)&cmd_reg_inst.tx_buf[5]) = reg_data;
+    memcpy(&cmd_reg_inst.tx_buf[5], reg_data, reg_cnt<<2);
 
     cmd_reg_inst.tx_cmd = cmd_reg_inst.rx_cmd;
-    cmd_reg_inst.tx_cnt = 5;
+    cmd_reg_inst.tx_cnt = 1+(reg_cnt<<2);
     cmd_reg_inst.tx_errcode = err_code;
     cmd_response();
     return err_code;

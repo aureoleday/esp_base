@@ -12,7 +12,7 @@
 #include "sys_conf.h"
 
 #define FREQ_SPAN_MAX 16 
-#define GTZ_FLOWS_MAX 16 
+#define GTZ_FLOWS_MAX 64 
 
 typedef struct
 {
