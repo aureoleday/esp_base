@@ -14,7 +14,6 @@
 typedef struct
 {	
     uint32_t    restart;
-    uint32_t    dbg;
 }conf_gen_st;
 
 

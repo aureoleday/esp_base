@@ -143,14 +143,12 @@ CLEAN_UP:
 
 void tcp_srv_start(void)
 {
-    //extern sys_reg_st  g_sys;
     xTaskCreate(&tcp_thread,
                "Task_TCP",
                8192,
                NULL,
                5,
                NULL);
-    //bit_op_set(&g_sys.stat.gen.status_bm,GBM_TCP,1);
 }
 
 

@@ -59,7 +59,7 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {25,  &g_sys.conf.fft.intv_cnts,       1,       1024,       1,       0,    NULL},
     {26,  NULL,                            0,	    0,          0,       0,    NULL},
     {27,  NULL,                            0,	    1,          0,       0,    service_opt},
-    {28,  &g_sys.conf.gen.dbg,             0,       1,          0,       0,    NULL},
+    {28,  NULL,                            0,	    0,          0,       0,    NULL},
     {29,  NULL,                            0,	    1,          0,       1,    save_conf_opt},
     {30,  NULL,                            0,	    1,          0,       1,    load_conf_opt},
     {31,  &g_sys.conf.gen.restart,         0,	    0xffffffff, 0,       1,    NULL},
@@ -548,7 +548,7 @@ static int rd_reg(int argc, char **argv)
 
     i=0;
     for(i=0;i<regmap_args.data->ival[0];i++)
-        printf("reg %d: %d\t %x\n",(i+regmap_args.addr->ival[0])&0x3fff,rx_buf[i],rx_buf[i]);
+        ESP_LOGI(TAG,"reg %d: %d\t %x\n",(i+regmap_args.addr->ival[0])&0x3fff,rx_buf[i],rx_buf[i]);
     return 0;
 }
 
@@ -598,6 +598,38 @@ static void register_wr_reg()
     ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
 }
 
+/** Arguments used by 'LOG' function */
+static struct {
+    struct arg_str *module;
+    struct arg_int *level;
+    struct arg_end *end;
+} log_args;
+
+static int log_level_set(int argc, char **argv)
+{
+    int nerrors = arg_parse(argc, argv, (void**) &log_args);
+    if (nerrors != 0) {
+        arg_print_errors(stderr, log_args.end, argv[0]);
+        return 1;
+    }
+    esp_log_level_set(log_args.module->sval[0],log_args.level->ival[0]);
+    return 0;
+}
+
+static void register_log_level_set()
+{
+    log_args.module = arg_str1(NULL, NULL, "<t>", "module tag");
+    log_args.level = arg_int1(NULL, NULL, "<lv>", "set level");
+    log_args.end = arg_end(2);
+    const esp_console_cmd_t cmd = {
+            .command = "log_lv_set",
+            .help = "set log level",
+            .hint = NULL,
+            .func = &log_level_set,
+            .argtable = &log_args
+    };
+    ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
+}
 
 void gvar_register(void)
 {
@@ -606,6 +638,7 @@ void gvar_register(void)
     register_save_conf();
     register_print_conf();
     register_load_conf();
+    register_log_level_set();
 }
 
 

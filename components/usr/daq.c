@@ -15,6 +15,8 @@
 #define     DAQ_TX_BUF_DEPTH    1536 
 #define     DAQ_CHANNEL_MAX     16 
 
+static const char *TAG = "DAQ";
+
 uint8_t test_buf[1024]={0};
 
 typedef struct
@@ -64,14 +66,12 @@ static void daq_timeout(void* arg)
         drop_cnt-=out_len;
         g_sys.stat.adc.drop_cnt = drop_cnt>>2;
     }
-    //out_len = adxl_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
     else
     {
         out_len = adc_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
         o_len = out_len>>2;
         if(out_len == 0)
-//            printf("daq no d\n");
-            ;
+            ESP_LOGD(TAG,"No daq data");
         else 
         {
             if(bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) != 0)

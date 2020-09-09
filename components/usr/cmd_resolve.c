@@ -369,12 +369,9 @@ uint16_t cmd_frame_resolve(void)
         cmd_reg_inst.rx_cnt = 0;								//clear rx_buffer
         cmd_reg_inst.rx_tag = 0;
         ESP_LOGI(TAG,"console: unknow cmd.");
-        printf("cmd:%x\n",cmd_reg_inst.rx_cmd);
-        printf("len:%x\n",cmd_reg_inst.rx_len);
+        ESP_LOGI(TAG,"cmd:%x,len:%x",cmd_reg_inst.rx_cmd,cmd_reg_inst.rx_len);
         for(int i=0;i<cmd_reg_inst.rx_len;i++)
-                printf("%x ",cmd_reg_inst.rx_buf[i]);
-
-        printf("\n");
+                ESP_LOGI(TAG,"%x ",cmd_reg_inst.rx_buf[i]);
         err_code = CMD_ERR_UNKNOWN;
         break;
     }

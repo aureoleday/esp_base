@@ -7,9 +7,14 @@
 //#include "esp_system.h"
 //#include "freertos/FreeRTOS.h"
 //#include "esp_console.h"
+#define LOG_LOCAL_LEVEL ESP_LOG_DEBUG
+
 #include <stdlib.h>     /* qsort */
 #include <math.h>
 #include "sys_conf.h"
+#include "esp_log.h"
+
+static const char *TAG = "GTZ";
 
 #define FREQ_SPAN_MAX 16 
 #define GTZ_FLOWS_MAX 64 
@@ -81,11 +86,9 @@ static float calc_snr(float* dbuf, uint16_t cnt)
         g_sys.stat.gtz.noise_level = *(buf+(cnt>>1)); 
     g_sys.stat.gtz.snr = g_sys.stat.gtz.signal_level/g_sys.stat.gtz.noise_level;
 
-    printf("\n");
     //for(i=0;i<cnt;i++)
-    //    printf(" %f ",buf[i]);
-    printf("\nsl:%f, nl:%f, snr:%f\n",g_sys.stat.gtz.signal_level,g_sys.stat.gtz.noise_level,g_sys.stat.gtz.snr);
-    printf("\n");
+    //    ESP_LOGD(TAG," %f ",buf[i]);
+    ESP_LOGD(TAG,"sl:%f, nl:%f, snr:%f",g_sys.stat.gtz.signal_level,g_sys.stat.gtz.noise_level,g_sys.stat.gtz.snr);
     return g_sys.stat.gtz.snr;
 }
 
@@ -135,7 +138,7 @@ int16_t goertzel_lfilt(float din)
                 gtz_inst.q2[i][j] = 0.0;
             }
             calc_snr(gtz_inst.res[i],2*g_sys.conf.gtz.target_span+1);
-            printf("--%d--\n",i);
+            ESP_LOGD(TAG,"--%d--",i);
             gtz_inst.icnt[i]=0;
             ret = 1;
         }
@@ -191,7 +194,7 @@ void goertzel_init(void)
     for(i=0;i<n;i++)
     {
         gtz_inst.icnt[i]=i*gtz_gap;
-        //printf("icnt[%d]:%d\n",i,gtz_inst.icnt[i]);
+        //ESP_LOGD(TAG,"icnt[%d]:%d",i,gtz_inst.icnt[i]);
     }
     goertzel_coef_init();
 }

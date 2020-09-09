@@ -4,7 +4,9 @@
 #include "esp_console.h"
 #include "argtable3/argtable3.h"
 #include "sys_conf.h"
+#include "esp_log.h"
 
+static const char *TAG = "DRV_BAT";
 
 #define DEFAULT_VREF    1100
 #define MAV_MAX_CNT		128
@@ -25,27 +27,27 @@ static void check_efuse(void)
 {
     //Check TP is burned into eFuse
     if (esp_adc_cal_check_efuse(ESP_ADC_CAL_VAL_EFUSE_TP) == ESP_OK) {
-        printf("eFuse Two Point: Supported\n");
+        ESP_LOGI(TAG,"eFuse Two Point: Supported");
     } else {
-        printf("eFuse Two Point: NOT supported\n");
+        ESP_LOGI(TAG,"eFuse Two Point: NOT supported");
     }
 
     //Check Vref is burned into eFuse
     if (esp_adc_cal_check_efuse(ESP_ADC_CAL_VAL_EFUSE_VREF) == ESP_OK) {
-        printf("eFuse Vref: Supported\n");
+        ESP_LOGI(TAG,"eFuse Vref: Supported");
     } else {
-        printf("eFuse Vref: NOT supported\n");
+        ESP_LOGI(TAG,"eFuse Vref: NOT supported");
     }
 }
 
 static void print_char_val_type(esp_adc_cal_value_t val_type)
 {
     if (val_type == ESP_ADC_CAL_VAL_EFUSE_TP) {
-        printf("Characterized using Two Point Value\n");
+        ESP_LOGI(TAG,"Characterized using Two Point Value");
     } else if (val_type == ESP_ADC_CAL_VAL_EFUSE_VREF) {
-        printf("Characterized using eFuse Vref\n");
+        ESP_LOGI(TAG,"Characterized using eFuse Vref");
     } else {
-        printf("Characterized using Default Vref\n");
+        ESP_LOGI(TAG,"Characterized using Default Vref");
     }
 }
 
@@ -116,7 +118,7 @@ void bat_update(void)
 {
 	extern sys_reg_st g_sys;
 	g_sys.stat.bat.adc_raw = bat_mav_calc(g_sys.conf.bat.mav_cnt);
-    //printf("bat_volt:%d\n",g_sys.stat.bat.adc_raw);
+    //ESP_LOGI(TAG,"bat_volt:%d",g_sys.stat.bat.adc_raw);
 	g_sys.stat.bat.pwr_val = bat_pwr_calc(g_sys.conf.bat.up_lim,g_sys.conf.bat.low_lim,g_sys.stat.bat.adc_raw);
 }
 
@@ -173,7 +175,7 @@ static int adc_read(int argc, char **argv)
 {
     uint32_t volt;
     volt = adc_get_volt();
-    printf("Voltage: %dmV\n", volt);
+    ESP_LOGI(TAG,"Voltage: %dmV", volt);
     return 0;
 }
 

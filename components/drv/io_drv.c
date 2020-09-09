@@ -8,6 +8,7 @@
 #include "driver/gpio.h"
 #include "sys_conf.h"
 #include "bit_op.h"
+#include "esp_log.h"
 
 #define     PWR_ON          35 
 #define     BAT_CHRG        34	
@@ -28,6 +29,8 @@
 #define ESP_INTR_FLAG_DEFAULT 0
 #define GPIO_INPUT_PIN_SEL ( (1ULL<<PWR_ON) | (1ULL<<BAT_CHRG) | (1ULL<<VI_EF) )
 #define GPIO_OUTPUT_PIN_SEL (  (1ULL<<PWR_EN) | (1ULL<<LOCAL_LED) | (1ULL<<WIFI_LED0) | (1ULL<<WIFI_LED1) | (1ULL<<LOW_PWR) | (1ULL<<VI_OD) | (1ULL<<PGA_GAIN0) | (1ULL<<PGA_GAIN1) ) 
+
+static const char *TAG = "DRV_IO";
 
 enum
 {
@@ -65,7 +68,7 @@ void power_fsm(void* param)
                 {
                     io_inst.pwr_fsm = PWR_MODE_PRON;
                     delay_cnt = 1;
-                    printf("to PWR_MODE_PRON\n");
+                    ESP_LOGI(TAG,"to PWR_MODE_PRON");
                 }
                 else
                 {
@@ -88,14 +91,14 @@ void power_fsm(void* param)
                         delay_cnt = 0;
                         io_inst.pwr_fsm = PWR_MODE_ON;
                         gpio_set_level(PWR_EN, 1);
-                        printf("to PWR_MODE_ON\n");
+                        ESP_LOGI(TAG,"to PWR_MODE_ON");
                     }
                 }
                 else
                 {
                     delay_cnt = 0;
                     io_inst.pwr_fsm = PWR_MODE_IDLE;
-                    printf("to PWR_MOD_IDLE\n");
+                    ESP_LOGI(TAG,"to PWR_MOD_IDLE");
                 }
                 break;
             }
@@ -105,7 +108,7 @@ void power_fsm(void* param)
                 {
                     io_inst.pwr_fsm = PWR_MODE_ONGAP;
                     delay_cnt = 0;
-                    printf("to PWR_MOD_ONGAP\n");
+                    ESP_LOGI(TAG,"to PWR_MOD_ONGAP");
                 }
                 else
                 {
@@ -120,7 +123,7 @@ void power_fsm(void* param)
                 {
                     io_inst.pwr_fsm = PWR_MODE_PROFF;
                     delay_cnt = 0;
-                    printf("to PWR_MODE_PROFF\n");
+                    ESP_LOGI(TAG,"to PWR_MODE_PROFF");
                 }
                 else
                 {
@@ -143,14 +146,14 @@ void power_fsm(void* param)
                         delay_cnt = 0;
                         io_inst.pwr_fsm = PWR_MODE_OFF;
                         gpio_set_level(PWR_EN, 0);
-                        printf("to PWR_MODE_OFF\n");
+                        ESP_LOGI(TAG,"to PWR_MODE_OFF");
                     }
                 }
                 else
                 {
                     delay_cnt = 0;
                     io_inst.pwr_fsm = PWR_MODE_ONGAP;
-                    printf("to PWR_MOD_ONGAP\n");
+                    ESP_LOGI(TAG,"to PWR_MOD_ONGAP");
                 }
                 break;
             }
@@ -308,7 +311,7 @@ static int cmd_pga_gain(int argc, char **argv)
     }
     pga_gain(pga_args.gain->ival[0]);
 
-    printf("%d\n",pga_args.gain->ival[0]);
+    ESP_LOGI(TAG,"%d",pga_args.gain->ival[0]);
 
     return 0;
 }

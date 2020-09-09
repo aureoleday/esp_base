@@ -36,7 +36,6 @@
 #define CMD_STDBY    0x0022
 #define ESP_INTR_FLAG_DEFAULT 0
 
-
 static const char *TAG = "ADS131";
 
 static uint8_t 	kf_buf_s[ADC_FIFO_SIZE];
@@ -308,18 +307,18 @@ static uint16_t adc_init_conf(void)
 	extern sys_reg_st g_sys;
     uint16_t ret;
     ret = adc_cmd(CMD_NULL);
-    printf("adc:%x\n",ret);
+    //ESP_LOGD(TAG,"adc:%x",ret);
     ret = adc_cmd(CMD_UNLOCK);
-    printf("adc:%x\n",ret);
+    //ESP_LOGD(TAG,"adc:%x",ret);
     adc_set_sps(g_sys.conf.adc.sps);
     ret = adc_wr_reg(15, 0x03);//adc enable 
-    printf("adc:%x\n",ret);
+    //ESP_LOGD(TAG,"adc:%x",ret);
     ret = adc_cmd(CMD_WAKEUP);
-    printf("adc:%x\n",ret);
+    //ESP_LOGD(TAG,"adc:%x",ret);
     ret = adc_cmd(CMD_LOCK);
-    printf("adc:%x\n",ret);
+    //ESP_LOGD(TAG,"adc:%x",ret);
     ret = adc_cmd(CMD_NULL);
-    printf("adc:%x\n",ret);
+    //ESP_LOGD(TAG,"adc:%x",ret);
     //adc_cmd(CMD_UNLOCK);
     spi_geo_dev_inst.adc_init_done = 1;
     return ret;
@@ -402,7 +401,7 @@ int adc_dout(uint8_t * dst_ptr, uint16_t max_len)
     int fifo_len = kfifo_len(&kf_s);
     rd_len = (fifo_len<max_len)? fifo_len:max_len;
     kfifo_out(&kf_s, dst_ptr ,rd_len);
-    //printf("f_len:%d,max_len:%d,r_len:%d\n",fifo_len,max_len,rd_len);
+    //ESP_LOGI(TAG,"f_len:%d,max_len:%d,r_len:%d",fifo_len,max_len,rd_len);
     return rd_len; 
 }
 
@@ -432,7 +431,7 @@ static int adc_cmd_r(int argc, char **argv)
     }
     spi_geo_dev_inst.adc_cmd = adc_cmd_args.cmd->ival[0];
 
-    printf("%x,%x\n",spi_geo_dev_inst.adc_cmd,adc_cmd_args.cmd->ival[0]);
+    ESP_LOGI(TAG,"%x,%x",spi_geo_dev_inst.adc_cmd,adc_cmd_args.cmd->ival[0]);
 
     return 0;
 }
@@ -449,7 +448,7 @@ static int xadc_cmd(int argc, char **argv)
 
     rd_data = adc_cmd(adc_args.addr->ival[0]);
 
-    printf("%x: %x\n",adc_args.addr->ival[0],rd_data);
+    ESP_LOGI(TAG,"%x: %x",adc_args.addr->ival[0],rd_data);
     return 0;
 }
 
@@ -466,7 +465,7 @@ static int radc_reg(int argc, char **argv)
 
     rd_data = adc_rd_reg(adc_args.addr->ival[0]);
 
-    printf("%d: %x\n",adc_args.addr->ival[0],rd_data);
+    ESP_LOGI(TAG,"%d: %x",adc_args.addr->ival[0],rd_data);
     return 0;
 }
 
@@ -482,7 +481,7 @@ static int wadc_reg(int argc, char **argv)
     wr_data = adc_wr_reg(adc_wargs.addr->ival[0],
             adc_wargs.data->ival[0]);
 
-    printf("%d: %x\n",adc_wargs.addr->ival[0],wr_data);
+    ESP_LOGI(TAG,"%d: %x",adc_wargs.addr->ival[0],wr_data);
     return 0;
 }
 
@@ -549,14 +548,12 @@ static int sadc_data(int argc, char **argv)
     float temp;
     int32_t data;
     for(int i=0;i<9;i++)
-        printf(" %x ",spi_geo_dev_inst.rxd[i]);
-
-    printf("\n");
+        ESP_LOGI(TAG," %x ",spi_geo_dev_inst.rxd[i]);
 
     data = spi_geo_dev_inst.adc_val;
     temp = (float)data*0.000000596;
 
-    printf("val:%x,%f\n",data,temp);
+    ESP_LOGI(TAG,"val:%x,%f",data,temp);
     return 0;
 }
 
