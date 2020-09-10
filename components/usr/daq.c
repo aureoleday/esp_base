@@ -74,7 +74,7 @@ static void daq_timeout(void* arg)
             ESP_LOGD(TAG,"No daq data");
         else 
         {
-            if(bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) != 0)
+            //if(bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) != 0)
                 daq_frame(daq_inst.tx_buf, out_len);
             for(int i=0;i<o_len;i++)
             {

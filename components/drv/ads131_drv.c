@@ -281,6 +281,20 @@ static uint16_t calc_sps(uint16_t freq_mode)
             clk2_reg = 0x4f;    //      /4/32
             break;
         }
+        case(8):
+        {
+            //32k SPS
+            clk1_reg = 0x08;    //      /8
+            clk2_reg = 0x2f;    //      /2/32
+            break;
+        }
+        case(9):
+        {
+            //64k SPS
+            clk1_reg = 0x04;    //      /4
+            clk2_reg = 0x2f;    //      /2/32
+            break;
+        }
         default:
         {
             //4096 SPS
@@ -372,7 +386,7 @@ void adc_init(void)
     };
     spi_device_interface_config_t devcfg=
     {
-            .clock_speed_hz=16*1000*1000,           //Clock out at 16 MHz
+            .clock_speed_hz=24*1000*1000,           //Clock out at 16 MHz
             .mode=1,                                //SPI mode 1
             .spics_io_num=PIN_NUM_CS,               //CS pin
             .post_cb = adc_read_pcb,

@@ -14,10 +14,10 @@
 #include "sys_conf.h"
 #include "esp_log.h"
 
-static const char *TAG = "GTZ";
-
+static const char *TAG = "GTZ"; 
 #define FREQ_SPAN_MAX 16 
 #define GTZ_FLOWS_MAX 64 
+#define R_QBUF_MAX    64 
 
 typedef struct
 {
@@ -31,21 +31,49 @@ typedef struct
 
 typedef struct
 {
-    float		snr;
-    float 		signal_level;
-    float 		noise_level;
-    int16_t		offset;
-    uint16_t 	rank;
-}snr_sts_st;
-
-typedef struct
-{
-    float		freq_bins[FREQ_SPAN_MAX];
-}snr_buf_st;
-
+    uint64_t 	snr_slv[R_QBUF_MAX];
+    uint16_t 	cnt;
+}rqueue_st;
 
 gtz_st gtz_inst;
-snr_buf_st snr_buf_inst;
+rqueue_st rqueue_inst;
+
+static void rqueue_init(void)
+{
+    int i;
+    for(i=0;i<R_QBUF_MAX;i++)
+    {
+        rqueue_inst.snr_slv[i] = 0;
+    }
+    rqueue_inst.cnt = 0;         
+}
+
+static int16_t rqueue_append(uint32_t snr, uint32_t slv)
+{
+    uint64_t snr_t = snr;
+
+    uint64_t temp = (snr_t<<32)|slv; 
+    if(rqueue_inst.cnt < R_QBUF_MAX-1) 
+    {
+        rqueue_inst.snr_slv[rqueue_inst.cnt] = temp;
+        rqueue_inst.cnt++;
+        return rqueue_inst.cnt;
+    }
+    else
+        return -1;
+}
+
+static int compare_uint64(const void * a, const void * b)
+{
+    uint64_t ua =  *(uint64_t *)a;
+    uint64_t ub =  *(uint64_t *)b;
+    return (ua-ub)>0? -1:1;
+}
+
+static void rqueue_qsort(void)
+{
+    qsort(rqueue_inst.snr_slv,rqueue_inst.cnt,sizeof(uint64_t),compare_uint64);
+}
 
 static float goertzel_coef(uint32_t target_freq, uint32_t sample_freq, uint32_t N)
 {
@@ -62,14 +90,14 @@ inline static float window(uint32_t n, uint32_t ord)
 }
 
 
-int compare(const void * a, const void * b)
+int compare_float(const void * a, const void * b)
 {
     float fa =  *(float*)a;
     float fb =  *(float*)b;
     return (fa-fb)>0? -1:1;
 }
 
-static float calc_snr(float* dbuf, uint16_t cnt)
+static void calc_snr(float* dbuf, uint16_t cnt)
 {
     extern sys_reg_st  g_sys;
     float buf[2*FREQ_SPAN_MAX];
@@ -78,20 +106,36 @@ static float calc_snr(float* dbuf, uint16_t cnt)
     for(i=0;i<cnt;i++)
         buf[i] = *(dbuf+i);
 
-    qsort(buf,cnt,sizeof(float),compare);
-    g_sys.stat.gtz.signal_level = *(dbuf+(cnt>>1));
+    qsort(buf,cnt,sizeof(float),compare_float);
+    g_sys.stat.gtz.slv_f= *(dbuf+(cnt>>1));
     if((buf[0]-*(dbuf+(cnt>>1))) < 0.0000001)
-        g_sys.stat.gtz.noise_level = (*(buf+(cnt>>1)) + *(buf+(cnt>>1)+1))/2;
+        g_sys.stat.gtz.nlv_f = (*(buf+(cnt>>1)) + *(buf+(cnt>>1)+1))/2;
     else
-        g_sys.stat.gtz.noise_level = *(buf+(cnt>>1)); 
-    g_sys.stat.gtz.snr = g_sys.stat.gtz.signal_level/g_sys.stat.gtz.noise_level;
-
-    //for(i=0;i<cnt;i++)
-    //    ESP_LOGD(TAG," %f ",buf[i]);
-    ESP_LOGD(TAG,"sl:%f, nl:%f, snr:%f",g_sys.stat.gtz.signal_level,g_sys.stat.gtz.noise_level,g_sys.stat.gtz.snr);
-    return g_sys.stat.gtz.snr;
+        g_sys.stat.gtz.nlv_f = *(buf+(cnt>>1)); 
+    g_sys.stat.gtz.snr_f = g_sys.stat.gtz.slv_f/g_sys.stat.gtz.nlv_f;
+    g_sys.stat.gtz.slv_i = (uint32_t)(g_sys.stat.gtz.slv_f*10000000);
+    g_sys.stat.gtz.nlv_i = (uint32_t)(g_sys.stat.gtz.nlv_f*10000000);
+    g_sys.stat.gtz.snr_i = (uint32_t)(g_sys.stat.gtz.snr_f*1000);
+    if(g_sys.stat.gtz.res_cd > 0)
+    {
+        if(0 > rqueue_append(g_sys.stat.gtz.snr_i,g_sys.stat.gtz.slv_i))
+            ESP_LOGW(TAG,"rqueue full");
+        g_sys.stat.gtz.res_cd--;
+        printf("\rres_cd:%d",g_sys.stat.gtz.res_cd);
+        fflush(stdout);
+        if(g_sys.stat.gtz.res_cd == 0)
+        {
+            rqueue_qsort();
+            g_sys.stat.gtz.res_snr_i = (rqueue_inst.snr_slv[0]>>32)&0x00000000ffffffff; 
+            g_sys.stat.gtz.res_slv_i = rqueue_inst.snr_slv[0]&0x00000000ffffffff; 
+            ESP_LOGI(TAG,"snr:%d,slv:%d",g_sys.stat.gtz.res_snr_i,g_sys.stat.gtz.res_slv_i);
+            rqueue_init();
+        }
+    }
+    ESP_LOGD(TAG,"slv:%f, nlv:%f, snr:%f",g_sys.stat.gtz.slv_f,
+                                          g_sys.stat.gtz.nlv_f,
+                                          g_sys.stat.gtz.snr_f);
 }
-
 
 static void goertzel_coef_init(void)
 {
@@ -103,8 +147,8 @@ static void goertzel_coef_init(void)
     {
         gtz_inst.coef[i] = goertzel_coef(g_sys.conf.gtz.target_freq-g_sys.conf.gtz.target_span+i,g_sys.conf.gtz.sample_freq, gtz_n);
     }
- 
 }
+
 int16_t goertzel_lfilt(float din)
 {
     extern sys_reg_st  g_sys;
@@ -113,7 +157,10 @@ int16_t goertzel_lfilt(float din)
     uint32_t gtz_n = 0;
     int16_t ret = 0;
     uint32_t i,j;
-   
+    
+    if(g_sys.conf.gtz.en != 1)
+        return -1;
+
     n = 1<<g_sys.conf.gtz.intv;
     gtz_n = g_sys.conf.gtz.n; 
     //gtz_n = 1<<g_sys.conf.gtz.n; 
@@ -138,7 +185,7 @@ int16_t goertzel_lfilt(float din)
                 gtz_inst.q2[i][j] = 0.0;
             }
             calc_snr(gtz_inst.res[i],2*g_sys.conf.gtz.target_span+1);
-            ESP_LOGD(TAG,"--%d--",i);
+            ESP_LOGD(TAG,"Flow id:%d",i);
             gtz_inst.icnt[i]=0;
             ret = 1;
         }
@@ -186,7 +233,7 @@ void goertzel_init(void)
     extern sys_reg_st  g_sys;
     int32_t i,n;
     uint32_t gtz_gap = 0;
-
+    rqueue_init();
     gtz_gap = g_sys.conf.gtz.n >> g_sys.conf.gtz.intv;
     
     n = 1<<g_sys.conf.gtz.intv;
@@ -197,5 +244,6 @@ void goertzel_init(void)
         //ESP_LOGD(TAG,"icnt[%d]:%d",i,gtz_inst.icnt[i]);
     }
     goertzel_coef_init();
+    esp_log_level_set(TAG,3);
 }
 

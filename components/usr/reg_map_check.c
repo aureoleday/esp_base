@@ -103,6 +103,12 @@ int16_t adc_drop_opt(uint32_t pram)
     return 0;
 }
 
+int16_t gtz_rcd_opt(uint32_t pram)
+{
+    g_sys.stat.gtz.res_cd = pram;
+    return 0;
+}
+
 int16_t gtz_rst_opt(uint32_t pram)
 {
     goertzel_init();

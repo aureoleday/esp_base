@@ -47,6 +47,7 @@ enum
 
 void init_thread(void* param)
 {
+    extern sys_reg_st  g_sys;
     vTaskDelay(INIT_THREAD_DELAY);
     adc_init();
     io_init();
@@ -54,6 +55,14 @@ void init_thread(void* param)
     bat_init();
     gvar_register();
     mqtt_register();
+
+	vTaskDelay(100 / portTICK_PERIOD_MS);
+    if(g_sys.conf.con.wifi_connect == 1)
+    {
+        wifi_connect();
+        service_opt(g_sys.conf.prt.service_bm);
+    }
+
     while(1)
     {
 		vTaskDelay(100000 / portTICK_PERIOD_MS);
@@ -68,7 +77,7 @@ static void tasks_create(void)
             NULL,
             CLI_THREAD_PRIO,
             NULL,
-            0);
+            1);
 
     xTaskCreatePinnedToCore(&cmd_thread,
             "Task_CMD",
@@ -93,12 +102,12 @@ void app_main()
     extern sys_reg_st  g_sys;
     gvar_init();
     tasks_create();
-	vTaskDelay(1000 / portTICK_PERIOD_MS);
-    if(g_sys.conf.con.wifi_connect == 1)
-    {
-        wifi_connect();
-        service_opt(g_sys.conf.prt.service_bm);
-    }
+	//vTaskDelay(100 / portTICK_PERIOD_MS);
+    //if(g_sys.conf.con.wifi_connect == 1)
+    //{
+    //    wifi_connect();
+    //    service_opt(g_sys.conf.prt.service_bm);
+    //}
     while(1)
     {
 		vTaskDelay(1000 / portTICK_PERIOD_MS);

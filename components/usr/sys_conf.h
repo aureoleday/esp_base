@@ -67,14 +67,15 @@ typedef struct
 
 typedef struct
 {
+    uint32_t    calc_n;
     uint32_t    n;
     uint32_t    intv;
     uint32_t    target_freq;
     uint32_t    sample_freq;
     uint32_t    target_span;
     uint32_t    signal_th;
-    uint32_t    acc_q;
-    uint32_t    reset;
+    uint32_t    en;
+    uint32_t    res_cd;
 }conf_gtz_st;
 
 typedef struct
@@ -159,6 +160,7 @@ typedef struct
 typedef struct
 {
     uint32_t   	drop_cnt;
+    uint32_t   	rms;
 }stat_adc_st;
 
 typedef struct
@@ -170,13 +172,16 @@ typedef struct
 {
     float	   	freq_bar[33];
     float	   	snr;
-    float	   	acc_snr;
-    float		signal_level;
-    float		noise_level;
-    float		acc_signal_level;
-    float		acc_noise_level;
-    int32_t		offset;
-    int32_t		acc_offset;
+    uint32_t    snr_i;
+    uint32_t    slv_i;
+    uint32_t    nlv_i;
+    uint32_t    res_cd;
+    uint32_t    res_snr_i;
+    uint32_t    res_slv_i;
+    uint32_t    res_nlv_i;
+    float	   	snr_f;
+    float		slv_f;
+    float		nlv_f;
 }stat_gtz_st;
 
 typedef struct
