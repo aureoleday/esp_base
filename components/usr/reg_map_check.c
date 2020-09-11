@@ -28,7 +28,7 @@ int16_t set_wifi_con_opt(uint32_t pram)
     return 1;
 }
 
-int16_t daq_pkg_en(uint32_t pram)
+int16_t daq_en(uint32_t pram)
 {  
     uint16_t ret = 0;
     if((pram == 1)&&((0 == bit_op_get(g_sys.stat.gen.status_bm,GBM_DAQ))))
@@ -89,7 +89,7 @@ int16_t service_opt(uint32_t pram)
     if(bit_op_get(g_sys.conf.prt.service_bm,SERVICE_HTTP)&&(0==bit_op_get(g_sys.stat.gen.status_bm,GBM_HTTP)))
     {}
         
-    daq_pkg_en(g_sys.conf.daq.pkg_en);
+    daq_en(g_sys.conf.daq.en);
 
     //geo_pkg_en(g_sys.conf.geo.pkg_en);
     return 1;
@@ -109,9 +109,15 @@ int16_t gtz_rcd_opt(uint32_t pram)
     return 0;
 }
 
+//int16_t gtz_stt_opt(uint32_t pram)
+//{
+//    gtz_reset(g_sys.conf.gtz.n,g_sys.conf.gtz.target_span,g_sys.conf.gtz.intv);
+//    return 0;
+//}
+
 int16_t gtz_rst_opt(uint32_t pram)
 {
-    gtz_reset();
+    gtz_reset(g_sys.conf.gtz.n,g_sys.conf.gtz.target_span,g_sys.conf.gtz.intv);
     return 0;
 }
 

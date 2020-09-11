@@ -25,7 +25,7 @@ typedef struct
 
 typedef struct
 {
-    uint32_t    enable;
+    uint32_t    en;
     uint32_t    pkg_en;
     uint32_t    sample_period;
     uint32_t    sample_channel_bm;
@@ -67,7 +67,7 @@ typedef struct
 
 typedef struct
 {
-    uint32_t    calc_n;
+    uint32_t    calc_mf;
     uint32_t    n;
     uint32_t    intv;
     uint32_t    target_freq;
@@ -96,6 +96,7 @@ typedef struct
     uint32_t    drop_en;
     uint32_t    pre_drop;
     uint32_t    drop_th;
+    uint32_t    mav_atten;
 }conf_adc_st;
 
 typedef struct

@@ -9,7 +9,7 @@
 #define COMPONENTS_KITS_GOERTZEL_H_
 
 void goertzel_init(void);
-void gtz_reset(void);
+void gtz_reset(uint32_t gtz_n, uint16_t span, uint16_t intv);
 float goertzel_calc(float* din);
 int16_t goertzel_lfilt(float din);
 //void print_gtz_snr(void);

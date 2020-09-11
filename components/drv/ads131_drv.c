@@ -98,7 +98,7 @@ static void sig_mav(int32_t din)
     static int32_t peak_val = 0;
     static int16_t cnt = 0;
     static int16_t init = 0;
-
+    uint16_t atten = g_sys.conf.adc.mav_atten;
     if(cnt < g_sys.conf.gtz.sample_freq)
     {
         if(din > peak_val)
@@ -116,7 +116,7 @@ static void sig_mav(int32_t din)
         }
         else
         {
-            g_sys.stat.adc.peak = (g_sys.stat.adc.peak>>1) + (peak_val>>1);
+            g_sys.stat.adc.peak = g_sys.stat.adc.peak - (g_sys.stat.adc.peak>>atten) + (peak_val>>atten);
         }
         peak_val = 0;
         cnt = 0;
@@ -143,6 +143,7 @@ static int32_t data_delay(int32_t* dout, int32_t din)
             kfifo_reset(&kf_dl);
         }
         else
+
         {
             len = kfifo_len(&kf_dl)>>2;
           

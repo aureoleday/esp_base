@@ -2,7 +2,7 @@
 #define _REG_MAP_CHECK_H
 
 #include "sys_conf.h"
-int16_t daq_pkg_en(uint32_t pram);
+int16_t daq_en(uint32_t pram);
 int16_t service_opt(uint32_t pram);
 int16_t geo_pkg_en(uint32_t pram);
 int16_t set_wifi_con_opt(uint32_t pram);
