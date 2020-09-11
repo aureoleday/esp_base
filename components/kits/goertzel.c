@@ -17,7 +17,7 @@
 static const char *TAG = "GTZ"; 
 #define FREQ_SPAN_MAX 16 
 #define GTZ_FLOWS_MAX 64 
-#define R_QBUF_MAX    64 
+#define R_QBUF_MAX    256 
 
 typedef struct
 {
@@ -128,7 +128,7 @@ static void calc_snr(float* dbuf, uint16_t cnt)
             rqueue_qsort();
             g_sys.stat.gtz.res_snr_i = (rqueue_inst.snr_slv[0]>>32)&0x00000000ffffffff; 
             g_sys.stat.gtz.res_slv_i = rqueue_inst.snr_slv[0]&0x00000000ffffffff; 
-            ESP_LOGI(TAG,"snr:%d,slv:%d",g_sys.stat.gtz.res_snr_i,g_sys.stat.gtz.res_slv_i);
+            ESP_LOGI(TAG,"\nsnr:%d,slv:%d",g_sys.stat.gtz.res_snr_i,g_sys.stat.gtz.res_slv_i);
             rqueue_init();
         }
     }
@@ -227,13 +227,11 @@ int16_t goertzel_lfilt(float din)
 //        *(dst_buf+i) = gtz_inst.res[0][i];
 //    return 0;
 //}
-
-void goertzel_init(void)
+static void gtz_gap_init(void)
 {
     extern sys_reg_st  g_sys;
     int32_t i,n;
     uint32_t gtz_gap = 0;
-    rqueue_init();
     gtz_gap = g_sys.conf.gtz.n >> g_sys.conf.gtz.intv;
     
     n = 1<<g_sys.conf.gtz.intv;
@@ -243,7 +241,19 @@ void goertzel_init(void)
         gtz_inst.icnt[i]=i*gtz_gap;
         //ESP_LOGD(TAG,"icnt[%d]:%d",i,gtz_inst.icnt[i]);
     }
+}
+
+void gtz_reset(void)
+{
     goertzel_coef_init();
+    gtz_gap_init();
+}
+
+void goertzel_init(void)
+{
+    rqueue_init();
+    goertzel_coef_init();
+    gtz_gap_init();
     esp_log_level_set(TAG,3);
 }
 

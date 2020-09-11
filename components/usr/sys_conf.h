@@ -93,6 +93,9 @@ typedef struct
     uint32_t    gain;
     uint32_t    ch_bm;
     uint32_t    drop;
+    uint32_t    drop_en;
+    uint32_t    pre_drop;
+    uint32_t    drop_th;
 }conf_adc_st;
 
 typedef struct
@@ -160,7 +163,8 @@ typedef struct
 typedef struct
 {
     uint32_t   	drop_cnt;
-    uint32_t   	rms;
+    uint32_t   	peak;
+    uint32_t   	raw;
 }stat_adc_st;
 
 typedef struct

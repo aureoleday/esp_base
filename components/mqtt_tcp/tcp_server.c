@@ -40,6 +40,7 @@ int tcp_transmitt(void *tx_buf,int tx_len)
 
 static void do_retransmit(const int sock)
 {
+    extern sys_reg_st  g_sys;
     int len;
     char rx_buffer[128];
 
@@ -54,6 +55,8 @@ static void do_retransmit(const int sock)
             ESP_LOGI(TAG, "Received %d bytes: %s", len, rx_buffer);
             cmd_stream_in(rx_buffer, len);
         }
+        if(g_sys.conf.con.wifi_connect == 0)
+            return;
     } while (len > 0);
 }
 

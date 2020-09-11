@@ -22,8 +22,8 @@ int16_t set_wifi_con_opt(uint32_t pram)
     }
     else
     {
-        wifi_disconnect();
         service_opt(pram);
+        wifi_disconnect();
     }
     return 1;
 }
@@ -111,7 +111,7 @@ int16_t gtz_rcd_opt(uint32_t pram)
 
 int16_t gtz_rst_opt(uint32_t pram)
 {
-    goertzel_init();
+    gtz_reset();
     return 0;
 }
 

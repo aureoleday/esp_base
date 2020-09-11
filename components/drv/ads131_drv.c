@@ -39,9 +39,17 @@
 static const char *TAG = "ADS131";
 
 static uint8_t 	kf_buf_s[ADC_FIFO_SIZE];
-kfifo_t 		kf_s;
+kfifo_t 		kf_s,kf_dl;
 static SemaphoreHandle_t adcspi_mutex = NULL;
 static spi_transaction_t adc_t;
+
+typedef struct
+{
+    uint16_t                        cd;
+    uint8_t                         stat;
+    int32_t                         buf[64];
+    int32_t                         obuf;
+}delay_buf_st;
 
 typedef struct
 {
@@ -53,10 +61,21 @@ typedef struct
     int32_t                         adc_val;
 }spi_geo_device_st;
 
-spi_geo_device_st spi_geo_dev_inst;
+spi_geo_device_st   spi_geo_dev_inst;
+delay_buf_st        dlbuf_inst;
 
 static void adc_register(void);
 static uint16_t adc_sread(void);
+
+static void dlbuf_init(void)
+{
+    memset(&kf_dl, 0, sizeof(kf_dl));
+    kfifo_init(&kf_dl, (void *)dlbuf_inst.buf, sizeof(dlbuf_inst.buf));
+    printf("dlbuf size:%d\n",sizeof(dlbuf_inst.buf));
+    dlbuf_inst.cd = 0;
+    dlbuf_inst.stat = 0;
+    dlbuf_inst.obuf = 0;
+}
 
 static void IRAM_ATTR gpio_isr_handler(void* arg)
 {
@@ -73,11 +92,83 @@ static int32_t decode(uint32_t din)
     return (int32_t)temp;
 }
 
+static void sig_mav(int32_t din)
+{
+	extern sys_reg_st g_sys;
+    static int32_t peak_val = 0;
+    static int16_t cnt = 0;
+    static int16_t init = 0;
+
+    if(cnt < g_sys.conf.gtz.sample_freq)
+    {
+        if(din > peak_val)
+        {
+            peak_val = din;
+        }
+        cnt++;
+    }
+    else
+    {
+        if(init == 0)
+        {
+            init = 1;
+            g_sys.stat.adc.peak = peak_val;
+        }
+        else
+        {
+            g_sys.stat.adc.peak = (g_sys.stat.adc.peak>>1) + (peak_val>>1);
+        }
+        peak_val = 0;
+        cnt = 0;
+    }
+}
+static int32_t data_delay(int32_t* dout, int32_t din)
+{
+	extern sys_reg_st g_sys;
+    int32_t temp;
+    uint16_t len;
+    temp = din; 
+    
+    if(dlbuf_inst.cd > 0)
+    {
+        dlbuf_inst.cd--;
+        dlbuf_inst.stat = 2;
+    }
+    else
+    {
+        if(temp > (((int32_t)g_sys.stat.adc.peak)<<g_sys.conf.adc.drop_th))
+        {
+            dlbuf_inst.stat = 2;
+            dlbuf_inst.cd = g_sys.conf.adc.drop - g_sys.conf.adc.pre_drop - 1;
+            kfifo_reset(&kf_dl);
+        }
+        else
+        {
+            len = kfifo_len(&kf_dl)>>2;
+          
+            if(len < g_sys.conf.adc.pre_drop)
+            {
+                dlbuf_inst.stat = 1;
+                kfifo_in(&kf_dl,&temp,sizeof(int32_t));
+            }
+            else
+            {
+                dlbuf_inst.stat = 0;
+                //kfifo_out(&kf_dl,&dlbuf_inst.obuf,sizeof(int32_t));
+                kfifo_out(&kf_dl,dout,sizeof(int32_t));
+                kfifo_in(&kf_dl,&temp,sizeof(int32_t));
+            }
+        }
+    }
+    return dlbuf_inst.stat; 
+}
+
+
 static void IRAM_ATTR adc_read_pcb(spi_transaction_t* t)
 {
 	extern sys_reg_st g_sys;
     int32_t temp[4];
-    uint32_t dummy[4];
+    int32_t dummy[4];
     uint8_t cnt=0;
     for(int i=0;i<3;i++)
     {
@@ -96,10 +187,68 @@ static void IRAM_ATTR adc_read_pcb(spi_transaction_t* t)
             kfifo_out(&kf_s,&dummy,cnt*sizeof(int32_t));
             g_sys.stat.geo.kfifo_drop_cnt++;
         }
-        kfifo_in(&kf_s,&temp,cnt*sizeof(int32_t));
+        if(g_sys.conf.adc.drop_en == 1)
+        {
+            if(0 == data_delay(dummy,temp[0]))
+            {
+                kfifo_in(&kf_s,dummy,cnt*sizeof(int32_t));
+                sig_mav(dummy[0]);
+            }
+        }
+        else
+        {
+            kfifo_in(&kf_s,&temp,cnt*sizeof(int32_t));
+            sig_mav(temp[0]);
+        }
         spi_geo_dev_inst.adc_val = temp[0];
     }
 }
+
+//static void IRAM_ATTR adc_read_pcb(spi_transaction_t* t)
+//{
+//	extern sys_reg_st g_sys;
+//    int32_t temp[4];
+//    int32_t dummy[4];
+//    uint8_t cnt=0;
+//    for(int i=0;i<3;i++)
+//    {
+//        if(((g_sys.conf.adc.ch_bm>>i)&0x01) == 1)
+//        {
+//            dummy[i]=((spi_geo_dev_inst.rxd[i*3+3]<<16)|(spi_geo_dev_inst.rxd[i*3+4]<<8)|spi_geo_dev_inst.rxd[i*3+5]);
+//            temp[cnt] = decode(dummy[i]);
+//            cnt++;
+//        }
+//    }
+//
+//    if(g_sys.conf.adc.enable == 1)
+//    {
+//        if(kfifo_len(&kf_s) >= kf_s.size)
+//        {
+//            kfifo_out(&kf_s,&dummy,cnt*sizeof(int32_t));
+//            g_sys.stat.geo.kfifo_drop_cnt++;
+//        }
+//        if(g_sys.conf.adc.drop_en == 1)
+//        {
+//            if(g_sys.stat.adc.drop_cnt>0)
+//                g_sys.stat.adc.drop_cnt--;
+//            else if(temp[0] > (((int32_t)g_sys.stat.adc.peak)<<g_sys.conf.adc.drop_th))
+//            {
+//                g_sys.stat.adc.drop_cnt = g_sys.conf.adc.drop-1;
+//            }
+//            else
+//            {
+//                kfifo_in(&kf_s,&temp,cnt*sizeof(int32_t));
+//                sig_mav(temp[0]);
+//            }
+//        }
+//        else
+//        {
+//            kfifo_in(&kf_s,&temp,cnt*sizeof(int32_t));
+//            sig_mav(temp[0]);
+//        }
+//        spi_geo_dev_inst.adc_val = temp[0];
+//    }
+//}
 
 static void kf_init(void)
 {
@@ -112,6 +261,7 @@ void adc_ds_init(void)
     spi_geo_dev_inst.adc_init_done = 0;
     spi_geo_dev_inst.adc_cmd = CMD_NULL;
     kf_init();
+    dlbuf_init();
     adcspi_mutex = xSemaphoreCreateMutex();
 }
 
