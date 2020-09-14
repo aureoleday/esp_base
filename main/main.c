@@ -36,6 +36,7 @@ enum
     CMD_THREAD_PRIO,
     TCP_THREAD_PRIO,
     SPP_THREAD_PRIO,
+    PFSM_THREAD_PRIO,
     USR_MAX_PRIO
 };
 
@@ -44,6 +45,7 @@ enum
 #define CLI_THREAD_STACK_SIZE 	4096
 #define CMD_THREAD_STACK_SIZE 	3072
 #define INIT_THREAD_STACK_SIZE 	3072
+#define PFSM_THREAD_STACK_SIZE  4096 
 
 void init_thread(void* param)
 {
@@ -92,6 +94,14 @@ static void tasks_create(void)
             INIT_THREAD_STACK_SIZE,
             NULL,
             INIT_THREAD_PRIO,
+            NULL,
+            1);
+
+    xTaskCreatePinnedToCore(&pwr_fsm_thread,
+            "Task_pwr_fsm",
+            PFSM_THREAD_STACK_SIZE,
+            NULL,
+            PFSM_THREAD_PRIO,
             NULL,
             1);
 }

@@ -9,4 +9,5 @@
 #define COMPONENTS_DRV_IO_DRV_H_
 
 void io_init(void);
+void pwr_fsm_thread(void* param);
 #endif /* COMPONENTS_DRV_IO_DRV_H_ */

@@ -55,7 +55,7 @@ static void io_ds_init(void)
     io_inst.pwr_fsm = PWR_MODE_IDLE;
 }
 
-void power_fsm(void* param)
+void pwr_fsm_thread(void* param)
 {
     uint8_t delay_cnt = 0;
 	vTaskDelay(100 / portTICK_PERIOD_MS);
@@ -290,12 +290,6 @@ void io_init(void)
     led_tim_init();
     io_register(); 
     pga_gain(g_sys.conf.adc.gain);
-    xTaskCreate(&power_fsm,
-            "Task_pwr_fsm",
-            1024,
-            NULL,
-            31,
-            NULL);
 }
 
 static struct {
