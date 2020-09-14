@@ -71,7 +71,6 @@ static void dlbuf_init(void)
 {
     memset(&kf_dl, 0, sizeof(kf_dl));
     kfifo_init(&kf_dl, (void *)dlbuf_inst.buf, sizeof(dlbuf_inst.buf));
-    printf("dlbuf size:%d\n",sizeof(dlbuf_inst.buf));
     dlbuf_inst.cd = 0;
     dlbuf_inst.stat = 0;
     dlbuf_inst.obuf = 0;

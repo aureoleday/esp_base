@@ -58,6 +58,7 @@ static void io_ds_init(void)
 void power_fsm(void* param)
 {
     uint8_t delay_cnt = 0;
+	vTaskDelay(100 / portTICK_PERIOD_MS);
     while(1)
     {
         switch(io_inst.pwr_fsm)

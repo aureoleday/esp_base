@@ -26,7 +26,7 @@ sys_reg_st  g_sys; 	    //global parameter declairation
 const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
 {//id     mapped registers                 min      max         default  type  chk_prt
     {0,   &g_sys.conf.con.wifi_mode,       0,       1,          0,       0,    NULL},
-    {1,   &g_sys.conf.con.wifi_connect,    0,       1,          1,       0,    set_wifi_con_opt},
+    {1,   &g_sys.conf.con.wifi_connect,    0,       1,          0,       0,    set_wifi_con_opt},
     {2,   &g_sys.conf.prt.service_bm,      0,       0xffffffff, 0x1,     0,    NULL},
     {3,   NULL,                            0,	    0,          0,       0,    NULL},
     {4,   &g_sys.conf.daq.en,              0,       1,          1,       0,    daq_en},
