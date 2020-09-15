@@ -59,6 +59,12 @@ enum
 
 enum
 {    
+    IO_BAT_CHRG= 0,    
+    IO_BAT_PLUG
+};
+
+enum
+{    
     SENSOR_NONE = 0,    
     SENSOR_MULTI,
     SENSOR_ADDR2,

@@ -12,6 +12,7 @@
 
 #define     PWR_ON          35 
 #define     BAT_CHRG        34	
+#define     BAT_PLUG        39	
 #define     VI_OD           33 
 #define     VI_EF           25	
 
@@ -27,7 +28,7 @@
 #define     Bit_SET		    1	
 
 #define ESP_INTR_FLAG_DEFAULT 0
-#define GPIO_INPUT_PIN_SEL ( (1ULL<<PWR_ON) | (1ULL<<BAT_CHRG) | (1ULL<<VI_EF) )
+#define GPIO_INPUT_PIN_SEL ( (1ULL<<PWR_ON) | (1ULL<<BAT_PLUG) | (1ULL<<BAT_CHRG) | (1ULL<<VI_EF) )
 #define GPIO_OUTPUT_PIN_SEL (  (1ULL<<PWR_EN) | (1ULL<<LOCAL_LED) | (1ULL<<WIFI_LED0) | (1ULL<<WIFI_LED1) | (1ULL<<LOW_PWR) | (1ULL<<VI_OD) | (1ULL<<PGA_GAIN0) | (1ULL<<PGA_GAIN1) ) 
 
 static const char *TAG = "DRV_IO";
@@ -65,7 +66,7 @@ void pwr_fsm_thread(void* param)
         {
             case (PWR_MODE_IDLE ):
             {
-                if(gpio_get_level(PWR_ON) == 1)
+                if(gpio_get_level(PWR_ON) == 0)
                 {
                     io_inst.pwr_fsm = PWR_MODE_PRON;
                     delay_cnt = 1;
@@ -80,7 +81,7 @@ void pwr_fsm_thread(void* param)
             }
             case (PWR_MODE_PRON):
             {
-                if(gpio_get_level(PWR_ON) == 1)
+                if(gpio_get_level(PWR_ON) == 0)
                 {
                     if(delay_cnt <= 1)
                     {
@@ -105,7 +106,7 @@ void pwr_fsm_thread(void* param)
             }
             case (PWR_MODE_ON):
             {
-                if(gpio_get_level(PWR_ON) == 0)
+                if(gpio_get_level(PWR_ON) == 1)
                 {
                     io_inst.pwr_fsm = PWR_MODE_ONGAP;
                     delay_cnt = 0;
@@ -120,7 +121,7 @@ void pwr_fsm_thread(void* param)
             }
             case (PWR_MODE_ONGAP):
             {
-                if(gpio_get_level(PWR_ON) == 1)
+                if(gpio_get_level(PWR_ON) == 0)
                 {
                     io_inst.pwr_fsm = PWR_MODE_PROFF;
                     delay_cnt = 0;
@@ -135,7 +136,7 @@ void pwr_fsm_thread(void* param)
             }
             case (PWR_MODE_PROFF):
             {
-                if(gpio_get_level(PWR_ON) == 1)
+                if(gpio_get_level(PWR_ON) == 0)
                 {
                     if(delay_cnt <= 3)
                     {
@@ -194,7 +195,7 @@ static void output_init(void)
     gpio_set_level(LOCAL_LED, 1);
     gpio_set_level(WIFI_LED0, 0);
     gpio_set_level(WIFI_LED1, 0);
-    gpio_set_level(LOW_PWR, 1);
+    gpio_set_level(LOW_PWR, 0);
     gpio_set_level(PWR_EN, 0);
     gpio_set_level(PGA_GAIN0, 0);
     gpio_set_level(PGA_GAIN0, 0);
@@ -254,6 +255,14 @@ static void led_timer_cb(void* arg)
         gpio_set_level(WIFI_LED1, 0);
         gpio_set_level(LOCAL_LED, 1);
     }
+
+    if(g_sys.stat.bat.adc_raw < g_sys.conf.bat.low_pwr)
+        gpio_set_level(LOW_PWR, 1);
+    else
+        gpio_set_level(LOW_PWR, 0);
+
+    g_sys.stat.gen.io_bm = (gpio_get_level(BAT_PLUG)<<1)|gpio_get_level(BAT_CHRG);
+
 
     if(flag == 0)
         flag = 1;

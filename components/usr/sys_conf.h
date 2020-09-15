@@ -45,6 +45,7 @@ typedef struct
 typedef struct
 {
     uint32_t    mav_cnt;
+    uint32_t    low_pwr;
     uint32_t    up_lim;
     uint32_t    low_lim;
 }conf_bat_st;
@@ -145,6 +146,7 @@ typedef struct
     uint32_t    software_ver;
     uint32_t    hardware_ver;
     uint32_t    status_bm;
+    uint32_t    io_bm;
 }stat_gen_st;
 
 typedef struct

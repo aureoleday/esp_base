@@ -102,7 +102,7 @@ static uint32_t bat_mav_calc(uint16_t mav_cnt_set)
        	 	bat_inst.mav_cnt = 0;
 		bat_mav_volt = bat_inst.accum_sum/mav_cnt_set;
 	}
-	return bat_mav_volt*2;
+	return bat_mav_volt*4;
 }
 
 static uint32_t bat_pwr_calc(uint32_t up_lim, uint32_t low_lim, uint32_t bat_volt)
