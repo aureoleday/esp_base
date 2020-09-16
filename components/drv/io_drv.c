@@ -58,6 +58,7 @@ static void io_ds_init(void)
 
 void pwr_fsm_thread(void* param)
 {
+	extern sys_reg_st g_sys;
     uint8_t delay_cnt = 0;
 	vTaskDelay(100 / portTICK_PERIOD_MS);
     while(1)
@@ -126,6 +127,10 @@ void pwr_fsm_thread(void* param)
                     io_inst.pwr_fsm = PWR_MODE_PROFF;
                     delay_cnt = 0;
                     ESP_LOGI(TAG,"to PWR_MODE_PROFF");
+                }
+                else if((g_sys.stat.gen.shutdown_cd == 0)&&(g_sys.conf.gen.shutdown_intv != 0))
+                {
+                    io_inst.pwr_fsm = PWR_MODE_OFF;
                 }
                 else
                 {

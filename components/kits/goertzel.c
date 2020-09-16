@@ -16,8 +16,8 @@
 
 static const char *TAG = "GTZ"; 
 #define FREQ_SPAN_MAX 16 
-#define GTZ_FLOWS_MAX 64 
-#define R_QBUF_MAX    256 
+#define GTZ_FLOWS_MAX 256 
+#define R_QBUF_MAX    1024 
 
 typedef struct
 {

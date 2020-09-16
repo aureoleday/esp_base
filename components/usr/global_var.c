@@ -28,7 +28,7 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {0,   &g_sys.conf.con.wifi_mode,       0,       1,          0,       0,    NULL},
     {1,   &g_sys.conf.con.wifi_connect,    0,       1,          0,       0,    set_wifi_con_opt},
     {2,   &g_sys.conf.prt.service_bm,      0,       0xffffffff, 0x1,     0,    NULL},
-    {3,   NULL,                            0,	    0,          0,       0,    NULL},
+    {3,   &g_sys.conf.gen.shutdown_intv,   0,	    10000,      600,     0,    pwr_cut_opt},
     {4,   &g_sys.conf.daq.en,              0,       1,          1,       0,    daq_en},
     {5,   &g_sys.conf.daq.pkg_period,      10,      9000000,    10000,   0,    NULL},
     {6,   &g_sys.conf.daq.filter,          0,       255,        64,      0,    NULL},
@@ -66,7 +66,7 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {32,  &g_sys.conf.adc.enable,          0,       1,          1,       0,    NULL},
     {33,  &g_sys.conf.adc.filter,          0,       0x6,        0x2,     0,    NULL},
     {34,  &g_sys.conf.adc.sps,             0,       9,          5,       0,    NULL},
-    {35,  &g_sys.conf.adc.gain,            1,       3,          2,       0,    NULL},
+    {35,  &g_sys.conf.adc.gain,            1,       3,          2,       0,    adc_gain_opt},
     {36,  &g_sys.conf.adc.ch_bm,           0x01,    0x0f,       0x01,    0,    NULL},
     {37,  &g_sys.conf.adc.drop,            0,       100000,     400,     0,    adc_drop_opt},
     {38,  &g_sys.conf.adc.drop_en,         0,       1,          0,       0,    NULL},
@@ -123,7 +123,7 @@ const sts_reg_map_st status_reg_map_inst[STAT_REG_MAP_NUM]=
     {	20,  	&g_sys.stat.bat.adc_raw,                0},
     {	21,  	&g_sys.stat.bat.pwr_val,                0},
     {	22,  	&g_sys.stat.bat.pwr_sts,                0},
-    {	23,  	NULL,                                   0},
+    {	23,  	&g_sys.stat.gen.shutdown_cd,            600},
     {	24,  	NULL,                                   0},
     {	25,  	NULL,                                   0},
     {	26,  	NULL,                                   0},
@@ -179,6 +179,7 @@ void init_load_status(void)
             *(status_reg_map_inst[i].reg_ptr) = status_reg_map_inst[i].dft;
         }
     }
+    g_sys.stat.gen.shutdown_cd = g_sys.conf.gen.shutdown_intv;
 }
 
 

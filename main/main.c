@@ -125,6 +125,13 @@ void app_main()
         bat_update();
 		if(g_sys.conf.gen.restart == 9527)
 			esp_restart();
+		if((g_sys.conf.gen.shutdown_intv > 0)&&(g_sys.stat.gen.shutdown_cd > 0))
+        {
+             if(0 == bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP))
+                g_sys.stat.gen.shutdown_cd--;
+             else
+                g_sys.stat.gen.shutdown_cd = g_sys.conf.gen.shutdown_intv;
+        }
 	}
 }
 

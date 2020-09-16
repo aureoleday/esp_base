@@ -14,6 +14,7 @@
 typedef struct
 {	
     uint32_t    restart;
+    uint32_t    shutdown_intv;
 }conf_gen_st;
 
 
@@ -147,6 +148,7 @@ typedef struct
     uint32_t    hardware_ver;
     uint32_t    status_bm;
     uint32_t    io_bm;
+    uint32_t    shutdown_cd;
 }stat_gen_st;
 
 typedef struct

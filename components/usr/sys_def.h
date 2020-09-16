@@ -30,8 +30,8 @@ typedef long				int32;
 //#define SYS_DEBUG
 #define STAT_REG_MAP_NUM        64 
 #define CONF_REG_MAP_NUM        64 
-#define SOFTWARE_VER            0x00020002
-#define HARDWARE_VER            0x00020000
+#define SOFTWARE_VER            0x00030000
+#define HARDWARE_VER            0x00030000
 #define SERIAL_NO               0
 #define MAN_DATE                0
 #define DEVICE_TYPE             0x00000001

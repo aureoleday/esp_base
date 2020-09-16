@@ -5,6 +5,7 @@
 #include "cmd_wifi.h"
 #include "daq.h"
 #include "adxl_drv.h"
+#include "io_drv.h"
 #include "ads131_drv.h"
 #include "bit_op.h"
 #include "goertzel.h"
@@ -93,6 +94,20 @@ int16_t service_opt(uint32_t pram)
 
     //geo_pkg_en(g_sys.conf.geo.pkg_en);
     return 1;
+}
+
+int16_t adc_gain_opt(uint32_t pram)
+{
+    pga_gain(pram);
+
+    return 0;
+}
+
+int16_t pwr_cut_opt(uint32_t pram)
+{
+    g_sys.stat.gen.shutdown_cd = pram;
+
+    return 0;
 }
 
 int16_t adc_drop_opt(uint32_t pram)

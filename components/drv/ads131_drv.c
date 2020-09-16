@@ -47,7 +47,7 @@ typedef struct
 {
     uint16_t                        cd;
     uint8_t                         stat;
-    int32_t                         buf[64];
+    int32_t                         buf[ADC_DELAY_BUF_SIZE];
     int32_t                         obuf;
 }delay_buf_st;
 
@@ -81,14 +81,39 @@ static void IRAM_ATTR gpio_isr_handler(void* arg)
     if(spi_geo_dev_inst.adc_init_done == 1)
         adc_sread(); 
 }
-static int32_t decode(uint32_t din)
+static int32_t decode(uint32_t din, uint16_t gain)
 {
     uint32_t temp;
+    int32_t res;
     temp = din;
     if((temp&0x800000) != 0)
         temp |= 0xff000000;
 
-    return (int32_t)temp;
+    switch(gain)
+    {
+        case(1):
+        {
+            res = ((int)temp)*5;
+            break;
+        }
+        case(2):
+        {
+            res = (int)temp;
+            break;
+        }
+        case(3):
+        {
+            res = ((int)temp)/5;
+            break;
+        }
+        default:
+        {
+            res = (int)temp;
+            break;
+        }
+    }
+
+    return res;
 }
 
 static void sig_mav(int32_t din)
@@ -175,7 +200,7 @@ static void IRAM_ATTR adc_read_pcb(spi_transaction_t* t)
         if(((g_sys.conf.adc.ch_bm>>i)&0x01) == 1)
         {
             dummy[i]=((spi_geo_dev_inst.rxd[i*3+3]<<16)|(spi_geo_dev_inst.rxd[i*3+4]<<8)|spi_geo_dev_inst.rxd[i*3+5]);
-            temp[cnt] = decode(dummy[i]);
+            temp[cnt] = decode(dummy[i],g_sys.conf.adc.gain);
             cnt++;
         }
     }

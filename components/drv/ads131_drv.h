@@ -10,7 +10,8 @@
 
 #include <stdio.h>
 
-#define ADC_FIFO_SIZE 16384 
+#define ADC_FIFO_SIZE       16384 
+#define ADC_DELAY_BUF_SIZE  64 
 
 //typedef struct
 //{
