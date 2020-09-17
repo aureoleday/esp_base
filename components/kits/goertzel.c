@@ -117,6 +117,7 @@ static void calc_snr(float* dbuf, uint16_t cnt)
 
     qsort(buf,cnt,sizeof(float),compare_float);
     g_sys.stat.gtz.slv_f= *(dbuf+(cnt>>1));
+//    g_sys.stat.gtz.nlv_f = *(buf+cnt-1); 
     if((buf[0]-*(dbuf+(cnt>>1))) < 0.0000001)
         g_sys.stat.gtz.nlv_f = (*(buf+(cnt>>1)) + *(buf+(cnt>>1)+1))/2;
     else

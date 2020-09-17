@@ -40,7 +40,7 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
 //    {12,  &g_sys.conf.geo.filter,          0,       0x6,//        0x2,     0,    NULL},
 //    {13,  &g_sys.conf.geo.sample_rate,     0,       0x0b//,       0x00,    0,    NULL},
 //    {14,  &g_sys.conf.geo.gain,            0x01,    0x03,       0x01,    0,    NULL},
-    {9,   &g_sys.conf.per.adc_offset,      0,       200,        45,      0,    NULL},
+    {9,   &g_sys.conf.per.adc_offset,      0,       200,        5,      0,    NULL},
     {10,  &g_sys.conf.per.dac_offset,      0,       200,        0,       0,    NULL},
     {11,  &g_sys.conf.per.dac_setval,      0,       255,        159,     0,    NULL},
     {12,  &g_sys.conf.gtz.en,              0,	    1,          1,       0,    gtz_rst_opt},
