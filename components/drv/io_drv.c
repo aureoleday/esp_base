@@ -128,7 +128,7 @@ void pwr_fsm_thread(void* param)
                     delay_cnt = 0;
                     ESP_LOGI(TAG,"to PWR_MODE_PROFF");
                 }
-                else if((g_sys.stat.gen.shutdown_cd == 0)&&(g_sys.conf.gen.shutdown_intv != 0))
+                else if(((g_sys.stat.gen.shutdown_cd == 0)&&(g_sys.conf.gen.shutdown_intv != 0))||(g_sys.stat.bat.pwr_val < g_sys.conf.bat.low_lim))
                 {
                     io_inst.pwr_fsm = PWR_MODE_OFF;
                 }
