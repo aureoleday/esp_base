@@ -125,7 +125,7 @@ static void calc_snr(float* dbuf, uint16_t cnt)
     g_sys.stat.gtz.snr_f = g_sys.stat.gtz.slv_f/g_sys.stat.gtz.nlv_f;
     g_sys.stat.gtz.slv_i = (uint32_t)(g_sys.stat.gtz.slv_f*10000000);
     g_sys.stat.gtz.nlv_i = (uint32_t)(g_sys.stat.gtz.nlv_f*10000000);
-    g_sys.stat.gtz.snr_i = (uint32_t)(g_sys.stat.gtz.snr_f*1000);
+    g_sys.stat.gtz.snr_i = (uint32_t)(g_sys.stat.gtz.snr_f*100);
     if(g_sys.stat.gtz.res_cd > 0)
     {
         if(0 > rqueue_append(g_sys.stat.gtz.snr_i,g_sys.stat.gtz.slv_i))
@@ -137,8 +137,8 @@ static void calc_snr(float* dbuf, uint16_t cnt)
         {
             printf("\n");
             rqueue_qsort();
-            g_sys.stat.gtz.res_snr_i = (rqueue_inst.snr_slv[0]>>32)&0x00000000ffffffff; 
-            g_sys.stat.gtz.res_slv_i = rqueue_inst.snr_slv[0]&0x00000000ffffffff; 
+            g_sys.stat.gtz.res_snr_i = (rqueue_inst.snr_slv[g_sys.conf.gtz.res_pos]>>32)&0x00000000ffffffff; 
+            g_sys.stat.gtz.res_slv_i = rqueue_inst.snr_slv[g_sys.conf.gtz.res_pos]&0x00000000ffffffff; 
             ESP_LOGI(TAG,"final snr:%d,slv:%d",g_sys.stat.gtz.res_snr_i,g_sys.stat.gtz.res_slv_i);
             rqueue_init();
         }
@@ -171,7 +171,7 @@ static void goertzel_coef_init(uint32_t gtz_n, uint16_t span)
     //gtz_n = (g_sys.conf.gtz.n<<mfactor);
     for(i=0;i<(2*span+1);i++)
     {
-        gtz_inst.coef[i] = goertzel_coef(g_sys.conf.gtz.target_freq-g_sys.conf.gtz.target_span+i,g_sys.conf.gtz.sample_freq, gtz_n);
+        gtz_inst.coef[i] = goertzel_coef(g_sys.conf.gtz.target_freq-(g_sys.conf.gtz.target_span<<g_sys.conf.gtz.span_gap)+(i<<g_sys.conf.gtz.span_gap),g_sys.conf.gtz.sample_freq, gtz_n);
     }
 }
 

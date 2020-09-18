@@ -267,7 +267,7 @@ static void led_timer_cb(void* arg)
     else
         gpio_set_level(LOW_PWR, 0);
 
-    g_sys.stat.gen.io_bm = (gpio_get_level(BAT_PLUG)<<1)|gpio_get_level(BAT_CHRG);
+    g_sys.stat.bat.pwr_sts = (gpio_get_level(BAT_PLUG)<<1)|gpio_get_level(BAT_CHRG);
 
 
     if(flag == 0)

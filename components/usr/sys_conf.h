@@ -69,7 +69,7 @@ typedef struct
 
 typedef struct
 {
-    uint32_t    calc_mf;
+    uint32_t    span_gap;
     uint32_t    n;
     uint32_t    intv;
     uint32_t    target_freq;
@@ -78,6 +78,7 @@ typedef struct
     uint32_t    signal_th;
     uint32_t    en;
     uint32_t    res_cd;
+    uint32_t    res_pos;
 }conf_gtz_st;
 
 typedef struct
