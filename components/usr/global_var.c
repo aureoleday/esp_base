@@ -25,40 +25,77 @@ sys_reg_st  g_sys; 	    //global parameter declairation
 //configuration register map declairation
 const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
 {//id     mapped registers                 min      max         default  type  chk_prt
-    {0,   &g_sys.conf.con.wifi_mode,       0,       1,          1,       0,    NULL},
-    {1,   &g_sys.conf.con.wifi_connect,    0,       1,          1,       0,    set_wifi_con_opt},
+    {0,   &g_sys.conf.con.wifi_mode,       0,       1,          0,       0,    NULL},
+    {1,   &g_sys.conf.con.wifi_connect,    0,       1,          0,       0,    set_wifi_con_opt},
     {2,   &g_sys.conf.prt.service_bm,      0,       0xffffffff, 0x1,     0,    NULL},
-    {3,   NULL,                            0,	    0,          0,       0,    NULL},
-    {4,   &g_sys.conf.daq.pkg_period,      0,       9000000,    50000,   0,    NULL},
-    {5,   &g_sys.conf.daq.sample_period,   0,       1000,       1,       0,    NULL},
+    {3,   &g_sys.conf.gen.shutdown_intv,   0,	    10000,      600,     0,    pwr_cut_opt},
+    {4,   &g_sys.conf.daq.en,              0,       1,          1,       0,    daq_en},
+    {5,   &g_sys.conf.daq.pkg_period,      10,      9000000,    10000,   0,    NULL},
     {6,   &g_sys.conf.daq.filter,          0,       255,        64,      0,    NULL},
-    {7,   &g_sys.conf.daq.pkg_en,          0,       1,          1,       0,    daq_pkg_en},
+    {7,   &g_sys.conf.daq.pkg_en,          0,       1,          0,       0,    NULL},
     {8,   &g_sys.conf.daq.pkg_size,        0,       1500,       1024,    0,    NULL},
-    {9,   &g_sys.conf.geo.scan_period,     100,     1000000,    3000,    0,    NULL},
-    {10,  &g_sys.conf.geo.axis,            0,       2,          2,       0,    NULL},
-    {11,  &g_sys.conf.geo.pkg_en,          0,       1,          1,       0,    geo_pkg_en},
-    {12,  &g_sys.conf.geo.filter,          0,       0x6,        0x2,     0,    NULL},
-    {13,  &g_sys.conf.geo.sample_rate,     0,       0x0b,       0x00,    0,    NULL},
-    {14,  &g_sys.conf.geo.gain,            0x01,    0x03,       0x01,    0,    NULL},
-    {15,  &g_sys.conf.gtz.n,               32,      65535,      4000,    0,    NULL},
+//    {9,   &g_sys.conf.geo.scan_period,     100,     1000000,    3000,    0,    NULL},
+//    {10,  &g_sys.conf.geo.axis,            0,       2,  //        2,       0,    NULL},
+//    {11,  &g_sys.conf.geo.pkg_en,          0,       1,  //        0,       0,    geo_pkg_en},
+//    {12,  &g_sys.conf.geo.filter,          0,       0x6,//        0x2,     0,    NULL},
+//    {13,  &g_sys.conf.geo.sample_rate,     0,       0x0b//,       0x00,    0,    NULL},
+//    {14,  &g_sys.conf.geo.gain,            0x01,    0x03,       0x01,    0,    NULL},
+    {9,   &g_sys.conf.per.adc_offset,      0,       200,        5,      0,    NULL},
+    {10,  &g_sys.conf.per.dac_offset,      0,       200,        0,       0,    NULL},
+    {11,  &g_sys.conf.per.dac_setval,      0,       255,        159,     0,    NULL},
+    {12,  &g_sys.conf.gtz.en,              0,	    1,          1,       0,    gtz_rst_opt},
+    {13,  &g_sys.conf.gtz.span_gap,        0,       8,          3,       0,    NULL},
+    {14,  &g_sys.conf.gtz.n,               256,     8000000,    4096,    0,    NULL},
+    {15,  &g_sys.conf.gtz.intv,            0,       6,          3,       0,    NULL},
     {16,  &g_sys.conf.gtz.target_freq,     1,       1000,       470,     0,    NULL},
-    {17,  &g_sys.conf.gtz.sample_freq,     4000,    4000,       4000,    0,    NULL},
-    {18,  &g_sys.conf.gtz.target_span,     0,	    65,         32,      0,    NULL},
-    {19,  &g_sys.conf.gtz.acc_q,           2,	    32,         5,       0,    NULL},
-    {20,  &g_sys.conf.gtz.reset,           0,       1,          0,       0,    NULL},
-    {21,  &g_sys.conf.bat.mav_cnt,         1,	    128,        16,      0,    NULL},
-    {22,  &g_sys.conf.bat.up_lim,          3700,    4500,       4150,    0,    NULL},
-    {23,  &g_sys.conf.bat.low_lim,         2700,    3500,       3200,    0,    NULL},
-    {24,  &g_sys.conf.fft.acc_times,       1,       128,        1,       0,    NULL},
+    {17,  &g_sys.conf.gtz.sample_freq,     4000,    16000,      4096,    0,    NULL},
+    {18,  &g_sys.conf.gtz.target_span,     0,	    16,         3,       0,    NULL},
+    {19,  &g_sys.conf.gtz.res_cd,          3,	    1000,       40,      0,    gtz_rcd_opt},
+    {20,  &g_sys.conf.bat.mav_cnt,         1,	    128,        32,      0,    NULL},
+    {21,  &g_sys.conf.bat.low_pwr,         2700,    4200,       3200,    0,    NULL},
+    {22,  &g_sys.conf.bat.up_lim,          3700,    4500,       4200,    0,    NULL},
+    {23,  &g_sys.conf.bat.low_lim,         2700,    3500,       3000,    0,    NULL},
+    {24,  &g_sys.conf.gtz.res_pos,         0,       63,         0,       0,    NULL},
     {25,  &g_sys.conf.fft.intv_cnts,       1,       1024,       1,       0,    NULL},
     {26,  NULL,                            0,	    0,          0,       0,    NULL},
     {27,  NULL,                            0,	    1,          0,       0,    service_opt},
-    {28,  &g_sys.conf.gen.dbg,             0,       1,          0,       0,    NULL},
+    {28,  NULL,                            0,	    0,          0,       0,    NULL},
     {29,  NULL,                            0,	    1,          0,       1,    save_conf_opt},
     {30,  NULL,                            0,	    1,          0,       1,    load_conf_opt},
-    {31,  &g_sys.conf.gen.restart,         0,	    0xffffffff, 0,       1,    NULL}
+    {31,  &g_sys.conf.gen.restart,         0,	    0xffffffff, 0,       1,    NULL},
+    {32,  &g_sys.conf.adc.enable,          0,       1,          1,       0,    NULL},
+    {33,  &g_sys.conf.adc.filter,          0,       0x6,        0x2,     0,    NULL},
+    {34,  &g_sys.conf.adc.sps,             0,       9,          2,       0,    NULL},
+    {35,  &g_sys.conf.adc.gain,            1,       3,          2,       0,    adc_gain_opt},
+    {36,  &g_sys.conf.adc.ch_bm,           0x01,    0x0f,       0x01,    0,    NULL},
+    {37,  &g_sys.conf.adc.drop,            0,       100000,     400,     0,    adc_drop_opt},
+    {38,  &g_sys.conf.adc.drop_en,         0,       1,          0,       0,    NULL},
+    {39,  &g_sys.conf.adc.drop_th,         0,       16,         1,       0,    NULL},
+    {40,  &g_sys.conf.adc.pre_drop,        1,       256,        16,      0,    NULL},
+    {41,  &g_sys.conf.adc.mav_atten,       0,       8,          1,       0,    NULL},
+    {42,  NULL,                            0,	    0,          0,       0,    NULL},
+    {43,  NULL,                            0,	    0,          0,       0,    NULL},
+    {44,  NULL,                            0,	    0,          0,       0,    NULL},
+    {45,  NULL,                            0,	    0,          0,       0,    NULL},
+    {46,  NULL,                            0,	    0,          0,       0,    NULL},
+    {47,  NULL,                            0,	    0,          0,       0,    NULL},
+    {48,  NULL,                            0,	    0,          0,       0,    NULL},
+    {49,  NULL,                            0,	    0,          0,       0,    NULL},
+    {50,  NULL,                            0,	    0,          0,       0,    NULL},
+    {51,  NULL,                            0,	    0,          0,       0,    NULL},
+    {52,  NULL,                            0,	    0,          0,       0,    NULL},
+    {53,  NULL,                            0,	    0,          0,       0,    NULL},
+    {54,  NULL,                            0,	    0,          0,       0,    NULL},
+    {55,  NULL,                            0,	    0,          0,       0,    NULL},
+    {56,  NULL,                            0,	    0,          0,       0,    NULL},
+    {57,  NULL,                            0,	    0,          0,       0,    NULL},
+    {58,  NULL,                            0,	    0,          0,       0,    NULL},
+    {59,  NULL,                            0,	    0,          0,       0,    NULL},
+    {60,  NULL,                            0,	    0,          0,       0,    NULL},
+    {61,  NULL,                            0,	    0,          0,       0,    NULL},
+    {62,  NULL,                            0,	    0,          0,       0,    NULL},
+    {63,  NULL,                            0,	    0,          0,       0,    NULL},
 };
-
 
 //status register map declairation
 const sts_reg_map_st status_reg_map_inst[STAT_REG_MAP_NUM]=
@@ -72,20 +109,20 @@ const sts_reg_map_st status_reg_map_inst[STAT_REG_MAP_NUM]=
     {	6,      &g_sys.stat.man.dev_type,               DEVICE_TYPE},
     {	7,      &g_sys.stat.gen.status_bm,              0},
     {	8,      &g_sys.stat.geo.kfifo_drop_cnt,         0},
-    {	9,      NULL,                                   0},
-    {	10,     NULL,                                   0},
-    {	11,  	(void*)&g_sys.stat.gtz.acc_snr,         0},
-    {	12,  	(void*)&g_sys.stat.gtz.signal_level,    0},
-    {	13,  	(void*)&g_sys.stat.gtz.noise_level,     0},
-    {	14,  	&g_sys.stat.gtz.rank,                   0},
-    {	15,  	&g_sys.stat.gtz.acc_rank,               0},
-    {	16,  	(void*)&g_sys.stat.gtz.offset,          0},
-    {	17,  	(void*)&g_sys.stat.gtz.acc_offset,      0},
-    {	18,  	(void*)&g_sys.stat.gtz.acc_signal_level,0},
-    {	19,  	(void*)&g_sys.stat.gtz.acc_noise_level, 0},
-    {	20,  	&g_sys.stat.bat.adc_raw,                0},
-    {	21,  	&g_sys.stat.bat.pwr_val,                0},
-    {	22,  	&g_sys.stat.bat.pwr_sts,                0},
+    {	9,      &g_sys.stat.adc.drop_cnt,               0},
+    {	10,  	&g_sys.stat.bat.adc_raw,                0},
+    {	11,  	&g_sys.stat.bat.pwr_val,                0},
+    {	12,  	&g_sys.stat.bat.pwr_sts,                0},
+    {	13,  	&g_sys.stat.gen.shutdown_cd,            600},
+    {	14,  	&g_sys.stat.gtz.snr_i,                  0},
+    {	15,  	&g_sys.stat.gtz.slv_i,                  0},
+    {	16,  	&g_sys.stat.gtz.nlv_i,                  0},
+    {	17,  	&g_sys.stat.gtz.res_cd,                 0},
+    {	18,  	&g_sys.stat.gtz.res_snr_i,              0},
+    {	19,  	&g_sys.stat.gtz.res_slv_i,              0},
+    {	20,     &g_sys.stat.adc.raw,                    0},
+    {	21,     &g_sys.stat.adc.drop_cnt,               0},
+    {	22,     &g_sys.stat.adc.peak,                   0},
     {	23,  	NULL,                                   0},
     {	24,  	NULL,                                   0},
     {	25,  	NULL,                                   0},
@@ -94,7 +131,39 @@ const sts_reg_map_st status_reg_map_inst[STAT_REG_MAP_NUM]=
     {	28,  	NULL,                                   0},
     {	29,  	NULL,                                   0},
     {	30,  	NULL,                                   0},
-    {	31,  	NULL,                                   0}
+    {	31,  	NULL,                                   0},
+    {	32,  	NULL,                                   0},
+    {	33,  	NULL,                                   0},
+    {	34,  	NULL,                                   0},
+    {	35,  	NULL,                                   0},
+    {	36,  	NULL,                                   0},
+    {	37,  	NULL,                                   0},
+    {	38,  	NULL,                                   0},
+    {	39,  	NULL,                                   0},
+    {	40,  	NULL,                                   0},
+    {	41,  	NULL,                                   0},
+    {	42,  	NULL,                                   0},
+    {	43,  	NULL,                                   0},
+    {	44,  	NULL,                                   0},
+    {	45,  	NULL,                                   0},
+    {	46,  	NULL,                                   0},
+    {	47,  	NULL,                                   0},
+    {	48,  	NULL,                                   0},
+    {	49,  	NULL,                                   0},
+    {	50,  	NULL,                                   0},
+    {	51,  	NULL,                                   0},
+    {	52,  	NULL,                                   0},
+    {	53,  	NULL,                                   0},
+    {	54,  	NULL,                                   0},
+    {	55,  	NULL,                                   0},
+    {	56,  	NULL,                                   0},
+    {	57,  	NULL,                                   0},
+    {	58,  	NULL,                                   0},
+    {	59,  	NULL,                                   0},
+    {	60,  	NULL,                                   0},
+    {	61,  	NULL,                                   0},
+    {	62,  	NULL,                                   0},
+    {	63,  	NULL,                                   0}
 };
 
 /**
@@ -110,6 +179,7 @@ void init_load_status(void)
             *(status_reg_map_inst[i].reg_ptr) = status_reg_map_inst[i].dft;
         }
     }
+    g_sys.stat.gen.shutdown_cd = g_sys.conf.gen.shutdown_intv;
 }
 
 
@@ -479,7 +549,7 @@ static int rd_reg(int argc, char **argv)
 
     i=0;
     for(i=0;i<regmap_args.data->ival[0];i++)
-        printf("reg %d: %d\n",(i+regmap_args.addr->ival[0])&0x3fff,rx_buf[i]);
+        ESP_LOGI(TAG,"reg %d: %d\t %x",(i+regmap_args.addr->ival[0])&0x3fff,rx_buf[i],rx_buf[i]);
     return 0;
 }
 
@@ -529,6 +599,38 @@ static void register_wr_reg()
     ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
 }
 
+/** Arguments used by 'LOG' function */
+static struct {
+    struct arg_str *module;
+    struct arg_int *level;
+    struct arg_end *end;
+} log_args;
+
+static int log_level_set(int argc, char **argv)
+{
+    int nerrors = arg_parse(argc, argv, (void**) &log_args);
+    if (nerrors != 0) {
+        arg_print_errors(stderr, log_args.end, argv[0]);
+        return 1;
+    }
+    esp_log_level_set(log_args.module->sval[0],log_args.level->ival[0]);
+    return 0;
+}
+
+static void register_log_level_set()
+{
+    log_args.module = arg_str1(NULL, NULL, "<t>", "module tag");
+    log_args.level = arg_int1(NULL, NULL, "<lv>", "set level");
+    log_args.end = arg_end(2);
+    const esp_console_cmd_t cmd = {
+            .command = "log_lv_set",
+            .help = "set log level",
+            .hint = NULL,
+            .func = &log_level_set,
+            .argtable = &log_args
+    };
+    ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
+}
 
 void gvar_register(void)
 {
@@ -537,6 +639,7 @@ void gvar_register(void)
     register_save_conf();
     register_print_conf();
     register_load_conf();
+    register_log_level_set();
 }
 
 

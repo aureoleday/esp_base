@@ -49,9 +49,10 @@ typedef struct
 }spi_geo_device_st;
 
 spi_geo_device_st spi_geo_dev_inst;
-fft_st fft_inst;
+//fft_st fft_inst;
 
 static int16_t adxl355_scanfifo(void);
+static void adxl_register(void);
 
 static void adxl_timeout(void* arg)
 {
@@ -95,93 +96,93 @@ static int32_t decode(uint32_t din)
     return (int32_t)temp;
 }
 
-int16_t geo_get_time(float* dst_ptr,uint16_t len)
-{
-    int16_t ret;
-
-    ret = kfifo_out_peek(&kf_s,dst_ptr,(len<<2));
-    fft_inst.ibuf_cnt = ret/4;
-    memcpy(fft_inst.ibuf,dst_ptr,ret);
-
-    ret /= 4;
-    return ret;
-}
-
-static void fft_max_ind(void)
-{
-    extern sys_reg_st  g_sys;
-    uint16_t fft_max = 0,i;
-
-    float max_temp;
-    float max_ind;
-    //	float tt1;
-
-    fft_max = (1<<g_sys.conf.fft.n);
-    max_temp = fft_inst.obuf[0];
-    max_ind = 0.001;
-    for(i=1;i<fft_max;i++)
-    {
-        if(max_temp < fft_inst.obuf[i])
-        {
-            max_temp = fft_inst.obuf[i];
-            max_ind = ((float)4000/(float)((1<<(g_sys.conf.geo.filter&0x0f))<<g_sys.conf.fft.n))*(float)i;
-        }
-    }
-
-    if(fft_inst.arr_cnt <16)
-    {
-        fft_inst.ampl_arr[fft_inst.arr_cnt] = max_temp;
-        fft_inst.freq_arr[fft_inst.arr_cnt] = max_ind;
-        fft_inst.arr_cnt++;
-    }
-    else
-    {
-        for(i=0;i<15;i++)
-        {
-            fft_inst.ampl_arr[i] = fft_inst.ampl_arr[i+1];
-            fft_inst.freq_arr[i] = fft_inst.freq_arr[i+1];
-        }
-        fft_inst.ampl_arr[15] = max_temp;
-        fft_inst.freq_arr[15] = max_ind;
-    }
-}
-
-float* geo_get_fft(uint16_t* fft_len)
-{
-    extern sys_reg_st  g_sys;
-    uint16_t fft_max = 0,off;
-
-    fft_max = (1<<g_sys.conf.fft.n);
-
-    off = fft_inst.ibuf_cnt - min(fft_max,fft_inst.ibuf_cnt);
-
-    if(fft_inst.ibuf_cnt > 0)
-    {
-        fft_new(1<<g_sys.conf.fft.n);
-        fft_calc((fft_inst.ibuf+off),fft_inst.obuf);
-        fft_inst.state = 1;
-        *fft_len = fft_inst.ibuf_cnt;
-        fft_max_ind();
-        return fft_inst.obuf;
-    }
-    else
-    {
-        fft_inst.state = 0;
-        *fft_len = 0;
-        return NULL;
-    }
-}
+//int16_t geo_get_time(float* dst_ptr,uint16_t len)
+//{
+//    int16_t ret;
+//
+//    ret = kfifo_out_peek(&kf_s,dst_ptr,(len<<2));
+//    fft_inst.ibuf_cnt = ret/4;
+//    memcpy(fft_inst.ibuf,dst_ptr,ret);
+//
+//    ret /= 4;
+//    return ret;
+//}
+//
+//static void fft_max_ind(void)
+//{
+//    extern sys_reg_st  g_sys;
+//    uint16_t fft_max = 0,i;
+//
+//    float max_temp;
+//    float max_ind;
+//    //	float tt1;
+//
+//    fft_max = (1<<g_sys.conf.fft.n);
+//    max_temp = fft_inst.obuf[0];
+//    max_ind = 0.001;
+//    for(i=1;i<fft_max;i++)
+//    {
+//        if(max_temp < fft_inst.obuf[i])
+//        {
+//            max_temp = fft_inst.obuf[i];
+//            max_ind = ((float)4000/(float)((1<<(g_sys.conf.geo.filter&0x0f))<<g_sys.conf.fft.n))*(float)i;
+//        }
+//    }
+//
+//    if(fft_inst.arr_cnt <16)
+//    {
+//        fft_inst.ampl_arr[fft_inst.arr_cnt] = max_temp;
+//        fft_inst.freq_arr[fft_inst.arr_cnt] = max_ind;
+//        fft_inst.arr_cnt++;
+//    }
+//    else
+//    {
+//        for(i=0;i<15;i++)
+//        {
+//            fft_inst.ampl_arr[i] = fft_inst.ampl_arr[i+1];
+//            fft_inst.freq_arr[i] = fft_inst.freq_arr[i+1];
+//        }
+//        fft_inst.ampl_arr[15] = max_temp;
+//        fft_inst.freq_arr[15] = max_ind;
+//    }
+//}
+//
+//float* geo_get_fft(uint16_t* fft_len)
+//{
+//    extern sys_reg_st  g_sys;
+//    uint16_t fft_max = 0,off;
+//
+//    fft_max = (1<<g_sys.conf.fft.n);
+//
+//    off = fft_inst.ibuf_cnt - min(fft_max,fft_inst.ibuf_cnt);
+//
+//    if(fft_inst.ibuf_cnt > 0)
+//    {
+//        fft_new(1<<g_sys.conf.fft.n);
+//        fft_calc((fft_inst.ibuf+off),fft_inst.obuf);
+//        fft_inst.state = 1;
+//        *fft_len = fft_inst.ibuf_cnt;
+//        fft_max_ind();
+//        return fft_inst.obuf;
+//    }
+//    else
+//    {
+//        fft_inst.state = 0;
+//        *fft_len = 0;
+//        return NULL;
+//    }
+//}
 
 
 void geo_ds_init(void)
 {
     kf_init();
-    fft_inst.arr_cnt = 0;
-    for(int i=0;i<16;i++)
-    {
-        fft_inst.freq_arr[i] = 0.00000001;
-        fft_inst.ampl_arr[i] = 0.00000001;
-    }
+//    fft_inst.arr_cnt = 0;
+//    for(int i=0;i<16;i++)
+//    {
+//        fft_inst.freq_arr[i] = 0.00000001;
+//        fft_inst.ampl_arr[i] = 0.00000001;
+//    }
     geospi_mutex = xSemaphoreCreateMutex();
 
 }
@@ -267,7 +268,7 @@ void adxl_init(void)
     //Attach the device to the SPI bus
     ret=spi_bus_add_device(VSPI_HOST, &devcfg, &spi_geo_dev_inst.spi_device_h);
     ESP_ERROR_CHECK(ret);
-
+    adxl_register();
 }
 
 void adxl355_reset(void)
@@ -456,16 +457,16 @@ static int adxl_info(int argc, char **argv)
 //	return 0;
 //}
 
-static int fft_info(int argc, char **argv)
-{
-    int i;
-    printf("ind\tfreq\t\tamp\n");
-    for(i=0;i<16;i++)
-    {
-        printf("%d\t%f\t%f\n",i,fft_inst.freq_arr[i],fft_inst.ampl_arr[i]);
-    }
-    return 0;
-}
+//static int fft_info(int argc, char **argv)
+//{
+//    int i;
+//    printf("ind\tfreq\t\tamp\n");
+//    for(i=0;i<16;i++)
+//    {
+//        printf("%d\t%f\t%f\n",i,fft_inst.freq_arr[i],fft_inst.ampl_arr[i]);
+//    }
+//    return 0;
+//}
 
 /** Arguments used by 'join' function */
 static struct {
@@ -549,24 +550,23 @@ static void register_adxl_info()
     ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
 }
 
-static void register_fft_info()
-{
-    const esp_console_cmd_t cmd = {
-            .command = "fft_info",
-            .help = "Get fft infomation",
-            .hint = NULL,
-            .func = &fft_info
-    };
-    ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
-}
+//static void register_fft_info()
+//{
+//    const esp_console_cmd_t cmd = {
+//            .command = "fft_info",
+//            .help = "Get fft infomation",
+//            .hint = NULL,
+//            .func = &fft_info
+//    };
+//    ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
+//}
 
-
-void adxl_register(void)
+static void adxl_register(void)
 {
     register_adxl_rd();
     register_adxl_wr();
     register_adxl_info();
-    register_fft_info();
+//    register_fft_info();
 }
 
 

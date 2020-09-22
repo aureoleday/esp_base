@@ -35,11 +35,13 @@ static int sock;
 
 int tcp_transmitt(void *tx_buf,int tx_len)
 {
-    return  send(sock, tx_buf, tx_len, 0);
+    return  send(sock, tx_buf, tx_len, MSG_DONTWAIT);
+//    return  send(sock, tx_buf, tx_len, 0);
 }
 
 static void do_retransmit(const int sock)
 {
+    extern sys_reg_st  g_sys;
     int len;
     char rx_buffer[128];
 
@@ -54,11 +56,14 @@ static void do_retransmit(const int sock)
             ESP_LOGI(TAG, "Received %d bytes: %s", len, rx_buffer);
             cmd_stream_in(rx_buffer, len);
         }
+        if(g_sys.conf.con.wifi_connect == 0)
+            return;
     } while (len > 0);
 }
 
 void tcp_thread(void *param)
 {
+    extern sys_reg_st  g_sys;
     char addr_str[128];
     int addr_family = (int)param;
     int ip_protocol = 0;
@@ -119,6 +124,7 @@ void tcp_thread(void *param)
             break;
         }
 
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_TCP,1);
         // Convert ip address to string
         if (source_addr.sin6_family == PF_INET) {
             inet_ntoa_r(((struct sockaddr_in *)&source_addr)->sin_addr.s_addr, addr_str, sizeof(addr_str) - 1);
@@ -129,6 +135,7 @@ void tcp_thread(void *param)
 
         do_retransmit(sock);
 
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_TCP,0);
         shutdown(sock, 0);
         close(sock);
     }
@@ -140,14 +147,12 @@ CLEAN_UP:
 
 void tcp_srv_start(void)
 {
-    extern sys_reg_st  g_sys;
     xTaskCreate(&tcp_thread,
                "Task_TCP",
                8192,
                NULL,
                5,
                NULL);
-    bit_op_set(&g_sys.stat.gen.status_bm,GBM_TCP,1);
 }
 
 

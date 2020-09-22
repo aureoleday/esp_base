@@ -4,43 +4,49 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-ADXL355_register_t	components/drv/adxl_drv.h	/^} ADXL355_register_t;$/;"	t	typeref:enum:__anon50
-ADXL_ACT_COUNT	components/drv/adxl_drv.h	/^   ADXL_ACT_COUNT = 0x27,$/;"	e	enum:__anon50
-ADXL_ACT_EN	components/drv/adxl_drv.h	/^   ADXL_ACT_EN = 0x24,$/;"	e	enum:__anon50
-ADXL_ACT_THRESH_H	components/drv/adxl_drv.h	/^   ADXL_ACT_THRESH_H = 0x25,$/;"	e	enum:__anon50
-ADXL_ACT_THRESH_L	components/drv/adxl_drv.h	/^   ADXL_ACT_THRESH_L = 0x26,$/;"	e	enum:__anon50
-ADXL_DEVID_AD	components/drv/adxl_drv.h	/^   ADXL_DEVID_AD = 0x00,$/;"	e	enum:__anon50
-ADXL_DEVID_MST	components/drv/adxl_drv.h	/^   ADXL_DEVID_MST = 0x01,$/;"	e	enum:__anon50
-ADXL_FIFO_DATA	components/drv/adxl_drv.h	/^   ADXL_FIFO_DATA = 0x11,$/;"	e	enum:__anon50
-ADXL_FIFO_ENTRIES	components/drv/adxl_drv.h	/^   ADXL_FIFO_ENTRIES = 0x05,$/;"	e	enum:__anon50
-ADXL_FIFO_SAMPLES	components/drv/adxl_drv.h	/^   ADXL_FIFO_SAMPLES = 0x29,$/;"	e	enum:__anon50
-ADXL_FILTER	components/drv/adxl_drv.h	/^   ADXL_FILTER = 0x28,$/;"	e	enum:__anon50
-ADXL_INT_MAP	components/drv/adxl_drv.h	/^   ADXL_INT_MAP = 0x2A,$/;"	e	enum:__anon50
-ADXL_OFFSET_X_H	components/drv/adxl_drv.h	/^   ADXL_OFFSET_X_H = 0x1E,$/;"	e	enum:__anon50
-ADXL_OFFSET_X_L	components/drv/adxl_drv.h	/^   ADXL_OFFSET_X_L = 0x1F,$/;"	e	enum:__anon50
-ADXL_OFFSET_Y_H	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Y_H = 0x20,$/;"	e	enum:__anon50
-ADXL_OFFSET_Y_L	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Y_L = 0x21,$/;"	e	enum:__anon50
-ADXL_OFFSET_Z_H	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Z_H = 0x22,$/;"	e	enum:__anon50
-ADXL_OFFSET_Z_L	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Z_L = 0x23,$/;"	e	enum:__anon50
-ADXL_PARTID	components/drv/adxl_drv.h	/^   ADXL_PARTID = 0x02,$/;"	e	enum:__anon50
-ADXL_POWER_CTL	components/drv/adxl_drv.h	/^   ADXL_POWER_CTL = 0x2D,$/;"	e	enum:__anon50
-ADXL_RANGE	components/drv/adxl_drv.h	/^   ADXL_RANGE = 0x2C,$/;"	e	enum:__anon50
-ADXL_RESET	components/drv/adxl_drv.h	/^   ADXL_RESET = 0x2F$/;"	e	enum:__anon50
-ADXL_REVID	components/drv/adxl_drv.h	/^   ADXL_REVID = 0x03,$/;"	e	enum:__anon50
-ADXL_SELF_TEST	components/drv/adxl_drv.h	/^   ADXL_SELF_TEST = 0x2E,$/;"	e	enum:__anon50
-ADXL_STATUS	components/drv/adxl_drv.h	/^   ADXL_STATUS = 0x04,$/;"	e	enum:__anon50
-ADXL_SYNC	components/drv/adxl_drv.h	/^   ADXL_SYNC = 0x2B,$/;"	e	enum:__anon50
-ADXL_TEMP1	components/drv/adxl_drv.h	/^   ADXL_TEMP1 = 0x07,$/;"	e	enum:__anon50
-ADXL_TEMP2	components/drv/adxl_drv.h	/^   ADXL_TEMP2 = 0x06,$/;"	e	enum:__anon50
-ADXL_XDATA1	components/drv/adxl_drv.h	/^   ADXL_XDATA1 = 0x0A,$/;"	e	enum:__anon50
-ADXL_XDATA2	components/drv/adxl_drv.h	/^   ADXL_XDATA2 = 0x09,$/;"	e	enum:__anon50
-ADXL_XDATA3	components/drv/adxl_drv.h	/^   ADXL_XDATA3 = 0x08,$/;"	e	enum:__anon50
-ADXL_YDATA1	components/drv/adxl_drv.h	/^   ADXL_YDATA1 = 0x0D,$/;"	e	enum:__anon50
-ADXL_YDATA2	components/drv/adxl_drv.h	/^   ADXL_YDATA2 = 0x0C,$/;"	e	enum:__anon50
-ADXL_YDATA3	components/drv/adxl_drv.h	/^   ADXL_YDATA3 = 0x0B,$/;"	e	enum:__anon50
-ADXL_ZDATA1	components/drv/adxl_drv.h	/^   ADXL_ZDATA1 = 0x10,$/;"	e	enum:__anon50
-ADXL_ZDATA2	components/drv/adxl_drv.h	/^   ADXL_ZDATA2 = 0x0F,$/;"	e	enum:__anon50
-ADXL_ZDATA3	components/drv/adxl_drv.h	/^   ADXL_ZDATA3 = 0x0E,$/;"	e	enum:__anon50
+ADC_CH	components/drv/bat_drv.c	13;"	d	file:
+ADC_DELAY_BUF_SIZE	components/drv/ads131_drv.h	14;"	d
+ADC_DEVID_LSB	components/drv/ads131_drv.h	/^   ADC_DEVID_LSB = 0x01$/;"	e	enum:__anon62
+ADC_DEVID_MSB	components/drv/ads131_drv.h	/^   ADC_DEVID_MSB = 0x00,$/;"	e	enum:__anon62
+ADC_FIFO_SIZE	components/drv/ads131_drv.h	13;"	d
+ADC_register_t	components/drv/ads131_drv.h	/^} ADC_register_t;$/;"	t	typeref:enum:__anon62
+ADXL355_register_t	components/drv/adxl_drv.h	/^} ADXL355_register_t;$/;"	t	typeref:enum:__anon54
+ADXL_ACT_COUNT	components/drv/adxl_drv.h	/^   ADXL_ACT_COUNT = 0x27,$/;"	e	enum:__anon54
+ADXL_ACT_EN	components/drv/adxl_drv.h	/^   ADXL_ACT_EN = 0x24,$/;"	e	enum:__anon54
+ADXL_ACT_THRESH_H	components/drv/adxl_drv.h	/^   ADXL_ACT_THRESH_H = 0x25,$/;"	e	enum:__anon54
+ADXL_ACT_THRESH_L	components/drv/adxl_drv.h	/^   ADXL_ACT_THRESH_L = 0x26,$/;"	e	enum:__anon54
+ADXL_DEVID_AD	components/drv/adxl_drv.h	/^   ADXL_DEVID_AD = 0x00,$/;"	e	enum:__anon54
+ADXL_DEVID_MST	components/drv/adxl_drv.h	/^   ADXL_DEVID_MST = 0x01,$/;"	e	enum:__anon54
+ADXL_FIFO_DATA	components/drv/adxl_drv.h	/^   ADXL_FIFO_DATA = 0x11,$/;"	e	enum:__anon54
+ADXL_FIFO_ENTRIES	components/drv/adxl_drv.h	/^   ADXL_FIFO_ENTRIES = 0x05,$/;"	e	enum:__anon54
+ADXL_FIFO_SAMPLES	components/drv/adxl_drv.h	/^   ADXL_FIFO_SAMPLES = 0x29,$/;"	e	enum:__anon54
+ADXL_FILTER	components/drv/adxl_drv.h	/^   ADXL_FILTER = 0x28,$/;"	e	enum:__anon54
+ADXL_INT_MAP	components/drv/adxl_drv.h	/^   ADXL_INT_MAP = 0x2A,$/;"	e	enum:__anon54
+ADXL_OFFSET_X_H	components/drv/adxl_drv.h	/^   ADXL_OFFSET_X_H = 0x1E,$/;"	e	enum:__anon54
+ADXL_OFFSET_X_L	components/drv/adxl_drv.h	/^   ADXL_OFFSET_X_L = 0x1F,$/;"	e	enum:__anon54
+ADXL_OFFSET_Y_H	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Y_H = 0x20,$/;"	e	enum:__anon54
+ADXL_OFFSET_Y_L	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Y_L = 0x21,$/;"	e	enum:__anon54
+ADXL_OFFSET_Z_H	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Z_H = 0x22,$/;"	e	enum:__anon54
+ADXL_OFFSET_Z_L	components/drv/adxl_drv.h	/^   ADXL_OFFSET_Z_L = 0x23,$/;"	e	enum:__anon54
+ADXL_PARTID	components/drv/adxl_drv.h	/^   ADXL_PARTID = 0x02,$/;"	e	enum:__anon54
+ADXL_POWER_CTL	components/drv/adxl_drv.h	/^   ADXL_POWER_CTL = 0x2D,$/;"	e	enum:__anon54
+ADXL_RANGE	components/drv/adxl_drv.h	/^   ADXL_RANGE = 0x2C,$/;"	e	enum:__anon54
+ADXL_RESET	components/drv/adxl_drv.h	/^   ADXL_RESET = 0x2F$/;"	e	enum:__anon54
+ADXL_REVID	components/drv/adxl_drv.h	/^   ADXL_REVID = 0x03,$/;"	e	enum:__anon54
+ADXL_SELF_TEST	components/drv/adxl_drv.h	/^   ADXL_SELF_TEST = 0x2E,$/;"	e	enum:__anon54
+ADXL_STATUS	components/drv/adxl_drv.h	/^   ADXL_STATUS = 0x04,$/;"	e	enum:__anon54
+ADXL_SYNC	components/drv/adxl_drv.h	/^   ADXL_SYNC = 0x2B,$/;"	e	enum:__anon54
+ADXL_TEMP1	components/drv/adxl_drv.h	/^   ADXL_TEMP1 = 0x07,$/;"	e	enum:__anon54
+ADXL_TEMP2	components/drv/adxl_drv.h	/^   ADXL_TEMP2 = 0x06,$/;"	e	enum:__anon54
+ADXL_XDATA1	components/drv/adxl_drv.h	/^   ADXL_XDATA1 = 0x0A,$/;"	e	enum:__anon54
+ADXL_XDATA2	components/drv/adxl_drv.h	/^   ADXL_XDATA2 = 0x09,$/;"	e	enum:__anon54
+ADXL_XDATA3	components/drv/adxl_drv.h	/^   ADXL_XDATA3 = 0x08,$/;"	e	enum:__anon54
+ADXL_YDATA1	components/drv/adxl_drv.h	/^   ADXL_YDATA1 = 0x0D,$/;"	e	enum:__anon54
+ADXL_YDATA2	components/drv/adxl_drv.h	/^   ADXL_YDATA2 = 0x0C,$/;"	e	enum:__anon54
+ADXL_YDATA3	components/drv/adxl_drv.h	/^   ADXL_YDATA3 = 0x0B,$/;"	e	enum:__anon54
+ADXL_ZDATA1	components/drv/adxl_drv.h	/^   ADXL_ZDATA1 = 0x10,$/;"	e	enum:__anon54
+ADXL_ZDATA2	components/drv/adxl_drv.h	/^   ADXL_ZDATA2 = 0x0F,$/;"	e	enum:__anon54
+ADXL_ZDATA3	components/drv/adxl_drv.h	/^   ADXL_ZDATA3 = 0x0E,$/;"	e	enum:__anon54
 ARCHITECTURE_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	410;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	413;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	416;"	d	file:
@@ -146,15 +152,19 @@ ARCHITECTURE_ID	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXComp
 ARCHITECTURE_ID	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	430;"	d	file:
 ARCHITECTURE_ID	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	434;"	d	file:
 ARG_TYPE_STR	components/cmd_nvs/cmd_nvs.c	/^static const char *ARG_TYPE_STR = "type can be: i8, u8, i16, u16 i32, u32 i64, u64, str, blob";$/;"	v	file:
-BKG_THREAD_DELAY	components/usr/sys_conf.h	8;"	d
+BAT_CHRG	components/drv/io_drv.c	14;"	d	file:
+BAT_PLUG	components/drv/io_drv.c	15;"	d	file:
+BKG_THREAD_DELAY	components/usr/sys_conf.h	9;"	d
+Bit_RESET	components/drv/io_drv.c	27;"	d	file:
+Bit_SET	components/drv/io_drv.c	28;"	d	file:
 CLI_THREAD_PRIO	main/main.c	/^    CLI_THREAD_PRIO,$/;"	e	enum:__anon1	file:
-CLI_THREAD_STACK_SIZE	main/main.c	40;"	d	file:
-CMD_ERR_ADDR_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_ADDR_OR,$/;"	e	enum:__anon31	file:
-CMD_ERR_CONFLICT_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_CONFLICT_OR,$/;"	e	enum:__anon31	file:
-CMD_ERR_DATA_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_DATA_OR,$/;"	e	enum:__anon31	file:
-CMD_ERR_NOERR	components/usr/cmd_resolve.c	/^    CMD_ERR_NOERR = 0,$/;"	e	enum:__anon31	file:
-CMD_ERR_UNKNOWN	components/usr/cmd_resolve.c	/^    CMD_ERR_UNKNOWN$/;"	e	enum:__anon31	file:
-CMD_ERR_WR_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_WR_OR,$/;"	e	enum:__anon31	file:
+CLI_THREAD_STACK_SIZE	main/main.c	45;"	d	file:
+CMD_ERR_ADDR_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_ADDR_OR,$/;"	e	enum:__anon33	file:
+CMD_ERR_CONFLICT_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_CONFLICT_OR,$/;"	e	enum:__anon33	file:
+CMD_ERR_DATA_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_DATA_OR,$/;"	e	enum:__anon33	file:
+CMD_ERR_NOERR	components/usr/cmd_resolve.c	/^    CMD_ERR_NOERR = 0,$/;"	e	enum:__anon33	file:
+CMD_ERR_UNKNOWN	components/usr/cmd_resolve.c	/^    CMD_ERR_UNKNOWN$/;"	e	enum:__anon33	file:
+CMD_ERR_WR_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_WR_OR,$/;"	e	enum:__anon33	file:
 CMD_FRAME_FSM_DATA	components/usr/cmd_resolve.c	40;"	d	file:
 CMD_FRAME_FSM_SYNC	components/usr/cmd_resolve.c	38;"	d	file:
 CMD_FRAME_FSM_TL	components/usr/cmd_resolve.c	39;"	d	file:
@@ -162,15 +172,21 @@ CMD_FRAME_OVSIZE	components/usr/cmd_resolve.c	33;"	d	file:
 CMD_FRAME_TAG_M_SYNC	components/usr/cmd_resolve.c	/^const static unsigned char CMD_FRAME_TAG_M_SYNC[2]={0x1b,0xdf};$/;"	v	file:
 CMD_FRAME_TAG_S_SYNC	components/usr/cmd_resolve.c	/^const static unsigned char CMD_FRAME_TAG_S_SYNC[2]={0x9b,0xdf};$/;"	v	file:
 CMD_FSM_TIMEOUT	components/usr/cmd_resolve.c	36;"	d	file:
-CMD_NOT_READY	components/usr/cmd_resolve.c	/^    CMD_NOT_READY,$/;"	e	enum:__anon31	file:
-CMD_RDFIFO_EMPTY	components/usr/cmd_resolve.c	/^    CMD_RDFIFO_EMPTY,$/;"	e	enum:__anon31	file:
+CMD_LOCK	components/drv/ads131_drv.c	33;"	d	file:
+CMD_NOT_READY	components/usr/cmd_resolve.c	/^    CMD_NOT_READY,$/;"	e	enum:__anon33	file:
+CMD_NULL	components/drv/ads131_drv.c	31;"	d	file:
+CMD_RDFIFO_EMPTY	components/usr/cmd_resolve.c	/^    CMD_RDFIFO_EMPTY,$/;"	e	enum:__anon33	file:
 CMD_RD_REG	components/usr/cmd_resolve.c	42;"	d	file:
 CMD_RP_PKG	components/usr/cmd_resolve.c	44;"	d	file:
+CMD_RST	components/drv/ads131_drv.c	32;"	d	file:
 CMD_RTX_BUF_DEPTH	components/usr/cmd_resolve.c	35;"	d	file:
-CMD_THREAD_DELAY	components/usr/sys_conf.h	6;"	d
+CMD_STDBY	components/drv/ads131_drv.c	36;"	d	file:
+CMD_THREAD_DELAY	components/usr/sys_conf.h	7;"	d
 CMD_THREAD_PRIO	main/main.c	/^    CMD_THREAD_PRIO,$/;"	e	enum:__anon1	file:
-CMD_THREAD_STACK_SIZE	main/main.c	41;"	d	file:
-CMD_WRFIFO_FULL	components/usr/cmd_resolve.c	/^    CMD_WRFIFO_FULL,$/;"	e	enum:__anon31	file:
+CMD_THREAD_STACK_SIZE	main/main.c	46;"	d	file:
+CMD_UNLOCK	components/drv/ads131_drv.c	34;"	d	file:
+CMD_WAKEUP	components/drv/ads131_drv.c	35;"	d	file:
+CMD_WRFIFO_FULL	components/usr/cmd_resolve.c	/^    CMD_WRFIFO_FULL,$/;"	e	enum:__anon33	file:
 CMD_WR_REG	components/usr/cmd_resolve.c	43;"	d	file:
 COMPILER_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	101;"	d	file:
 COMPILER_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	108;"	d	file:
@@ -1072,19 +1088,21 @@ COMPILER_VERSION_TWEAK	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCC
 COMPILER_VERSION_TWEAK	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	167;"	d	file:
 COMPILER_VERSION_TWEAK	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	212;"	d	file:
 COMPILER_VERSION_TWEAK	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	33;"	d	file:
+COMPONENTS_BAT_DRV_H_	components/drv/bat_drv.h	10;"	d
+COMPONENTS_DRV_ADS131_DRV_H_	components/drv/ads131_drv.h	9;"	d
 COMPONENTS_DRV_ADXL_DRV_H_	components/drv/adxl_drv.h	9;"	d
-COMPONENTS_DRV_LED_DRV_H_	components/drv/led_drv.h	9;"	d
+COMPONENTS_DRV_IO_DRV_H_	components/drv/io_drv.h	9;"	d
 COMPONENTS_KITS_GOERTZEL_H_	components/kits/goertzel.h	9;"	d
 COMPONENTS_KITS_MY_FFT_H_	components/kits/my_fft.h	10;"	d
 COMPONENT_ADD_INCLUDEDIRS	components/cmd_nvs/component.mk	/^COMPONENT_ADD_INCLUDEDIRS := .$/;"	m
 COMPONENT_ADD_INCLUDEDIRS	components/cmd_system/component.mk	/^COMPONENT_ADD_INCLUDEDIRS := .$/;"	m
 COMPONENT_ADD_INCLUDEDIRS	components/kits/component.mk	/^COMPONENT_ADD_INCLUDEDIRS := .$/;"	m
 COMPONENT_ADD_INCLUDEDIRS	components/usr/component.mk	/^COMPONENT_ADD_INCLUDEDIRS := .$/;"	m
-CONFIG_ADC2_DISABLE_DAC	build/config/sdkconfig.h	351;"	d
-CONFIG_ADC_CAL_EFUSE_TP_ENABLE	build/config/sdkconfig.h	86;"	d
-CONFIG_ADC_CAL_EFUSE_VREF_ENABLE	build/config/sdkconfig.h	87;"	d
-CONFIG_ADC_CAL_LUT_ENABLE	build/config/sdkconfig.h	88;"	d
-CONFIG_ADC_DISABLE_DAC	build/config/sdkconfig.h	59;"	d
+CONFIG_ADC2_DISABLE_DAC	build/config/sdkconfig.h	342;"	d
+CONFIG_ADC_CAL_EFUSE_TP_ENABLE	build/config/sdkconfig.h	89;"	d
+CONFIG_ADC_CAL_EFUSE_VREF_ENABLE	build/config/sdkconfig.h	90;"	d
+CONFIG_ADC_CAL_LUT_ENABLE	build/config/sdkconfig.h	91;"	d
+CONFIG_ADC_DISABLE_DAC	build/config/sdkconfig.h	61;"	d
 CONFIG_APPTRACE_DEST_NONE	build/config/sdkconfig.h	48;"	d
 CONFIG_APPTRACE_LOCK_ENABLE	build/config/sdkconfig.h	49;"	d
 CONFIG_APP_BUILD_BOOTLOADER	build/bootloader/config/sdkconfig.h	13;"	d
@@ -1112,110 +1130,108 @@ CONFIG_BOOTLOADER_WDT_ENABLE	build/config/sdkconfig.h	21;"	d
 CONFIG_BOOTLOADER_WDT_TIME_MS	build/bootloader/config/sdkconfig.h	20;"	d
 CONFIG_BOOTLOADER_WDT_TIME_MS	build/config/sdkconfig.h	22;"	d
 CONFIG_BROKER_URL	build/config/sdkconfig.h	44;"	d
-CONFIG_BROWNOUT_DET	build/bootloader/config/sdkconfig.h	102;"	d
-CONFIG_BROWNOUT_DET	build/config/sdkconfig.h	352;"	d
-CONFIG_BROWNOUT_DET_LVL_SEL_0	build/bootloader/config/sdkconfig.h	103;"	d
-CONFIG_BROWNOUT_DET_LVL_SEL_0	build/config/sdkconfig.h	353;"	d
-CONFIG_BTDM_BLE_SLEEP_CLOCK_ACCURACY_INDEX_EFF	build/config/sdkconfig.h	55;"	d
-CONFIG_BTDM_CTRL_BLE_MAX_CONN_EFF	build/config/sdkconfig.h	51;"	d
-CONFIG_BTDM_CTRL_BR_EDR_MAX_ACL_CONN_EFF	build/config/sdkconfig.h	52;"	d
-CONFIG_BTDM_CTRL_BR_EDR_MAX_SYNC_CONN_EFF	build/config/sdkconfig.h	53;"	d
+CONFIG_BROWNOUT_DET	build/bootloader/config/sdkconfig.h	100;"	d
+CONFIG_BROWNOUT_DET	build/config/sdkconfig.h	343;"	d
+CONFIG_BROWNOUT_DET_LVL_SEL_0	build/bootloader/config/sdkconfig.h	101;"	d
+CONFIG_BROWNOUT_DET_LVL_SEL_0	build/config/sdkconfig.h	344;"	d
+CONFIG_BTDM_BLE_SLEEP_CLOCK_ACCURACY_INDEX_EFF	build/config/sdkconfig.h	57;"	d
+CONFIG_BTDM_CTRL_BLE_MAX_CONN_EFF	build/config/sdkconfig.h	53;"	d
+CONFIG_BTDM_CTRL_BR_EDR_MAX_ACL_CONN_EFF	build/config/sdkconfig.h	54;"	d
+CONFIG_BTDM_CTRL_BR_EDR_MAX_SYNC_CONN_EFF	build/config/sdkconfig.h	55;"	d
 CONFIG_BTDM_CTRL_BR_EDR_SCO_DATA_PATH_EFF	build/config/sdkconfig.h	50;"	d
-CONFIG_BTDM_CTRL_PINNED_TO_CORE	build/config/sdkconfig.h	54;"	d
-CONFIG_BT_RESERVE_DRAM	build/config/sdkconfig.h	56;"	d
-CONFIG_COAP_LOG_DEFAULT_LEVEL	build/config/sdkconfig.h	58;"	d
-CONFIG_COAP_MBEDTLS_PSK	build/config/sdkconfig.h	57;"	d
+CONFIG_BTDM_CTRL_PCM_POLAR_EFF	build/config/sdkconfig.h	52;"	d
+CONFIG_BTDM_CTRL_PCM_ROLE_EFF	build/config/sdkconfig.h	51;"	d
+CONFIG_BTDM_CTRL_PINNED_TO_CORE	build/config/sdkconfig.h	56;"	d
+CONFIG_BT_RESERVE_DRAM	build/config/sdkconfig.h	58;"	d
+CONFIG_COAP_LOG_DEFAULT_LEVEL	build/config/sdkconfig.h	60;"	d
+CONFIG_COAP_MBEDTLS_PSK	build/config/sdkconfig.h	59;"	d
 CONFIG_COMPILER_OPTIMIZATION_ASSERTIONS_ENABLE	build/bootloader/config/sdkconfig.h	43;"	d
 CONFIG_COMPILER_OPTIMIZATION_ASSERTIONS_ENABLE	build/config/sdkconfig.h	46;"	d
 CONFIG_COMPILER_OPTIMIZATION_DEFAULT	build/bootloader/config/sdkconfig.h	42;"	d
 CONFIG_COMPILER_OPTIMIZATION_DEFAULT	build/config/sdkconfig.h	45;"	d
-CONFIG_COMPILER_OPTIMIZATION_LEVEL_DEBUG	build/bootloader/config/sdkconfig.h	104;"	d
-CONFIG_COMPILER_OPTIMIZATION_LEVEL_DEBUG	build/config/sdkconfig.h	354;"	d
+CONFIG_COMPILER_OPTIMIZATION_LEVEL_DEBUG	build/bootloader/config/sdkconfig.h	102;"	d
+CONFIG_COMPILER_OPTIMIZATION_LEVEL_DEBUG	build/config/sdkconfig.h	345;"	d
 CONFIG_COMPILER_STACK_CHECK_MODE_NONE	build/bootloader/config/sdkconfig.h	44;"	d
 CONFIG_COMPILER_STACK_CHECK_MODE_NONE	build/config/sdkconfig.h	47;"	d
-CONFIG_CONSOLE_UART_BAUDRATE	build/bootloader/config/sdkconfig.h	105;"	d
-CONFIG_CONSOLE_UART_BAUDRATE	build/config/sdkconfig.h	355;"	d
-CONFIG_CONSOLE_UART_DEFAULT	build/bootloader/config/sdkconfig.h	106;"	d
-CONFIG_CONSOLE_UART_DEFAULT	build/config/sdkconfig.h	356;"	d
-CONFIG_CONSOLE_UART_RX_GPIO	build/bootloader/config/sdkconfig.h	107;"	d
-CONFIG_CONSOLE_UART_RX_GPIO	build/config/sdkconfig.h	357;"	d
-CONFIG_CONSOLE_UART_TX_GPIO	build/bootloader/config/sdkconfig.h	108;"	d
-CONFIG_CONSOLE_UART_TX_GPIO	build/config/sdkconfig.h	358;"	d
+CONFIG_CONSOLE_UART_BAUDRATE	build/bootloader/config/sdkconfig.h	103;"	d
+CONFIG_CONSOLE_UART_BAUDRATE	build/config/sdkconfig.h	346;"	d
+CONFIG_CONSOLE_UART_DEFAULT	build/bootloader/config/sdkconfig.h	104;"	d
+CONFIG_CONSOLE_UART_DEFAULT	build/config/sdkconfig.h	347;"	d
 CONFIG_EFUSE_CODE_SCHEME_COMPAT_3_4	build/bootloader/config/sdkconfig.h	45;"	d
-CONFIG_EFUSE_CODE_SCHEME_COMPAT_3_4	build/config/sdkconfig.h	62;"	d
+CONFIG_EFUSE_CODE_SCHEME_COMPAT_3_4	build/config/sdkconfig.h	64;"	d
 CONFIG_EFUSE_MAX_BLK_LEN	build/bootloader/config/sdkconfig.h	46;"	d
-CONFIG_EFUSE_MAX_BLK_LEN	build/config/sdkconfig.h	63;"	d
-CONFIG_ESP32S2_PANIC_PRINT_REBOOT	build/config/sdkconfig.h	359;"	d
-CONFIG_ESP32_APPTRACE_DEST_NONE	build/config/sdkconfig.h	360;"	d
-CONFIG_ESP32_BROWNOUT_DET	build/bootloader/config/sdkconfig.h	57;"	d
-CONFIG_ESP32_BROWNOUT_DET	build/config/sdkconfig.h	75;"	d
-CONFIG_ESP32_BROWNOUT_DET_LVL	build/bootloader/config/sdkconfig.h	59;"	d
-CONFIG_ESP32_BROWNOUT_DET_LVL	build/config/sdkconfig.h	77;"	d
-CONFIG_ESP32_BROWNOUT_DET_LVL_SEL_0	build/bootloader/config/sdkconfig.h	58;"	d
-CONFIG_ESP32_BROWNOUT_DET_LVL_SEL_0	build/config/sdkconfig.h	76;"	d
-CONFIG_ESP32_DEBUG_OCDAWARE	build/bootloader/config/sdkconfig.h	56;"	d
-CONFIG_ESP32_DEBUG_OCDAWARE	build/config/sdkconfig.h	74;"	d
-CONFIG_ESP32_DEEP_SLEEP_WAKEUP_DELAY	build/bootloader/config/sdkconfig.h	64;"	d
-CONFIG_ESP32_DEEP_SLEEP_WAKEUP_DELAY	build/config/sdkconfig.h	82;"	d
+CONFIG_EFUSE_MAX_BLK_LEN	build/config/sdkconfig.h	65;"	d
+CONFIG_ESP32_APPTRACE_DEST_NONE	build/config/sdkconfig.h	348;"	d
+CONFIG_ESP32_BROWNOUT_DET	build/bootloader/config/sdkconfig.h	58;"	d
+CONFIG_ESP32_BROWNOUT_DET	build/config/sdkconfig.h	78;"	d
+CONFIG_ESP32_BROWNOUT_DET_LVL	build/bootloader/config/sdkconfig.h	60;"	d
+CONFIG_ESP32_BROWNOUT_DET_LVL	build/config/sdkconfig.h	80;"	d
+CONFIG_ESP32_BROWNOUT_DET_LVL_SEL_0	build/bootloader/config/sdkconfig.h	59;"	d
+CONFIG_ESP32_BROWNOUT_DET_LVL_SEL_0	build/config/sdkconfig.h	79;"	d
+CONFIG_ESP32_DEBUG_OCDAWARE	build/bootloader/config/sdkconfig.h	57;"	d
+CONFIG_ESP32_DEBUG_OCDAWARE	build/config/sdkconfig.h	77;"	d
+CONFIG_ESP32_DEEP_SLEEP_WAKEUP_DELAY	build/bootloader/config/sdkconfig.h	65;"	d
+CONFIG_ESP32_DEEP_SLEEP_WAKEUP_DELAY	build/config/sdkconfig.h	85;"	d
 CONFIG_ESP32_DEFAULT_CPU_FREQ_160	build/bootloader/config/sdkconfig.h	50;"	d
-CONFIG_ESP32_DEFAULT_CPU_FREQ_160	build/config/sdkconfig.h	68;"	d
+CONFIG_ESP32_DEFAULT_CPU_FREQ_160	build/config/sdkconfig.h	70;"	d
 CONFIG_ESP32_DEFAULT_CPU_FREQ_MHZ	build/bootloader/config/sdkconfig.h	51;"	d
-CONFIG_ESP32_DEFAULT_CPU_FREQ_MHZ	build/config/sdkconfig.h	69;"	d
-CONFIG_ESP32_DEFAULT_PTHREAD_CORE_NO_AFFINITY	build/config/sdkconfig.h	361;"	d
-CONFIG_ESP32_DPORT_DIS_INTERRUPT_LVL	build/bootloader/config/sdkconfig.h	67;"	d
-CONFIG_ESP32_DPORT_DIS_INTERRUPT_LVL	build/config/sdkconfig.h	85;"	d
+CONFIG_ESP32_DEFAULT_CPU_FREQ_MHZ	build/config/sdkconfig.h	71;"	d
+CONFIG_ESP32_DEFAULT_PTHREAD_CORE_NO_AFFINITY	build/config/sdkconfig.h	349;"	d
+CONFIG_ESP32_DPORT_DIS_INTERRUPT_LVL	build/bootloader/config/sdkconfig.h	68;"	d
+CONFIG_ESP32_DPORT_DIS_INTERRUPT_LVL	build/config/sdkconfig.h	88;"	d
 CONFIG_ESP32_DPORT_WORKAROUND	build/bootloader/config/sdkconfig.h	49;"	d
-CONFIG_ESP32_DPORT_WORKAROUND	build/config/sdkconfig.h	67;"	d
-CONFIG_ESP32_ENABLE_COREDUMP_TO_NONE	build/config/sdkconfig.h	152;"	d
-CONFIG_ESP32_PANIC_PRINT_REBOOT	build/config/sdkconfig.h	362;"	d
-CONFIG_ESP32_PHY_CALIBRATION_AND_DATA_STORAGE	build/config/sdkconfig.h	149;"	d
-CONFIG_ESP32_PHY_MAX_TX_POWER	build/config/sdkconfig.h	151;"	d
-CONFIG_ESP32_PHY_MAX_WIFI_TX_POWER	build/config/sdkconfig.h	150;"	d
-CONFIG_ESP32_PTHREAD_STACK_MIN	build/config/sdkconfig.h	363;"	d
-CONFIG_ESP32_PTHREAD_TASK_NAME_DEFAULT	build/config/sdkconfig.h	364;"	d
-CONFIG_ESP32_PTHREAD_TASK_PRIO_DEFAULT	build/config/sdkconfig.h	365;"	d
-CONFIG_ESP32_PTHREAD_TASK_STACK_SIZE_DEFAULT	build/config/sdkconfig.h	366;"	d
-CONFIG_ESP32_REDUCE_PHY_TX_POWER	build/bootloader/config/sdkconfig.h	60;"	d
-CONFIG_ESP32_REDUCE_PHY_TX_POWER	build/config/sdkconfig.h	78;"	d
+CONFIG_ESP32_DPORT_WORKAROUND	build/config/sdkconfig.h	69;"	d
+CONFIG_ESP32_ENABLE_COREDUMP_TO_NONE	build/config/sdkconfig.h	147;"	d
+CONFIG_ESP32_PANIC_PRINT_REBOOT	build/bootloader/config/sdkconfig.h	56;"	d
+CONFIG_ESP32_PANIC_PRINT_REBOOT	build/config/sdkconfig.h	76;"	d
+CONFIG_ESP32_PHY_CALIBRATION_AND_DATA_STORAGE	build/config/sdkconfig.h	144;"	d
+CONFIG_ESP32_PHY_MAX_TX_POWER	build/config/sdkconfig.h	146;"	d
+CONFIG_ESP32_PHY_MAX_WIFI_TX_POWER	build/config/sdkconfig.h	145;"	d
+CONFIG_ESP32_PTHREAD_STACK_MIN	build/config/sdkconfig.h	350;"	d
+CONFIG_ESP32_PTHREAD_TASK_NAME_DEFAULT	build/config/sdkconfig.h	351;"	d
+CONFIG_ESP32_PTHREAD_TASK_PRIO_DEFAULT	build/config/sdkconfig.h	352;"	d
+CONFIG_ESP32_PTHREAD_TASK_STACK_SIZE_DEFAULT	build/config/sdkconfig.h	353;"	d
+CONFIG_ESP32_REDUCE_PHY_TX_POWER	build/bootloader/config/sdkconfig.h	61;"	d
+CONFIG_ESP32_REDUCE_PHY_TX_POWER	build/config/sdkconfig.h	81;"	d
 CONFIG_ESP32_REV_MIN	build/bootloader/config/sdkconfig.h	48;"	d
-CONFIG_ESP32_REV_MIN	build/config/sdkconfig.h	66;"	d
+CONFIG_ESP32_REV_MIN	build/config/sdkconfig.h	68;"	d
 CONFIG_ESP32_REV_MIN_0	build/bootloader/config/sdkconfig.h	47;"	d
-CONFIG_ESP32_REV_MIN_0	build/config/sdkconfig.h	65;"	d
-CONFIG_ESP32_RTC_CLK_CAL_CYCLES	build/bootloader/config/sdkconfig.h	63;"	d
-CONFIG_ESP32_RTC_CLK_CAL_CYCLES	build/config/sdkconfig.h	81;"	d
-CONFIG_ESP32_RTC_CLK_SRC_INT_RC	build/bootloader/config/sdkconfig.h	62;"	d
-CONFIG_ESP32_RTC_CLK_SRC_INT_RC	build/config/sdkconfig.h	80;"	d
-CONFIG_ESP32_RTC_CLOCK_SOURCE_INTERNAL_RC	build/bootloader/config/sdkconfig.h	109;"	d
-CONFIG_ESP32_RTC_CLOCK_SOURCE_INTERNAL_RC	build/config/sdkconfig.h	367;"	d
-CONFIG_ESP32_TIME_SYSCALL_USE_RTC_FRC1	build/bootloader/config/sdkconfig.h	61;"	d
-CONFIG_ESP32_TIME_SYSCALL_USE_RTC_FRC1	build/config/sdkconfig.h	79;"	d
+CONFIG_ESP32_REV_MIN_0	build/config/sdkconfig.h	67;"	d
+CONFIG_ESP32_RTC_CLK_CAL_CYCLES	build/bootloader/config/sdkconfig.h	64;"	d
+CONFIG_ESP32_RTC_CLK_CAL_CYCLES	build/config/sdkconfig.h	84;"	d
+CONFIG_ESP32_RTC_CLK_SRC_INT_RC	build/bootloader/config/sdkconfig.h	63;"	d
+CONFIG_ESP32_RTC_CLK_SRC_INT_RC	build/config/sdkconfig.h	83;"	d
+CONFIG_ESP32_RTC_CLOCK_SOURCE_INTERNAL_RC	build/bootloader/config/sdkconfig.h	105;"	d
+CONFIG_ESP32_RTC_CLOCK_SOURCE_INTERNAL_RC	build/config/sdkconfig.h	354;"	d
+CONFIG_ESP32_TIME_SYSCALL_USE_RTC_FRC1	build/bootloader/config/sdkconfig.h	62;"	d
+CONFIG_ESP32_TIME_SYSCALL_USE_RTC_FRC1	build/config/sdkconfig.h	82;"	d
 CONFIG_ESP32_TRACEMEM_RESERVE_DRAM	build/bootloader/config/sdkconfig.h	52;"	d
-CONFIG_ESP32_TRACEMEM_RESERVE_DRAM	build/config/sdkconfig.h	70;"	d
+CONFIG_ESP32_TRACEMEM_RESERVE_DRAM	build/config/sdkconfig.h	72;"	d
 CONFIG_ESP32_ULP_COPROC_RESERVE_MEM	build/bootloader/config/sdkconfig.h	55;"	d
-CONFIG_ESP32_ULP_COPROC_RESERVE_MEM	build/config/sdkconfig.h	73;"	d
+CONFIG_ESP32_ULP_COPROC_RESERVE_MEM	build/config/sdkconfig.h	75;"	d
 CONFIG_ESP32_UNIVERSAL_MAC_ADDRESSES	build/bootloader/config/sdkconfig.h	54;"	d
-CONFIG_ESP32_UNIVERSAL_MAC_ADDRESSES	build/config/sdkconfig.h	72;"	d
+CONFIG_ESP32_UNIVERSAL_MAC_ADDRESSES	build/config/sdkconfig.h	74;"	d
 CONFIG_ESP32_UNIVERSAL_MAC_ADDRESSES_FOUR	build/bootloader/config/sdkconfig.h	53;"	d
-CONFIG_ESP32_UNIVERSAL_MAC_ADDRESSES_FOUR	build/config/sdkconfig.h	71;"	d
-CONFIG_ESP32_WIFI_AMPDU_RX_ENABLED	build/config/sdkconfig.h	141;"	d
-CONFIG_ESP32_WIFI_AMPDU_TX_ENABLED	build/config/sdkconfig.h	139;"	d
-CONFIG_ESP32_WIFI_DYNAMIC_RX_BUFFER_NUM	build/config/sdkconfig.h	135;"	d
-CONFIG_ESP32_WIFI_DYNAMIC_TX_BUFFER	build/config/sdkconfig.h	136;"	d
-CONFIG_ESP32_WIFI_DYNAMIC_TX_BUFFER_NUM	build/config/sdkconfig.h	138;"	d
-CONFIG_ESP32_WIFI_IRAM_OPT	build/config/sdkconfig.h	147;"	d
-CONFIG_ESP32_WIFI_MGMT_SBUF_NUM	build/config/sdkconfig.h	146;"	d
-CONFIG_ESP32_WIFI_NVS_ENABLED	build/config/sdkconfig.h	143;"	d
-CONFIG_ESP32_WIFI_RX_BA_WIN	build/config/sdkconfig.h	142;"	d
-CONFIG_ESP32_WIFI_RX_IRAM_OPT	build/config/sdkconfig.h	148;"	d
-CONFIG_ESP32_WIFI_SOFTAP_BEACON_MAX_LEN	build/config/sdkconfig.h	145;"	d
-CONFIG_ESP32_WIFI_STATIC_RX_BUFFER_NUM	build/config/sdkconfig.h	134;"	d
-CONFIG_ESP32_WIFI_TASK_PINNED_TO_CORE_0	build/config/sdkconfig.h	144;"	d
-CONFIG_ESP32_WIFI_TX_BA_WIN	build/config/sdkconfig.h	140;"	d
-CONFIG_ESP32_WIFI_TX_BUFFER_TYPE	build/config/sdkconfig.h	137;"	d
-CONFIG_ESP32_XTAL_FREQ	build/bootloader/config/sdkconfig.h	66;"	d
-CONFIG_ESP32_XTAL_FREQ	build/config/sdkconfig.h	84;"	d
-CONFIG_ESP32_XTAL_FREQ_40	build/bootloader/config/sdkconfig.h	65;"	d
-CONFIG_ESP32_XTAL_FREQ_40	build/config/sdkconfig.h	83;"	d
+CONFIG_ESP32_UNIVERSAL_MAC_ADDRESSES_FOUR	build/config/sdkconfig.h	73;"	d
+CONFIG_ESP32_WIFI_AMPDU_RX_ENABLED	build/config/sdkconfig.h	136;"	d
+CONFIG_ESP32_WIFI_AMPDU_TX_ENABLED	build/config/sdkconfig.h	134;"	d
+CONFIG_ESP32_WIFI_DYNAMIC_RX_BUFFER_NUM	build/config/sdkconfig.h	130;"	d
+CONFIG_ESP32_WIFI_DYNAMIC_TX_BUFFER	build/config/sdkconfig.h	131;"	d
+CONFIG_ESP32_WIFI_DYNAMIC_TX_BUFFER_NUM	build/config/sdkconfig.h	133;"	d
+CONFIG_ESP32_WIFI_IRAM_OPT	build/config/sdkconfig.h	142;"	d
+CONFIG_ESP32_WIFI_MGMT_SBUF_NUM	build/config/sdkconfig.h	141;"	d
+CONFIG_ESP32_WIFI_NVS_ENABLED	build/config/sdkconfig.h	138;"	d
+CONFIG_ESP32_WIFI_RX_BA_WIN	build/config/sdkconfig.h	137;"	d
+CONFIG_ESP32_WIFI_RX_IRAM_OPT	build/config/sdkconfig.h	143;"	d
+CONFIG_ESP32_WIFI_SOFTAP_BEACON_MAX_LEN	build/config/sdkconfig.h	140;"	d
+CONFIG_ESP32_WIFI_STATIC_RX_BUFFER_NUM	build/config/sdkconfig.h	129;"	d
+CONFIG_ESP32_WIFI_TASK_PINNED_TO_CORE_0	build/config/sdkconfig.h	139;"	d
+CONFIG_ESP32_WIFI_TX_BA_WIN	build/config/sdkconfig.h	135;"	d
+CONFIG_ESP32_WIFI_TX_BUFFER_TYPE	build/config/sdkconfig.h	132;"	d
+CONFIG_ESP32_XTAL_FREQ	build/bootloader/config/sdkconfig.h	67;"	d
+CONFIG_ESP32_XTAL_FREQ	build/config/sdkconfig.h	87;"	d
+CONFIG_ESP32_XTAL_FREQ_40	build/bootloader/config/sdkconfig.h	66;"	d
+CONFIG_ESP32_XTAL_FREQ_40	build/config/sdkconfig.h	86;"	d
 CONFIG_ESPTOOLPY_AFTER	build/bootloader/config/sdkconfig.h	33;"	d
 CONFIG_ESPTOOLPY_AFTER	build/config/sdkconfig.h	35;"	d
 CONFIG_ESPTOOLPY_AFTER_RESET	build/bootloader/config/sdkconfig.h	32;"	d
@@ -1247,126 +1263,113 @@ CONFIG_ESPTOOLPY_MONITOR_BAUD_115200B	build/config/sdkconfig.h	36;"	d
 CONFIG_ESPTOOLPY_MONITOR_BAUD_OTHER_VAL	build/bootloader/config/sdkconfig.h	35;"	d
 CONFIG_ESPTOOLPY_MONITOR_BAUD_OTHER_VAL	build/config/sdkconfig.h	37;"	d
 CONFIG_ESP_CONSOLE_UART_BAUDRATE	build/bootloader/config/sdkconfig.h	79;"	d
-CONFIG_ESP_CONSOLE_UART_BAUDRATE	build/config/sdkconfig.h	100;"	d
-CONFIG_ESP_CONSOLE_UART_DEFAULT	build/bootloader/config/sdkconfig.h	75;"	d
-CONFIG_ESP_CONSOLE_UART_DEFAULT	build/config/sdkconfig.h	96;"	d
-CONFIG_ESP_CONSOLE_UART_NUM	build/bootloader/config/sdkconfig.h	76;"	d
-CONFIG_ESP_CONSOLE_UART_NUM	build/config/sdkconfig.h	97;"	d
-CONFIG_ESP_CONSOLE_UART_RX_GPIO	build/bootloader/config/sdkconfig.h	78;"	d
-CONFIG_ESP_CONSOLE_UART_RX_GPIO	build/config/sdkconfig.h	99;"	d
-CONFIG_ESP_CONSOLE_UART_TX_GPIO	build/bootloader/config/sdkconfig.h	77;"	d
-CONFIG_ESP_CONSOLE_UART_TX_GPIO	build/config/sdkconfig.h	98;"	d
-CONFIG_ESP_ERR_TO_NAME_LOOKUP	build/bootloader/config/sdkconfig.h	68;"	d
-CONFIG_ESP_ERR_TO_NAME_LOOKUP	build/config/sdkconfig.h	89;"	d
-CONFIG_ESP_EVENT_POST_FROM_IRAM_ISR	build/config/sdkconfig.h	122;"	d
-CONFIG_ESP_EVENT_POST_FROM_ISR	build/config/sdkconfig.h	121;"	d
-CONFIG_ESP_GRATUITOUS_ARP	build/config/sdkconfig.h	368;"	d
-CONFIG_ESP_HTTP_CLIENT_ENABLE_HTTPS	build/config/sdkconfig.h	123;"	d
+CONFIG_ESP_CONSOLE_UART_BAUDRATE	build/config/sdkconfig.h	102;"	d
+CONFIG_ESP_CONSOLE_UART_DEFAULT	build/bootloader/config/sdkconfig.h	77;"	d
+CONFIG_ESP_CONSOLE_UART_DEFAULT	build/config/sdkconfig.h	100;"	d
+CONFIG_ESP_CONSOLE_UART_NUM	build/bootloader/config/sdkconfig.h	78;"	d
+CONFIG_ESP_CONSOLE_UART_NUM	build/config/sdkconfig.h	101;"	d
+CONFIG_ESP_ERR_TO_NAME_LOOKUP	build/bootloader/config/sdkconfig.h	69;"	d
+CONFIG_ESP_ERR_TO_NAME_LOOKUP	build/config/sdkconfig.h	92;"	d
+CONFIG_ESP_EVENT_POST_FROM_IRAM_ISR	build/config/sdkconfig.h	120;"	d
+CONFIG_ESP_EVENT_POST_FROM_ISR	build/config/sdkconfig.h	119;"	d
+CONFIG_ESP_GRATUITOUS_ARP	build/config/sdkconfig.h	355;"	d
+CONFIG_ESP_HTTP_CLIENT_ENABLE_HTTPS	build/config/sdkconfig.h	121;"	d
 CONFIG_ESP_INT_WDT	build/bootloader/config/sdkconfig.h	80;"	d
-CONFIG_ESP_INT_WDT	build/config/sdkconfig.h	101;"	d
+CONFIG_ESP_INT_WDT	build/config/sdkconfig.h	103;"	d
 CONFIG_ESP_INT_WDT_CHECK_CPU1	build/bootloader/config/sdkconfig.h	82;"	d
-CONFIG_ESP_INT_WDT_CHECK_CPU1	build/config/sdkconfig.h	103;"	d
+CONFIG_ESP_INT_WDT_CHECK_CPU1	build/config/sdkconfig.h	105;"	d
 CONFIG_ESP_INT_WDT_TIMEOUT_MS	build/bootloader/config/sdkconfig.h	81;"	d
-CONFIG_ESP_INT_WDT_TIMEOUT_MS	build/config/sdkconfig.h	102;"	d
-CONFIG_ESP_IPC_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	72;"	d
-CONFIG_ESP_IPC_TASK_STACK_SIZE	build/config/sdkconfig.h	93;"	d
-CONFIG_ESP_IPC_USES_CALLERS_PRIORITY	build/bootloader/config/sdkconfig.h	73;"	d
-CONFIG_ESP_IPC_USES_CALLERS_PRIORITY	build/config/sdkconfig.h	94;"	d
-CONFIG_ESP_MAC_ADDR_UNIVERSE_BT	build/bootloader/config/sdkconfig.h	89;"	d
-CONFIG_ESP_MAC_ADDR_UNIVERSE_BT	build/config/sdkconfig.h	110;"	d
-CONFIG_ESP_MAC_ADDR_UNIVERSE_ETH	build/bootloader/config/sdkconfig.h	90;"	d
-CONFIG_ESP_MAC_ADDR_UNIVERSE_ETH	build/config/sdkconfig.h	111;"	d
-CONFIG_ESP_MAC_ADDR_UNIVERSE_WIFI_AP	build/bootloader/config/sdkconfig.h	88;"	d
-CONFIG_ESP_MAC_ADDR_UNIVERSE_WIFI_AP	build/config/sdkconfig.h	109;"	d
-CONFIG_ESP_MAC_ADDR_UNIVERSE_WIFI_STA	build/bootloader/config/sdkconfig.h	87;"	d
-CONFIG_ESP_MAC_ADDR_UNIVERSE_WIFI_STA	build/config/sdkconfig.h	108;"	d
-CONFIG_ESP_MAIN_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	71;"	d
-CONFIG_ESP_MAIN_TASK_STACK_SIZE	build/config/sdkconfig.h	92;"	d
-CONFIG_ESP_MINIMAL_SHARED_STACK_SIZE	build/bootloader/config/sdkconfig.h	74;"	d
-CONFIG_ESP_MINIMAL_SHARED_STACK_SIZE	build/config/sdkconfig.h	95;"	d
-CONFIG_ESP_NETIF_IP_LOST_TIMER_INTERVAL	build/config/sdkconfig.h	128;"	d
-CONFIG_ESP_NETIF_TCPIP_ADAPTER_COMPATIBLE_LAYER	build/config/sdkconfig.h	130;"	d
-CONFIG_ESP_NETIF_TCPIP_LWIP	build/config/sdkconfig.h	129;"	d
-CONFIG_ESP_SYSTEM_EVENT_QUEUE_SIZE	build/bootloader/config/sdkconfig.h	69;"	d
-CONFIG_ESP_SYSTEM_EVENT_QUEUE_SIZE	build/config/sdkconfig.h	90;"	d
-CONFIG_ESP_SYSTEM_EVENT_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	70;"	d
-CONFIG_ESP_SYSTEM_EVENT_TASK_STACK_SIZE	build/config/sdkconfig.h	91;"	d
-CONFIG_ESP_SYSTEM_PANIC_PRINT_REBOOT	build/config/sdkconfig.h	131;"	d
+CONFIG_ESP_INT_WDT_TIMEOUT_MS	build/config/sdkconfig.h	104;"	d
+CONFIG_ESP_IPC_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	73;"	d
+CONFIG_ESP_IPC_TASK_STACK_SIZE	build/config/sdkconfig.h	96;"	d
+CONFIG_ESP_IPC_USES_CALLERS_PRIORITY	build/bootloader/config/sdkconfig.h	74;"	d
+CONFIG_ESP_IPC_USES_CALLERS_PRIORITY	build/config/sdkconfig.h	97;"	d
+CONFIG_ESP_MAIN_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	72;"	d
+CONFIG_ESP_MAIN_TASK_STACK_SIZE	build/config/sdkconfig.h	95;"	d
+CONFIG_ESP_MINIMAL_SHARED_STACK_SIZE	build/bootloader/config/sdkconfig.h	76;"	d
+CONFIG_ESP_MINIMAL_SHARED_STACK_SIZE	build/config/sdkconfig.h	99;"	d
+CONFIG_ESP_NETIF_IP_LOST_TIMER_INTERVAL	build/config/sdkconfig.h	126;"	d
+CONFIG_ESP_NETIF_TCPIP_ADAPTER_COMPATIBLE_LAYER	build/config/sdkconfig.h	128;"	d
+CONFIG_ESP_NETIF_TCPIP_LWIP	build/config/sdkconfig.h	127;"	d
+CONFIG_ESP_SYSTEM_EVENT_QUEUE_SIZE	build/bootloader/config/sdkconfig.h	70;"	d
+CONFIG_ESP_SYSTEM_EVENT_QUEUE_SIZE	build/config/sdkconfig.h	93;"	d
+CONFIG_ESP_SYSTEM_EVENT_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	71;"	d
+CONFIG_ESP_SYSTEM_EVENT_TASK_STACK_SIZE	build/config/sdkconfig.h	94;"	d
 CONFIG_ESP_TASK_WDT	build/bootloader/config/sdkconfig.h	83;"	d
-CONFIG_ESP_TASK_WDT	build/config/sdkconfig.h	104;"	d
+CONFIG_ESP_TASK_WDT	build/config/sdkconfig.h	106;"	d
 CONFIG_ESP_TASK_WDT_CHECK_IDLE_TASK_CPU0	build/bootloader/config/sdkconfig.h	85;"	d
-CONFIG_ESP_TASK_WDT_CHECK_IDLE_TASK_CPU0	build/config/sdkconfig.h	106;"	d
+CONFIG_ESP_TASK_WDT_CHECK_IDLE_TASK_CPU0	build/config/sdkconfig.h	108;"	d
 CONFIG_ESP_TASK_WDT_CHECK_IDLE_TASK_CPU1	build/bootloader/config/sdkconfig.h	86;"	d
-CONFIG_ESP_TASK_WDT_CHECK_IDLE_TASK_CPU1	build/config/sdkconfig.h	107;"	d
+CONFIG_ESP_TASK_WDT_CHECK_IDLE_TASK_CPU1	build/config/sdkconfig.h	109;"	d
 CONFIG_ESP_TASK_WDT_TIMEOUT_S	build/bootloader/config/sdkconfig.h	84;"	d
-CONFIG_ESP_TASK_WDT_TIMEOUT_S	build/config/sdkconfig.h	105;"	d
-CONFIG_ESP_TIMER_IMPL_TG0_LAC	build/config/sdkconfig.h	133;"	d
-CONFIG_ESP_TIMER_TASK_STACK_SIZE	build/config/sdkconfig.h	132;"	d
-CONFIG_ESP_TLS_USING_MBEDTLS	build/config/sdkconfig.h	64;"	d
-CONFIG_ETH_DMA_BUFFER_SIZE	build/config/sdkconfig.h	117;"	d
-CONFIG_ETH_DMA_RX_BUFFER_NUM	build/config/sdkconfig.h	118;"	d
-CONFIG_ETH_DMA_TX_BUFFER_NUM	build/config/sdkconfig.h	119;"	d
-CONFIG_ETH_ENABLED	build/config/sdkconfig.h	112;"	d
-CONFIG_ETH_PHY_INTERFACE_RMII	build/config/sdkconfig.h	114;"	d
-CONFIG_ETH_RMII_CLK_INPUT	build/config/sdkconfig.h	115;"	d
-CONFIG_ETH_RMII_CLK_IN_GPIO	build/config/sdkconfig.h	116;"	d
-CONFIG_ETH_USE_ESP32_EMAC	build/config/sdkconfig.h	113;"	d
-CONFIG_ETH_USE_SPI_ETHERNET	build/config/sdkconfig.h	120;"	d
-CONFIG_FATFS_CODEPAGE	build/config/sdkconfig.h	154;"	d
-CONFIG_FATFS_CODEPAGE_437	build/config/sdkconfig.h	153;"	d
-CONFIG_FATFS_FS_LOCK	build/config/sdkconfig.h	156;"	d
-CONFIG_FATFS_LFN_NONE	build/config/sdkconfig.h	155;"	d
-CONFIG_FATFS_PER_FILE_CACHE	build/config/sdkconfig.h	158;"	d
-CONFIG_FATFS_TIMEOUT_MS	build/config/sdkconfig.h	157;"	d
-CONFIG_FLASHMODE_DIO	build/bootloader/config/sdkconfig.h	110;"	d
-CONFIG_FLASHMODE_DIO	build/config/sdkconfig.h	369;"	d
-CONFIG_FMB_COMM_MODE_ASCII_EN	build/config/sdkconfig.h	160;"	d
-CONFIG_FMB_COMM_MODE_RTU_EN	build/config/sdkconfig.h	159;"	d
-CONFIG_FMB_CONTROLLER_NOTIFY_QUEUE_SIZE	build/config/sdkconfig.h	170;"	d
-CONFIG_FMB_CONTROLLER_NOTIFY_TIMEOUT	build/config/sdkconfig.h	169;"	d
-CONFIG_FMB_CONTROLLER_STACK_SIZE	build/config/sdkconfig.h	171;"	d
-CONFIG_FMB_EVENT_QUEUE_TIMEOUT	build/config/sdkconfig.h	172;"	d
-CONFIG_FMB_MASTER_DELAY_MS_CONVERT	build/config/sdkconfig.h	162;"	d
-CONFIG_FMB_MASTER_TIMEOUT_MS_RESPOND	build/config/sdkconfig.h	161;"	d
-CONFIG_FMB_QUEUE_LENGTH	build/config/sdkconfig.h	163;"	d
-CONFIG_FMB_SERIAL_ASCII_BITS_PER_SYMB	build/config/sdkconfig.h	166;"	d
-CONFIG_FMB_SERIAL_ASCII_TIMEOUT_RESPOND_MS	build/config/sdkconfig.h	167;"	d
-CONFIG_FMB_SERIAL_BUF_SIZE	build/config/sdkconfig.h	165;"	d
-CONFIG_FMB_SERIAL_TASK_PRIO	build/config/sdkconfig.h	168;"	d
-CONFIG_FMB_SERIAL_TASK_STACK_SIZE	build/config/sdkconfig.h	164;"	d
-CONFIG_FMB_TIMER_GROUP	build/config/sdkconfig.h	174;"	d
-CONFIG_FMB_TIMER_INDEX	build/config/sdkconfig.h	175;"	d
-CONFIG_FMB_TIMER_PORT_ENABLED	build/config/sdkconfig.h	173;"	d
-CONFIG_FOUR_UNIVERSAL_MAC_ADDRESS	build/bootloader/config/sdkconfig.h	111;"	d
-CONFIG_FOUR_UNIVERSAL_MAC_ADDRESS	build/config/sdkconfig.h	370;"	d
-CONFIG_FREERTOS_ASSERT_FAIL_ABORT	build/config/sdkconfig.h	183;"	d
-CONFIG_FREERTOS_ASSERT_ON_UNTESTED_FUNCTION	build/config/sdkconfig.h	179;"	d
-CONFIG_FREERTOS_CHECK_MUTEX_GIVEN_BY_OWNER	build/config/sdkconfig.h	195;"	d
-CONFIG_FREERTOS_CHECK_STACKOVERFLOW_CANARY	build/config/sdkconfig.h	180;"	d
-CONFIG_FREERTOS_CORETIMER_0	build/config/sdkconfig.h	177;"	d
-CONFIG_FREERTOS_DEBUG_OCDAWARE	build/config/sdkconfig.h	196;"	d
-CONFIG_FREERTOS_HZ	build/config/sdkconfig.h	178;"	d
-CONFIG_FREERTOS_IDLE_TASK_STACKSIZE	build/config/sdkconfig.h	184;"	d
-CONFIG_FREERTOS_INTERRUPT_BACKTRACE	build/config/sdkconfig.h	181;"	d
-CONFIG_FREERTOS_ISR_STACKSIZE	build/config/sdkconfig.h	185;"	d
-CONFIG_FREERTOS_MAX_TASK_NAME_LEN	build/config/sdkconfig.h	186;"	d
-CONFIG_FREERTOS_NO_AFFINITY	build/config/sdkconfig.h	176;"	d
-CONFIG_FREERTOS_QUEUE_REGISTRY_SIZE	build/config/sdkconfig.h	191;"	d
-CONFIG_FREERTOS_SUPPORT_STATIC_ALLOCATION	build/config/sdkconfig.h	187;"	d
-CONFIG_FREERTOS_TASK_FUNCTION_WRAPPER	build/config/sdkconfig.h	194;"	d
-CONFIG_FREERTOS_THREAD_LOCAL_STORAGE_POINTERS	build/config/sdkconfig.h	182;"	d
-CONFIG_FREERTOS_TIMER_QUEUE_LENGTH	build/config/sdkconfig.h	190;"	d
-CONFIG_FREERTOS_TIMER_TASK_PRIORITY	build/config/sdkconfig.h	188;"	d
-CONFIG_FREERTOS_TIMER_TASK_STACK_DEPTH	build/config/sdkconfig.h	189;"	d
-CONFIG_FREERTOS_USE_STATS_FORMATTING_FUNCTIONS	build/config/sdkconfig.h	193;"	d
-CONFIG_FREERTOS_USE_TRACE_FACILITY	build/config/sdkconfig.h	192;"	d
-CONFIG_GARP_TMR_INTERVAL	build/config/sdkconfig.h	371;"	d
-CONFIG_HEAP_POISONING_DISABLED	build/config/sdkconfig.h	197;"	d
-CONFIG_HEAP_TRACING_OFF	build/config/sdkconfig.h	198;"	d
-CONFIG_HTTPD_ERR_RESP_NO_DELAY	build/config/sdkconfig.h	126;"	d
-CONFIG_HTTPD_MAX_REQ_HDR_LEN	build/config/sdkconfig.h	124;"	d
-CONFIG_HTTPD_MAX_URI_LEN	build/config/sdkconfig.h	125;"	d
-CONFIG_HTTPD_PURGE_BUF_LEN	build/config/sdkconfig.h	127;"	d
+CONFIG_ESP_TASK_WDT_TIMEOUT_S	build/config/sdkconfig.h	107;"	d
+CONFIG_ESP_TIMER_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	75;"	d
+CONFIG_ESP_TIMER_TASK_STACK_SIZE	build/config/sdkconfig.h	98;"	d
+CONFIG_ESP_TLS_USING_MBEDTLS	build/config/sdkconfig.h	66;"	d
+CONFIG_ETH_DMA_BUFFER_SIZE	build/config/sdkconfig.h	115;"	d
+CONFIG_ETH_DMA_RX_BUFFER_NUM	build/config/sdkconfig.h	116;"	d
+CONFIG_ETH_DMA_TX_BUFFER_NUM	build/config/sdkconfig.h	117;"	d
+CONFIG_ETH_ENABLED	build/config/sdkconfig.h	110;"	d
+CONFIG_ETH_PHY_INTERFACE_RMII	build/config/sdkconfig.h	112;"	d
+CONFIG_ETH_RMII_CLK_INPUT	build/config/sdkconfig.h	113;"	d
+CONFIG_ETH_RMII_CLK_IN_GPIO	build/config/sdkconfig.h	114;"	d
+CONFIG_ETH_USE_ESP32_EMAC	build/config/sdkconfig.h	111;"	d
+CONFIG_ETH_USE_SPI_ETHERNET	build/config/sdkconfig.h	118;"	d
+CONFIG_FATFS_CODEPAGE	build/config/sdkconfig.h	149;"	d
+CONFIG_FATFS_CODEPAGE_437	build/config/sdkconfig.h	148;"	d
+CONFIG_FATFS_FS_LOCK	build/config/sdkconfig.h	151;"	d
+CONFIG_FATFS_LFN_NONE	build/config/sdkconfig.h	150;"	d
+CONFIG_FATFS_PER_FILE_CACHE	build/config/sdkconfig.h	153;"	d
+CONFIG_FATFS_TIMEOUT_MS	build/config/sdkconfig.h	152;"	d
+CONFIG_FLASHMODE_DIO	build/bootloader/config/sdkconfig.h	106;"	d
+CONFIG_FLASHMODE_DIO	build/config/sdkconfig.h	356;"	d
+CONFIG_FMB_COMM_MODE_ASCII_EN	build/config/sdkconfig.h	155;"	d
+CONFIG_FMB_COMM_MODE_RTU_EN	build/config/sdkconfig.h	154;"	d
+CONFIG_FMB_CONTROLLER_NOTIFY_QUEUE_SIZE	build/config/sdkconfig.h	165;"	d
+CONFIG_FMB_CONTROLLER_NOTIFY_TIMEOUT	build/config/sdkconfig.h	164;"	d
+CONFIG_FMB_CONTROLLER_STACK_SIZE	build/config/sdkconfig.h	166;"	d
+CONFIG_FMB_EVENT_QUEUE_TIMEOUT	build/config/sdkconfig.h	167;"	d
+CONFIG_FMB_MASTER_DELAY_MS_CONVERT	build/config/sdkconfig.h	157;"	d
+CONFIG_FMB_MASTER_TIMEOUT_MS_RESPOND	build/config/sdkconfig.h	156;"	d
+CONFIG_FMB_QUEUE_LENGTH	build/config/sdkconfig.h	158;"	d
+CONFIG_FMB_SERIAL_ASCII_BITS_PER_SYMB	build/config/sdkconfig.h	161;"	d
+CONFIG_FMB_SERIAL_ASCII_TIMEOUT_RESPOND_MS	build/config/sdkconfig.h	162;"	d
+CONFIG_FMB_SERIAL_BUF_SIZE	build/config/sdkconfig.h	160;"	d
+CONFIG_FMB_SERIAL_TASK_PRIO	build/config/sdkconfig.h	163;"	d
+CONFIG_FMB_SERIAL_TASK_STACK_SIZE	build/config/sdkconfig.h	159;"	d
+CONFIG_FMB_TIMER_GROUP	build/config/sdkconfig.h	169;"	d
+CONFIG_FMB_TIMER_INDEX	build/config/sdkconfig.h	170;"	d
+CONFIG_FMB_TIMER_PORT_ENABLED	build/config/sdkconfig.h	168;"	d
+CONFIG_FOUR_UNIVERSAL_MAC_ADDRESS	build/bootloader/config/sdkconfig.h	107;"	d
+CONFIG_FOUR_UNIVERSAL_MAC_ADDRESS	build/config/sdkconfig.h	357;"	d
+CONFIG_FREERTOS_ASSERT_FAIL_ABORT	build/config/sdkconfig.h	178;"	d
+CONFIG_FREERTOS_ASSERT_ON_UNTESTED_FUNCTION	build/config/sdkconfig.h	174;"	d
+CONFIG_FREERTOS_CHECK_MUTEX_GIVEN_BY_OWNER	build/config/sdkconfig.h	190;"	d
+CONFIG_FREERTOS_CHECK_STACKOVERFLOW_CANARY	build/config/sdkconfig.h	175;"	d
+CONFIG_FREERTOS_CORETIMER_0	build/config/sdkconfig.h	172;"	d
+CONFIG_FREERTOS_DEBUG_OCDAWARE	build/config/sdkconfig.h	191;"	d
+CONFIG_FREERTOS_HZ	build/config/sdkconfig.h	173;"	d
+CONFIG_FREERTOS_IDLE_TASK_STACKSIZE	build/config/sdkconfig.h	179;"	d
+CONFIG_FREERTOS_INTERRUPT_BACKTRACE	build/config/sdkconfig.h	176;"	d
+CONFIG_FREERTOS_ISR_STACKSIZE	build/config/sdkconfig.h	180;"	d
+CONFIG_FREERTOS_MAX_TASK_NAME_LEN	build/config/sdkconfig.h	181;"	d
+CONFIG_FREERTOS_NO_AFFINITY	build/config/sdkconfig.h	171;"	d
+CONFIG_FREERTOS_QUEUE_REGISTRY_SIZE	build/config/sdkconfig.h	186;"	d
+CONFIG_FREERTOS_SUPPORT_STATIC_ALLOCATION	build/config/sdkconfig.h	182;"	d
+CONFIG_FREERTOS_TASK_FUNCTION_WRAPPER	build/config/sdkconfig.h	189;"	d
+CONFIG_FREERTOS_THREAD_LOCAL_STORAGE_POINTERS	build/config/sdkconfig.h	177;"	d
+CONFIG_FREERTOS_TIMER_QUEUE_LENGTH	build/config/sdkconfig.h	185;"	d
+CONFIG_FREERTOS_TIMER_TASK_PRIORITY	build/config/sdkconfig.h	183;"	d
+CONFIG_FREERTOS_TIMER_TASK_STACK_DEPTH	build/config/sdkconfig.h	184;"	d
+CONFIG_FREERTOS_USE_STATS_FORMATTING_FUNCTIONS	build/config/sdkconfig.h	188;"	d
+CONFIG_FREERTOS_USE_TRACE_FACILITY	build/config/sdkconfig.h	187;"	d
+CONFIG_GARP_TMR_INTERVAL	build/config/sdkconfig.h	358;"	d
+CONFIG_HEAP_POISONING_DISABLED	build/config/sdkconfig.h	192;"	d
+CONFIG_HEAP_TRACING_OFF	build/config/sdkconfig.h	193;"	d
+CONFIG_HTTPD_ERR_RESP_NO_DELAY	build/config/sdkconfig.h	124;"	d
+CONFIG_HTTPD_MAX_REQ_HDR_LEN	build/config/sdkconfig.h	122;"	d
+CONFIG_HTTPD_MAX_URI_LEN	build/config/sdkconfig.h	123;"	d
+CONFIG_HTTPD_PURGE_BUF_LEN	build/config/sdkconfig.h	125;"	d
 CONFIG_IDF_CMAKE	build/bootloader/config/sdkconfig.h	6;"	d
 CONFIG_IDF_CMAKE	build/config/sdkconfig.h	6;"	d
 CONFIG_IDF_FIRMWARE_CHIP_ID	build/bootloader/config/sdkconfig.h	9;"	d
@@ -1375,153 +1378,152 @@ CONFIG_IDF_TARGET	build/bootloader/config/sdkconfig.h	7;"	d
 CONFIG_IDF_TARGET	build/config/sdkconfig.h	7;"	d
 CONFIG_IDF_TARGET_ESP32	build/bootloader/config/sdkconfig.h	8;"	d
 CONFIG_IDF_TARGET_ESP32	build/config/sdkconfig.h	8;"	d
-CONFIG_INT_WDT	build/bootloader/config/sdkconfig.h	112;"	d
-CONFIG_INT_WDT	build/config/sdkconfig.h	372;"	d
-CONFIG_INT_WDT_CHECK_CPU1	build/bootloader/config/sdkconfig.h	113;"	d
-CONFIG_INT_WDT_CHECK_CPU1	build/config/sdkconfig.h	373;"	d
-CONFIG_INT_WDT_TIMEOUT_MS	build/bootloader/config/sdkconfig.h	114;"	d
-CONFIG_INT_WDT_TIMEOUT_MS	build/config/sdkconfig.h	374;"	d
-CONFIG_IPC_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	115;"	d
-CONFIG_IPC_TASK_STACK_SIZE	build/config/sdkconfig.h	375;"	d
-CONFIG_LOG_BOOTLOADER_LEVEL_WARN	build/bootloader/config/sdkconfig.h	116;"	d
-CONFIG_LOG_BOOTLOADER_LEVEL_WARN	build/config/sdkconfig.h	376;"	d
-CONFIG_LOG_COLORS	build/bootloader/config/sdkconfig.h	93;"	d
-CONFIG_LOG_COLORS	build/config/sdkconfig.h	201;"	d
-CONFIG_LOG_DEFAULT_LEVEL	build/bootloader/config/sdkconfig.h	92;"	d
-CONFIG_LOG_DEFAULT_LEVEL	build/config/sdkconfig.h	200;"	d
-CONFIG_LOG_DEFAULT_LEVEL_INFO	build/bootloader/config/sdkconfig.h	91;"	d
-CONFIG_LOG_DEFAULT_LEVEL_INFO	build/config/sdkconfig.h	199;"	d
-CONFIG_LOG_TIMESTAMP_SOURCE_RTOS	build/bootloader/config/sdkconfig.h	94;"	d
-CONFIG_LOG_TIMESTAMP_SOURCE_RTOS	build/config/sdkconfig.h	202;"	d
-CONFIG_LWIP_DHCPS_LEASE_UNIT	build/config/sdkconfig.h	214;"	d
-CONFIG_LWIP_DHCPS_MAX_STATION_NUM	build/config/sdkconfig.h	215;"	d
-CONFIG_LWIP_DHCP_DOES_ARP_CHECK	build/config/sdkconfig.h	213;"	d
-CONFIG_LWIP_DHCP_MAX_NTP_SERVERS	build/config/sdkconfig.h	236;"	d
-CONFIG_LWIP_DNS_SUPPORT_MDNS_QUERIES	build/config/sdkconfig.h	204;"	d
-CONFIG_LWIP_ESP_GRATUITOUS_ARP	build/config/sdkconfig.h	210;"	d
-CONFIG_LWIP_ESP_LWIP_ASSERT	build/config/sdkconfig.h	238;"	d
-CONFIG_LWIP_GARP_TMR_INTERVAL	build/config/sdkconfig.h	211;"	d
-CONFIG_LWIP_IP_FRAG	build/config/sdkconfig.h	209;"	d
-CONFIG_LWIP_LOCAL_HOSTNAME	build/config/sdkconfig.h	203;"	d
-CONFIG_LWIP_LOOPBACK_MAX_PBUFS	build/config/sdkconfig.h	217;"	d
-CONFIG_LWIP_MAX_ACTIVE_TCP	build/config/sdkconfig.h	218;"	d
-CONFIG_LWIP_MAX_LISTENING_TCP	build/config/sdkconfig.h	219;"	d
-CONFIG_LWIP_MAX_RAW_PCBS	build/config/sdkconfig.h	235;"	d
-CONFIG_LWIP_MAX_SOCKETS	build/config/sdkconfig.h	206;"	d
-CONFIG_LWIP_MAX_UDP_PCBS	build/config/sdkconfig.h	230;"	d
-CONFIG_LWIP_NETIF_LOOPBACK	build/config/sdkconfig.h	216;"	d
-CONFIG_LWIP_SNTP_UPDATE_DELAY	build/config/sdkconfig.h	237;"	d
-CONFIG_LWIP_SO_REUSE	build/config/sdkconfig.h	207;"	d
-CONFIG_LWIP_SO_REUSE_RXTOALL	build/config/sdkconfig.h	208;"	d
-CONFIG_LWIP_TCPIP_RECVMBOX_SIZE	build/config/sdkconfig.h	212;"	d
-CONFIG_LWIP_TCPIP_TASK_AFFINITY	build/config/sdkconfig.h	234;"	d
-CONFIG_LWIP_TCPIP_TASK_AFFINITY_NO_AFFINITY	build/config/sdkconfig.h	233;"	d
-CONFIG_LWIP_TCPIP_TASK_STACK_SIZE	build/config/sdkconfig.h	232;"	d
-CONFIG_LWIP_TCP_MAXRTX	build/config/sdkconfig.h	220;"	d
-CONFIG_LWIP_TCP_MSL	build/config/sdkconfig.h	224;"	d
-CONFIG_LWIP_TCP_MSS	build/config/sdkconfig.h	222;"	d
-CONFIG_LWIP_TCP_OVERSIZE_MSS	build/config/sdkconfig.h	229;"	d
-CONFIG_LWIP_TCP_QUEUE_OOSEQ	build/config/sdkconfig.h	228;"	d
-CONFIG_LWIP_TCP_RECVMBOX_SIZE	build/config/sdkconfig.h	227;"	d
-CONFIG_LWIP_TCP_SND_BUF_DEFAULT	build/config/sdkconfig.h	225;"	d
-CONFIG_LWIP_TCP_SYNMAXRTX	build/config/sdkconfig.h	221;"	d
-CONFIG_LWIP_TCP_TMR_INTERVAL	build/config/sdkconfig.h	223;"	d
-CONFIG_LWIP_TCP_WND_DEFAULT	build/config/sdkconfig.h	226;"	d
-CONFIG_LWIP_TIMERS_ONDEMAND	build/config/sdkconfig.h	205;"	d
-CONFIG_LWIP_UDP_RECVMBOX_SIZE	build/config/sdkconfig.h	231;"	d
-CONFIG_MAIN_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	117;"	d
-CONFIG_MAIN_TASK_STACK_SIZE	build/config/sdkconfig.h	377;"	d
-CONFIG_MBEDTLS_AES_C	build/config/sdkconfig.h	273;"	d
-CONFIG_MBEDTLS_ASYMMETRIC_CONTENT_LEN	build/config/sdkconfig.h	240;"	d
-CONFIG_MBEDTLS_CCM_C	build/config/sdkconfig.h	275;"	d
-CONFIG_MBEDTLS_CERTIFICATE_BUNDLE	build/config/sdkconfig.h	243;"	d
-CONFIG_MBEDTLS_CERTIFICATE_BUNDLE_DEFAULT_FULL	build/config/sdkconfig.h	244;"	d
-CONFIG_MBEDTLS_CLIENT_SSL_SESSION_TICKETS	build/config/sdkconfig.h	271;"	d
-CONFIG_MBEDTLS_ECDH_C	build/config/sdkconfig.h	282;"	d
-CONFIG_MBEDTLS_ECDSA_C	build/config/sdkconfig.h	283;"	d
-CONFIG_MBEDTLS_ECP_C	build/config/sdkconfig.h	281;"	d
-CONFIG_MBEDTLS_ECP_DP_BP256R1_ENABLED	build/config/sdkconfig.h	292;"	d
-CONFIG_MBEDTLS_ECP_DP_BP384R1_ENABLED	build/config/sdkconfig.h	293;"	d
-CONFIG_MBEDTLS_ECP_DP_BP512R1_ENABLED	build/config/sdkconfig.h	294;"	d
-CONFIG_MBEDTLS_ECP_DP_CURVE25519_ENABLED	build/config/sdkconfig.h	295;"	d
-CONFIG_MBEDTLS_ECP_DP_SECP192K1_ENABLED	build/config/sdkconfig.h	289;"	d
-CONFIG_MBEDTLS_ECP_DP_SECP192R1_ENABLED	build/config/sdkconfig.h	284;"	d
-CONFIG_MBEDTLS_ECP_DP_SECP224K1_ENABLED	build/config/sdkconfig.h	290;"	d
-CONFIG_MBEDTLS_ECP_DP_SECP224R1_ENABLED	build/config/sdkconfig.h	285;"	d
-CONFIG_MBEDTLS_ECP_DP_SECP256K1_ENABLED	build/config/sdkconfig.h	291;"	d
-CONFIG_MBEDTLS_ECP_DP_SECP256R1_ENABLED	build/config/sdkconfig.h	286;"	d
-CONFIG_MBEDTLS_ECP_DP_SECP384R1_ENABLED	build/config/sdkconfig.h	287;"	d
-CONFIG_MBEDTLS_ECP_DP_SECP521R1_ENABLED	build/config/sdkconfig.h	288;"	d
-CONFIG_MBEDTLS_ECP_NIST_OPTIM	build/config/sdkconfig.h	296;"	d
-CONFIG_MBEDTLS_GCM_C	build/config/sdkconfig.h	276;"	d
-CONFIG_MBEDTLS_HARDWARE_AES	build/config/sdkconfig.h	245;"	d
-CONFIG_MBEDTLS_HARDWARE_MPI	build/config/sdkconfig.h	246;"	d
-CONFIG_MBEDTLS_HARDWARE_SHA	build/config/sdkconfig.h	247;"	d
-CONFIG_MBEDTLS_HAVE_TIME	build/config/sdkconfig.h	248;"	d
-CONFIG_MBEDTLS_INTERNAL_MEM_ALLOC	build/config/sdkconfig.h	239;"	d
-CONFIG_MBEDTLS_KEY_EXCHANGE_DHE_PSK	build/config/sdkconfig.h	255;"	d
-CONFIG_MBEDTLS_KEY_EXCHANGE_DHE_RSA	build/config/sdkconfig.h	259;"	d
-CONFIG_MBEDTLS_KEY_EXCHANGE_ECDHE_ECDSA	build/config/sdkconfig.h	262;"	d
-CONFIG_MBEDTLS_KEY_EXCHANGE_ECDHE_PSK	build/config/sdkconfig.h	256;"	d
-CONFIG_MBEDTLS_KEY_EXCHANGE_ECDHE_RSA	build/config/sdkconfig.h	261;"	d
-CONFIG_MBEDTLS_KEY_EXCHANGE_ECDH_ECDSA	build/config/sdkconfig.h	263;"	d
-CONFIG_MBEDTLS_KEY_EXCHANGE_ECDH_RSA	build/config/sdkconfig.h	264;"	d
-CONFIG_MBEDTLS_KEY_EXCHANGE_ELLIPTIC_CURVE	build/config/sdkconfig.h	260;"	d
-CONFIG_MBEDTLS_KEY_EXCHANGE_PSK	build/config/sdkconfig.h	254;"	d
-CONFIG_MBEDTLS_KEY_EXCHANGE_RSA	build/config/sdkconfig.h	258;"	d
-CONFIG_MBEDTLS_KEY_EXCHANGE_RSA_PSK	build/config/sdkconfig.h	257;"	d
-CONFIG_MBEDTLS_PEM_PARSE_C	build/config/sdkconfig.h	277;"	d
-CONFIG_MBEDTLS_PEM_WRITE_C	build/config/sdkconfig.h	278;"	d
-CONFIG_MBEDTLS_PSK_MODES	build/config/sdkconfig.h	253;"	d
-CONFIG_MBEDTLS_RC4_DISABLED	build/config/sdkconfig.h	274;"	d
-CONFIG_MBEDTLS_SERVER_SSL_SESSION_TICKETS	build/config/sdkconfig.h	272;"	d
-CONFIG_MBEDTLS_SSL_ALPN	build/config/sdkconfig.h	270;"	d
-CONFIG_MBEDTLS_SSL_IN_CONTENT_LEN	build/config/sdkconfig.h	241;"	d
-CONFIG_MBEDTLS_SSL_OUT_CONTENT_LEN	build/config/sdkconfig.h	242;"	d
-CONFIG_MBEDTLS_SSL_PROTO_DTLS	build/config/sdkconfig.h	269;"	d
-CONFIG_MBEDTLS_SSL_PROTO_TLS1	build/config/sdkconfig.h	266;"	d
-CONFIG_MBEDTLS_SSL_PROTO_TLS1_1	build/config/sdkconfig.h	267;"	d
-CONFIG_MBEDTLS_SSL_PROTO_TLS1_2	build/config/sdkconfig.h	268;"	d
-CONFIG_MBEDTLS_SSL_RENEGOTIATION	build/config/sdkconfig.h	265;"	d
-CONFIG_MBEDTLS_TLS_CLIENT	build/config/sdkconfig.h	251;"	d
-CONFIG_MBEDTLS_TLS_ENABLED	build/config/sdkconfig.h	252;"	d
-CONFIG_MBEDTLS_TLS_SERVER	build/config/sdkconfig.h	250;"	d
-CONFIG_MBEDTLS_TLS_SERVER_AND_CLIENT	build/config/sdkconfig.h	249;"	d
-CONFIG_MBEDTLS_X509_CRL_PARSE_C	build/config/sdkconfig.h	279;"	d
-CONFIG_MBEDTLS_X509_CSR_PARSE_C	build/config/sdkconfig.h	280;"	d
-CONFIG_MB_CONTROLLER_NOTIFY_QUEUE_SIZE	build/config/sdkconfig.h	378;"	d
-CONFIG_MB_CONTROLLER_NOTIFY_TIMEOUT	build/config/sdkconfig.h	379;"	d
-CONFIG_MB_CONTROLLER_STACK_SIZE	build/config/sdkconfig.h	380;"	d
-CONFIG_MB_EVENT_QUEUE_TIMEOUT	build/config/sdkconfig.h	381;"	d
-CONFIG_MB_MASTER_DELAY_MS_CONVERT	build/config/sdkconfig.h	382;"	d
-CONFIG_MB_MASTER_TIMEOUT_MS_RESPOND	build/config/sdkconfig.h	383;"	d
-CONFIG_MB_QUEUE_LENGTH	build/config/sdkconfig.h	384;"	d
-CONFIG_MB_SERIAL_BUF_SIZE	build/config/sdkconfig.h	385;"	d
-CONFIG_MB_SERIAL_TASK_PRIO	build/config/sdkconfig.h	386;"	d
-CONFIG_MB_SERIAL_TASK_STACK_SIZE	build/config/sdkconfig.h	387;"	d
-CONFIG_MB_TIMER_GROUP	build/config/sdkconfig.h	388;"	d
-CONFIG_MB_TIMER_INDEX	build/config/sdkconfig.h	389;"	d
-CONFIG_MB_TIMER_PORT_ENABLED	build/config/sdkconfig.h	390;"	d
-CONFIG_MDNS_MAX_SERVICES	build/config/sdkconfig.h	297;"	d
-CONFIG_MDNS_SERVICE_ADD_TIMEOUT_MS	build/config/sdkconfig.h	301;"	d
-CONFIG_MDNS_TASK_AFFINITY	build/config/sdkconfig.h	300;"	d
-CONFIG_MDNS_TASK_AFFINITY_CPU0	build/config/sdkconfig.h	299;"	d
-CONFIG_MDNS_TASK_PRIORITY	build/config/sdkconfig.h	298;"	d
-CONFIG_MDNS_TIMER_PERIOD_MS	build/config/sdkconfig.h	302;"	d
-CONFIG_MONITOR_BAUD_115200B	build/bootloader/config/sdkconfig.h	118;"	d
-CONFIG_MONITOR_BAUD_115200B	build/config/sdkconfig.h	391;"	d
-CONFIG_MQTT_PROTOCOL_311	build/config/sdkconfig.h	303;"	d
-CONFIG_MQTT_TRANSPORT_SSL	build/config/sdkconfig.h	304;"	d
-CONFIG_MQTT_TRANSPORT_WEBSOCKET	build/config/sdkconfig.h	305;"	d
-CONFIG_MQTT_TRANSPORT_WEBSOCKET_SECURE	build/config/sdkconfig.h	306;"	d
+CONFIG_INT_WDT	build/bootloader/config/sdkconfig.h	108;"	d
+CONFIG_INT_WDT	build/config/sdkconfig.h	359;"	d
+CONFIG_INT_WDT_CHECK_CPU1	build/bootloader/config/sdkconfig.h	109;"	d
+CONFIG_INT_WDT_CHECK_CPU1	build/config/sdkconfig.h	360;"	d
+CONFIG_INT_WDT_TIMEOUT_MS	build/bootloader/config/sdkconfig.h	110;"	d
+CONFIG_INT_WDT_TIMEOUT_MS	build/config/sdkconfig.h	361;"	d
+CONFIG_IPC_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	111;"	d
+CONFIG_IPC_TASK_STACK_SIZE	build/config/sdkconfig.h	362;"	d
+CONFIG_LOG_BOOTLOADER_LEVEL_WARN	build/bootloader/config/sdkconfig.h	112;"	d
+CONFIG_LOG_BOOTLOADER_LEVEL_WARN	build/config/sdkconfig.h	363;"	d
+CONFIG_LOG_COLORS	build/bootloader/config/sdkconfig.h	89;"	d
+CONFIG_LOG_COLORS	build/config/sdkconfig.h	196;"	d
+CONFIG_LOG_DEFAULT_LEVEL	build/bootloader/config/sdkconfig.h	88;"	d
+CONFIG_LOG_DEFAULT_LEVEL	build/config/sdkconfig.h	195;"	d
+CONFIG_LOG_DEFAULT_LEVEL_INFO	build/bootloader/config/sdkconfig.h	87;"	d
+CONFIG_LOG_DEFAULT_LEVEL_INFO	build/config/sdkconfig.h	194;"	d
+CONFIG_LOG_TIMESTAMP_SOURCE_RTOS	build/bootloader/config/sdkconfig.h	90;"	d
+CONFIG_LOG_TIMESTAMP_SOURCE_RTOS	build/config/sdkconfig.h	197;"	d
+CONFIG_LWIP_DHCPS_LEASE_UNIT	build/config/sdkconfig.h	210;"	d
+CONFIG_LWIP_DHCPS_MAX_STATION_NUM	build/config/sdkconfig.h	211;"	d
+CONFIG_LWIP_DHCP_DOES_ARP_CHECK	build/config/sdkconfig.h	209;"	d
+CONFIG_LWIP_DHCP_MAX_NTP_SERVERS	build/config/sdkconfig.h	233;"	d
+CONFIG_LWIP_DNS_SUPPORT_MDNS_QUERIES	build/config/sdkconfig.h	199;"	d
+CONFIG_LWIP_ESP_GRATUITOUS_ARP	build/config/sdkconfig.h	206;"	d
+CONFIG_LWIP_GARP_TMR_INTERVAL	build/config/sdkconfig.h	207;"	d
+CONFIG_LWIP_IP4_FRAG	build/config/sdkconfig.h	204;"	d
+CONFIG_LWIP_IP6_FRAG	build/config/sdkconfig.h	205;"	d
+CONFIG_LWIP_LOCAL_HOSTNAME	build/config/sdkconfig.h	198;"	d
+CONFIG_LWIP_LOOPBACK_MAX_PBUFS	build/config/sdkconfig.h	213;"	d
+CONFIG_LWIP_MAX_ACTIVE_TCP	build/config/sdkconfig.h	214;"	d
+CONFIG_LWIP_MAX_LISTENING_TCP	build/config/sdkconfig.h	215;"	d
+CONFIG_LWIP_MAX_RAW_PCBS	build/config/sdkconfig.h	232;"	d
+CONFIG_LWIP_MAX_SOCKETS	build/config/sdkconfig.h	201;"	d
+CONFIG_LWIP_MAX_UDP_PCBS	build/config/sdkconfig.h	227;"	d
+CONFIG_LWIP_NETIF_LOOPBACK	build/config/sdkconfig.h	212;"	d
+CONFIG_LWIP_SNTP_UPDATE_DELAY	build/config/sdkconfig.h	234;"	d
+CONFIG_LWIP_SO_REUSE	build/config/sdkconfig.h	202;"	d
+CONFIG_LWIP_SO_REUSE_RXTOALL	build/config/sdkconfig.h	203;"	d
+CONFIG_LWIP_TCPIP_RECVMBOX_SIZE	build/config/sdkconfig.h	208;"	d
+CONFIG_LWIP_TCPIP_TASK_AFFINITY	build/config/sdkconfig.h	231;"	d
+CONFIG_LWIP_TCPIP_TASK_AFFINITY_NO_AFFINITY	build/config/sdkconfig.h	230;"	d
+CONFIG_LWIP_TCPIP_TASK_STACK_SIZE	build/config/sdkconfig.h	229;"	d
+CONFIG_LWIP_TCP_MAXRTX	build/config/sdkconfig.h	216;"	d
+CONFIG_LWIP_TCP_MSL	build/config/sdkconfig.h	220;"	d
+CONFIG_LWIP_TCP_MSS	build/config/sdkconfig.h	218;"	d
+CONFIG_LWIP_TCP_OVERSIZE_MSS	build/config/sdkconfig.h	225;"	d
+CONFIG_LWIP_TCP_QUEUE_OOSEQ	build/config/sdkconfig.h	224;"	d
+CONFIG_LWIP_TCP_RECVMBOX_SIZE	build/config/sdkconfig.h	223;"	d
+CONFIG_LWIP_TCP_RTO_TIME	build/config/sdkconfig.h	226;"	d
+CONFIG_LWIP_TCP_SND_BUF_DEFAULT	build/config/sdkconfig.h	221;"	d
+CONFIG_LWIP_TCP_SYNMAXRTX	build/config/sdkconfig.h	217;"	d
+CONFIG_LWIP_TCP_TMR_INTERVAL	build/config/sdkconfig.h	219;"	d
+CONFIG_LWIP_TCP_WND_DEFAULT	build/config/sdkconfig.h	222;"	d
+CONFIG_LWIP_TIMERS_ONDEMAND	build/config/sdkconfig.h	200;"	d
+CONFIG_LWIP_UDP_RECVMBOX_SIZE	build/config/sdkconfig.h	228;"	d
+CONFIG_MAIN_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	113;"	d
+CONFIG_MAIN_TASK_STACK_SIZE	build/config/sdkconfig.h	364;"	d
+CONFIG_MBEDTLS_AES_C	build/config/sdkconfig.h	267;"	d
+CONFIG_MBEDTLS_ASYMMETRIC_CONTENT_LEN	build/config/sdkconfig.h	236;"	d
+CONFIG_MBEDTLS_CCM_C	build/config/sdkconfig.h	269;"	d
+CONFIG_MBEDTLS_CLIENT_SSL_SESSION_TICKETS	build/config/sdkconfig.h	265;"	d
+CONFIG_MBEDTLS_ECDH_C	build/config/sdkconfig.h	276;"	d
+CONFIG_MBEDTLS_ECDSA_C	build/config/sdkconfig.h	277;"	d
+CONFIG_MBEDTLS_ECP_C	build/config/sdkconfig.h	275;"	d
+CONFIG_MBEDTLS_ECP_DP_BP256R1_ENABLED	build/config/sdkconfig.h	286;"	d
+CONFIG_MBEDTLS_ECP_DP_BP384R1_ENABLED	build/config/sdkconfig.h	287;"	d
+CONFIG_MBEDTLS_ECP_DP_BP512R1_ENABLED	build/config/sdkconfig.h	288;"	d
+CONFIG_MBEDTLS_ECP_DP_CURVE25519_ENABLED	build/config/sdkconfig.h	289;"	d
+CONFIG_MBEDTLS_ECP_DP_SECP192K1_ENABLED	build/config/sdkconfig.h	283;"	d
+CONFIG_MBEDTLS_ECP_DP_SECP192R1_ENABLED	build/config/sdkconfig.h	278;"	d
+CONFIG_MBEDTLS_ECP_DP_SECP224K1_ENABLED	build/config/sdkconfig.h	284;"	d
+CONFIG_MBEDTLS_ECP_DP_SECP224R1_ENABLED	build/config/sdkconfig.h	279;"	d
+CONFIG_MBEDTLS_ECP_DP_SECP256K1_ENABLED	build/config/sdkconfig.h	285;"	d
+CONFIG_MBEDTLS_ECP_DP_SECP256R1_ENABLED	build/config/sdkconfig.h	280;"	d
+CONFIG_MBEDTLS_ECP_DP_SECP384R1_ENABLED	build/config/sdkconfig.h	281;"	d
+CONFIG_MBEDTLS_ECP_DP_SECP521R1_ENABLED	build/config/sdkconfig.h	282;"	d
+CONFIG_MBEDTLS_ECP_NIST_OPTIM	build/config/sdkconfig.h	290;"	d
+CONFIG_MBEDTLS_GCM_C	build/config/sdkconfig.h	270;"	d
+CONFIG_MBEDTLS_HARDWARE_AES	build/config/sdkconfig.h	239;"	d
+CONFIG_MBEDTLS_HARDWARE_MPI	build/config/sdkconfig.h	240;"	d
+CONFIG_MBEDTLS_HARDWARE_SHA	build/config/sdkconfig.h	241;"	d
+CONFIG_MBEDTLS_HAVE_TIME	build/config/sdkconfig.h	242;"	d
+CONFIG_MBEDTLS_INTERNAL_MEM_ALLOC	build/config/sdkconfig.h	235;"	d
+CONFIG_MBEDTLS_KEY_EXCHANGE_DHE_PSK	build/config/sdkconfig.h	249;"	d
+CONFIG_MBEDTLS_KEY_EXCHANGE_DHE_RSA	build/config/sdkconfig.h	253;"	d
+CONFIG_MBEDTLS_KEY_EXCHANGE_ECDHE_ECDSA	build/config/sdkconfig.h	256;"	d
+CONFIG_MBEDTLS_KEY_EXCHANGE_ECDHE_PSK	build/config/sdkconfig.h	250;"	d
+CONFIG_MBEDTLS_KEY_EXCHANGE_ECDHE_RSA	build/config/sdkconfig.h	255;"	d
+CONFIG_MBEDTLS_KEY_EXCHANGE_ECDH_ECDSA	build/config/sdkconfig.h	257;"	d
+CONFIG_MBEDTLS_KEY_EXCHANGE_ECDH_RSA	build/config/sdkconfig.h	258;"	d
+CONFIG_MBEDTLS_KEY_EXCHANGE_ELLIPTIC_CURVE	build/config/sdkconfig.h	254;"	d
+CONFIG_MBEDTLS_KEY_EXCHANGE_PSK	build/config/sdkconfig.h	248;"	d
+CONFIG_MBEDTLS_KEY_EXCHANGE_RSA	build/config/sdkconfig.h	252;"	d
+CONFIG_MBEDTLS_KEY_EXCHANGE_RSA_PSK	build/config/sdkconfig.h	251;"	d
+CONFIG_MBEDTLS_PEM_PARSE_C	build/config/sdkconfig.h	271;"	d
+CONFIG_MBEDTLS_PEM_WRITE_C	build/config/sdkconfig.h	272;"	d
+CONFIG_MBEDTLS_PSK_MODES	build/config/sdkconfig.h	247;"	d
+CONFIG_MBEDTLS_RC4_DISABLED	build/config/sdkconfig.h	268;"	d
+CONFIG_MBEDTLS_SERVER_SSL_SESSION_TICKETS	build/config/sdkconfig.h	266;"	d
+CONFIG_MBEDTLS_SSL_ALPN	build/config/sdkconfig.h	264;"	d
+CONFIG_MBEDTLS_SSL_IN_CONTENT_LEN	build/config/sdkconfig.h	237;"	d
+CONFIG_MBEDTLS_SSL_OUT_CONTENT_LEN	build/config/sdkconfig.h	238;"	d
+CONFIG_MBEDTLS_SSL_PROTO_DTLS	build/config/sdkconfig.h	263;"	d
+CONFIG_MBEDTLS_SSL_PROTO_TLS1	build/config/sdkconfig.h	260;"	d
+CONFIG_MBEDTLS_SSL_PROTO_TLS1_1	build/config/sdkconfig.h	261;"	d
+CONFIG_MBEDTLS_SSL_PROTO_TLS1_2	build/config/sdkconfig.h	262;"	d
+CONFIG_MBEDTLS_SSL_RENEGOTIATION	build/config/sdkconfig.h	259;"	d
+CONFIG_MBEDTLS_TLS_CLIENT	build/config/sdkconfig.h	245;"	d
+CONFIG_MBEDTLS_TLS_ENABLED	build/config/sdkconfig.h	246;"	d
+CONFIG_MBEDTLS_TLS_SERVER	build/config/sdkconfig.h	244;"	d
+CONFIG_MBEDTLS_TLS_SERVER_AND_CLIENT	build/config/sdkconfig.h	243;"	d
+CONFIG_MBEDTLS_X509_CRL_PARSE_C	build/config/sdkconfig.h	273;"	d
+CONFIG_MBEDTLS_X509_CSR_PARSE_C	build/config/sdkconfig.h	274;"	d
+CONFIG_MB_CONTROLLER_NOTIFY_QUEUE_SIZE	build/config/sdkconfig.h	365;"	d
+CONFIG_MB_CONTROLLER_NOTIFY_TIMEOUT	build/config/sdkconfig.h	366;"	d
+CONFIG_MB_CONTROLLER_STACK_SIZE	build/config/sdkconfig.h	367;"	d
+CONFIG_MB_EVENT_QUEUE_TIMEOUT	build/config/sdkconfig.h	368;"	d
+CONFIG_MB_MASTER_DELAY_MS_CONVERT	build/config/sdkconfig.h	369;"	d
+CONFIG_MB_MASTER_TIMEOUT_MS_RESPOND	build/config/sdkconfig.h	370;"	d
+CONFIG_MB_QUEUE_LENGTH	build/config/sdkconfig.h	371;"	d
+CONFIG_MB_SERIAL_BUF_SIZE	build/config/sdkconfig.h	372;"	d
+CONFIG_MB_SERIAL_TASK_PRIO	build/config/sdkconfig.h	373;"	d
+CONFIG_MB_SERIAL_TASK_STACK_SIZE	build/config/sdkconfig.h	374;"	d
+CONFIG_MB_TIMER_GROUP	build/config/sdkconfig.h	375;"	d
+CONFIG_MB_TIMER_INDEX	build/config/sdkconfig.h	376;"	d
+CONFIG_MB_TIMER_PORT_ENABLED	build/config/sdkconfig.h	377;"	d
+CONFIG_MDNS_MAX_SERVICES	build/config/sdkconfig.h	291;"	d
+CONFIG_MDNS_SERVICE_ADD_TIMEOUT_MS	build/config/sdkconfig.h	295;"	d
+CONFIG_MDNS_TASK_AFFINITY	build/config/sdkconfig.h	294;"	d
+CONFIG_MDNS_TASK_AFFINITY_CPU0	build/config/sdkconfig.h	293;"	d
+CONFIG_MDNS_TASK_PRIORITY	build/config/sdkconfig.h	292;"	d
+CONFIG_MDNS_TIMER_PERIOD_MS	build/config/sdkconfig.h	296;"	d
+CONFIG_MONITOR_BAUD_115200B	build/bootloader/config/sdkconfig.h	114;"	d
+CONFIG_MONITOR_BAUD_115200B	build/config/sdkconfig.h	378;"	d
+CONFIG_MQTT_PROTOCOL_311	build/config/sdkconfig.h	297;"	d
+CONFIG_MQTT_TRANSPORT_SSL	build/config/sdkconfig.h	298;"	d
+CONFIG_MQTT_TRANSPORT_WEBSOCKET	build/config/sdkconfig.h	299;"	d
+CONFIG_MQTT_TRANSPORT_WEBSOCKET_SECURE	build/config/sdkconfig.h	300;"	d
 CONFIG_NAMESPACE	components/usr/global_var.c	21;"	d	file:
-CONFIG_NEWLIB_STDIN_LINE_ENDING_CR	build/config/sdkconfig.h	308;"	d
-CONFIG_NEWLIB_STDOUT_LINE_ENDING_CRLF	build/config/sdkconfig.h	307;"	d
-CONFIG_OPENSSL_ASSERT_EXIT	build/config/sdkconfig.h	309;"	d
-CONFIG_OPTIMIZATION_ASSERTIONS_ENABLED	build/bootloader/config/sdkconfig.h	119;"	d
-CONFIG_OPTIMIZATION_ASSERTIONS_ENABLED	build/config/sdkconfig.h	392;"	d
-CONFIG_OPTIMIZATION_LEVEL_DEBUG	build/bootloader/config/sdkconfig.h	120;"	d
-CONFIG_OPTIMIZATION_LEVEL_DEBUG	build/config/sdkconfig.h	393;"	d
+CONFIG_NEWLIB_STDIN_LINE_ENDING_CR	build/config/sdkconfig.h	302;"	d
+CONFIG_NEWLIB_STDOUT_LINE_ENDING_CRLF	build/config/sdkconfig.h	301;"	d
+CONFIG_OPENSSL_ASSERT_EXIT	build/config/sdkconfig.h	303;"	d
+CONFIG_OPTIMIZATION_ASSERTIONS_ENABLED	build/bootloader/config/sdkconfig.h	115;"	d
+CONFIG_OPTIMIZATION_ASSERTIONS_ENABLED	build/config/sdkconfig.h	379;"	d
+CONFIG_OPTIMIZATION_LEVEL_DEBUG	build/bootloader/config/sdkconfig.h	116;"	d
+CONFIG_OPTIMIZATION_LEVEL_DEBUG	build/config/sdkconfig.h	380;"	d
 CONFIG_PARTITION_TABLE_CUSTOM_FILENAME	build/bootloader/config/sdkconfig.h	38;"	d
 CONFIG_PARTITION_TABLE_CUSTOM_FILENAME	build/config/sdkconfig.h	40;"	d
 CONFIG_PARTITION_TABLE_FILENAME	build/bootloader/config/sdkconfig.h	39;"	d
@@ -1532,98 +1534,96 @@ CONFIG_PARTITION_TABLE_OFFSET	build/bootloader/config/sdkconfig.h	40;"	d
 CONFIG_PARTITION_TABLE_OFFSET	build/config/sdkconfig.h	42;"	d
 CONFIG_PARTITION_TABLE_TWO_OTA	build/bootloader/config/sdkconfig.h	37;"	d
 CONFIG_PARTITION_TABLE_TWO_OTA	build/config/sdkconfig.h	39;"	d
-CONFIG_POST_EVENTS_FROM_IRAM_ISR	build/config/sdkconfig.h	394;"	d
-CONFIG_POST_EVENTS_FROM_ISR	build/config/sdkconfig.h	395;"	d
-CONFIG_PTHREAD_DEFAULT_CORE_NO_AFFINITY	build/config/sdkconfig.h	313;"	d
-CONFIG_PTHREAD_STACK_MIN	build/config/sdkconfig.h	312;"	d
-CONFIG_PTHREAD_TASK_CORE_DEFAULT	build/config/sdkconfig.h	314;"	d
-CONFIG_PTHREAD_TASK_NAME_DEFAULT	build/config/sdkconfig.h	315;"	d
-CONFIG_PTHREAD_TASK_PRIO_DEFAULT	build/config/sdkconfig.h	310;"	d
-CONFIG_PTHREAD_TASK_STACK_SIZE_DEFAULT	build/config/sdkconfig.h	311;"	d
-CONFIG_REDUCE_PHY_TX_POWER	build/bootloader/config/sdkconfig.h	121;"	d
-CONFIG_REDUCE_PHY_TX_POWER	build/config/sdkconfig.h	396;"	d
+CONFIG_POST_EVENTS_FROM_IRAM_ISR	build/config/sdkconfig.h	381;"	d
+CONFIG_POST_EVENTS_FROM_ISR	build/config/sdkconfig.h	382;"	d
+CONFIG_PTHREAD_DEFAULT_CORE_NO_AFFINITY	build/config/sdkconfig.h	307;"	d
+CONFIG_PTHREAD_STACK_MIN	build/config/sdkconfig.h	306;"	d
+CONFIG_PTHREAD_TASK_CORE_DEFAULT	build/config/sdkconfig.h	308;"	d
+CONFIG_PTHREAD_TASK_NAME_DEFAULT	build/config/sdkconfig.h	309;"	d
+CONFIG_PTHREAD_TASK_PRIO_DEFAULT	build/config/sdkconfig.h	304;"	d
+CONFIG_PTHREAD_TASK_STACK_SIZE_DEFAULT	build/config/sdkconfig.h	305;"	d
+CONFIG_REDUCE_PHY_TX_POWER	build/bootloader/config/sdkconfig.h	117;"	d
+CONFIG_REDUCE_PHY_TX_POWER	build/config/sdkconfig.h	383;"	d
 CONFIG_SDK_TOOLPREFIX	build/bootloader/config/sdkconfig.h	10;"	d
 CONFIG_SDK_TOOLPREFIX	build/config/sdkconfig.h	10;"	d
-CONFIG_SEMIHOSTFS_HOST_PATH_MAX_LEN	build/config/sdkconfig.h	397;"	d
-CONFIG_SEMIHOSTFS_MAX_MOUNT_POINTS	build/config/sdkconfig.h	398;"	d
-CONFIG_SPIFFS_CACHE	build/config/sdkconfig.h	322;"	d
-CONFIG_SPIFFS_CACHE_WR	build/config/sdkconfig.h	323;"	d
-CONFIG_SPIFFS_GC_MAX_RUNS	build/config/sdkconfig.h	325;"	d
-CONFIG_SPIFFS_MAX_PARTITIONS	build/config/sdkconfig.h	321;"	d
-CONFIG_SPIFFS_META_LENGTH	build/config/sdkconfig.h	330;"	d
-CONFIG_SPIFFS_OBJ_NAME_LEN	build/config/sdkconfig.h	327;"	d
-CONFIG_SPIFFS_PAGE_CHECK	build/config/sdkconfig.h	324;"	d
-CONFIG_SPIFFS_PAGE_SIZE	build/config/sdkconfig.h	326;"	d
-CONFIG_SPIFFS_USE_MAGIC	build/config/sdkconfig.h	328;"	d
-CONFIG_SPIFFS_USE_MAGIC_LENGTH	build/config/sdkconfig.h	329;"	d
-CONFIG_SPIFFS_USE_MTIME	build/config/sdkconfig.h	331;"	d
-CONFIG_SPI_FLASH_DANGEROUS_WRITE_ABORTS	build/bootloader/config/sdkconfig.h	96;"	d
-CONFIG_SPI_FLASH_DANGEROUS_WRITE_ABORTS	build/config/sdkconfig.h	317;"	d
-CONFIG_SPI_FLASH_ROM_DRIVER_PATCH	build/bootloader/config/sdkconfig.h	95;"	d
-CONFIG_SPI_FLASH_ROM_DRIVER_PATCH	build/config/sdkconfig.h	316;"	d
-CONFIG_SPI_FLASH_SUPPORT_GD_CHIP	build/bootloader/config/sdkconfig.h	99;"	d
-CONFIG_SPI_FLASH_SUPPORT_GD_CHIP	build/config/sdkconfig.h	320;"	d
-CONFIG_SPI_FLASH_SUPPORT_ISSI_CHIP	build/bootloader/config/sdkconfig.h	97;"	d
-CONFIG_SPI_FLASH_SUPPORT_ISSI_CHIP	build/config/sdkconfig.h	318;"	d
-CONFIG_SPI_FLASH_SUPPORT_MXIC_CHIP	build/bootloader/config/sdkconfig.h	98;"	d
-CONFIG_SPI_FLASH_SUPPORT_MXIC_CHIP	build/config/sdkconfig.h	319;"	d
-CONFIG_SPI_FLASH_WRITING_DANGEROUS_REGIONS_ABORTS	build/bootloader/config/sdkconfig.h	122;"	d
-CONFIG_SPI_FLASH_WRITING_DANGEROUS_REGIONS_ABORTS	build/config/sdkconfig.h	399;"	d
-CONFIG_SPI_MASTER_ISR_IN_IRAM	build/config/sdkconfig.h	60;"	d
-CONFIG_SPI_SLAVE_ISR_IN_IRAM	build/config/sdkconfig.h	61;"	d
-CONFIG_STACK_CHECK_NONE	build/bootloader/config/sdkconfig.h	123;"	d
-CONFIG_STACK_CHECK_NONE	build/config/sdkconfig.h	400;"	d
-CONFIG_SUPPORT_STATIC_ALLOCATION	build/config/sdkconfig.h	401;"	d
-CONFIG_SUPPORT_TERMIOS	build/config/sdkconfig.h	402;"	d
-CONFIG_SUPPRESS_SELECT_DEBUG_OUTPUT	build/config/sdkconfig.h	403;"	d
-CONFIG_SYSTEM_EVENT_QUEUE_SIZE	build/bootloader/config/sdkconfig.h	124;"	d
-CONFIG_SYSTEM_EVENT_QUEUE_SIZE	build/config/sdkconfig.h	404;"	d
-CONFIG_SYSTEM_EVENT_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	125;"	d
-CONFIG_SYSTEM_EVENT_TASK_STACK_SIZE	build/config/sdkconfig.h	405;"	d
-CONFIG_TASK_WDT	build/bootloader/config/sdkconfig.h	126;"	d
-CONFIG_TASK_WDT	build/config/sdkconfig.h	406;"	d
-CONFIG_TASK_WDT_CHECK_IDLE_TASK_CPU0	build/bootloader/config/sdkconfig.h	127;"	d
-CONFIG_TASK_WDT_CHECK_IDLE_TASK_CPU0	build/config/sdkconfig.h	407;"	d
-CONFIG_TASK_WDT_CHECK_IDLE_TASK_CPU1	build/bootloader/config/sdkconfig.h	128;"	d
-CONFIG_TASK_WDT_CHECK_IDLE_TASK_CPU1	build/config/sdkconfig.h	408;"	d
-CONFIG_TASK_WDT_TIMEOUT_S	build/bootloader/config/sdkconfig.h	129;"	d
-CONFIG_TASK_WDT_TIMEOUT_S	build/config/sdkconfig.h	409;"	d
-CONFIG_TCPIP_RECVMBOX_SIZE	build/config/sdkconfig.h	410;"	d
-CONFIG_TCPIP_TASK_AFFINITY_NO_AFFINITY	build/config/sdkconfig.h	411;"	d
-CONFIG_TCPIP_TASK_STACK_SIZE	build/config/sdkconfig.h	412;"	d
-CONFIG_TCP_MAXRTX	build/config/sdkconfig.h	413;"	d
-CONFIG_TCP_MSL	build/config/sdkconfig.h	414;"	d
-CONFIG_TCP_MSS	build/config/sdkconfig.h	415;"	d
-CONFIG_TCP_OVERSIZE_MSS	build/config/sdkconfig.h	416;"	d
-CONFIG_TCP_QUEUE_OOSEQ	build/config/sdkconfig.h	417;"	d
-CONFIG_TCP_RECVMBOX_SIZE	build/config/sdkconfig.h	418;"	d
-CONFIG_TCP_SND_BUF_DEFAULT	build/config/sdkconfig.h	419;"	d
-CONFIG_TCP_SYNMAXRTX	build/config/sdkconfig.h	420;"	d
-CONFIG_TCP_WND_DEFAULT	build/config/sdkconfig.h	421;"	d
-CONFIG_TIMER_QUEUE_LENGTH	build/config/sdkconfig.h	422;"	d
-CONFIG_TIMER_TASK_PRIORITY	build/config/sdkconfig.h	423;"	d
-CONFIG_TIMER_TASK_STACK_DEPTH	build/config/sdkconfig.h	424;"	d
-CONFIG_TIMER_TASK_STACK_SIZE	build/config/sdkconfig.h	425;"	d
-CONFIG_TOOLPREFIX	build/bootloader/config/sdkconfig.h	130;"	d
-CONFIG_TOOLPREFIX	build/config/sdkconfig.h	426;"	d
-CONFIG_UDP_RECVMBOX_SIZE	build/config/sdkconfig.h	427;"	d
-CONFIG_UNITY_ENABLE_DOUBLE	build/config/sdkconfig.h	335;"	d
-CONFIG_UNITY_ENABLE_FLOAT	build/config/sdkconfig.h	334;"	d
-CONFIG_UNITY_ENABLE_IDF_TEST_RUNNER	build/config/sdkconfig.h	336;"	d
-CONFIG_USB_DESC_CUSTOM_PID	build/config/sdkconfig.h	333;"	d
-CONFIG_USB_DESC_CUSTOM_VID	build/config/sdkconfig.h	332;"	d
-CONFIG_VFS_SEMIHOSTFS_HOST_PATH_MAX_LEN	build/config/sdkconfig.h	343;"	d
-CONFIG_VFS_SEMIHOSTFS_MAX_MOUNT_POINTS	build/config/sdkconfig.h	342;"	d
-CONFIG_VFS_SUPPORT_DIR	build/config/sdkconfig.h	338;"	d
-CONFIG_VFS_SUPPORT_IO	build/config/sdkconfig.h	337;"	d
-CONFIG_VFS_SUPPORT_SELECT	build/config/sdkconfig.h	339;"	d
-CONFIG_VFS_SUPPORT_TERMIOS	build/config/sdkconfig.h	341;"	d
-CONFIG_VFS_SUPPRESS_SELECT_DEBUG_OUTPUT	build/config/sdkconfig.h	340;"	d
-CONFIG_WIFI_PROV_AUTOSTOP_TIMEOUT	build/config/sdkconfig.h	347;"	d
-CONFIG_WIFI_PROV_SCAN_MAX_ENTRIES	build/config/sdkconfig.h	346;"	d
-CONFIG_WL_SECTOR_SIZE	build/config/sdkconfig.h	345;"	d
-CONFIG_WL_SECTOR_SIZE_4096	build/config/sdkconfig.h	344;"	d
-CONFIG_WPA_MBEDTLS_CRYPTO	build/config/sdkconfig.h	348;"	d
+CONFIG_SEMIHOSTFS_HOST_PATH_MAX_LEN	build/config/sdkconfig.h	334;"	d
+CONFIG_SEMIHOSTFS_MAX_MOUNT_POINTS	build/config/sdkconfig.h	333;"	d
+CONFIG_SPIFFS_CACHE	build/config/sdkconfig.h	318;"	d
+CONFIG_SPIFFS_CACHE_WR	build/config/sdkconfig.h	319;"	d
+CONFIG_SPIFFS_GC_MAX_RUNS	build/config/sdkconfig.h	321;"	d
+CONFIG_SPIFFS_MAX_PARTITIONS	build/config/sdkconfig.h	317;"	d
+CONFIG_SPIFFS_META_LENGTH	build/config/sdkconfig.h	326;"	d
+CONFIG_SPIFFS_OBJ_NAME_LEN	build/config/sdkconfig.h	323;"	d
+CONFIG_SPIFFS_PAGE_CHECK	build/config/sdkconfig.h	320;"	d
+CONFIG_SPIFFS_PAGE_SIZE	build/config/sdkconfig.h	322;"	d
+CONFIG_SPIFFS_USE_MAGIC	build/config/sdkconfig.h	324;"	d
+CONFIG_SPIFFS_USE_MAGIC_LENGTH	build/config/sdkconfig.h	325;"	d
+CONFIG_SPIFFS_USE_MTIME	build/config/sdkconfig.h	327;"	d
+CONFIG_SPI_FLASH_DANGEROUS_WRITE_ABORTS	build/bootloader/config/sdkconfig.h	92;"	d
+CONFIG_SPI_FLASH_DANGEROUS_WRITE_ABORTS	build/config/sdkconfig.h	311;"	d
+CONFIG_SPI_FLASH_ERASE_YIELD_DURATION_MS	build/bootloader/config/sdkconfig.h	94;"	d
+CONFIG_SPI_FLASH_ERASE_YIELD_DURATION_MS	build/config/sdkconfig.h	313;"	d
+CONFIG_SPI_FLASH_ERASE_YIELD_TICKS	build/bootloader/config/sdkconfig.h	95;"	d
+CONFIG_SPI_FLASH_ERASE_YIELD_TICKS	build/config/sdkconfig.h	314;"	d
+CONFIG_SPI_FLASH_ROM_DRIVER_PATCH	build/bootloader/config/sdkconfig.h	91;"	d
+CONFIG_SPI_FLASH_ROM_DRIVER_PATCH	build/config/sdkconfig.h	310;"	d
+CONFIG_SPI_FLASH_SUPPORT_GD_CHIP	build/bootloader/config/sdkconfig.h	97;"	d
+CONFIG_SPI_FLASH_SUPPORT_GD_CHIP	build/config/sdkconfig.h	316;"	d
+CONFIG_SPI_FLASH_SUPPORT_ISSI_CHIP	build/bootloader/config/sdkconfig.h	96;"	d
+CONFIG_SPI_FLASH_SUPPORT_ISSI_CHIP	build/config/sdkconfig.h	315;"	d
+CONFIG_SPI_FLASH_WRITING_DANGEROUS_REGIONS_ABORTS	build/bootloader/config/sdkconfig.h	118;"	d
+CONFIG_SPI_FLASH_WRITING_DANGEROUS_REGIONS_ABORTS	build/config/sdkconfig.h	384;"	d
+CONFIG_SPI_FLASH_YIELD_DURING_ERASE	build/bootloader/config/sdkconfig.h	93;"	d
+CONFIG_SPI_FLASH_YIELD_DURING_ERASE	build/config/sdkconfig.h	312;"	d
+CONFIG_SPI_MASTER_ISR_IN_IRAM	build/config/sdkconfig.h	62;"	d
+CONFIG_SPI_SLAVE_ISR_IN_IRAM	build/config/sdkconfig.h	63;"	d
+CONFIG_STACK_CHECK_NONE	build/bootloader/config/sdkconfig.h	119;"	d
+CONFIG_STACK_CHECK_NONE	build/config/sdkconfig.h	385;"	d
+CONFIG_SUPPORT_STATIC_ALLOCATION	build/config/sdkconfig.h	386;"	d
+CONFIG_SUPPORT_TERMIOS	build/config/sdkconfig.h	387;"	d
+CONFIG_SUPPRESS_SELECT_DEBUG_OUTPUT	build/config/sdkconfig.h	388;"	d
+CONFIG_SYSTEM_EVENT_QUEUE_SIZE	build/bootloader/config/sdkconfig.h	120;"	d
+CONFIG_SYSTEM_EVENT_QUEUE_SIZE	build/config/sdkconfig.h	389;"	d
+CONFIG_SYSTEM_EVENT_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	121;"	d
+CONFIG_SYSTEM_EVENT_TASK_STACK_SIZE	build/config/sdkconfig.h	390;"	d
+CONFIG_TASK_WDT	build/bootloader/config/sdkconfig.h	122;"	d
+CONFIG_TASK_WDT	build/config/sdkconfig.h	391;"	d
+CONFIG_TASK_WDT_CHECK_IDLE_TASK_CPU0	build/bootloader/config/sdkconfig.h	123;"	d
+CONFIG_TASK_WDT_CHECK_IDLE_TASK_CPU0	build/config/sdkconfig.h	392;"	d
+CONFIG_TASK_WDT_CHECK_IDLE_TASK_CPU1	build/bootloader/config/sdkconfig.h	124;"	d
+CONFIG_TASK_WDT_CHECK_IDLE_TASK_CPU1	build/config/sdkconfig.h	393;"	d
+CONFIG_TASK_WDT_TIMEOUT_S	build/bootloader/config/sdkconfig.h	125;"	d
+CONFIG_TASK_WDT_TIMEOUT_S	build/config/sdkconfig.h	394;"	d
+CONFIG_TCPIP_RECVMBOX_SIZE	build/config/sdkconfig.h	395;"	d
+CONFIG_TCPIP_TASK_AFFINITY_NO_AFFINITY	build/config/sdkconfig.h	396;"	d
+CONFIG_TCPIP_TASK_STACK_SIZE	build/config/sdkconfig.h	397;"	d
+CONFIG_TCP_MAXRTX	build/config/sdkconfig.h	398;"	d
+CONFIG_TCP_MSL	build/config/sdkconfig.h	399;"	d
+CONFIG_TCP_MSS	build/config/sdkconfig.h	400;"	d
+CONFIG_TCP_OVERSIZE_MSS	build/config/sdkconfig.h	401;"	d
+CONFIG_TCP_QUEUE_OOSEQ	build/config/sdkconfig.h	402;"	d
+CONFIG_TCP_RECVMBOX_SIZE	build/config/sdkconfig.h	403;"	d
+CONFIG_TCP_SND_BUF_DEFAULT	build/config/sdkconfig.h	404;"	d
+CONFIG_TCP_SYNMAXRTX	build/config/sdkconfig.h	405;"	d
+CONFIG_TCP_WND_DEFAULT	build/config/sdkconfig.h	406;"	d
+CONFIG_TIMER_QUEUE_LENGTH	build/config/sdkconfig.h	407;"	d
+CONFIG_TIMER_TASK_PRIORITY	build/config/sdkconfig.h	408;"	d
+CONFIG_TIMER_TASK_STACK_DEPTH	build/config/sdkconfig.h	409;"	d
+CONFIG_TIMER_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	126;"	d
+CONFIG_TIMER_TASK_STACK_SIZE	build/config/sdkconfig.h	410;"	d
+CONFIG_TOOLPREFIX	build/bootloader/config/sdkconfig.h	127;"	d
+CONFIG_TOOLPREFIX	build/config/sdkconfig.h	411;"	d
+CONFIG_UDP_RECVMBOX_SIZE	build/config/sdkconfig.h	412;"	d
+CONFIG_UNITY_ENABLE_DOUBLE	build/config/sdkconfig.h	329;"	d
+CONFIG_UNITY_ENABLE_FLOAT	build/config/sdkconfig.h	328;"	d
+CONFIG_UNITY_ENABLE_IDF_TEST_RUNNER	build/config/sdkconfig.h	330;"	d
+CONFIG_VFS_SUPPORT_TERMIOS	build/config/sdkconfig.h	332;"	d
+CONFIG_VFS_SUPPRESS_SELECT_DEBUG_OUTPUT	build/config/sdkconfig.h	331;"	d
+CONFIG_WIFI_PROV_AUTOSTOP_TIMEOUT	build/config/sdkconfig.h	338;"	d
+CONFIG_WIFI_PROV_SCAN_MAX_ENTRIES	build/config/sdkconfig.h	337;"	d
+CONFIG_WL_SECTOR_SIZE	build/config/sdkconfig.h	336;"	d
+CONFIG_WL_SECTOR_SIZE_4096	build/config/sdkconfig.h	335;"	d
+CONFIG_WPA_MBEDTLS_CRYPTO	build/config/sdkconfig.h	339;"	d
 CONF_REG_MAP_NUM	components/usr/sys_def.h	32;"	d
 CONNECTED_BIT	components/cli/cmd_wifi.c	/^const int CONNECTED_BIT = BIT0;$/;"	v
 C_DIALECT	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	522;"	d	file:
@@ -1648,9 +1648,10 @@ C_DIALECT	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	5
 C_DIALECT	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	531;"	d	file:
 CheckBit	components/kits/tlvparse.c	/^static inline int CheckBit(unsigned char value, int bit)$/;"	f	file:
 Complex	components/kits/meow_fft.h	/^typedef const Meow_FFT_Complex Complex;$/;"	t
-DAQ_CHANNEL_MAX	components/usr/daq.c	13;"	d	file:
-DAQ_RX_BUF_DEPTH	components/usr/daq.c	11;"	d	file:
-DAQ_TX_BUF_DEPTH	components/usr/daq.c	12;"	d	file:
+DAQ_CHANNEL_MAX	components/usr/daq.c	16;"	d	file:
+DAQ_RX_BUF_DEPTH	components/usr/daq.c	14;"	d	file:
+DAQ_TX_BUF_DEPTH	components/usr/daq.c	15;"	d	file:
+DATA_TRANSMITTING	components/drv/io_drv.c	/^    DATA_TRANSMITTING$/;"	e	enum:__anon65	file:
 DEC	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	453;"	d	file:
 DEC	build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	438;"	d	file:
 DEC	build/bootloader/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	453;"	d	file:
@@ -1663,27 +1664,34 @@ DEFAULT_PUB_TOPIC	components/mqtt_tcp/mqtt_tcp.c	38;"	d	file:
 DEFAULT_SDN	components/usr/sys_def.h	28;"	d
 DEFAULT_SUB_TOPIC	components/mqtt_tcp/mqtt_tcp.c	39;"	d	file:
 DEFAULT_URI	components/mqtt_tcp/mqtt_tcp.c	37;"	d	file:
+DEFAULT_VREF	components/drv/bat_drv.c	11;"	d	file:
 DEVICE_TYPE	components/usr/sys_def.h	37;"	d
 DEV_GEO_FIFO_SIZE	components/drv/adxl_drv.h	15;"	d
 DEV_GEO_RTX_SIZE	components/drv/adxl_drv.h	14;"	d
+ESP_INTR_FLAG_DEFAULT	components/drv/ads131_drv.c	37;"	d	file:
+ESP_INTR_FLAG_DEFAULT	components/drv/io_drv.c	30;"	d	file:
 FFT_MAX_ORD	components/kits/my_fft.h	14;"	d
-FRAME_CTRL_POS	components/usr/cmd_resolve.c	/^    FRAME_CTRL_POS = 2,$/;"	e	enum:__anon32	file:
-FRAME_PLD_APOS	components/usr/cmd_resolve.c	/^    FRAME_PLD_APOS = 0,$/;"	e	enum:__anon32	file:
-FRAME_PLD_DPOS	components/usr/cmd_resolve.c	/^    FRAME_PLD_DPOS = 1,$/;"	e	enum:__anon32	file:
-FRAME_SYNC_POS	components/usr/cmd_resolve.c	/^    FRAME_SYNC_POS = 0,$/;"	e	enum:__anon32	file:
-FREQ_SPAN_MAX	components/kits/goertzel.c	14;"	d	file:
-GBM_BT	components/usr/sys_def.h	/^    GBM_BT,$/;"	e	enum:__anon39
-GBM_DAQ	components/usr/sys_def.h	/^    GBM_DAQ,$/;"	e	enum:__anon39
-GBM_DHCP	components/usr/sys_def.h	/^    GBM_DHCP,$/;"	e	enum:__anon39
-GBM_DNS	components/usr/sys_def.h	/^    GBM_DNS,$/;"	e	enum:__anon39
-GBM_GEO	components/usr/sys_def.h	/^    GBM_GEO,$/;"	e	enum:__anon39
-GBM_HTTP	components/usr/sys_def.h	/^    GBM_HTTP,$/;"	e	enum:__anon39
-GBM_LINK	components/usr/sys_def.h	/^    GBM_LINK = 0,$/;"	e	enum:__anon39
-GBM_MQTT	components/usr/sys_def.h	/^    GBM_MQTT,$/;"	e	enum:__anon39
-GBM_TCP	components/usr/sys_def.h	/^    GBM_TCP,$/;"	e	enum:__anon39
-GBM_WIFI	components/usr/sys_def.h	/^    GBM_WIFI,$/;"	e	enum:__anon39
-GEO_THREAD_DELAY	components/usr/sys_conf.h	9;"	d
-GPIO_OUTPUT_PIN_SEL	components/drv/led_drv.c	12;"	d	file:
+FRAME_CTRL_POS	components/usr/cmd_resolve.c	/^    FRAME_CTRL_POS = 2,$/;"	e	enum:__anon34	file:
+FRAME_PLD_APOS	components/usr/cmd_resolve.c	/^    FRAME_PLD_APOS = 0,$/;"	e	enum:__anon34	file:
+FRAME_PLD_DPOS	components/usr/cmd_resolve.c	/^    FRAME_PLD_DPOS = 1,$/;"	e	enum:__anon34	file:
+FRAME_SYNC_POS	components/usr/cmd_resolve.c	/^    FRAME_SYNC_POS = 0,$/;"	e	enum:__anon34	file:
+FREQ_SPAN_MAX	components/kits/goertzel.c	18;"	d	file:
+GBM_BT	components/usr/sys_def.h	/^    GBM_BT,$/;"	e	enum:__anon43
+GBM_DAQ	components/usr/sys_def.h	/^    GBM_DAQ,$/;"	e	enum:__anon43
+GBM_DHCP	components/usr/sys_def.h	/^    GBM_DHCP,$/;"	e	enum:__anon43
+GBM_DNS	components/usr/sys_def.h	/^    GBM_DNS,$/;"	e	enum:__anon43
+GBM_GEO	components/usr/sys_def.h	/^    GBM_GEO,$/;"	e	enum:__anon43
+GBM_HTTP	components/usr/sys_def.h	/^    GBM_HTTP,$/;"	e	enum:__anon43
+GBM_LINK	components/usr/sys_def.h	/^    GBM_LINK = 0,$/;"	e	enum:__anon43
+GBM_MQTT	components/usr/sys_def.h	/^    GBM_MQTT,$/;"	e	enum:__anon43
+GBM_TCP	components/usr/sys_def.h	/^    GBM_TCP,$/;"	e	enum:__anon43
+GBM_WIFI	components/usr/sys_def.h	/^    GBM_WIFI,$/;"	e	enum:__anon43
+GEO_THREAD_DELAY	components/usr/sys_conf.h	10;"	d
+GPIO_INPUT_PIN_SEL	components/drv/ads131_drv.c	28;"	d	file:
+GPIO_INPUT_PIN_SEL	components/drv/io_drv.c	31;"	d	file:
+GPIO_OUTPUT_PIN_SEL	components/drv/ads131_drv.c	29;"	d	file:
+GPIO_OUTPUT_PIN_SEL	components/drv/io_drv.c	32;"	d	file:
+GTZ_FLOWS_MAX	components/kits/goertzel.c	19;"	d	file:
 HARDWARE_VER	components/usr/sys_def.h	34;"	d
 HEX	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	464;"	d	file:
 HEX	build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	449;"	d	file:
@@ -1698,15 +1706,24 @@ ID_VOID_MAIN	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
 ID_VOID_MAIN	build/bootloader/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
 ID_VOID_MAIN	components/cmd_nvs/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
 ID_VOID_MAIN	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
-INIT_MODE_DEBUT	components/usr/sys_def.h	/^    INIT_MODE_DEBUT,$/;"	e	enum:__anon37
-INIT_MODE_DEFAULT	components/usr/sys_def.h	/^    INIT_MODE_DEFAULT$/;"	e	enum:__anon37
-INIT_MODE_FACTORY	components/usr/sys_def.h	/^    INIT_MODE_FACTORY,$/;"	e	enum:__anon37
-INIT_MODE_USR	components/usr/sys_def.h	/^    INIT_MODE_USR = 0,    $/;"	e	enum:__anon37
+INIT_MODE_DEBUT	components/usr/sys_def.h	/^    INIT_MODE_DEBUT,$/;"	e	enum:__anon40
+INIT_MODE_DEFAULT	components/usr/sys_def.h	/^    INIT_MODE_DEFAULT$/;"	e	enum:__anon40
+INIT_MODE_FACTORY	components/usr/sys_def.h	/^    INIT_MODE_FACTORY,$/;"	e	enum:__anon40
+INIT_MODE_USR	components/usr/sys_def.h	/^    INIT_MODE_USR = 0,    $/;"	e	enum:__anon40
+INIT_THREAD_DELAY	components/usr/sys_conf.h	6;"	d
+INIT_THREAD_PRIO	main/main.c	/^    INIT_THREAD_PRIO,$/;"	e	enum:__anon1	file:
+INIT_THREAD_STACK_SIZE	main/main.c	47;"	d	file:
+IO_BAT_CHRG	components/usr/sys_def.h	/^    IO_BAT_CHRG= 0,    $/;"	e	enum:__anon41
+IO_BAT_PLUG	components/usr/sys_def.h	/^    IO_BAT_PLUG$/;"	e	enum:__anon41
 JOIN_TIMEOUT_MS	components/cli/cmd_wifi.c	26;"	d	file:
 KFIFO_EXT	components/kits/kfifo.h	11;"	d
+LOCAL_LED	components/drv/io_drv.c	25;"	d	file:
+LOG_LOCAL_LEVEL	components/kits/goertzel.c	10;"	d	file:
+LOW_PWR	components/drv/io_drv.c	20;"	d	file:
 Length	components/kits/tlvparse.h	/^	uint16_t Length;			\/*	L 	*\/$/;"	m	struct:TLVNode
 LengthSize	components/kits/tlvparse.h	/^	unsigned char LengthSize;$/;"	m	struct:TLVNode
 MAN_DATE	components/usr/sys_def.h	36;"	d
+MAV_MAX_CNT	components/drv/bat_drv.c	12;"	d	file:
 MBM_HOLDING_REGS_NUM	components/usr/sys_def.h	40;"	d
 MBM_TOTAL_SLAVE_NUM	components/usr/sys_def.h	39;"	d
 MEOW_1_DIV_SQR_2	components/kits/meow_fft.h	913;"	d
@@ -1734,12 +1751,20 @@ N	components/kits/meow_fft.h	/^    int               N;$/;"	m	struct:Meow_FFT_Wo
 NULL	components/usr/sys_def.h	6;"	d
 NULL	components/usr/sys_def.h	8;"	d
 Next	components/kits/tlvparse.h	/^	struct TLVNode* Next;$/;"	m	struct:TLVNode	typeref:struct:TLVNode::TLVNode
-PIN_LED_EXT	components/drv/led_drv.c	10;"	d	file:
-PIN_LED_INT	components/drv/led_drv.c	9;"	d	file:
+PFSM_THREAD_PRIO	main/main.c	/^    PFSM_THREAD_PRIO,$/;"	e	enum:__anon1	file:
+PFSM_THREAD_STACK_SIZE	main/main.c	48;"	d	file:
+PGA_GAIN0	components/drv/io_drv.c	23;"	d	file:
+PGA_GAIN1	components/drv/io_drv.c	24;"	d	file:
+PIN_NUM_CLK	components/drv/ads131_drv.c	23;"	d	file:
 PIN_NUM_CLK	components/drv/adxl_drv.c	31;"	d	file:
+PIN_NUM_CS	components/drv/ads131_drv.c	24;"	d	file:
 PIN_NUM_CS	components/drv/adxl_drv.c	32;"	d	file:
+PIN_NUM_DVLD	components/drv/ads131_drv.c	25;"	d	file:
+PIN_NUM_MISO	components/drv/ads131_drv.c	21;"	d	file:
 PIN_NUM_MISO	components/drv/adxl_drv.c	29;"	d	file:
+PIN_NUM_MOSI	components/drv/ads131_drv.c	22;"	d	file:
 PIN_NUM_MOSI	components/drv/adxl_drv.c	30;"	d	file:
+PIN_NUM_NRST	components/drv/ads131_drv.c	26;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	307;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	310;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	313;"	d	file:
@@ -1990,23 +2015,32 @@ PLATFORM_ID	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompiler
 PLATFORM_ID	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	384;"	d	file:
 PORT	components/mqtt_tcp/tcp_server.c	30;"	d	file:
 PROJECT_NAME	Makefile	/^PROJECT_NAME := console$/;"	m
-REGMAP_ERR_ADDR_OR	components/usr/sys_def.h	/^    REGMAP_ERR_ADDR_OR,$/;"	e	enum:__anon36
-REGMAP_ERR_CONFLICT_OR	components/usr/sys_def.h	/^    REGMAP_ERR_CONFLICT_OR$/;"	e	enum:__anon36
-REGMAP_ERR_DATA_OR	components/usr/sys_def.h	/^    REGMAP_ERR_DATA_OR,$/;"	e	enum:__anon36
-REGMAP_ERR_NOERR	components/usr/sys_def.h	/^    REGMAP_ERR_NOERR = 0,$/;"	e	enum:__anon36
-REGMAP_ERR_PERM_OR	components/usr/sys_def.h	/^    REGMAP_ERR_PERM_OR,$/;"	e	enum:__anon36
-REGMAP_ERR_WR_OR	components/usr/sys_def.h	/^    REGMAP_ERR_WR_OR,$/;"	e	enum:__anon36
-SAMPLE_CHANNEL_MAX	components/usr/sys_conf.h	11;"	d
-SENSOR_ADDR2	components/usr/sys_def.h	/^    SENSOR_ADDR2,$/;"	e	enum:__anon38
-SENSOR_BT	components/usr/sys_def.h	/^    SENSOR_BT,$/;"	e	enum:__anon38
-SENSOR_DO2	components/usr/sys_def.h	/^    SENSOR_DO2$/;"	e	enum:__anon38
-SENSOR_MULTI	components/usr/sys_def.h	/^    SENSOR_MULTI,$/;"	e	enum:__anon38
-SENSOR_NONE	components/usr/sys_def.h	/^    SENSOR_NONE = 0,    $/;"	e	enum:__anon38
-SENSOR_PH	components/usr/sys_def.h	/^    SENSOR_PH,$/;"	e	enum:__anon38
+PWR_EN	components/drv/io_drv.c	19;"	d	file:
+PWR_MODE_IDLE	components/usr/sys_def.h	/^    PWR_MODE_IDLE = 0,    $/;"	e	enum:__anon45
+PWR_MODE_OFF	components/usr/sys_def.h	/^    PWR_MODE_OFF,$/;"	e	enum:__anon45
+PWR_MODE_ON	components/usr/sys_def.h	/^    PWR_MODE_ON,$/;"	e	enum:__anon45
+PWR_MODE_ONGAP	components/usr/sys_def.h	/^    PWR_MODE_ONGAP,$/;"	e	enum:__anon45
+PWR_MODE_PROFF	components/usr/sys_def.h	/^    PWR_MODE_PROFF,$/;"	e	enum:__anon45
+PWR_MODE_PRON	components/usr/sys_def.h	/^    PWR_MODE_PRON,$/;"	e	enum:__anon45
+PWR_ON	components/drv/io_drv.c	13;"	d	file:
+REGMAP_ERR_ADDR_OR	components/usr/sys_def.h	/^    REGMAP_ERR_ADDR_OR,$/;"	e	enum:__anon39
+REGMAP_ERR_CONFLICT_OR	components/usr/sys_def.h	/^    REGMAP_ERR_CONFLICT_OR$/;"	e	enum:__anon39
+REGMAP_ERR_DATA_OR	components/usr/sys_def.h	/^    REGMAP_ERR_DATA_OR,$/;"	e	enum:__anon39
+REGMAP_ERR_NOERR	components/usr/sys_def.h	/^    REGMAP_ERR_NOERR = 0,$/;"	e	enum:__anon39
+REGMAP_ERR_PERM_OR	components/usr/sys_def.h	/^    REGMAP_ERR_PERM_OR,$/;"	e	enum:__anon39
+REGMAP_ERR_WR_OR	components/usr/sys_def.h	/^    REGMAP_ERR_WR_OR,$/;"	e	enum:__anon39
+R_QBUF_MAX	components/kits/goertzel.c	20;"	d	file:
+SAMPLE_CHANNEL_MAX	components/usr/sys_conf.h	12;"	d
+SENSOR_ADDR2	components/usr/sys_def.h	/^    SENSOR_ADDR2,$/;"	e	enum:__anon42
+SENSOR_BT	components/usr/sys_def.h	/^    SENSOR_BT,$/;"	e	enum:__anon42
+SENSOR_DO2	components/usr/sys_def.h	/^    SENSOR_DO2$/;"	e	enum:__anon42
+SENSOR_MULTI	components/usr/sys_def.h	/^    SENSOR_MULTI,$/;"	e	enum:__anon42
+SENSOR_NONE	components/usr/sys_def.h	/^    SENSOR_NONE = 0,    $/;"	e	enum:__anon42
+SENSOR_PH	components/usr/sys_def.h	/^    SENSOR_PH,$/;"	e	enum:__anon42
 SERIAL_NO	components/usr/sys_def.h	35;"	d
-SERVICE_HTTP	components/usr/sys_def.h	/^    SERVICE_HTTP,$/;"	e	enum:__anon40
-SERVICE_MQTT	components/usr/sys_def.h	/^    SERVICE_MQTT,$/;"	e	enum:__anon40
-SERVICE_TCP	components/usr/sys_def.h	/^    SERVICE_TCP = 0,    $/;"	e	enum:__anon40
+SERVICE_HTTP	components/usr/sys_def.h	/^    SERVICE_HTTP,$/;"	e	enum:__anon44
+SERVICE_MQTT	components/usr/sys_def.h	/^    SERVICE_MQTT,$/;"	e	enum:__anon44
+SERVICE_TCP	components/usr/sys_def.h	/^    SERVICE_TCP = 0,    $/;"	e	enum:__anon44
 SIMULATE_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	163;"	d	file:
 SIMULATE_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	178;"	d	file:
 SIMULATE_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	21;"	d	file:
@@ -2105,16 +2139,21 @@ TAG	components/cli/cli.c	/^static const char* TAG = "CLI";$/;"	v	file:
 TAG	components/cli/cmd_wifi.c	/^static const char *TAG = "WIFI";$/;"	v	file:
 TAG	components/cmd_nvs/cmd_nvs.c	/^static const char *TAG = "CMD_NVS";$/;"	v	file:
 TAG	components/cmd_system/cmd_system.c	/^static const char *TAG = "CMD_SYS";$/;"	v	file:
+TAG	components/drv/ads131_drv.c	/^static const char *TAG = "ADS131";$/;"	v	file:
 TAG	components/drv/adxl_drv.c	/^static const char *TAG = "ADXL";$/;"	v	file:
+TAG	components/drv/bat_drv.c	/^static const char *TAG = "DRV_BAT";$/;"	v	file:
+TAG	components/drv/io_drv.c	/^static const char *TAG = "DRV_IO";$/;"	v	file:
+TAG	components/kits/goertzel.c	/^static const char *TAG = "GTZ"; $/;"	v	file:
 TAG	components/mqtt_tcp/mqtt_tcp.c	/^static const char *TAG = "MQTT";$/;"	v	file:
 TAG	components/mqtt_tcp/tcp_server.c	/^static const char *TAG = "TCP_SRV";$/;"	v	file:
 TAG	components/usr/cmd_resolve.c	/^static const char *TAG = "CMD_RSV";$/;"	v	file:
+TAG	components/usr/daq.c	/^static const char *TAG = "DAQ";$/;"	v	file:
 TAG	components/usr/global_var.c	/^static const char *TAG = "GVAR";$/;"	v	file:
-TCPCLIENT_THREAD_DELAY	components/usr/sys_conf.h	10;"	d
+TCPCLIENT_THREAD_DELAY	components/usr/sys_conf.h	11;"	d
 TCP_THREAD_PRIO	main/main.c	/^    TCP_THREAD_PRIO,$/;"	e	enum:__anon1	file:
-TCP_THREAD_STACK_SIZE	main/main.c	39;"	d	file:
+TCP_THREAD_STACK_SIZE	main/main.c	44;"	d	file:
 TEST_THREAD_PRIO	main/main.c	/^    TEST_THREAD_PRIO=3,$/;"	e	enum:__anon1	file:
-TEST_THREAD_STACK_SIZE	main/main.c	38;"	d	file:
+TEST_THREAD_STACK_SIZE	main/main.c	43;"	d	file:
 TLVNode	components/kits/tlvparse.h	/^struct TLVNode{$/;"	s
 TLV_Copy	components/kits/tlvparse.c	/^static void TLV_Copy(struct TLVNode* dst,struct TLVNode* src)$/;"	f	file:
 TLV_CreateNode	components/kits/tlvparse.c	/^static struct TLVNode* TLV_CreateNode(void)$/;"	f	file:
@@ -2133,9 +2172,15 @@ TagSize	components/kits/tlvparse.h	/^	unsigned char TagSize;$/;"	m	struct:TLVNod
 USR_EOK	components/usr/sys_def.h	25;"	d
 USR_ERR	components/usr/sys_def.h	26;"	d
 USR_MAX_PRIO	main/main.c	/^    USR_MAX_PRIO$/;"	e	enum:__anon1	file:
+VI_EF	components/drv/io_drv.c	17;"	d	file:
+VI_OD	components/drv/io_drv.c	16;"	d	file:
 Value	components/kits/tlvparse.h	/^	unsigned char* Value;		\/*	V 	*\/$/;"	m	struct:TLVNode
+WIFI_CONNECTED	components/drv/io_drv.c	/^    WIFI_CONNECTED,$/;"	e	enum:__anon65	file:
+WIFI_LED0	components/drv/io_drv.c	21;"	d	file:
+WIFI_LED1	components/drv/io_drv.c	22;"	d	file:
+WIFI_STDBY	components/drv/io_drv.c	/^    WIFI_STDBY = 0,$/;"	e	enum:__anon65	file:
 WITH_TASKS_INFO	components/cmd_system/cmd_system.c	27;"	d	file:
-WS_THREAD_DELAY	components/usr/sys_conf.h	7;"	d
+WS_THREAD_DELAY	components/usr/sys_conf.h	8;"	d
 _REG_MAP_CHECK_H	components/usr/reg_map_check.h	2;"	d
 _USE_MATH_DEFINES	components/kits/my_fft.c	9;"	d	file:
 __BIT_OP_H	components/kits/bit_op.h	2;"	d
@@ -2146,82 +2191,126 @@ __KFIFO_H__	components/kits/kfifo.h	9;"	d
 __SYS_CONF	components/usr/sys_conf.h	2;"	d
 __SYS_DEF	components/usr/sys_def.h	2;"	d
 __TLVPARSE__H__	components/kits/tlvparse.h	8;"	d
-_binary_x509_crt_bundle_end	build/x509_crt_bundle.S	/^_binary_x509_crt_bundle_end: \/* for objcopy compatibility *\/$/;"	l
-_binary_x509_crt_bundle_start	build/x509_crt_bundle.S	/^_binary_x509_crt_bundle_start: \/* for objcopy compatibility *\/$/;"	l
-acc_noise_level	components/usr/sys_conf.h	/^    float		acc_noise_level;$/;"	m	struct:__anon26
-acc_offset	components/usr/sys_conf.h	/^    int32_t		acc_offset;$/;"	m	struct:__anon26
-acc_q	components/usr/sys_conf.h	/^    uint32_t    acc_q;$/;"	m	struct:__anon18
-acc_rank	components/usr/sys_conf.h	/^    uint32_t   	acc_rank;$/;"	m	struct:__anon26
-acc_signal_level	components/usr/sys_conf.h	/^    float		acc_signal_level;$/;"	m	struct:__anon26
-acc_snr	components/usr/sys_conf.h	/^    float	   	acc_snr;$/;"	m	struct:__anon26
-acc_times	components/usr/sys_conf.h	/^    uint32_t    acc_times;$/;"	m	struct:__anon17
-adc_raw	components/usr/sys_conf.h	/^    uint32_t   	adc_raw;$/;"	m	struct:__anon24
-addr	components/drv/adxl_drv.c	/^    struct arg_int *addr;$/;"	m	struct:__anon52	typeref:struct:__anon52::arg_int	file:
-addr	components/usr/global_var.c	/^    struct arg_int *addr;$/;"	m	struct:__anon35	typeref:struct:__anon35::arg_int	file:
+acc_times	components/usr/sys_conf.h	/^    uint32_t    acc_times;$/;"	m	struct:__anon16
+accum_sum	components/drv/bat_drv.c	/^	uint32_t	accum_sum;$/;"	m	struct:__anon63	file:
+adc	components/usr/sys_conf.h	/^    conf_adc_st adc;$/;"	m	struct:__anon22
+adc	components/usr/sys_conf.h	/^    stat_adc_st		adc;$/;"	m	struct:__anon29
+adc_args	components/drv/ads131_drv.c	/^} adc_args;$/;"	v	typeref:struct:__anon58	file:
+adc_chars	components/drv/bat_drv.c	/^static esp_adc_cal_characteristics_t *adc_chars;$/;"	v	file:
+adc_cmd	components/drv/ads131_drv.c	/^    volatile uint16_t               adc_cmd;$/;"	m	struct:__anon56	file:
+adc_cmd	components/drv/ads131_drv.c	/^static uint16_t adc_cmd(uint16_t cmd_type)$/;"	f	file:
+adc_cmd_args	components/drv/ads131_drv.c	/^} adc_cmd_args;$/;"	v	typeref:struct:__anon59	file:
+adc_cmd_r	components/drv/ads131_drv.c	/^static int adc_cmd_r(int argc, char **argv)$/;"	f	file:
+adc_dout	components/drv/ads131_drv.c	/^int adc_dout(uint8_t * dst_ptr, uint16_t max_len)$/;"	f
+adc_drop_opt	components/usr/reg_map_check.c	/^int16_t adc_drop_opt(uint32_t pram)$/;"	f
+adc_ds_init	components/drv/ads131_drv.c	/^void adc_ds_init(void)$/;"	f
+adc_gain_opt	components/usr/reg_map_check.c	/^int16_t adc_gain_opt(uint32_t pram)$/;"	f
+adc_get_volt	components/drv/bat_drv.c	/^static uint32_t adc_get_volt(void)$/;"	f	file:
+adc_init	components/drv/ads131_drv.c	/^void adc_init(void)$/;"	f
+adc_init	components/drv/bat_drv.c	/^static void adc_init(void)$/;"	f	file:
+adc_init_conf	components/drv/ads131_drv.c	/^static uint16_t adc_init_conf(void)$/;"	f	file:
+adc_init_done	components/drv/ads131_drv.c	/^    uint16_t                        adc_init_done;$/;"	m	struct:__anon56	file:
+adc_offset	components/usr/sys_conf.h	/^    uint32_t    adc_offset;$/;"	m	struct:__anon18
+adc_pin_init	components/drv/ads131_drv.c	/^static void adc_pin_init(void)$/;"	f	file:
+adc_raw	components/usr/sys_conf.h	/^    uint32_t   	adc_raw;$/;"	m	struct:__anon25
+adc_rd_reg	components/drv/ads131_drv.c	/^uint16_t adc_rd_reg(uint8_t addr)$/;"	f
+adc_read	components/drv/bat_drv.c	/^static int adc_read(int argc, char **argv)$/;"	f	file:
+adc_read_pcb	components/drv/ads131_drv.c	/^static void IRAM_ATTR adc_read_pcb(spi_transaction_t* t)$/;"	f	file:
+adc_register	components/drv/ads131_drv.c	/^static void adc_register(void)$/;"	f	file:
+adc_set_sps	components/drv/ads131_drv.c	/^uint16_t adc_set_sps(uint16_t adc_sps_mode)$/;"	f
+adc_sps_opt	components/usr/reg_map_check.c	/^int16_t adc_sps_opt(uint32_t pram)$/;"	f
+adc_sread	components/drv/ads131_drv.c	/^static uint16_t adc_sread(void)$/;"	f	file:
+adc_t	components/drv/ads131_drv.c	/^static spi_transaction_t adc_t;$/;"	v	file:
+adc_val	components/drv/ads131_drv.c	/^    int32_t                         adc_val;$/;"	m	struct:__anon56	file:
+adc_wargs	components/drv/ads131_drv.c	/^} adc_wargs;$/;"	v	typeref:struct:__anon57	file:
+adc_wr_reg	components/drv/ads131_drv.c	/^uint16_t adc_wr_reg(uint8_t addr, uint8_t data)$/;"	f
+adcspi_mutex	components/drv/ads131_drv.c	/^static SemaphoreHandle_t adcspi_mutex = NULL;$/;"	v	file:
+addr	components/drv/ads131_drv.c	/^    struct arg_int *addr;$/;"	m	struct:__anon57	typeref:struct:__anon57::arg_int	file:
+addr	components/drv/ads131_drv.c	/^    struct arg_int *addr;$/;"	m	struct:__anon58	typeref:struct:__anon58::arg_int	file:
+addr	components/drv/adxl_drv.c	/^    struct arg_int *addr;$/;"	m	struct:__anon61	typeref:struct:__anon61::arg_int	file:
+addr	components/usr/global_var.c	/^    struct arg_int *addr;$/;"	m	struct:__anon37	typeref:struct:__anon37::arg_int	file:
 adxl355_reset	components/drv/adxl_drv.c	/^void adxl355_reset(void)$/;"	f
 adxl355_scanfifo	components/drv/adxl_drv.c	/^static int16_t adxl355_scanfifo(void)$/;"	f	file:
-adxl_args	components/drv/adxl_drv.c	/^} adxl_args;$/;"	v	typeref:struct:__anon52	file:
+adxl_args	components/drv/adxl_drv.c	/^} adxl_args;$/;"	v	typeref:struct:__anon61	file:
 adxl_dout	components/drv/adxl_drv.c	/^int adxl_dout(uint8_t * dst_ptr, uint16_t max_len)$/;"	f
 adxl_info	components/drv/adxl_drv.c	/^static int adxl_info(int argc, char **argv)$/;"	f	file:
 adxl_init	components/drv/adxl_drv.c	/^void adxl_init(void)$/;"	f
 adxl_rd_reg	components/drv/adxl_drv.c	/^uint8_t adxl_rd_reg(uint8_t addr, uint8_t * rx_buf, uint8_t cnt)$/;"	f
-adxl_register	components/drv/adxl_drv.c	/^void adxl_register(void)$/;"	f
+adxl_register	components/drv/adxl_drv.c	/^static void adxl_register(void)$/;"	f	file:
 adxl_tim_start	components/drv/adxl_drv.c	/^void adxl_tim_start(int32_t tim_period)$/;"	f
 adxl_tim_stop	components/drv/adxl_drv.c	/^void adxl_tim_stop(void)$/;"	f
 adxl_timeout	components/drv/adxl_drv.c	/^static void adxl_timeout(void* arg)$/;"	f	file:
 adxl_timer	components/drv/adxl_drv.c	/^esp_timer_handle_t adxl_timer;$/;"	v
 adxl_timer_init	components/drv/adxl_drv.c	/^static int adxl_timer_init(void)$/;"	f	file:
 adxl_wr_reg	components/drv/adxl_drv.c	/^uint8_t adxl_wr_reg(uint8_t addr, uint8_t data)$/;"	f
-ampl_arr	components/drv/adxl_drv.h	/^    float		ampl_arr[16];$/;"	m	struct:__anon49
+analog_args	components/drv/bat_drv.c	/^} analog_args;$/;"	v	typeref:struct:__anon64	file:
 app_main	main/main.c	/^void app_main()$/;"	f
 ard_reg	components/drv/adxl_drv.c	/^static int ard_reg(int argc, char **argv)$/;"	f	file:
-arr_cnt	components/drv/adxl_drv.h	/^    uint16_t	arr_cnt;$/;"	m	struct:__anon49
 awr_reg	components/drv/adxl_drv.c	/^static int awr_reg(int argc, char **argv)$/;"	f	file:
-axis	components/usr/sys_conf.h	/^    uint32_t    axis;$/;"	m	struct:__anon19
-bat	components/usr/sys_conf.h	/^	conf_bat_st bat;$/;"	m	struct:__anon21
-bat	components/usr/sys_conf.h	/^    stat_bat_st		bat;$/;"	m	struct:__anon27
+axis	components/usr/sys_conf.h	/^    uint32_t    axis;$/;"	m	struct:__anon20
+bat	components/usr/sys_conf.h	/^	conf_bat_st bat;$/;"	m	struct:__anon22
+bat	components/usr/sys_conf.h	/^    stat_bat_st		bat;$/;"	m	struct:__anon29
+bat_init	components/drv/bat_drv.c	/^void bat_init(void) $/;"	f
+bat_inst	components/drv/bat_drv.c	/^static bat_st bat_inst;$/;"	v	file:
+bat_mav_calc	components/drv/bat_drv.c	/^static uint32_t bat_mav_calc(uint16_t mav_cnt_set)$/;"	f	file:
+bat_pwr_calc	components/drv/bat_drv.c	/^static uint32_t bat_pwr_calc(uint32_t up_lim, uint32_t low_lim, uint32_t bat_volt)$/;"	f	file:
+bat_register	components/drv/bat_drv.c	/^static void bat_register(void)$/;"	f	file:
+bat_st	components/drv/bat_drv.c	/^}bat_st;$/;"	t	typeref:struct:__anon63	file:
+bat_update	components/drv/bat_drv.c	/^void bat_update(void)$/;"	f
 bit_op_get	components/kits/bit_op.c	/^int32_t bit_op_get(const uint32_t data, uint16_t offset) $/;"	f
 bit_op_set	components/kits/bit_op.c	/^void bit_op_set(uint32_t *data, uint16_t offset, uint8_t option) $/;"	f
 broker_uri	components/mqtt_tcp/mqtt_tcp.c	/^    char broker_uri[MQ_NVS_STR_SIZE];$/;"	m	struct:__anon4	file:
+buf	components/drv/ads131_drv.c	/^    int32_t                         buf[ADC_DELAY_BUF_SIZE];$/;"	m	struct:__anon55	file:
 buffer	components/kits/kfifo.h	/^    unsigned char *buffer;\/* the buffer holding the data *\/$/;"	m	struct:kfifo
-calc_snr	components/kits/goertzel.c	/^static float calc_snr(float* dbuf, uint16_t cnt, snr_sts_st* snr_sts_ptr)$/;"	f	file:
-channel_bm	components/usr/daq.c	/^    uint16_t channel_bm;$/;"	m	struct:__anon41	file:
-chk_ptr	components/usr/sys_conf.h	/^    int16_t     (*chk_ptr)(uint32_t pram);$/;"	m	struct:__anon29
+buffer_ff	components/drv/bat_drv.c	/^	uint32_t	buffer_ff;$/;"	m	struct:__anon63	file:
+calc_snr	components/kits/goertzel.c	/^static void calc_snr(float* dbuf, uint16_t cnt)$/;"	f	file:
+calc_sps	components/drv/ads131_drv.c	/^static uint16_t calc_sps(uint16_t freq_mode)$/;"	f	file:
+cd	components/drv/ads131_drv.c	/^    uint16_t                        cd;$/;"	m	struct:__anon55	file:
+ch_bm	components/usr/sys_conf.h	/^    uint32_t    ch_bm;$/;"	m	struct:__anon19
+channel_bm	components/usr/daq.c	/^    uint16_t channel_bm;$/;"	m	struct:__anon46	file:
+check_efuse	components/drv/bat_drv.c	/^static void check_efuse(void)$/;"	f	file:
+chk_ptr	components/usr/sys_conf.h	/^    int16_t     (*chk_ptr)(uint32_t pram);$/;"	m	struct:__anon31
 cli_thread	components/cli/cli.c	/^void cli_thread(void* param)$/;"	f
+cmd	components/drv/ads131_drv.c	/^    struct arg_int *cmd;$/;"	m	struct:__anon59	typeref:struct:__anon59::arg_int	file:
 cmd_buf_init	components/usr/cmd_resolve.c	/^static void cmd_buf_init(void)$/;"	f	file:
 cmd_dev_init	components/usr/cmd_resolve.c	/^void cmd_dev_init(void)$/;"	f
 cmd_frame_recv	components/usr/cmd_resolve.c	/^uint16_t cmd_frame_recv(void)$/;"	f
 cmd_frame_resolve	components/usr/cmd_resolve.c	/^uint16_t cmd_frame_resolve(void)$/;"	f
-cmd_fsm_cstate	components/usr/cmd_resolve.c	/^    uint8_t cmd_fsm_cstate;$/;"	m	struct:__anon33	file:
+cmd_fsm_cstate	components/usr/cmd_resolve.c	/^    uint8_t cmd_fsm_cstate;$/;"	m	struct:__anon35	file:
 cmd_get_comm_sts	components/usr/cmd_resolve.c	/^uint16_t cmd_get_comm_sts(void)$/;"	f
 cmd_get_rx_fsm	components/usr/cmd_resolve.c	/^uint8_t cmd_get_rx_fsm(void)$/;"	f
 cmd_kbuf_rx	components/usr/cmd_resolve.c	/^static uint8_t 	cmd_kbuf_rx[CMD_RTX_BUF_DEPTH];$/;"	v	file:
 cmd_kbuf_tx	components/usr/cmd_resolve.c	/^static uint8_t 	cmd_kbuf_tx[CMD_RTX_BUF_DEPTH*16];$/;"	v	file:
+cmd_pga_gain	components/drv/io_drv.c	/^static int cmd_pga_gain(int argc, char **argv)$/;"	f	file:
 cmd_rd_reg	components/usr/cmd_resolve.c	/^static uint16_t cmd_rd_reg(void)$/;"	f	file:
 cmd_reg_inst	components/usr/cmd_resolve.c	/^static cmd_reg_st cmd_reg_inst;$/;"	v	file:
-cmd_reg_st	components/usr/cmd_resolve.c	/^}cmd_reg_st;$/;"	t	typeref:struct:__anon33	file:
+cmd_reg_st	components/usr/cmd_resolve.c	/^}cmd_reg_st;$/;"	t	typeref:struct:__anon35	file:
 cmd_response	components/usr/cmd_resolve.c	/^static void cmd_response(void)$/;"	f	file:
 cmd_stream_in	components/usr/cmd_resolve.c	/^int cmd_stream_in(void * src_data, int data_len)$/;"	f
 cmd_thread	components/usr/cmd_resolve.c	/^void cmd_thread(void* param)$/;"	f
 cmd_wr_reg	components/usr/cmd_resolve.c	/^static uint16_t cmd_wr_reg(void)$/;"	f	file:
+cnt	components/kits/goertzel.c	/^    uint16_t 	cnt;$/;"	m	struct:__anon8	file:
 coef	components/kits/goertzel.c	/^    float 		coef[FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
-compare	components/kits/goertzel.c	/^int compare(const void * a, const void * b)$/;"	f
-con	components/usr/sys_conf.h	/^    conf_con_st con;$/;"	m	struct:__anon21
-conf	components/usr/sys_conf.h	/^    config_st   conf;$/;"	m	struct:__anon28
-conf_bat_st	components/usr/sys_conf.h	/^}conf_bat_st;$/;"	t	typeref:struct:__anon15
-conf_con_st	components/usr/sys_conf.h	/^}conf_con_st;$/;"	t	typeref:struct:__anon12
-conf_daq_st	components/usr/sys_conf.h	/^}conf_daq_st;$/;"	t	typeref:struct:__anon13
-conf_fft_st	components/usr/sys_conf.h	/^}conf_fft_st;$/;"	t	typeref:struct:__anon17
-conf_framing_st	components/usr/sys_conf.h	/^}conf_framing_st;$/;"	t	typeref:struct:__anon14
-conf_gen_st	components/usr/sys_conf.h	/^}conf_gen_st;$/;"	t	typeref:struct:__anon11
-conf_geo_st	components/usr/sys_conf.h	/^}conf_geo_st;$/;"	t	typeref:struct:__anon19
-conf_gtz_st	components/usr/sys_conf.h	/^}conf_gtz_st;$/;"	t	typeref:struct:__anon18
-conf_mod_st	components/usr/sys_conf.h	/^}conf_mod_st;$/;"	t	typeref:struct:__anon20
-conf_prt_st	components/usr/sys_conf.h	/^}conf_prt_st;$/;"	t	typeref:struct:__anon16
+compare_float	components/kits/goertzel.c	/^int compare_float(const void * a, const void * b)$/;"	f
+compare_uint64	components/kits/goertzel.c	/^static int compare_uint64(const void * a, const void * b)$/;"	f	file:
+con	components/usr/sys_conf.h	/^    conf_con_st con;$/;"	m	struct:__anon22
+conf	components/usr/sys_conf.h	/^    config_st   conf;$/;"	m	struct:__anon30
+conf_adc_st	components/usr/sys_conf.h	/^}conf_adc_st;$/;"	t	typeref:struct:__anon19
+conf_bat_st	components/usr/sys_conf.h	/^}conf_bat_st;$/;"	t	typeref:struct:__anon14
+conf_con_st	components/usr/sys_conf.h	/^}conf_con_st;$/;"	t	typeref:struct:__anon11
+conf_daq_st	components/usr/sys_conf.h	/^}conf_daq_st;$/;"	t	typeref:struct:__anon12
+conf_fft_st	components/usr/sys_conf.h	/^}conf_fft_st;$/;"	t	typeref:struct:__anon16
+conf_framing_st	components/usr/sys_conf.h	/^}conf_framing_st;$/;"	t	typeref:struct:__anon13
+conf_gen_st	components/usr/sys_conf.h	/^}conf_gen_st;$/;"	t	typeref:struct:__anon10
+conf_geo_st	components/usr/sys_conf.h	/^}conf_geo_st;$/;"	t	typeref:struct:__anon20
+conf_gtz_st	components/usr/sys_conf.h	/^}conf_gtz_st;$/;"	t	typeref:struct:__anon17
+conf_mod_st	components/usr/sys_conf.h	/^}conf_mod_st;$/;"	t	typeref:struct:__anon21
+conf_per_st	components/usr/sys_conf.h	/^}conf_per_st;$/;"	t	typeref:struct:__anon18
+conf_prt_st	components/usr/sys_conf.h	/^}conf_prt_st;$/;"	t	typeref:struct:__anon15
 conf_reg_map_inst	components/usr/global_var.c	/^const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=$/;"	v
-conf_reg_map_st	components/usr/sys_conf.h	/^}conf_reg_map_st;$/;"	t	typeref:struct:__anon29
-config_reg_num	components/usr/sys_conf.h	/^    uint32_t    config_reg_num;$/;"	m	struct:__anon22
-config_st	components/usr/sys_conf.h	/^}config_st;$/;"	t	typeref:struct:__anon21
+conf_reg_map_st	components/usr/sys_conf.h	/^}conf_reg_map_st;$/;"	t	typeref:struct:__anon31
+config_reg_num	components/usr/sys_conf.h	/^    uint32_t    config_reg_num;$/;"	m	struct:__anon23
+config_st	components/usr/sys_conf.h	/^}config_st;$/;"	t	typeref:struct:__anon22
 connect	components/cli/cmd_wifi.c	/^static int connect(int argc, char **argv)$/;"	f	file:
 const	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
 const	build/bootloader/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
@@ -2229,50 +2318,72 @@ const	components/cmd_nvs/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	1
 const	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
 count	components/kits/meow_fft.h	/^    unsigned  count;$/;"	m	struct:Meow_Fft_Stages
 current_namespace	components/cmd_nvs/cmd_nvs.c	/^static char current_namespace[16] = "storage";$/;"	v	file:
-daq	components/usr/sys_conf.h	/^    conf_daq_st daq;$/;"	m	struct:__anon21
+dac_init	components/drv/bat_drv.c	/^static void dac_init(void)$/;"	f	file:
+dac_offset	components/usr/sys_conf.h	/^    uint32_t    dac_offset;$/;"	m	struct:__anon18
+dac_set	components/drv/bat_drv.c	/^static int dac_set(int argc, char **argv)$/;"	f	file:
+dac_setval	components/usr/sys_conf.h	/^    uint32_t    dac_setval;$/;"	m	struct:__anon18
+daq	components/usr/sys_conf.h	/^    conf_daq_st daq;$/;"	m	struct:__anon22
 daq_buf_init	components/usr/daq.c	/^static void daq_buf_init(void)$/;"	f	file:
+daq_en	components/usr/reg_map_check.c	/^int16_t daq_en(uint32_t pram)$/;"	f
 daq_frame	components/usr/cmd_resolve.c	/^int daq_frame(const void *dbuf_ptr,int d_len)$/;"	f
 daq_init	components/usr/daq.c	/^void daq_init(void)$/;"	f
 daq_inst	components/usr/daq.c	/^static daq_st daq_inst;$/;"	v	file:
-daq_pkg_en	components/usr/reg_map_check.c	/^int16_t daq_pkg_en(uint32_t pram)$/;"	f
-daq_st	components/usr/daq.c	/^}daq_st;$/;"	t	typeref:struct:__anon41	file:
+daq_st	components/usr/daq.c	/^}daq_st;$/;"	t	typeref:struct:__anon46	file:
 daq_tim_start	components/usr/daq.c	/^void daq_tim_start(int32_t tim_period)$/;"	f
 daq_tim_stop	components/usr/daq.c	/^void daq_tim_stop(void)$/;"	f
 daq_timeout	components/usr/daq.c	/^static void daq_timeout(void* arg)$/;"	f	file:
 daq_timer	components/usr/daq.c	/^esp_timer_handle_t daq_timer;$/;"	v
 daq_timer_init	components/usr/daq.c	/^static int daq_timer_init(void)$/;"	f	file:
-data	components/drv/adxl_drv.c	/^    struct arg_int *data;$/;"	m	struct:__anon52	typeref:struct:__anon52::arg_int	file:
+data	components/drv/ads131_drv.c	/^    struct arg_int *data;$/;"	m	struct:__anon57	typeref:struct:__anon57::arg_int	file:
+data	components/drv/adxl_drv.c	/^    struct arg_int *data;$/;"	m	struct:__anon61	typeref:struct:__anon61::arg_int	file:
 data	components/mqtt_tcp/mqtt_tcp.c	/^    struct arg_str *data;$/;"	m	struct:__anon5	typeref:struct:__anon5::arg_str	file:
-data	components/usr/global_var.c	/^    struct arg_int *data;$/;"	m	struct:__anon35	typeref:struct:__anon35::arg_int	file:
-data	components/usr/global_var.c	/^    struct arg_str *data;$/;"	m	struct:__anon34	typeref:struct:__anon34::arg_str	file:
-dbg	components/usr/sys_conf.h	/^    uint32_t    dbg;$/;"	m	struct:__anon11
+data	components/usr/global_var.c	/^    struct arg_int *data;$/;"	m	struct:__anon37	typeref:struct:__anon37::arg_int	file:
+data	components/usr/global_var.c	/^    struct arg_str *data;$/;"	m	struct:__anon36	typeref:struct:__anon36::arg_str	file:
+data_delay	components/drv/ads131_drv.c	/^static int32_t data_delay(int32_t* dout, int32_t din)$/;"	f	file:
+decode	components/drv/ads131_drv.c	/^static int32_t decode(uint32_t din, uint16_t gain)$/;"	f	file:
 decode	components/drv/adxl_drv.c	/^static int32_t decode(uint32_t din)$/;"	f	file:
 deep_sleep	components/cmd_system/cmd_system.c	/^static int deep_sleep(int argc, char **argv)$/;"	f	file:
 deep_sleep_args	components/cmd_system/cmd_system.c	/^} deep_sleep_args;$/;"	v	typeref:struct:__anon2	file:
-dev_type	components/usr/sys_conf.h	/^    uint32_t    dev_type;$/;"	m	struct:__anon23
-dft	components/usr/sys_conf.h	/^    uint32_t	dft;$/;"	m	struct:__anon29
-dft	components/usr/sys_conf.h	/^    uint32_t  	dft;$/;"	m	struct:__anon30
+delay_buf_st	components/drv/ads131_drv.c	/^}delay_buf_st;$/;"	t	typeref:struct:__anon55	file:
+dev_type	components/usr/sys_conf.h	/^    uint32_t    dev_type;$/;"	m	struct:__anon24
+dft	components/usr/sys_conf.h	/^    uint32_t	dft;$/;"	m	struct:__anon31
+dft	components/usr/sys_conf.h	/^    uint32_t  	dft;$/;"	m	struct:__anon32
+dlbuf_init	components/drv/ads131_drv.c	/^static void dlbuf_init(void)$/;"	f	file:
+dlbuf_inst	components/drv/ads131_drv.c	/^delay_buf_st        dlbuf_inst;$/;"	v
 do_retransmit	components/mqtt_tcp/tcp_server.c	/^static void do_retransmit(const int sock)$/;"	f	file:
-enable	components/usr/sys_conf.h	/^    uint32_t    enable;$/;"	m	struct:__anon13
+drop	components/usr/sys_conf.h	/^    uint32_t    drop;$/;"	m	struct:__anon19
+drop_cnt	components/usr/sys_conf.h	/^    uint32_t   	drop_cnt;$/;"	m	struct:__anon26
+drop_en	components/usr/sys_conf.h	/^    uint32_t    drop_en;$/;"	m	struct:__anon19
+drop_th	components/usr/sys_conf.h	/^    uint32_t    drop_th;$/;"	m	struct:__anon19
+drv_dac_en	components/drv/bat_drv.c	/^static void drv_dac_en(uint8_t enable)$/;"	f	file:
+en	components/usr/sys_conf.h	/^    uint32_t    en;$/;"	m	struct:__anon12
+en	components/usr/sys_conf.h	/^    uint32_t    en;$/;"	m	struct:__anon17
 enable	components/usr/sys_conf.h	/^    uint32_t    enable;$/;"	m	struct:__anon19
 enable	components/usr/sys_conf.h	/^    uint32_t    enable;$/;"	m	struct:__anon20
+enable	components/usr/sys_conf.h	/^    uint32_t    enable;$/;"	m	struct:__anon21
 end	components/cli/cmd_wifi.c	/^    struct arg_end *end;$/;"	m	struct:__anon6	typeref:struct:__anon6::arg_end	file:
-end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon43	typeref:struct:__anon43::arg_end	file:
-end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon44	typeref:struct:__anon44::arg_end	file:
-end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon45	typeref:struct:__anon45::arg_end	file:
-end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon46	typeref:struct:__anon46::arg_end	file:
-end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon47	typeref:struct:__anon47::arg_end	file:
 end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon48	typeref:struct:__anon48::arg_end	file:
+end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon49	typeref:struct:__anon49::arg_end	file:
+end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon50	typeref:struct:__anon50::arg_end	file:
+end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon51	typeref:struct:__anon51::arg_end	file:
+end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon52	typeref:struct:__anon52::arg_end	file:
+end	components/cmd_nvs/cmd_nvs.c	/^    struct arg_end *end;$/;"	m	struct:__anon53	typeref:struct:__anon53::arg_end	file:
 end	components/cmd_system/cmd_system.c	/^    struct arg_end *end;$/;"	m	struct:__anon2	typeref:struct:__anon2::arg_end	file:
 end	components/cmd_system/cmd_system.c	/^    struct arg_end *end;$/;"	m	struct:__anon3	typeref:struct:__anon3::arg_end	file:
-end	components/drv/adxl_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon52	typeref:struct:__anon52::arg_end	file:
+end	components/drv/ads131_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon57	typeref:struct:__anon57::arg_end	file:
+end	components/drv/ads131_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon58	typeref:struct:__anon58::arg_end	file:
+end	components/drv/ads131_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon59	typeref:struct:__anon59::arg_end	file:
+end	components/drv/adxl_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon61	typeref:struct:__anon61::arg_end	file:
+end	components/drv/bat_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon64	typeref:struct:__anon64::arg_end	file:
+end	components/drv/io_drv.c	/^    struct arg_end *end;$/;"	m	struct:__anon67	typeref:struct:__anon67::arg_end	file:
 end	components/mqtt_tcp/mqtt_tcp.c	/^    struct arg_end *end;$/;"	m	struct:__anon5	typeref:struct:__anon5::arg_end	file:
-end	components/usr/global_var.c	/^    struct arg_end *end;$/;"	m	struct:__anon34	typeref:struct:__anon34::arg_end	file:
-end	components/usr/global_var.c	/^    struct arg_end *end;$/;"	m	struct:__anon35	typeref:struct:__anon35::arg_end	file:
+end	components/usr/global_var.c	/^    struct arg_end *end;$/;"	m	struct:__anon36	typeref:struct:__anon36::arg_end	file:
+end	components/usr/global_var.c	/^    struct arg_end *end;$/;"	m	struct:__anon37	typeref:struct:__anon37::arg_end	file:
+end	components/usr/global_var.c	/^    struct arg_end *end;$/;"	m	struct:__anon38	typeref:struct:__anon38::arg_end	file:
 erase	components/cmd_nvs/cmd_nvs.c	/^static esp_err_t erase(const char *key)$/;"	f	file:
 erase_all	components/cmd_nvs/cmd_nvs.c	/^static esp_err_t erase_all(const char *name)$/;"	f	file:
-erase_all_args	components/cmd_nvs/cmd_nvs.c	/^} erase_all_args;$/;"	v	typeref:struct:__anon46	file:
-erase_args	components/cmd_nvs/cmd_nvs.c	/^} erase_args;$/;"	v	typeref:struct:__anon45	file:
+erase_all_args	components/cmd_nvs/cmd_nvs.c	/^} erase_all_args;$/;"	v	typeref:struct:__anon51	file:
+erase_args	components/cmd_nvs/cmd_nvs.c	/^} erase_args;$/;"	v	typeref:struct:__anon50	file:
 erase_namespace	components/cmd_nvs/cmd_nvs.c	/^static int erase_namespace(int argc, char **argv)$/;"	f	file:
 erase_value	components/cmd_nvs/cmd_nvs.c	/^static int erase_value(int argc, char **argv)$/;"	f	file:
 event_handler	components/cli/cmd_wifi.c	/^static void event_handler(void* arg, esp_event_base_t event_base,$/;"	f	file:
@@ -2284,67 +2395,62 @@ features	components/cmd_nvs/build/CMakeFiles/feature_tests.c	/^  const char feat
 features	components/cmd_nvs/build/CMakeFiles/feature_tests.cxx	/^  const char features[] = {"\\n"$/;"	v
 features	components/usr/build/CMakeFiles/feature_tests.c	/^  const char features[] = {"\\n"$/;"	v
 features	components/usr/build/CMakeFiles/feature_tests.cxx	/^  const char features[] = {"\\n"$/;"	v
-fft	components/usr/sys_conf.h	/^    conf_fft_st fft;$/;"	m	struct:__anon21
+fft	components/usr/sys_conf.h	/^    conf_fft_st fft;$/;"	m	struct:__anon22
 fft_calc	components/kits/my_fft.c	/^void fft_calc(float* input_dbuf,float* output_dbuf)$/;"	f
-fft_info	components/drv/adxl_drv.c	/^static int fft_info(int argc, char **argv)$/;"	f	file:
 fft_init	components/kits/my_fft.c	/^int16_t fft_init(void)$/;"	f
-fft_inst	components/drv/adxl_drv.c	/^fft_st fft_inst;$/;"	v
-fft_max_ind	components/drv/adxl_drv.c	/^static void fft_max_ind(void)$/;"	f	file:
 fft_new	components/kits/my_fft.c	/^void fft_new(uint16_t ord)$/;"	f
-fft_sbuf_ptr	components/kits/my_fft.c	/^	Meow_FFT_Workset_Real*	fft_sbuf_ptr;$/;"	m	struct:__anon10	file:
-fft_st	components/drv/adxl_drv.h	/^}fft_st;$/;"	t	typeref:struct:__anon49
-filter	components/usr/sys_conf.h	/^    uint32_t    filter;$/;"	m	struct:__anon13
+fft_sbuf_ptr	components/kits/my_fft.c	/^	Meow_FFT_Workset_Real*	fft_sbuf_ptr;$/;"	m	struct:__anon9	file:
+filter	components/usr/sys_conf.h	/^    uint32_t    filter;$/;"	m	struct:__anon12
 filter	components/usr/sys_conf.h	/^    uint32_t    filter;$/;"	m	struct:__anon19
+filter	components/usr/sys_conf.h	/^    uint32_t    filter;$/;"	m	struct:__anon20
 frame_checksum	components/usr/cmd_resolve.c	/^static int frame_checksum(void) {$/;"	f	file:
 frame_checksum_gen	components/usr/cmd_resolve.c	/^static int frame_checksum_gen(void * data_ptr, uint16_t data_num) {$/;"	f	file:
-framing_period	components/usr/sys_conf.h	/^    uint32_t    framing_period;$/;"	m	struct:__anon14
-framing_type	components/usr/sys_conf.h	/^    uint32_t    framing_type;$/;"	m	struct:__anon14
+framing_period	components/usr/sys_conf.h	/^    uint32_t    framing_period;$/;"	m	struct:__anon13
+framing_type	components/usr/sys_conf.h	/^    uint32_t    framing_type;$/;"	m	struct:__anon13
 free_mem	components/cmd_system/cmd_system.c	/^static int free_mem(int argc, char **argv)$/;"	f	file:
-freq	components/usr/sys_conf.h	/^    uint32_t    freq;$/;"	m	struct:__anon20
-freq_arr	components/drv/adxl_drv.h	/^    float		freq_arr[16];$/;"	m	struct:__anon49
-freq_bar	components/usr/sys_conf.h	/^    float	   	freq_bar[33];$/;"	m	struct:__anon26
-freq_bins	components/kits/goertzel.c	/^    float		freq_bins[FREQ_SPAN_MAX];$/;"	m	struct:__anon9	file:
+freq	components/usr/sys_conf.h	/^    uint32_t    freq;$/;"	m	struct:__anon21
+freq_bar	components/usr/sys_conf.h	/^    float	   	freq_bar[33];$/;"	m	struct:__anon28
 g_sys	components/usr/global_var.c	/^sys_reg_st  g_sys; 	    \/\/global parameter declairation$/;"	v
-gain	components/usr/daq.c	/^    uint16_t gain[DAQ_CHANNEL_MAX];$/;"	m	struct:__anon41	file:
+gain	components/drv/io_drv.c	/^    struct arg_int *gain;$/;"	m	struct:__anon67	typeref:struct:__anon67::arg_int	file:
+gain	components/usr/daq.c	/^    uint16_t gain[DAQ_CHANNEL_MAX];$/;"	m	struct:__anon46	file:
 gain	components/usr/sys_conf.h	/^    uint32_t    gain;$/;"	m	struct:__anon19
-gen	components/usr/sys_conf.h	/^    conf_gen_st gen;$/;"	m	struct:__anon21
-gen	components/usr/sys_conf.h	/^    stat_gen_st 	gen;$/;"	m	struct:__anon27
-geo	components/usr/sys_conf.h	/^    conf_geo_st geo;$/;"	m	struct:__anon21
-geo	components/usr/sys_conf.h	/^    stat_geo_st		geo;$/;"	m	struct:__anon27
+gain	components/usr/sys_conf.h	/^    uint32_t    gain;$/;"	m	struct:__anon20
+gen	components/usr/sys_conf.h	/^    conf_gen_st gen;$/;"	m	struct:__anon22
+gen	components/usr/sys_conf.h	/^    stat_gen_st 	gen;$/;"	m	struct:__anon29
+geo	components/usr/sys_conf.h	/^    conf_geo_st geo;$/;"	m	struct:__anon22
+geo	components/usr/sys_conf.h	/^    stat_geo_st		geo;$/;"	m	struct:__anon29
 geo_ds_init	components/drv/adxl_drv.c	/^void geo_ds_init(void)$/;"	f
-geo_get_fft	components/drv/adxl_drv.c	/^float* geo_get_fft(uint16_t* fft_len)$/;"	f
-geo_get_time	components/drv/adxl_drv.c	/^int16_t geo_get_time(float* dst_ptr,uint16_t len)$/;"	f
 geo_pkg_en	components/usr/reg_map_check.c	/^int16_t geo_pkg_en(uint32_t pram)$/;"	f
 geospi_mutex	components/drv/adxl_drv.c	/^static SemaphoreHandle_t geospi_mutex = NULL;$/;"	v	file:
-get_args	components/cmd_nvs/cmd_nvs.c	/^} get_args;$/;"	v	typeref:struct:__anon44	file:
+get_args	components/cmd_nvs/cmd_nvs.c	/^} get_args;$/;"	v	typeref:struct:__anon49	file:
 get_value	components/cmd_nvs/cmd_nvs.c	/^static int get_value(int argc, char **argv)$/;"	f	file:
 get_value_from_nvs	components/cmd_nvs/cmd_nvs.c	/^static esp_err_t get_value_from_nvs(const char *key, const char *str_type)$/;"	f	file:
 get_version	components/cmd_system/cmd_system.c	/^static int get_version(int argc, char **argv)$/;"	f	file:
-goertzel_calc	components/kits/goertzel.c	/^float goertzel_calc(float* din)$/;"	f
 goertzel_coef	components/kits/goertzel.c	/^static float goertzel_coef(uint32_t target_freq, uint32_t sample_freq, uint32_t N)$/;"	f	file:
+goertzel_coef_init	components/kits/goertzel.c	/^static void goertzel_coef_init(uint32_t gtz_n, uint16_t span)$/;"	f	file:
 goertzel_init	components/kits/goertzel.c	/^void goertzel_init(void)$/;"	f
 goertzel_lfilt	components/kits/goertzel.c	/^int16_t goertzel_lfilt(float din)$/;"	f
-gtz	components/usr/sys_conf.h	/^    conf_gtz_st gtz;$/;"	m	struct:__anon21
-gtz	components/usr/sys_conf.h	/^    stat_gtz_st		gtz;$/;"	m	struct:__anon27
-gtz_freq_bins	components/kits/goertzel.c	/^int32_t gtz_freq_bins(float* dst_buf, uint16_t *num)$/;"	f
+gpio_isr_handler	components/drv/ads131_drv.c	/^static void IRAM_ATTR gpio_isr_handler(void* arg)$/;"	f	file:
+gtz	components/usr/sys_conf.h	/^    conf_gtz_st gtz;$/;"	m	struct:__anon22
+gtz	components/usr/sys_conf.h	/^    stat_gtz_st		gtz;$/;"	m	struct:__anon29
+gtz_gap_init	components/kits/goertzel.c	/^static void gtz_gap_init(uint32_t gtz_n, uint16_t intv)$/;"	f	file:
 gtz_inst	components/kits/goertzel.c	/^gtz_st gtz_inst;$/;"	v
-gtz_reset	components/kits/goertzel.c	/^void gtz_reset(void)$/;"	f
-gtz_snr	components/kits/goertzel.c	/^static int32_t gtz_snr(float* dbuf, uint16_t cnt)$/;"	f	file:
+gtz_rcd_opt	components/usr/reg_map_check.c	/^int16_t gtz_rcd_opt(uint32_t pram)$/;"	f
+gtz_reset	components/kits/goertzel.c	/^void gtz_reset(uint32_t gtz_n, uint16_t span, uint16_t intv)$/;"	f
+gtz_rst_opt	components/usr/reg_map_check.c	/^int16_t gtz_rst_opt(uint32_t pram)$/;"	f
 gtz_st	components/kits/goertzel.c	/^}gtz_st;$/;"	t	typeref:struct:__anon7	file:
 gvar_init	components/usr/global_var.c	/^int32_t gvar_init(void)$/;"	f
 gvar_register	components/usr/global_var.c	/^void gvar_register(void)$/;"	f
 half	components/kits/meow_fft.h	/^    Meow_FFT_Workset  half;$/;"	m	struct:Meow_FFT_Workset_Real
-hardware_ver	components/usr/sys_conf.h	/^    uint32_t    hardware_ver;$/;"	m	struct:__anon22
+hardware_ver	components/usr/sys_conf.h	/^    uint32_t    hardware_ver;$/;"	m	struct:__anon23
 heap_size	components/cmd_system/cmd_system.c	/^static int heap_size(int argc, char **argv)$/;"	f	file:
-hold_time	components/usr/sys_conf.h	/^    uint32_t    hold_time;$/;"	m	struct:__anon20
-http_en	components/usr/sys_conf.h	/^    uint32_t    http_en;$/;"	m	struct:__anon16
-ibuf	components/drv/adxl_drv.h	/^    float		ibuf[DEV_GEO_FIFO_SIZE];$/;"	m	struct:__anon49
-ibuf_cnt	components/drv/adxl_drv.h	/^	uint16_t	ibuf_cnt;$/;"	m	struct:__anon49
-icnt	components/kits/goertzel.c	/^    uint32_t 	icnt;$/;"	m	struct:__anon7	file:
-id	components/usr/sys_conf.h	/^    uint16_t 	id;$/;"	m	struct:__anon29
-id	components/usr/sys_conf.h	/^    uint16_t 	id;$/;"	m	struct:__anon30
+hold_time	components/usr/sys_conf.h	/^    uint32_t    hold_time;$/;"	m	struct:__anon21
+http_en	components/usr/sys_conf.h	/^    uint32_t    http_en;$/;"	m	struct:__anon15
+icnt	components/kits/goertzel.c	/^    uint32_t 	icnt[GTZ_FLOWS_MAX];$/;"	m	struct:__anon7	file:
+id	components/usr/sys_conf.h	/^    uint16_t 	id;$/;"	m	struct:__anon31
+id	components/usr/sys_conf.h	/^    uint16_t 	id;$/;"	m	struct:__anon32
 in	components/kits/kfifo.h	/^    unsigned int in;\/* data is added at offset (in % size) *\/$/;"	m	struct:kfifo
-inbuf	components/kits/my_fft.c	/^	float*					inbuf;$/;"	m	struct:__anon10	file:
+inbuf	components/kits/my_fft.c	/^	float*					inbuf;$/;"	m	struct:__anon9	file:
 info_arch	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
 info_arch	build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
 info_arch	build/bootloader/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
@@ -2411,30 +2517,42 @@ info_version	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.
 info_version	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v
 init_load_default	components/usr/global_var.c	/^static uint16_t init_load_default(void)$/;"	f	file:
 init_load_status	components/usr/global_var.c	/^void init_load_status(void)$/;"	f
+init_thread	main/main.c	/^void init_thread(void* param)$/;"	f
 initialise_wifi	components/cli/cmd_wifi.c	/^static void initialise_wifi(void)$/;"	f	file:
 initialize_console	components/cli/cli.c	/^static void initialize_console(void)$/;"	f	file:
 initialize_filesystem	components/cli/cli.c	/^static void initialize_filesystem(void)$/;"	f	file:
 initialize_nvs	components/usr/global_var.c	/^static void initialize_nvs(void)$/;"	f	file:
-ins_snr	components/usr/sys_conf.h	/^    float	   	ins_snr;$/;"	m	struct:__anon26
+input_init	components/drv/io_drv.c	/^static void input_init(void)$/;"	f	file:
 int16	components/usr/sys_def.h	/^typedef short				int16;$/;"	t
 int32	components/usr/sys_def.h	/^typedef long				int32;$/;"	t
 int8	components/usr/sys_def.h	/^typedef char 				int8;$/;"	t
-intv_cnts	components/usr/sys_conf.h	/^    uint32_t    intv_cnts;$/;"	m	struct:__anon17
+intv	components/usr/sys_conf.h	/^    uint32_t    intv;$/;"	m	struct:__anon17
+intv_cnts	components/usr/sys_conf.h	/^    uint32_t    intv_cnts;$/;"	m	struct:__anon16
+io_bm	components/usr/sys_conf.h	/^    uint32_t    io_bm;$/;"	m	struct:__anon23
+io_ds_init	components/drv/io_drv.c	/^static void io_ds_init(void)$/;"	f	file:
+io_init	components/drv/io_drv.c	/^void io_init(void)$/;"	f
+io_inst	components/drv/io_drv.c	/^static io_st io_inst;$/;"	v	file:
+io_register	components/drv/io_drv.c	/^static void io_register(void)$/;"	f	file:
+io_st	components/drv/io_drv.c	/^}io_st;$/;"	t	typeref:struct:__anon66	file:
 is_slow	components/kits/meow_fft.h	/^    unsigned is_slow;$/;"	m	struct:Meow_Stage_Info
 iteration	components/mqtt_tcp/mqtt_tcp.c	/^    struct arg_int *iteration;$/;"	m	struct:__anon5	typeref:struct:__anon5::arg_int	file:
 j	components/kits/meow_fft.h	/^    float j;$/;"	m	struct:Meow_FFT_Complex
 join_args	components/cli/cmd_wifi.c	/^} join_args;$/;"	v	typeref:struct:__anon6	file:
 kc_buf_rx	components/usr/cmd_resolve.c	/^kfifo_t 		kc_buf_rx;$/;"	v
 kc_buf_tx	components/usr/cmd_resolve.c	/^kfifo_t 		kc_buf_tx;$/;"	v
-key	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *key;$/;"	m	struct:__anon43	typeref:struct:__anon43::arg_str	file:
-key	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *key;$/;"	m	struct:__anon44	typeref:struct:__anon44::arg_str	file:
-key	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *key;$/;"	m	struct:__anon45	typeref:struct:__anon45::arg_str	file:
+key	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *key;$/;"	m	struct:__anon48	typeref:struct:__anon48::arg_str	file:
+key	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *key;$/;"	m	struct:__anon49	typeref:struct:__anon49::arg_str	file:
+key	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *key;$/;"	m	struct:__anon50	typeref:struct:__anon50::arg_str	file:
+kf_buf_s	components/drv/ads131_drv.c	/^static uint8_t 	kf_buf_s[ADC_FIFO_SIZE];$/;"	v	file:
 kf_buf_s	components/drv/adxl_drv.c	/^static uint8_t 	kf_buf_s[DEV_GEO_FIFO_SIZE];$/;"	v	file:
+kf_dl	components/drv/ads131_drv.c	/^kfifo_t 		kf_s,kf_dl;$/;"	v
+kf_init	components/drv/ads131_drv.c	/^static void kf_init(void)$/;"	f	file:
 kf_init	components/drv/adxl_drv.c	/^static void kf_init(void)$/;"	f	file:
+kf_s	components/drv/ads131_drv.c	/^kfifo_t 		kf_s,kf_dl;$/;"	v
 kf_s	components/drv/adxl_drv.c	/^kfifo_t 		kf_s;$/;"	v
 kfifo	components/kits/kfifo.h	/^typedef struct kfifo {$/;"	s
 kfifo_alloc	components/kits/kfifo.c	/^int kfifo_alloc(struct kfifo *fifo, unsigned int size\/*, gfp_t gfp_mask*\/)$/;"	f
-kfifo_drop_cnt	components/usr/sys_conf.h	/^    uint32_t   	kfifo_drop_cnt;$/;"	m	struct:__anon25
+kfifo_drop_cnt	components/usr/sys_conf.h	/^    uint32_t   	kfifo_drop_cnt;$/;"	m	struct:__anon27
 kfifo_in	components/kits/kfifo.c	/^unsigned int kfifo_in(struct kfifo *fifo, const void *from,$/;"	f
 kfifo_init	components/kits/kfifo.c	/^void kfifo_init(struct kfifo *fifo, void *buffer, unsigned int size)$/;"	f
 kfifo_len	components/kits/kfifo.c	/^unsigned int kfifo_len(struct kfifo *fifo)$/;"	f
@@ -2444,15 +2562,22 @@ kfifo_out_peek	components/kits/kfifo.c	/^unsigned int kfifo_out_peek(struct kfif
 kfifo_reset	components/kits/kfifo.c	/^void kfifo_reset(struct kfifo *fifo)$/;"	f
 kfifo_t	components/kits/kfifo.h	/^}kfifo_t;$/;"	t	typeref:struct:kfifo
 lc_client	components/mqtt_tcp/mqtt_tcp.c	/^static esp_mqtt_client_handle_t lc_client;$/;"	v	file:
+led_sts	components/drv/io_drv.c	/^    uint8_t 		led_sts;$/;"	m	struct:__anon66	file:
+led_tim_init	components/drv/io_drv.c	/^static void led_tim_init(void)$/;"	f	file:
+led_timer_cb	components/drv/io_drv.c	/^static void led_timer_cb(void* arg)$/;"	f	file:
+level	components/usr/global_var.c	/^    struct arg_int *level;$/;"	m	struct:__anon38	typeref:struct:__anon38::arg_int	file:
 light_sleep	components/cmd_system/cmd_system.c	/^static int light_sleep(int argc, char **argv)$/;"	f	file:
 light_sleep_args	components/cmd_system/cmd_system.c	/^} light_sleep_args;$/;"	v	typeref:struct:__anon3	file:
 list	components/cmd_nvs/cmd_nvs.c	/^static int list(const char *part, const char *name, const char *str_type)$/;"	f	file:
-list_args	components/cmd_nvs/cmd_nvs.c	/^} list_args;$/;"	v	typeref:struct:__anon48	file:
+list_args	components/cmd_nvs/cmd_nvs.c	/^} list_args;$/;"	v	typeref:struct:__anon53	file:
 list_entries	components/cmd_nvs/cmd_nvs.c	/^static int list_entries(int argc, char **argv)$/;"	f	file:
 load_conf	components/usr/global_var.c	/^int load_conf(const char *load_type)$/;"	f
 load_conf_opt	components/usr/reg_map_check.c	/^int16_t load_conf_opt(uint32_t pram)$/;"	f
 load_config_arg	components/usr/global_var.c	/^static int load_config_arg(int argc, char **argv)$/;"	f	file:
-low_lim	components/usr/sys_conf.h	/^    uint32_t    low_lim;$/;"	m	struct:__anon15
+log_args	components/usr/global_var.c	/^} log_args;$/;"	v	typeref:struct:__anon38	file:
+log_level_set	components/usr/global_var.c	/^static int log_level_set(int argc, char **argv)$/;"	f	file:
+low_lim	components/usr/sys_conf.h	/^    uint32_t    low_lim;$/;"	m	struct:__anon14
+low_pwr	components/usr/sys_conf.h	/^    uint32_t    low_pwr;$/;"	m	struct:__anon14
 main	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
 main	build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
@@ -2473,10 +2598,13 @@ main	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	/^void
 main	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
 main	components/usr/build/CMakeFiles/feature_tests.c	/^int main(int argc, char** argv) { (void)argv; return features[argc]; }$/;"	f
 main	components/usr/build/CMakeFiles/feature_tests.cxx	/^int main(int argc, char** argv) { (void)argv; return features[argc]; }$/;"	f
-man	components/usr/sys_conf.h	/^    stat_man_st 	man;$/;"	m	struct:__anon27
-man_date	components/usr/sys_conf.h	/^    uint32_t    man_date;$/;"	m	struct:__anon23
-mav_cnt	components/usr/sys_conf.h	/^    uint32_t    mav_cnt;$/;"	m	struct:__anon15
-max	components/usr/sys_conf.h	/^    uint32_t	max;$/;"	m	struct:__anon29
+man	components/usr/sys_conf.h	/^    stat_man_st 	man;$/;"	m	struct:__anon29
+man_date	components/usr/sys_conf.h	/^    uint32_t    man_date;$/;"	m	struct:__anon24
+mav_atten	components/usr/sys_conf.h	/^    uint32_t    mav_atten;$/;"	m	struct:__anon19
+mav_buffer	components/drv/bat_drv.c	/^	uint32_t	mav_buffer[MAV_MAX_CNT];$/;"	m	struct:__anon63	file:
+mav_cnt	components/drv/bat_drv.c	/^    uint32_t    mav_cnt;$/;"	m	struct:__anon63	file:
+mav_cnt	components/usr/sys_conf.h	/^    uint32_t    mav_cnt;$/;"	m	struct:__anon14
+max	components/usr/sys_conf.h	/^    uint32_t	max;$/;"	m	struct:__anon31
 meow_add	components/kits/meow_fft.h	/^Meow_FFT_Complex inline meow_add$/;"	f
 meow_calculate_stages	components/kits/meow_fft.h	/^Meow_Stage_Info meow_calculate_stages(unsigned n, Meow_FFT_Workset* workset)$/;"	f
 meow_conjugate	components/kits/meow_fft.h	/^Meow_FFT_Complex inline meow_conjugate(const Meow_FFT_Complex lhs)$/;"	f
@@ -2512,16 +2640,18 @@ meow_radix_8_dit_i	components/kits/meow_fft.h	/^static void meow_radix_8_dit_i$/
 meow_recursive_fft_mixed_meow_radix_dit	components/kits/meow_fft.h	/^void meow_recursive_fft_mixed_meow_radix_dit$/;"	f
 meow_recursive_fft_mixed_meow_radix_dit_i	components/kits/meow_fft.h	/^void meow_recursive_fft_mixed_meow_radix_dit_i$/;"	f
 meow_sub	components/kits/meow_fft.h	/^Meow_FFT_Complex inline meow_sub$/;"	f
+min	components/drv/ads131_drv.c	19;"	d	file:
 min	components/drv/adxl_drv.c	27;"	d	file:
 min	components/kits/kfifo.c	36;"	d	file:
-min	components/usr/sys_conf.h	/^    int32_t	    min;$/;"	m	struct:__anon29
-mod	components/usr/sys_conf.h	/^    conf_mod_st mod;$/;"	m	struct:__anon21
-mod_freq_off	components/usr/sys_conf.h	/^    uint32_t	mod_freq_off;$/;"	m	struct:__anon20
+min	components/usr/sys_conf.h	/^    int32_t	    min;$/;"	m	struct:__anon31
+mod	components/usr/sys_conf.h	/^    conf_mod_st mod;$/;"	m	struct:__anon22
+mod_freq_off	components/usr/sys_conf.h	/^    uint32_t	mod_freq_off;$/;"	m	struct:__anon21
+module	components/usr/global_var.c	/^    struct arg_str *module;$/;"	m	struct:__anon38	typeref:struct:__anon38::arg_str	file:
 mq_nvs_inst	components/mqtt_tcp/mqtt_tcp.c	/^static mq_nvs_st mq_nvs_inst;$/;"	v	file:
 mq_nvs_st	components/mqtt_tcp/mqtt_tcp.c	/^}mq_nvs_st;$/;"	t	typeref:struct:__anon4	file:
 mqtt_connect	components/mqtt_tcp/mqtt_tcp.c	/^int mqtt_connect(void)$/;"	f
 mqtt_disconnect	components/mqtt_tcp/mqtt_tcp.c	/^int mqtt_disconnect(void)$/;"	f
-mqtt_en	components/usr/sys_conf.h	/^    uint32_t    mqtt_en;$/;"	m	struct:__anon16
+mqtt_en	components/usr/sys_conf.h	/^    uint32_t    mqtt_en;$/;"	m	struct:__anon15
 mqtt_event_handler	components/mqtt_tcp/mqtt_tcp.c	/^static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data) {$/;"	f	file:
 mqtt_event_handler_cb	components/mqtt_tcp/mqtt_tcp.c	/^static esp_err_t mqtt_event_handler_cb(esp_mqtt_event_handle_t event)$/;"	f	file:
 mqtt_register	components/mqtt_tcp/mqtt_tcp.c	/^void mqtt_register(void)$/;"	f
@@ -2530,40 +2660,48 @@ mqtt_start	components/mqtt_tcp/mqtt_tcp.c	/^static int mqtt_start(int argc, char
 mqtt_transmitt	components/mqtt_tcp/mqtt_tcp.c	/^int mqtt_transmitt(void *tx_buf,int tx_len)$/;"	f
 mqtt_tx_args	components/mqtt_tcp/mqtt_tcp.c	/^} mqtt_tx_args;$/;"	v	typeref:struct:__anon5	file:
 my_fft_inst	components/kits/my_fft.c	/^my_fft_st 		my_fft_inst;$/;"	v
-my_fft_st	components/kits/my_fft.c	/^}my_fft_st;$/;"	t	typeref:struct:__anon10	file:
+my_fft_st	components/kits/my_fft.c	/^}my_fft_st;$/;"	t	typeref:struct:__anon9	file:
+n	components/usr/sys_conf.h	/^    uint32_t    n;$/;"	m	struct:__anon16
 n	components/usr/sys_conf.h	/^    uint32_t    n;$/;"	m	struct:__anon17
-n	components/usr/sys_conf.h	/^    uint32_t    n;$/;"	m	struct:__anon18
-namespace	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *namespace;$/;"	m	struct:__anon46	typeref:struct:__anon46::arg_str	file:
-namespace	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *namespace;$/;"	m	struct:__anon47	typeref:struct:__anon47::arg_str	file:
-namespace	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *namespace;$/;"	m	struct:__anon48	typeref:struct:__anon48::arg_str	file:
-namespace_args	components/cmd_nvs/cmd_nvs.c	/^} namespace_args;$/;"	v	typeref:struct:__anon47	file:
-noise_level	components/kits/goertzel.c	/^    float 		noise_level;$/;"	m	struct:__anon8	file:
-noise_level	components/usr/sys_conf.h	/^    float		noise_level;$/;"	m	struct:__anon26
-obuf	components/drv/adxl_drv.h	/^    float		obuf[DEV_GEO_FIFO_SIZE];$/;"	m	struct:__anon49
-offset	components/kits/goertzel.c	/^    int16_t		offset;$/;"	m	struct:__anon8	file:
-offset	components/usr/sys_conf.h	/^    int32_t		offset;$/;"	m	struct:__anon26
+namespace	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *namespace;$/;"	m	struct:__anon51	typeref:struct:__anon51::arg_str	file:
+namespace	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *namespace;$/;"	m	struct:__anon52	typeref:struct:__anon52::arg_str	file:
+namespace	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *namespace;$/;"	m	struct:__anon53	typeref:struct:__anon53::arg_str	file:
+namespace_args	components/cmd_nvs/cmd_nvs.c	/^} namespace_args;$/;"	v	typeref:struct:__anon52	file:
+nlv_f	components/usr/sys_conf.h	/^    float		nlv_f;$/;"	m	struct:__anon28
+nlv_i	components/usr/sys_conf.h	/^    uint32_t    nlv_i;$/;"	m	struct:__anon28
+obuf	components/drv/ads131_drv.c	/^    int32_t                         obuf;$/;"	m	struct:__anon55	file:
 offsets	components/kits/meow_fft.h	/^    unsigned* offsets;$/;"	m	struct:Meow_Fft_Stages
-ord	components/kits/my_fft.c	/^	uint16_t				ord;$/;"	m	struct:__anon10	file:
+ord	components/kits/my_fft.c	/^	uint16_t				ord;$/;"	m	struct:__anon9	file:
 out	components/kits/kfifo.h	/^    unsigned int out;\/* data is extracted from off. (out % size) *\/$/;"	m	struct:kfifo
-out_dbuf_ptr	components/kits/my_fft.c	/^	Meow_FFT_Complex*		out_dbuf_ptr;$/;"	m	struct:__anon10	file:
-partition	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *partition;$/;"	m	struct:__anon48	typeref:struct:__anon48::arg_str	file:
+out_dbuf_ptr	components/kits/my_fft.c	/^	Meow_FFT_Complex*		out_dbuf_ptr;$/;"	m	struct:__anon9	file:
+output_init	components/drv/io_drv.c	/^static void output_init(void)$/;"	f	file:
+partition	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *partition;$/;"	m	struct:__anon53	typeref:struct:__anon53::arg_str	file:
 password	components/cli/cmd_wifi.c	/^    struct arg_str *password;$/;"	m	struct:__anon6	typeref:struct:__anon6::arg_str	file:
-pga_gain	components/usr/sys_conf.h	/^    uint32_t    pga_gain[SAMPLE_CHANNEL_MAX];$/;"	m	struct:__anon13
-pkg_en	components/usr/sys_conf.h	/^    uint32_t    pkg_en;$/;"	m	struct:__anon13
-pkg_en	components/usr/sys_conf.h	/^    uint32_t    pkg_en;$/;"	m	struct:__anon19
-pkg_period	components/usr/daq.c	/^    uint32_t pkg_period;$/;"	m	struct:__anon41	file:
-pkg_period	components/usr/sys_conf.h	/^    uint32_t    pkg_period;$/;"	m	struct:__anon13
-pkg_period	components/usr/sys_conf.h	/^    uint32_t    pkg_period;$/;"	m	struct:__anon19
-pkg_size	components/usr/sys_conf.h	/^    uint32_t    pkg_size;$/;"	m	struct:__anon13
+peak	components/usr/sys_conf.h	/^    uint32_t   	peak;$/;"	m	struct:__anon26
+per	components/usr/sys_conf.h	/^    conf_per_st per;$/;"	m	struct:__anon22
+pga_args	components/drv/io_drv.c	/^} pga_args;$/;"	v	typeref:struct:__anon67	file:
+pga_gain	components/drv/io_drv.c	/^void pga_gain(uint8_t gain_ind)$/;"	f
+pga_gain	components/usr/sys_conf.h	/^    uint32_t    pga_gain[SAMPLE_CHANNEL_MAX];$/;"	m	struct:__anon12
+pkg_en	components/usr/sys_conf.h	/^    uint32_t    pkg_en;$/;"	m	struct:__anon12
+pkg_en	components/usr/sys_conf.h	/^    uint32_t    pkg_en;$/;"	m	struct:__anon20
+pkg_period	components/usr/daq.c	/^    uint32_t pkg_period;$/;"	m	struct:__anon46	file:
+pkg_period	components/usr/sys_conf.h	/^    uint32_t    pkg_period;$/;"	m	struct:__anon12
+pkg_period	components/usr/sys_conf.h	/^    uint32_t    pkg_period;$/;"	m	struct:__anon20
+pkg_size	components/usr/sys_conf.h	/^    uint32_t    pkg_size;$/;"	m	struct:__anon12
+pre_drop	components/usr/sys_conf.h	/^    uint32_t    pre_drop;$/;"	m	struct:__anon19
 print_blob	components/cmd_nvs/cmd_nvs.c	/^static void print_blob(const char *blob, size_t len)$/;"	f	file:
+print_char_val_type	components/drv/bat_drv.c	/^static void print_char_val_type(esp_adc_cal_value_t val_type)$/;"	f	file:
 print_config	components/usr/global_var.c	/^static int print_config(int argc, char **argv)$/;"	f	file:
-prt	components/usr/sys_conf.h	/^    conf_prt_st prt;$/;"	m	struct:__anon21
+prt	components/usr/sys_conf.h	/^    conf_prt_st prt;$/;"	m	struct:__anon22
 pub_topic	components/mqtt_tcp/mqtt_tcp.c	/^    char pub_topic[MQ_NVS_STR_SIZE];$/;"	m	struct:__anon4	file:
-pwr_sts	components/usr/sys_conf.h	/^    uint32_t   	pwr_sts;$/;"	m	struct:__anon24
-pwr_val	components/usr/sys_conf.h	/^    uint32_t   	pwr_val;$/;"	m	struct:__anon24
-q0	components/kits/goertzel.c	/^    float 		q0[FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
-q1	components/kits/goertzel.c	/^    float 		q1[FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
-q2	components/kits/goertzel.c	/^    float 		q2[FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
+pwr_cut_opt	components/usr/reg_map_check.c	/^int16_t pwr_cut_opt(uint32_t pram)$/;"	f
+pwr_fsm	components/drv/io_drv.c	/^    uint8_t 		pwr_fsm;$/;"	m	struct:__anon66	file:
+pwr_fsm_thread	components/drv/io_drv.c	/^void pwr_fsm_thread(void* param)$/;"	f
+pwr_sts	components/usr/sys_conf.h	/^    uint32_t   	pwr_sts;$/;"	m	struct:__anon25
+pwr_val	components/usr/sys_conf.h	/^    uint32_t   	pwr_val;$/;"	m	struct:__anon25
+q0	components/kits/goertzel.c	/^    float 		q0[GTZ_FLOWS_MAX][FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
+q1	components/kits/goertzel.c	/^    float 		q1[GTZ_FLOWS_MAX][FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
+q2	components/kits/goertzel.c	/^    float 		q2[GTZ_FLOWS_MAX][FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
 qnxnto	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 qnxnto	build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 qnxnto	build/bootloader/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
@@ -2573,28 +2711,36 @@ qnxnto	components/cmd_nvs/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerI
 qnxnto	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 qnxnto	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
 r	components/kits/meow_fft.h	/^    float r;$/;"	m	struct:Meow_FFT_Complex
+radc_reg	components/drv/ads131_drv.c	/^static int radc_reg(int argc, char **argv)$/;"	f	file:
 radix	components/kits/meow_fft.h	/^    unsigned* radix;$/;"	m	struct:Meow_Fft_Stages
-rank	components/kits/goertzel.c	/^    uint16_t 	rank;$/;"	m	struct:__anon8	file:
-rank	components/usr/sys_conf.h	/^    uint32_t   	rank;$/;"	m	struct:__anon26
+raw	components/usr/sys_conf.h	/^    uint32_t   	raw;$/;"	m	struct:__anon26
 raw_data_buf	components/drv/adxl_drv.c	/^static int16_t raw_data_buf(uint32_t din, uint8_t axis)$/;"	f	file:
 rd_reg	components/usr/global_var.c	/^static int rd_reg(int argc, char **argv)$/;"	f	file:
 recv_frame_fsm	components/usr/cmd_resolve.c	/^void recv_frame_fsm(void)$/;"	f
 reg_map_read	components/usr/global_var.c	/^uint16 reg_map_read(uint16 reg_addr,uint32_t* reg_data,uint8_t read_cnt)$/;"	f
 reg_map_write	components/usr/global_var.c	/^uint16 reg_map_write(uint16 reg_addr, uint32_t *wr_data, uint8_t wr_cnt)$/;"	f
-reg_ptr	components/usr/sys_conf.h	/^    uint32_t*	reg_ptr;$/;"	m	struct:__anon29
-reg_ptr	components/usr/sys_conf.h	/^    uint32_t*	reg_ptr;$/;"	m	struct:__anon30
+reg_ptr	components/usr/sys_conf.h	/^    uint32_t*	reg_ptr;$/;"	m	struct:__anon31
+reg_ptr	components/usr/sys_conf.h	/^    uint32_t*	reg_ptr;$/;"	m	struct:__anon32
+register_adc_cmd	components/drv/ads131_drv.c	/^static void register_adc_cmd()$/;"	f	file:
+register_adc_cmd_r	components/drv/ads131_drv.c	/^static void register_adc_cmd_r()$/;"	f	file:
+register_adc_data	components/drv/ads131_drv.c	/^static void register_adc_data()$/;"	f	file:
+register_adc_rd	components/drv/ads131_drv.c	/^static void register_adc_rd()$/;"	f	file:
+register_adc_read	components/drv/bat_drv.c	/^static void register_adc_read()$/;"	f	file:
+register_adc_wr	components/drv/ads131_drv.c	/^static void register_adc_wr()$/;"	f	file:
 register_adxl_info	components/drv/adxl_drv.c	/^static void register_adxl_info()$/;"	f	file:
 register_adxl_rd	components/drv/adxl_drv.c	/^static void register_adxl_rd()$/;"	f	file:
 register_adxl_wr	components/drv/adxl_drv.c	/^static void register_adxl_wr()$/;"	f	file:
+register_dac_set	components/drv/bat_drv.c	/^static void register_dac_set()$/;"	f	file:
 register_deep_sleep	components/cmd_system/cmd_system.c	/^static void register_deep_sleep(void)$/;"	f	file:
-register_fft_info	components/drv/adxl_drv.c	/^static void register_fft_info()$/;"	f	file:
 register_free	components/cmd_system/cmd_system.c	/^static void register_free(void)$/;"	f	file:
 register_heap	components/cmd_system/cmd_system.c	/^static void register_heap(void)$/;"	f	file:
 register_light_sleep	components/cmd_system/cmd_system.c	/^static void register_light_sleep(void)$/;"	f	file:
 register_load_conf	components/usr/global_var.c	/^static void register_load_conf()$/;"	f	file:
+register_log_level_set	components/usr/global_var.c	/^static void register_log_level_set()$/;"	f	file:
 register_mq_rtx	components/mqtt_tcp/mqtt_tcp.c	/^static void register_mq_rtx()$/;"	f	file:
 register_mq_start	components/mqtt_tcp/mqtt_tcp.c	/^static void register_mq_start()$/;"	f	file:
 register_nvs	components/cmd_nvs/cmd_nvs.c	/^void register_nvs(void)$/;"	f
+register_pga_gain	components/drv/io_drv.c	/^static void register_pga_gain()$/;"	f	file:
 register_print_conf	components/usr/global_var.c	/^static void register_print_conf()$/;"	f	file:
 register_rd_reg	components/usr/global_var.c	/^static void register_rd_reg()$/;"	f	file:
 register_restart	components/cmd_system/cmd_system.c	/^static void register_restart(void)$/;"	f	file:
@@ -2604,119 +2750,140 @@ register_tasks	components/cmd_system/cmd_system.c	/^static void register_tasks(v
 register_version	components/cmd_system/cmd_system.c	/^static void register_version(void)$/;"	f	file:
 register_wifi	components/cli/cmd_wifi.c	/^void register_wifi(void)$/;"	f
 register_wr_reg	components/usr/global_var.c	/^static void register_wr_reg()$/;"	f	file:
-regmap_args	components/usr/global_var.c	/^} regmap_args;$/;"	v	typeref:struct:__anon35	file:
+regmap_args	components/usr/global_var.c	/^} regmap_args;$/;"	v	typeref:struct:__anon37	file:
 remainder	components/kits/meow_fft.h	/^    unsigned* remainder;$/;"	m	struct:Meow_Fft_Stages
 repeats	components/mqtt_tcp/mqtt_tcp.c	/^    struct arg_int *repeats;$/;"	m	struct:__anon5	typeref:struct:__anon5::arg_int	file:
-res	components/kits/goertzel.c	/^    float		res[FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
-reset	components/usr/sys_conf.h	/^    uint32_t    reset;$/;"	m	struct:__anon18
+res	components/kits/goertzel.c	/^    float		res[GTZ_FLOWS_MAX][FREQ_SPAN_MAX];$/;"	m	struct:__anon7	file:
+res_cd	components/usr/sys_conf.h	/^    uint32_t    res_cd;$/;"	m	struct:__anon17
+res_cd	components/usr/sys_conf.h	/^    uint32_t    res_cd;$/;"	m	struct:__anon28
+res_nlv_i	components/usr/sys_conf.h	/^    uint32_t    res_nlv_i;$/;"	m	struct:__anon28
+res_pos	components/usr/sys_conf.h	/^    uint32_t    res_pos;$/;"	m	struct:__anon17
+res_slv_i	components/usr/sys_conf.h	/^    uint32_t    res_slv_i;$/;"	m	struct:__anon28
+res_snr_i	components/usr/sys_conf.h	/^    uint32_t    res_snr_i;$/;"	m	struct:__anon28
 restart	components/cmd_system/cmd_system.c	/^static int restart(int argc, char **argv)$/;"	f	file:
-restart	components/usr/sys_conf.h	/^    uint32_t    restart;$/;"	m	struct:__anon11
+restart	components/usr/sys_conf.h	/^    uint32_t    restart;$/;"	m	struct:__anon10
 roundup_pow_of_two	components/kits/kfifo.c	38;"	d	file:
-rtx_timeout	components/usr/cmd_resolve.c	/^    uint16_t rtx_timeout;$/;"	m	struct:__anon33	file:
-rx_buf	components/usr/cmd_resolve.c	/^    uint8_t rx_buf[CMD_RTX_BUF_DEPTH];$/;"	m	struct:__anon33	file:
-rx_buf	components/usr/daq.c	/^    uint8_t  rx_buf[DAQ_RX_BUF_DEPTH];$/;"	m	struct:__anon41	file:
-rx_cmd	components/usr/cmd_resolve.c	/^    uint16_t rx_cmd;$/;"	m	struct:__anon33	file:
-rx_cnt	components/usr/cmd_resolve.c	/^    uint16_t rx_cnt;$/;"	m	struct:__anon33	file:
-rx_len	components/usr/cmd_resolve.c	/^    uint16_t rx_len;$/;"	m	struct:__anon33	file:
-rx_tag	components/usr/cmd_resolve.c	/^    uint16_t rx_tag;$/;"	m	struct:__anon33	file:
-rxd	components/drv/adxl_drv.c	/^    uint8_t                         rxd[DEV_GEO_RTX_SIZE];$/;"	m	struct:__anon51	file:
+rqueue_append	components/kits/goertzel.c	/^static int16_t rqueue_append(uint32_t snr, uint32_t slv)$/;"	f	file:
+rqueue_init	components/kits/goertzel.c	/^static void rqueue_init(void)$/;"	f	file:
+rqueue_inst	components/kits/goertzel.c	/^rqueue_st rqueue_inst;$/;"	v
+rqueue_qsort	components/kits/goertzel.c	/^static void rqueue_qsort(void)$/;"	f	file:
+rqueue_st	components/kits/goertzel.c	/^}rqueue_st;$/;"	t	typeref:struct:__anon8	file:
+rtx_timeout	components/usr/cmd_resolve.c	/^    uint16_t rtx_timeout;$/;"	m	struct:__anon35	file:
+rx_buf	components/usr/cmd_resolve.c	/^    uint8_t rx_buf[CMD_RTX_BUF_DEPTH];$/;"	m	struct:__anon35	file:
+rx_buf	components/usr/daq.c	/^    uint8_t  rx_buf[DAQ_RX_BUF_DEPTH];$/;"	m	struct:__anon46	file:
+rx_cmd	components/usr/cmd_resolve.c	/^    uint16_t rx_cmd;$/;"	m	struct:__anon35	file:
+rx_cnt	components/usr/cmd_resolve.c	/^    uint16_t rx_cnt;$/;"	m	struct:__anon35	file:
+rx_len	components/usr/cmd_resolve.c	/^    uint16_t rx_len;$/;"	m	struct:__anon35	file:
+rx_tag	components/usr/cmd_resolve.c	/^    uint16_t rx_tag;$/;"	m	struct:__anon35	file:
+rxd	components/drv/ads131_drv.c	/^    uint8_t                         rxd[16];$/;"	m	struct:__anon56	file:
+rxd	components/drv/adxl_drv.c	/^    uint8_t                         rxd[DEV_GEO_RTX_SIZE];$/;"	m	struct:__anon60	file:
 rxd_temp	components/drv/adxl_drv.c	/^static uint8_t 	rxd_temp[DEV_GEO_RTX_SIZE];$/;"	v	file:
-sample_channel_bm	components/usr/sys_conf.h	/^    uint32_t    sample_channel_bm;$/;"	m	struct:__anon13
-sample_freq	components/usr/sys_conf.h	/^    uint32_t    sample_freq;$/;"	m	struct:__anon18
-sample_period	components/usr/sys_conf.h	/^    uint32_t    sample_period;$/;"	m	struct:__anon13
-sample_rate	components/usr/daq.c	/^    uint16_t sample_rate;$/;"	m	struct:__anon41	file:
-sample_rate	components/usr/sys_conf.h	/^    uint32_t    sample_rate;$/;"	m	struct:__anon19
-samples_per_frame	components/usr/sys_conf.h	/^    uint32_t    samples_per_frame;$/;"	m	struct:__anon14
-savconf_args	components/usr/global_var.c	/^} savconf_args;$/;"	v	typeref:struct:__anon34	file:
+sadc_data	components/drv/ads131_drv.c	/^static int sadc_data(int argc, char **argv)$/;"	f	file:
+sample_channel_bm	components/usr/sys_conf.h	/^    uint32_t    sample_channel_bm;$/;"	m	struct:__anon12
+sample_freq	components/usr/sys_conf.h	/^    uint32_t    sample_freq;$/;"	m	struct:__anon17
+sample_period	components/usr/sys_conf.h	/^    uint32_t    sample_period;$/;"	m	struct:__anon12
+sample_rate	components/usr/daq.c	/^    uint16_t sample_rate;$/;"	m	struct:__anon46	file:
+sample_rate	components/usr/sys_conf.h	/^    uint32_t    sample_rate;$/;"	m	struct:__anon20
+samples_per_frame	components/usr/sys_conf.h	/^    uint32_t    samples_per_frame;$/;"	m	struct:__anon13
+savconf_args	components/usr/global_var.c	/^} savconf_args;$/;"	v	typeref:struct:__anon36	file:
 save_conf	components/usr/global_var.c	/^int save_conf(const char *save_type)$/;"	f
 save_conf_opt	components/usr/reg_map_check.c	/^int16_t save_conf_opt(uint32_t pram)$/;"	f
 save_config_arg	components/usr/global_var.c	/^static int save_config_arg(int argc, char **argv)$/;"	f	file:
-scan_period	components/usr/sys_conf.h	/^    uint32_t    scan_period;$/;"	m	struct:__anon19
-serial_no	components/usr/sys_conf.h	/^    uint32_t    serial_no;$/;"	m	struct:__anon23
-service_bm	components/usr/sys_conf.h	/^    uint32_t    service_bm;$/;"	m	struct:__anon16
+scan_period	components/usr/sys_conf.h	/^    uint32_t    scan_period;$/;"	m	struct:__anon20
+serial_no	components/usr/sys_conf.h	/^    uint32_t    serial_no;$/;"	m	struct:__anon24
+service_bm	components/usr/sys_conf.h	/^    uint32_t    service_bm;$/;"	m	struct:__anon15
 service_opt	components/usr/reg_map_check.c	/^int16_t service_opt(uint32_t pram)$/;"	f
-set_args	components/cmd_nvs/cmd_nvs.c	/^} set_args;$/;"	v	typeref:struct:__anon43	file:
-set_led	components/drv/led_drv.c	/^void set_led(uint8_t pin_num, uint8_t value)$/;"	f
+set_args	components/cmd_nvs/cmd_nvs.c	/^} set_args;$/;"	v	typeref:struct:__anon48	file:
 set_namespace	components/cmd_nvs/cmd_nvs.c	/^static int set_namespace(int argc, char **argv)$/;"	f	file:
 set_value	components/cmd_nvs/cmd_nvs.c	/^static int set_value(int argc, char **argv)$/;"	f	file:
 set_value_in_nvs	components/cmd_nvs/cmd_nvs.c	/^static esp_err_t set_value_in_nvs(const char *key, const char *str_type, const char *str_value)$/;"	f	file:
 set_wifi_con_opt	components/usr/reg_map_check.c	/^int16_t set_wifi_con_opt(uint32_t pram)$/;"	f
-setup_time	components/usr/sys_conf.h	/^    uint32_t    setup_time;$/;"	m	struct:__anon20
-signal_level	components/kits/goertzel.c	/^    float 		signal_level;$/;"	m	struct:__anon8	file:
-signal_level	components/usr/sys_conf.h	/^    float		signal_level;$/;"	m	struct:__anon26
-signal_th	components/usr/sys_conf.h	/^    uint32_t    signal_th;$/;"	m	struct:__anon18
+setup_time	components/usr/sys_conf.h	/^    uint32_t    setup_time;$/;"	m	struct:__anon21
+shutdown_cd	components/usr/sys_conf.h	/^    uint32_t    shutdown_cd;$/;"	m	struct:__anon23
+shutdown_intv	components/usr/sys_conf.h	/^    uint32_t    shutdown_intv;$/;"	m	struct:__anon10
+sig_mav	components/drv/ads131_drv.c	/^static void sig_mav(int32_t din)$/;"	f	file:
+signal_th	components/usr/sys_conf.h	/^    uint32_t    signal_th;$/;"	m	struct:__anon17
 size	components/kits/kfifo.h	/^    unsigned int size;\/* the size of the allocated buffer *\/$/;"	m	struct:kfifo
-snr	components/kits/goertzel.c	/^    float		snr;$/;"	m	struct:__anon8	file:
-snr_buf_inst	components/kits/goertzel.c	/^snr_buf_st snr_buf_inst;$/;"	v
-snr_buf_st	components/kits/goertzel.c	/^}snr_buf_st;$/;"	t	typeref:struct:__anon9	file:
-snr_sts_st	components/kits/goertzel.c	/^}snr_sts_st;$/;"	t	typeref:struct:__anon8	file:
+slv_f	components/usr/sys_conf.h	/^    float		slv_f;$/;"	m	struct:__anon28
+slv_i	components/usr/sys_conf.h	/^    uint32_t    slv_i;$/;"	m	struct:__anon28
+snr	components/usr/sys_conf.h	/^    float	   	snr;$/;"	m	struct:__anon28
+snr_f	components/usr/sys_conf.h	/^    float	   	snr_f;$/;"	m	struct:__anon28
+snr_i	components/usr/sys_conf.h	/^    uint32_t    snr_i;$/;"	m	struct:__anon28
+snr_slv	components/kits/goertzel.c	/^    uint64_t 	snr_slv[R_QBUF_MAX];$/;"	m	struct:__anon8	file:
 sock	components/mqtt_tcp/tcp_server.c	/^static int sock;$/;"	v	file:
-software_ver	components/usr/sys_conf.h	/^    uint32_t    software_ver;$/;"	m	struct:__anon22
-spi_device_h	components/drv/adxl_drv.c	/^    spi_device_handle_t     		spi_device_h;$/;"	m	struct:__anon51	file:
+software_ver	components/usr/sys_conf.h	/^    uint32_t    software_ver;$/;"	m	struct:__anon23
+span_gap	components/usr/sys_conf.h	/^    uint32_t    span_gap;$/;"	m	struct:__anon17
+spi_device_h	components/drv/ads131_drv.c	/^    spi_device_handle_t     		spi_device_h;$/;"	m	struct:__anon56	file:
+spi_device_h	components/drv/adxl_drv.c	/^    spi_device_handle_t     		spi_device_h;$/;"	m	struct:__anon60	file:
+spi_geo_dev_inst	components/drv/ads131_drv.c	/^spi_geo_device_st   spi_geo_dev_inst;$/;"	v
 spi_geo_dev_inst	components/drv/adxl_drv.c	/^spi_geo_device_st spi_geo_dev_inst;$/;"	v
-spi_geo_device_st	components/drv/adxl_drv.c	/^}spi_geo_device_st;$/;"	t	typeref:struct:__anon51	file:
+spi_geo_device_st	components/drv/ads131_drv.c	/^}spi_geo_device_st;$/;"	t	typeref:struct:__anon56	file:
+spi_geo_device_st	components/drv/adxl_drv.c	/^}spi_geo_device_st;$/;"	t	typeref:struct:__anon60	file:
+sps	components/usr/sys_conf.h	/^    uint32_t    sps;$/;"	m	struct:__anon19
 ssid	components/cli/cmd_wifi.c	/^    struct arg_str *ssid;$/;"	m	struct:__anon6	typeref:struct:__anon6::arg_str	file:
 stage_count	components/kits/meow_fft.h	/^    unsigned stage_count;$/;"	m	struct:Meow_Stage_Info
 stages	components/kits/meow_fft.h	/^    Meow_Fft_Stages   stages;$/;"	m	struct:Meow_FFT_Workset
 start_mdns_service	components/cli/cmd_wifi.c	/^static void start_mdns_service(void)$/;"	f	file:
-stat	components/usr/sys_conf.h	/^    status_st   stat;$/;"	m	struct:__anon28
-stat_bat_st	components/usr/sys_conf.h	/^}stat_bat_st;$/;"	t	typeref:struct:__anon24
-stat_gen_st	components/usr/sys_conf.h	/^}stat_gen_st;$/;"	t	typeref:struct:__anon22
-stat_geo_st	components/usr/sys_conf.h	/^}stat_geo_st;$/;"	t	typeref:struct:__anon25
-stat_gtz_st	components/usr/sys_conf.h	/^}stat_gtz_st;$/;"	t	typeref:struct:__anon26
-stat_man_st	components/usr/sys_conf.h	/^}stat_man_st;$/;"	t	typeref:struct:__anon23
-state	components/drv/adxl_drv.h	/^	uint8_t		state;$/;"	m	struct:__anon49
-status_bm	components/usr/sys_conf.h	/^    uint32_t    status_bm;$/;"	m	struct:__anon22
+stat	components/drv/ads131_drv.c	/^    uint8_t                         stat;$/;"	m	struct:__anon55	file:
+stat	components/usr/sys_conf.h	/^    status_st   stat;$/;"	m	struct:__anon30
+stat_adc_st	components/usr/sys_conf.h	/^}stat_adc_st;$/;"	t	typeref:struct:__anon26
+stat_bat_st	components/usr/sys_conf.h	/^}stat_bat_st;$/;"	t	typeref:struct:__anon25
+stat_gen_st	components/usr/sys_conf.h	/^}stat_gen_st;$/;"	t	typeref:struct:__anon23
+stat_geo_st	components/usr/sys_conf.h	/^}stat_geo_st;$/;"	t	typeref:struct:__anon27
+stat_gtz_st	components/usr/sys_conf.h	/^}stat_gtz_st;$/;"	t	typeref:struct:__anon28
+stat_man_st	components/usr/sys_conf.h	/^}stat_man_st;$/;"	t	typeref:struct:__anon24
+status_bm	components/usr/sys_conf.h	/^    uint32_t    status_bm;$/;"	m	struct:__anon23
 status_reg_map_inst	components/usr/global_var.c	/^const sts_reg_map_st status_reg_map_inst[STAT_REG_MAP_NUM]=$/;"	v
-status_reg_num	components/usr/sys_conf.h	/^    uint32_t    status_reg_num;$/;"	m	struct:__anon22
-status_st	components/usr/sys_conf.h	/^}status_st;$/;"	t	typeref:struct:__anon27
+status_reg_num	components/usr/sys_conf.h	/^    uint32_t    status_reg_num;$/;"	m	struct:__anon23
+status_st	components/usr/sys_conf.h	/^}status_st;$/;"	t	typeref:struct:__anon29
 store_blob	components/cmd_nvs/cmd_nvs.c	/^static esp_err_t store_blob(nvs_handle_t nvs, const char *key, const char *str_values)$/;"	f	file:
-str	components/cmd_nvs/cmd_nvs.c	/^    const char *str;$/;"	m	struct:__anon42	file:
+str	components/cmd_nvs/cmd_nvs.c	/^    const char *str;$/;"	m	struct:__anon47	file:
 str_to_type	components/cmd_nvs/cmd_nvs.c	/^static nvs_type_t str_to_type(const char *type)$/;"	f	file:
-sts_reg_map_st	components/usr/sys_conf.h	/^}sts_reg_map_st;$/;"	t	typeref:struct:__anon30
+sts_reg_map_st	components/usr/sys_conf.h	/^}sts_reg_map_st;$/;"	t	typeref:struct:__anon32
 sub_topic	components/mqtt_tcp/mqtt_tcp.c	/^    char sub_topic[MQ_NVS_STR_SIZE];$/;"	m	struct:__anon4	file:
-symbol_period	components/usr/sys_conf.h	/^    uint32_t	symbol_period;$/;"	m	struct:__anon20
-sys_reg_st	components/usr/sys_conf.h	/^}sys_reg_st;$/;"	t	typeref:struct:__anon28
-target_freq	components/usr/sys_conf.h	/^    uint32_t    target_freq;$/;"	m	struct:__anon18
-target_span	components/usr/sys_conf.h	/^    uint32_t    target_span;$/;"	m	struct:__anon18
+symbol_period	components/usr/sys_conf.h	/^    uint32_t	symbol_period;$/;"	m	struct:__anon21
+sys_reg_st	components/usr/sys_conf.h	/^}sys_reg_st;$/;"	t	typeref:struct:__anon30
+target_freq	components/usr/sys_conf.h	/^    uint32_t    target_freq;$/;"	m	struct:__anon17
+target_span	components/usr/sys_conf.h	/^    uint32_t    target_span;$/;"	m	struct:__anon17
 tasks_create	main/main.c	/^static void tasks_create(void)$/;"	f	file:
 tasks_info	components/cmd_system/cmd_system.c	/^static int tasks_info(int argc, char **argv)$/;"	f	file:
-tcp_en	components/usr/sys_conf.h	/^    uint32_t    tcp_en;$/;"	m	struct:__anon16
+tcp_en	components/usr/sys_conf.h	/^    uint32_t    tcp_en;$/;"	m	struct:__anon15
 tcp_srv_start	components/mqtt_tcp/tcp_server.c	/^void tcp_srv_start(void)$/;"	f
 tcp_thread	components/mqtt_tcp/tcp_server.c	/^void tcp_thread(void *param)$/;"	f
 tcp_transmitt	components/mqtt_tcp/tcp_server.c	/^int tcp_transmitt(void *tx_buf,int tx_len)$/;"	f
 test_buf	components/usr/daq.c	/^uint8_t test_buf[1024]={0};$/;"	v
 test_examples_system_console	example_test.py	/^def test_examples_system_console(env, extra_data):$/;"	f
 timeout	components/cli/cmd_wifi.c	/^    struct arg_int *timeout;$/;"	m	struct:__anon6	typeref:struct:__anon6::arg_int	file:
-toggle_led	components/drv/led_drv.c	/^void toggle_led(uint8_t pin_num)$/;"	f
 topic	components/mqtt_tcp/mqtt_tcp.c	/^    struct arg_str *topic;$/;"	m	struct:__anon5	typeref:struct:__anon5::arg_str	file:
-tx_buf	components/usr/cmd_resolve.c	/^    uint8_t tx_buf[CMD_RTX_BUF_DEPTH*2];$/;"	m	struct:__anon33	file:
-tx_buf	components/usr/daq.c	/^    uint8_t  tx_buf[DAQ_TX_BUF_DEPTH];$/;"	m	struct:__anon41	file:
-tx_cmd	components/usr/cmd_resolve.c	/^    uint16_t tx_cmd;$/;"	m	struct:__anon33	file:
-tx_cnt	components/usr/cmd_resolve.c	/^    uint16_t tx_cnt;$/;"	m	struct:__anon33	file:
-tx_errcode	components/usr/cmd_resolve.c	/^    uint8_t  tx_errcode;$/;"	m	struct:__anon33	file:
-txd	components/drv/adxl_drv.c	/^    uint8_t                         txd[DEV_GEO_RTX_SIZE];$/;"	m	struct:__anon51	file:
-type	components/cmd_nvs/cmd_nvs.c	/^    nvs_type_t type;$/;"	m	struct:__anon42	file:
-type	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *type;$/;"	m	struct:__anon43	typeref:struct:__anon43::arg_str	file:
-type	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *type;$/;"	m	struct:__anon44	typeref:struct:__anon44::arg_str	file:
+tx_buf	components/usr/cmd_resolve.c	/^    uint8_t tx_buf[CMD_RTX_BUF_DEPTH*2];$/;"	m	struct:__anon35	file:
+tx_buf	components/usr/daq.c	/^    uint8_t  tx_buf[DAQ_TX_BUF_DEPTH];$/;"	m	struct:__anon46	file:
+tx_cmd	components/usr/cmd_resolve.c	/^    uint16_t tx_cmd;$/;"	m	struct:__anon35	file:
+tx_cnt	components/usr/cmd_resolve.c	/^    uint16_t tx_cnt;$/;"	m	struct:__anon35	file:
+tx_errcode	components/usr/cmd_resolve.c	/^    uint8_t  tx_errcode;$/;"	m	struct:__anon35	file:
+txd	components/drv/ads131_drv.c	/^    uint8_t                         txd[16];$/;"	m	struct:__anon56	file:
+txd	components/drv/adxl_drv.c	/^    uint8_t                         txd[DEV_GEO_RTX_SIZE];$/;"	m	struct:__anon60	file:
+type	components/cmd_nvs/cmd_nvs.c	/^    nvs_type_t type;$/;"	m	struct:__anon47	file:
 type	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *type;$/;"	m	struct:__anon48	typeref:struct:__anon48::arg_str	file:
-type	components/usr/sys_conf.h	/^    uint8_t	    type;                     \/\/0:RW, 1:WO$/;"	m	struct:__anon29
+type	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *type;$/;"	m	struct:__anon49	typeref:struct:__anon49::arg_str	file:
+type	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *type;$/;"	m	struct:__anon53	typeref:struct:__anon53::arg_str	file:
+type	components/usr/sys_conf.h	/^    uint8_t	    type;                     \/\/0:RW, 1:WO$/;"	m	struct:__anon31
 type_str_pair	components/cmd_nvs/cmd_nvs.c	/^static const type_str_pair_t type_str_pair[] = {$/;"	v	file:
-type_str_pair_t	components/cmd_nvs/cmd_nvs.c	/^} type_str_pair_t;$/;"	t	typeref:struct:__anon42	file:
+type_str_pair_t	components/cmd_nvs/cmd_nvs.c	/^} type_str_pair_t;$/;"	t	typeref:struct:__anon47	file:
 type_to_str	components/cmd_nvs/cmd_nvs.c	/^static const char *type_to_str(nvs_type_t type)$/;"	f	file:
 uint16	components/usr/sys_def.h	/^typedef unsigned short 		uint16;$/;"	t
 uint32	components/usr/sys_def.h	/^typedef unsigned long 		uint32;$/;"	t
 uint8	components/usr/sys_def.h	/^typedef unsigned char 		uint8;$/;"	t
-up_lim	components/usr/sys_conf.h	/^    uint32_t    up_lim;$/;"	m	struct:__anon15
-usr_led_init	components/drv/led_drv.c	/^void usr_led_init(void)$/;"	f
-value	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *value;$/;"	m	struct:__anon43	typeref:struct:__anon43::arg_str	file:
+up_lim	components/usr/sys_conf.h	/^    uint32_t    up_lim;$/;"	m	struct:__anon14
+val	components/drv/bat_drv.c	/^    struct arg_int *val;$/;"	m	struct:__anon64	typeref:struct:__anon64::arg_int	file:
+value	components/cmd_nvs/cmd_nvs.c	/^    struct arg_str *value;$/;"	m	struct:__anon48	typeref:struct:__anon48::arg_str	file:
 volatile	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	11;"	d	file:
 volatile	build/bootloader/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	11;"	d	file:
 volatile	components/cmd_nvs/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	11;"	d	file:
 volatile	components/usr/build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	11;"	d	file:
-volum	components/usr/sys_conf.h	/^    uint32_t    volum;$/;"	m	struct:__anon20
+volum	components/usr/sys_conf.h	/^    uint32_t    volum;$/;"	m	struct:__anon21
 w_2n	components/kits/meow_fft.h	/^    Meow_FFT_Complex* w_2n;$/;"	m	struct:Meow_FFT_Workset_Real
 w_count	components/kits/meow_fft.h	/^    unsigned w_count;$/;"	m	struct:Meow_Stage_Info
+wadc_reg	components/drv/ads131_drv.c	/^static int wadc_reg(int argc, char **argv)$/;"	f	file:
 wakeup_gpio_level	components/cmd_system/cmd_system.c	/^    struct arg_int *wakeup_gpio_level;$/;"	m	struct:__anon2	typeref:struct:__anon2::arg_int	file:
 wakeup_gpio_level	components/cmd_system/cmd_system.c	/^    struct arg_int *wakeup_gpio_level;$/;"	m	struct:__anon3	typeref:struct:__anon3::arg_int	file:
 wakeup_gpio_num	components/cmd_system/cmd_system.c	/^    struct arg_int *wakeup_gpio_num;$/;"	m	struct:__anon2	typeref:struct:__anon2::arg_int	file:
@@ -2725,18 +2892,17 @@ wakeup_time	components/cmd_system/cmd_system.c	/^    struct arg_int *wakeup_time
 wakeup_time	components/cmd_system/cmd_system.c	/^    struct arg_int *wakeup_time;$/;"	m	struct:__anon3	typeref:struct:__anon3::arg_int	file:
 wget_value_from_nvs	components/cmd_nvs/cmd_nvs.c	/^esp_err_t wget_value_from_nvs(const char *dnamespace, const char *key, const char *str_type,void *ret_val, int *ret_len)$/;"	f
 wifi_connect	components/cli/cmd_wifi.c	/^int wifi_connect(void)$/;"	f
-wifi_connect	components/usr/sys_conf.h	/^    uint32_t    wifi_connect;$/;"	m	struct:__anon12
+wifi_connect	components/usr/sys_conf.h	/^    uint32_t    wifi_connect;$/;"	m	struct:__anon11
 wifi_disconnect	components/cli/cmd_wifi.c	/^int wifi_disconnect(void)$/;"	f
 wifi_event_group	components/cli/cmd_wifi.c	/^static EventGroupHandle_t wifi_event_group;$/;"	v	file:
 wifi_join	components/cli/cmd_wifi.c	/^bool wifi_join(const char *ssid, const char *pass, int timeout_ms)$/;"	f
-wifi_mode	components/usr/sys_conf.h	/^    uint32_t    wifi_mode;$/;"	m	struct:__anon12
-win	components/usr/sys_conf.h	/^    uint32_t    win;$/;"	m	struct:__anon17
+wifi_mode	components/usr/sys_conf.h	/^    uint32_t    wifi_mode;$/;"	m	struct:__anon11
+win	components/usr/sys_conf.h	/^    uint32_t    win;$/;"	m	struct:__anon16
 win_apply	components/kits/my_fft.c	/^void win_apply(float* inbuf, float* outbuf)$/;"	f
-win_buf_ptr	components/kits/my_fft.c	/^	float*					win_buf_ptr;$/;"	m	struct:__anon10	file:
+win_buf_ptr	components/kits/my_fft.c	/^	float*					win_buf_ptr;$/;"	m	struct:__anon9	file:
 win_init	components/kits/my_fft.c	/^static void win_init(uint16_t ord)$/;"	f	file:
 window	components/kits/goertzel.c	/^inline static float window(uint32_t n, uint32_t ord)$/;"	f	file:
 wn	components/kits/meow_fft.h	/^    Meow_FFT_Complex* wn;$/;"	m	struct:Meow_FFT_Workset
 wn_ordered	components/kits/meow_fft.h	/^    Meow_FFT_Complex* wn_ordered;$/;"	m	struct:Meow_FFT_Workset
 wr_reg	components/usr/global_var.c	/^static int wr_reg(int argc, char **argv)$/;"	f	file:
-x509_crt_bundle	build/x509_crt_bundle.S	/^x509_crt_bundle:$/;"	l
-x509_crt_bundle_length	build/x509_crt_bundle.S	/^x509_crt_bundle_length:$/;"	l
+xadc_cmd	components/drv/ads131_drv.c	/^static int xadc_cmd(int argc, char **argv)$/;"	f	file:

@@ -28,10 +28,10 @@ typedef long				int32;
 #define DEFAULT_SDN             "www.baidu.com"
 
 //#define SYS_DEBUG
-#define STAT_REG_MAP_NUM        32
-#define CONF_REG_MAP_NUM        32
-#define SOFTWARE_VER            0x00020002
-#define HARDWARE_VER            0x00020000
+#define STAT_REG_MAP_NUM        64 
+#define CONF_REG_MAP_NUM        64 
+#define SOFTWARE_VER            0x00030001
+#define HARDWARE_VER            0x00010000
 #define SERIAL_NO               0
 #define MAN_DATE                0
 #define DEVICE_TYPE             0x00000001
@@ -55,6 +55,12 @@ enum
     INIT_MODE_FACTORY,
     INIT_MODE_DEBUT,
     INIT_MODE_DEFAULT
+};
+
+enum
+{    
+    IO_BAT_CHRG= 0,    
+    IO_BAT_PLUG
 };
 
 enum
@@ -86,5 +92,15 @@ enum
     SERVICE_TCP = 0,    
     SERVICE_MQTT,
     SERVICE_HTTP,
+};
+
+enum
+{    
+    PWR_MODE_IDLE = 0,    
+    PWR_MODE_PRON,
+    PWR_MODE_ON,
+    PWR_MODE_ONGAP,
+    PWR_MODE_PROFF,
+    PWR_MODE_OFF,
 };
 #endif //__SYS_DEF

@@ -90,7 +90,6 @@ static void event_handler(void* arg, esp_event_base_t event_base,
         ESP_LOGI(TAG, "station "MACSTR" leave, AID=%d",
                  MAC2STR(event->mac), event->aid);
     }
-
 }
 
 static void initialise_wifi(void)
@@ -103,19 +102,39 @@ static void initialise_wifi(void)
     ESP_ERROR_CHECK(esp_netif_init());
     wifi_event_group = xEventGroupCreate();
     ESP_ERROR_CHECK(esp_event_loop_create_default());
-    esp_netif_t *ap_netif = esp_netif_create_default_wifi_ap();
-    assert(ap_netif);
-    esp_netif_t *sta_netif = esp_netif_create_default_wifi_sta();
-    assert(sta_netif);
+    if(g_sys.conf.con.wifi_mode == 1)
+    {
+        esp_netif_create_default_wifi_ap();
+    }
+    else
+    {
+        esp_netif_create_default_wifi_sta();
+    }
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
     ESP_ERROR_CHECK( esp_wifi_init(&cfg) );
     ESP_ERROR_CHECK( esp_event_handler_register(WIFI_EVENT, WIFI_EVENT_STA_DISCONNECTED, &event_handler, NULL) );
     ESP_ERROR_CHECK( esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &event_handler, NULL) );
     ESP_ERROR_CHECK( esp_wifi_set_storage(WIFI_STORAGE_RAM) );
-    ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT,ESP_EVENT_ANY_ID,&event_handler,NULL));
+//<<<<<<< HEAD
+//    ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT,ESP_EVENT_ANY_ID,&event_handler,NULL));
+//
+//    ESP_ERROR_CHECK( esp_wifi_set_mode(WIFI_MODE_NULL) );
+//    ESP_ERROR_CHECK( esp_wifi_start() );
+//=======
+    ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &event_handler, NULL));
 
-    ESP_ERROR_CHECK( esp_wifi_set_mode(WIFI_MODE_NULL) );
-    ESP_ERROR_CHECK( esp_wifi_start() );
+//    if(g_sys.conf.con.wifi_mode == 1) {
+//        ESP_ERROR_CHECK( esp_wifi_set_mode(WIFI_MODE_AP) );
+//        ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_AP, &wifi_config));
+//    }
+//    else
+//    {
+//        ESP_ERROR_CHECK( esp_wifi_set_mode(WIFI_MODE_STA) );
+//        ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config));
+//    }
+//
+//    ESP_ERROR_CHECK( esp_wifi_start() );
+//>>>>>>> digital
     initialized = true;
 }
 
@@ -152,7 +171,7 @@ bool wifi_join(const char *ssid, const char *pass, int timeout_ms)
 
         ESP_LOGI(TAG, "wifi_init_softap finished. SSID:%s password:%s channel:%d",
                  ssid, pass, wifi_config.ap.channel);
-        start_mdns_service();
+        //start_mdns_service();
     }
     else
     {
@@ -163,10 +182,14 @@ bool wifi_join(const char *ssid, const char *pass, int timeout_ms)
 
         ESP_ERROR_CHECK( esp_wifi_set_mode(WIFI_MODE_STA) );
         ESP_ERROR_CHECK( esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config) );
+        ESP_ERROR_CHECK( esp_wifi_start());
         ESP_ERROR_CHECK( esp_wifi_connect() );
 
-        int bits = xEventGroupWaitBits(wifi_event_group, CONNECTED_BIT,
-                                       pdFALSE, pdTRUE, timeout_ms / portTICK_PERIOD_MS);
+        int bits = xEventGroupWaitBits(wifi_event_group, 
+                                       CONNECTED_BIT,
+                                       pdFALSE, 
+                                       pdTRUE, 
+                                       timeout_ms / portTICK_PERIOD_MS);
         return (bits & CONNECTED_BIT) != 0;
     }
     return 0;

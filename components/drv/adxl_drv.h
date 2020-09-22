@@ -14,16 +14,16 @@
 #define DEV_GEO_RTX_SIZE    2048 
 #define DEV_GEO_FIFO_SIZE   8192 
 
-typedef struct
-{
-	uint8_t		state;
-	uint16_t	ibuf_cnt;
-    float		ibuf[DEV_GEO_FIFO_SIZE];
-    float		obuf[DEV_GEO_FIFO_SIZE];
-    float		ampl_arr[16];
-    float		freq_arr[16];
-    uint16_t	arr_cnt;
-}fft_st;
+//typedef struct
+//{
+//	uint8_t		state;
+//	uint16_t	ibuf_cnt;
+//    float		ibuf[DEV_GEO_FIFO_SIZE];
+//    float		obuf[DEV_GEO_FIFO_SIZE];
+//    float		ampl_arr[16];
+//    float		freq_arr[16];
+//    uint16_t	arr_cnt;
+//}fft_st;
 
 typedef enum {
    ADXL_DEVID_AD = 0x00,
@@ -65,16 +65,16 @@ typedef enum {
 } ADXL355_register_t;
 
 void adxl_init(void);
-void adxl_register(void);
+//void adxl_register(void);
 void adxl355_reset(void);
 void adxl_tim_start(int32_t tim_period);
 void adxl_tim_stop(void);
 int adxl_dout(uint8_t * dst_ptr, uint16_t max_len);
 uint8_t adxl_rd_reg(uint8_t addr, uint8_t * rx_buf, uint8_t cnt);
 uint8_t adxl_wr_reg(uint8_t addr, uint8_t data);
-float* geo_get_fft(uint16_t* sample_cnts);
-int16_t geo_get_time(float* dst_ptr,uint16_t len);
-int16_t geo_get_fft_peak(float* freq_arr,float* ampl_arr,uint16_t *arr_cnt);
+//float* geo_get_fft(uint16_t* sample_cnts);
+//int16_t geo_get_time(float* dst_ptr,uint16_t len);
+//int16_t geo_get_fft_peak(float* freq_arr,float* ampl_arr,uint16_t *arr_cnt);
 
 
 #endif /* COMPONENTS_DRV_ADXL_DRV_H_ */

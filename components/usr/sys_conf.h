@@ -3,6 +3,7 @@
 #include "sys_def.h"
 
 //application delay
+#define		INIT_THREAD_DELAY           1
 #define		CMD_THREAD_DELAY            400
 #define		WS_THREAD_DELAY           	500
 #define		BKG_THREAD_DELAY            700
@@ -13,7 +14,7 @@
 typedef struct
 {	
     uint32_t    restart;
-    uint32_t    dbg;
+    uint32_t    shutdown_intv;
 }conf_gen_st;
 
 
@@ -25,7 +26,7 @@ typedef struct
 
 typedef struct
 {
-    uint32_t    enable;
+    uint32_t    en;
     uint32_t    pkg_en;
     uint32_t    sample_period;
     uint32_t    sample_channel_bm;
@@ -45,6 +46,7 @@ typedef struct
 typedef struct
 {
     uint32_t    mav_cnt;
+    uint32_t    low_pwr;
     uint32_t    up_lim;
     uint32_t    low_lim;
 }conf_bat_st;
@@ -67,14 +69,38 @@ typedef struct
 
 typedef struct
 {
+    uint32_t    span_gap;
     uint32_t    n;
+    uint32_t    intv;
     uint32_t    target_freq;
     uint32_t    sample_freq;
     uint32_t    target_span;
     uint32_t    signal_th;
-    uint32_t    acc_q;
-    uint32_t    reset;
+    uint32_t    en;
+    uint32_t    res_cd;
+    uint32_t    res_pos;
 }conf_gtz_st;
+
+typedef struct
+{
+    uint32_t    adc_offset;
+    uint32_t    dac_offset;
+    uint32_t    dac_setval;
+}conf_per_st;
+
+typedef struct
+{
+    uint32_t    enable;
+    uint32_t    filter;
+    uint32_t    sps;
+    uint32_t    gain;
+    uint32_t    ch_bm;
+    uint32_t    drop;
+    uint32_t    drop_en;
+    uint32_t    pre_drop;
+    uint32_t    drop_th;
+    uint32_t    mav_atten;
+}conf_adc_st;
 
 typedef struct
 {
@@ -106,6 +132,8 @@ typedef struct
     conf_con_st con;
     conf_prt_st prt;
     conf_geo_st geo;
+    conf_adc_st adc;
+    conf_per_st per;
     conf_mod_st mod;
     conf_fft_st fft;
     conf_gtz_st gtz;
@@ -120,6 +148,8 @@ typedef struct
     uint32_t    software_ver;
     uint32_t    hardware_ver;
     uint32_t    status_bm;
+    uint32_t    io_bm;
+    uint32_t    shutdown_cd;
 }stat_gen_st;
 
 typedef struct
@@ -138,22 +168,30 @@ typedef struct
 
 typedef struct
 {
+    uint32_t   	drop_cnt;
+    uint32_t   	peak;
+    uint32_t   	raw;
+}stat_adc_st;
+
+typedef struct
+{
     uint32_t   	kfifo_drop_cnt;
 }stat_geo_st;
 
 typedef struct
 {
     float	   	freq_bar[33];
-    float	   	ins_snr;
-    float	   	acc_snr;
-    float		signal_level;
-    float		noise_level;
-    float		acc_signal_level;
-    float		acc_noise_level;
-    uint32_t   	rank;
-    uint32_t   	acc_rank;
-    int32_t		offset;
-    int32_t		acc_offset;
+    float	   	snr;
+    uint32_t    snr_i;
+    uint32_t    slv_i;
+    uint32_t    nlv_i;
+    uint32_t    res_cd;
+    uint32_t    res_snr_i;
+    uint32_t    res_slv_i;
+    uint32_t    res_nlv_i;
+    float	   	snr_f;
+    float		slv_f;
+    float		nlv_f;
 }stat_gtz_st;
 
 typedef struct
@@ -161,6 +199,7 @@ typedef struct
     stat_gen_st 	gen;
     stat_man_st 	man;
     stat_geo_st		geo;
+    stat_adc_st		adc;
     stat_gtz_st		gtz;
     stat_bat_st		bat;
 }status_st;

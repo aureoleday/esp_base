@@ -5,12 +5,17 @@
 #include "cmd_resolve.h"
 //#include "mqtt_tcp.h"
 #include "sys_conf.h"
+#include "bit_op.h"
 #include "adxl_drv.h"
+#include "ads131_drv.h"
+#include "goertzel.h"
 
 
 #define     DAQ_RX_BUF_DEPTH    1024
 #define     DAQ_TX_BUF_DEPTH    1536 
 #define     DAQ_CHANNEL_MAX     16 
+
+static const char *TAG = "DAQ";
 
 uint8_t test_buf[1024]={0};
 
@@ -37,24 +42,34 @@ static void daq_buf_init(void)
     memset(daq_inst.tx_buf,0,DAQ_TX_BUF_DEPTH);
     memset(daq_inst.rx_buf,0,DAQ_RX_BUF_DEPTH);
 
+    goertzel_init();
+
     daq_inst.sample_rate = 4096;
     daq_inst.pkg_period = 1000000;
     daq_inst.channel_bm = 0x0001;
 }
 
-
 static void daq_timeout(void* arg)
 {
     extern sys_reg_st  g_sys;
     int out_len = 0;
-    out_len = adxl_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
+    int o_len = 0;
+    
+    out_len = adc_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
+    o_len = out_len>>2;
     if(out_len == 0)
-//        printf("daq no d\n");
-        ;
+        ESP_LOGD(TAG,"No daq data");
     else 
     {
-        daq_frame(daq_inst.tx_buf, out_len);
-    }
+        //if(bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) != 0)
+        if((bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) != 0)&&(g_sys.conf.daq.pkg_en == 1))
+            daq_frame(daq_inst.tx_buf, out_len);
+        for(int i=0;i<o_len;i++)
+        {
+            goertzel_lfilt(*((int32_t *)daq_inst.tx_buf+i)*0.00000009933);
+        }
+    }   
+    //}
 }
 
 void daq_tim_stop(void)
