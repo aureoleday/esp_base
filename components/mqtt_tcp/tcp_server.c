@@ -35,7 +35,8 @@ static int sock;
 
 int tcp_transmitt(void *tx_buf,int tx_len)
 {
-    return  send(sock, tx_buf, tx_len, 0);
+    return  send(sock, tx_buf, tx_len, MSG_DONTWAIT);
+//    return  send(sock, tx_buf, tx_len, 0);
 }
 
 static void do_retransmit(const int sock)
