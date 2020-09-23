@@ -218,7 +218,8 @@ static void cmd_response(void)
     //response frame checksum caculate
     cmd_reg_inst.tx_buf[cmd_reg_inst.tx_cnt+4] = check_sum;
     //mqtt_transmitt(cmd_reg_inst.tx_buf,cmd_reg_inst.tx_cnt+5);
-    tcp_transmitt(cmd_reg_inst.tx_buf,cmd_reg_inst.tx_cnt+5);
+    if(0 == tcp_transmitt(cmd_reg_inst.tx_buf,cmd_reg_inst.tx_cnt+5))
+        ESP_LOGW(TAG,"TCP tx overflow.");
 }
 
 /**
