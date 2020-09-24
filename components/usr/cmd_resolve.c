@@ -208,6 +208,8 @@ uint16_t cmd_frame_recv(void)
 static void cmd_response(void)
 {
     uint32_t check_sum;
+    static uint32_t of_cnt=0;
+    int16_t ret;
 
     *((uint16_t *)&cmd_reg_inst.tx_buf[FRAME_SYNC_POS]) = *(uint16_t*)CMD_FRAME_TAG_S_SYNC;
 
@@ -218,8 +220,13 @@ static void cmd_response(void)
     //response frame checksum caculate
     cmd_reg_inst.tx_buf[cmd_reg_inst.tx_cnt+4] = check_sum;
     //mqtt_transmitt(cmd_reg_inst.tx_buf,cmd_reg_inst.tx_cnt+5);
-    if(0 == tcp_transmitt(cmd_reg_inst.tx_buf,cmd_reg_inst.tx_cnt+5))
-        ESP_LOGW(TAG,"TCP tx overflow.");
+    ret = tcp_transmitt(cmd_reg_inst.tx_buf,cmd_reg_inst.tx_cnt+5);
+    if(0 >= ret) 
+    {
+        if((of_cnt&0x000000ff) == 0x00ff)
+            ESP_LOGW(TAG,"TCP tx overflow:%d.",ret);
+        of_cnt++;
+    }
 }
 
 /**
