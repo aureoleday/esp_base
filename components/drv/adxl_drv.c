@@ -177,12 +177,6 @@ static int32_t decode(uint32_t din)
 void geo_ds_init(void)
 {
     kf_init();
-//    fft_inst.arr_cnt = 0;
-//    for(int i=0;i<16;i++)
-//    {
-//        fft_inst.freq_arr[i] = 0.00000001;
-//        fft_inst.ampl_arr[i] = 0.00000001;
-//    }
     geospi_mutex = xSemaphoreCreateMutex();
 
 }
@@ -283,7 +277,8 @@ static int16_t raw_data_buf(uint32_t din, uint8_t axis)
     extern sys_reg_st  g_sys;
     static uint8_t stage = 0;  //0: idle;1:x;2:y;3:z;
     static uint32_t dbuf[3]={0,0,0};
-    float temp;
+    //float temp;
+    int32_t temp;
     uint32_t dummy;
     int16_t ret = 0;
 
@@ -339,7 +334,8 @@ static int16_t raw_data_buf(uint32_t din, uint8_t axis)
         if(!(din & 0x1))
         {
             dbuf[2] = din;
-            temp = (float)decode(dbuf[axis])*0.0000039;
+            //temp = (float)decode(dbuf[axis])*0.0000039;
+            temp = decode(dbuf[axis]);
             //goertzel_lfilt(temp);
             if(g_sys.conf.geo.pkg_en)
             {

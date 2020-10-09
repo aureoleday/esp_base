@@ -55,7 +55,8 @@ static void daq_timeout(void* arg)
     int out_len = 0;
     int o_len = 0;
     
-    out_len = adc_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
+    //out_len = adc_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
+    out_len = adxl_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
     o_len = out_len>>2;
     if(out_len == 0)
         ESP_LOGD(TAG,"No daq data");
@@ -66,7 +67,8 @@ static void daq_timeout(void* arg)
             daq_frame(daq_inst.tx_buf, out_len);
         for(int i=0;i<o_len;i++)
         {
-            goertzel_lfilt(*((int32_t *)daq_inst.tx_buf+i)*0.00000009933);
+            goertzel_lfilt(*((int32_t *)daq_inst.tx_buf+i)*0.0000039);
+            //goertzel_lfilt(*((int32_t *)daq_inst.tx_buf+i)*0.00000009933);
         }
     }   
     //}

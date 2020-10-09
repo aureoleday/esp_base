@@ -51,7 +51,8 @@ void init_thread(void* param)
 {
     extern sys_reg_st  g_sys;
     vTaskDelay(INIT_THREAD_DELAY);
-    adc_init();
+    //adc_init();
+    adxl_init();
     io_init();
     daq_init();
     bat_init();
@@ -112,12 +113,6 @@ void app_main()
     extern sys_reg_st  g_sys;
     gvar_init();
     tasks_create();
-	//vTaskDelay(100 / portTICK_PERIOD_MS);
-    //if(g_sys.conf.con.wifi_connect == 1)
-    //{
-    //    wifi_connect();
-    //    service_opt(g_sys.conf.prt.service_bm);
-    //}
     while(1)
     {
 		vTaskDelay(1000 / portTICK_PERIOD_MS);
