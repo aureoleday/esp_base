@@ -54,6 +54,7 @@ int16_t geo_pkg_en(uint32_t pram)
     {
         adxl_wr_reg(ADXL_SYNC,4);
         adxl_wr_reg(ADXL_INT_MAP,2);
+        adxl_wr_reg(ADXL_RANGE,0x80|g_sys.conf.geo.gain);
         adxl_wr_reg(ADXL_FIFO_SAMPLES,g_sys.conf.geo.fifo_th*3);
         adxl_wr_reg(ADXL_FILTER,(g_sys.conf.geo.filter<<4)|g_sys.conf.geo.sample_rate);
         adxl_wr_reg(ADXL_POWER_CTL,0);
