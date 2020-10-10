@@ -107,7 +107,7 @@ typedef struct
     uint32_t    enable;
     uint32_t    pkg_en;
     uint32_t    pkg_period;
-    uint32_t    scan_period;
+    uint32_t    fifo_th;
     uint32_t    filter;
     uint32_t    sample_rate;
     uint32_t    axis;

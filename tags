@@ -1303,6 +1303,7 @@ CONFIG_ESP_TASK_WDT_CHECK_IDLE_TASK_CPU1	build/bootloader/config/sdkconfig.h	86;
 CONFIG_ESP_TASK_WDT_CHECK_IDLE_TASK_CPU1	build/config/sdkconfig.h	109;"	d
 CONFIG_ESP_TASK_WDT_TIMEOUT_S	build/bootloader/config/sdkconfig.h	84;"	d
 CONFIG_ESP_TASK_WDT_TIMEOUT_S	build/config/sdkconfig.h	107;"	d
+CONFIG_ESP_TCP_KEEP_CONNECTION_WHEN_IP_CHANGES	build/config/sdkconfig.h	356;"	d
 CONFIG_ESP_TIMER_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	75;"	d
 CONFIG_ESP_TIMER_TASK_STACK_SIZE	build/config/sdkconfig.h	98;"	d
 CONFIG_ESP_TLS_USING_MBEDTLS	build/config/sdkconfig.h	66;"	d
@@ -1322,7 +1323,7 @@ CONFIG_FATFS_LFN_NONE	build/config/sdkconfig.h	150;"	d
 CONFIG_FATFS_PER_FILE_CACHE	build/config/sdkconfig.h	153;"	d
 CONFIG_FATFS_TIMEOUT_MS	build/config/sdkconfig.h	152;"	d
 CONFIG_FLASHMODE_DIO	build/bootloader/config/sdkconfig.h	106;"	d
-CONFIG_FLASHMODE_DIO	build/config/sdkconfig.h	356;"	d
+CONFIG_FLASHMODE_DIO	build/config/sdkconfig.h	357;"	d
 CONFIG_FMB_COMM_MODE_ASCII_EN	build/config/sdkconfig.h	155;"	d
 CONFIG_FMB_COMM_MODE_RTU_EN	build/config/sdkconfig.h	154;"	d
 CONFIG_FMB_CONTROLLER_NOTIFY_QUEUE_SIZE	build/config/sdkconfig.h	165;"	d
@@ -1341,7 +1342,7 @@ CONFIG_FMB_TIMER_GROUP	build/config/sdkconfig.h	169;"	d
 CONFIG_FMB_TIMER_INDEX	build/config/sdkconfig.h	170;"	d
 CONFIG_FMB_TIMER_PORT_ENABLED	build/config/sdkconfig.h	168;"	d
 CONFIG_FOUR_UNIVERSAL_MAC_ADDRESS	build/bootloader/config/sdkconfig.h	107;"	d
-CONFIG_FOUR_UNIVERSAL_MAC_ADDRESS	build/config/sdkconfig.h	357;"	d
+CONFIG_FOUR_UNIVERSAL_MAC_ADDRESS	build/config/sdkconfig.h	358;"	d
 CONFIG_FREERTOS_ASSERT_FAIL_ABORT	build/config/sdkconfig.h	178;"	d
 CONFIG_FREERTOS_ASSERT_ON_UNTESTED_FUNCTION	build/config/sdkconfig.h	174;"	d
 CONFIG_FREERTOS_CHECK_MUTEX_GIVEN_BY_OWNER	build/config/sdkconfig.h	190;"	d
@@ -1363,7 +1364,7 @@ CONFIG_FREERTOS_TIMER_TASK_PRIORITY	build/config/sdkconfig.h	183;"	d
 CONFIG_FREERTOS_TIMER_TASK_STACK_DEPTH	build/config/sdkconfig.h	184;"	d
 CONFIG_FREERTOS_USE_STATS_FORMATTING_FUNCTIONS	build/config/sdkconfig.h	188;"	d
 CONFIG_FREERTOS_USE_TRACE_FACILITY	build/config/sdkconfig.h	187;"	d
-CONFIG_GARP_TMR_INTERVAL	build/config/sdkconfig.h	358;"	d
+CONFIG_GARP_TMR_INTERVAL	build/config/sdkconfig.h	359;"	d
 CONFIG_HEAP_POISONING_DISABLED	build/config/sdkconfig.h	192;"	d
 CONFIG_HEAP_TRACING_OFF	build/config/sdkconfig.h	193;"	d
 CONFIG_HTTPD_ERR_RESP_NO_DELAY	build/config/sdkconfig.h	124;"	d
@@ -1379,15 +1380,15 @@ CONFIG_IDF_TARGET	build/config/sdkconfig.h	7;"	d
 CONFIG_IDF_TARGET_ESP32	build/bootloader/config/sdkconfig.h	8;"	d
 CONFIG_IDF_TARGET_ESP32	build/config/sdkconfig.h	8;"	d
 CONFIG_INT_WDT	build/bootloader/config/sdkconfig.h	108;"	d
-CONFIG_INT_WDT	build/config/sdkconfig.h	359;"	d
+CONFIG_INT_WDT	build/config/sdkconfig.h	360;"	d
 CONFIG_INT_WDT_CHECK_CPU1	build/bootloader/config/sdkconfig.h	109;"	d
-CONFIG_INT_WDT_CHECK_CPU1	build/config/sdkconfig.h	360;"	d
+CONFIG_INT_WDT_CHECK_CPU1	build/config/sdkconfig.h	361;"	d
 CONFIG_INT_WDT_TIMEOUT_MS	build/bootloader/config/sdkconfig.h	110;"	d
-CONFIG_INT_WDT_TIMEOUT_MS	build/config/sdkconfig.h	361;"	d
+CONFIG_INT_WDT_TIMEOUT_MS	build/config/sdkconfig.h	362;"	d
 CONFIG_IPC_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	111;"	d
-CONFIG_IPC_TASK_STACK_SIZE	build/config/sdkconfig.h	362;"	d
+CONFIG_IPC_TASK_STACK_SIZE	build/config/sdkconfig.h	363;"	d
 CONFIG_LOG_BOOTLOADER_LEVEL_WARN	build/bootloader/config/sdkconfig.h	112;"	d
-CONFIG_LOG_BOOTLOADER_LEVEL_WARN	build/config/sdkconfig.h	363;"	d
+CONFIG_LOG_BOOTLOADER_LEVEL_WARN	build/config/sdkconfig.h	364;"	d
 CONFIG_LOG_COLORS	build/bootloader/config/sdkconfig.h	89;"	d
 CONFIG_LOG_COLORS	build/config/sdkconfig.h	196;"	d
 CONFIG_LOG_DEFAULT_LEVEL	build/bootloader/config/sdkconfig.h	88;"	d
@@ -1396,9 +1397,8 @@ CONFIG_LOG_DEFAULT_LEVEL_INFO	build/bootloader/config/sdkconfig.h	87;"	d
 CONFIG_LOG_DEFAULT_LEVEL_INFO	build/config/sdkconfig.h	194;"	d
 CONFIG_LOG_TIMESTAMP_SOURCE_RTOS	build/bootloader/config/sdkconfig.h	90;"	d
 CONFIG_LOG_TIMESTAMP_SOURCE_RTOS	build/config/sdkconfig.h	197;"	d
-CONFIG_LWIP_DHCPS_LEASE_UNIT	build/config/sdkconfig.h	210;"	d
-CONFIG_LWIP_DHCPS_MAX_STATION_NUM	build/config/sdkconfig.h	211;"	d
-CONFIG_LWIP_DHCP_DOES_ARP_CHECK	build/config/sdkconfig.h	209;"	d
+CONFIG_LWIP_DHCPS_LEASE_UNIT	build/config/sdkconfig.h	209;"	d
+CONFIG_LWIP_DHCPS_MAX_STATION_NUM	build/config/sdkconfig.h	210;"	d
 CONFIG_LWIP_DHCP_MAX_NTP_SERVERS	build/config/sdkconfig.h	233;"	d
 CONFIG_LWIP_DNS_SUPPORT_MDNS_QUERIES	build/config/sdkconfig.h	199;"	d
 CONFIG_LWIP_ESP_GRATUITOUS_ARP	build/config/sdkconfig.h	206;"	d
@@ -1406,13 +1406,13 @@ CONFIG_LWIP_GARP_TMR_INTERVAL	build/config/sdkconfig.h	207;"	d
 CONFIG_LWIP_IP4_FRAG	build/config/sdkconfig.h	204;"	d
 CONFIG_LWIP_IP6_FRAG	build/config/sdkconfig.h	205;"	d
 CONFIG_LWIP_LOCAL_HOSTNAME	build/config/sdkconfig.h	198;"	d
-CONFIG_LWIP_LOOPBACK_MAX_PBUFS	build/config/sdkconfig.h	213;"	d
-CONFIG_LWIP_MAX_ACTIVE_TCP	build/config/sdkconfig.h	214;"	d
-CONFIG_LWIP_MAX_LISTENING_TCP	build/config/sdkconfig.h	215;"	d
+CONFIG_LWIP_LOOPBACK_MAX_PBUFS	build/config/sdkconfig.h	212;"	d
+CONFIG_LWIP_MAX_ACTIVE_TCP	build/config/sdkconfig.h	213;"	d
+CONFIG_LWIP_MAX_LISTENING_TCP	build/config/sdkconfig.h	214;"	d
 CONFIG_LWIP_MAX_RAW_PCBS	build/config/sdkconfig.h	232;"	d
 CONFIG_LWIP_MAX_SOCKETS	build/config/sdkconfig.h	201;"	d
 CONFIG_LWIP_MAX_UDP_PCBS	build/config/sdkconfig.h	227;"	d
-CONFIG_LWIP_NETIF_LOOPBACK	build/config/sdkconfig.h	212;"	d
+CONFIG_LWIP_NETIF_LOOPBACK	build/config/sdkconfig.h	211;"	d
 CONFIG_LWIP_SNTP_UPDATE_DELAY	build/config/sdkconfig.h	234;"	d
 CONFIG_LWIP_SO_REUSE	build/config/sdkconfig.h	202;"	d
 CONFIG_LWIP_SO_REUSE_RXTOALL	build/config/sdkconfig.h	203;"	d
@@ -1420,21 +1420,22 @@ CONFIG_LWIP_TCPIP_RECVMBOX_SIZE	build/config/sdkconfig.h	208;"	d
 CONFIG_LWIP_TCPIP_TASK_AFFINITY	build/config/sdkconfig.h	231;"	d
 CONFIG_LWIP_TCPIP_TASK_AFFINITY_NO_AFFINITY	build/config/sdkconfig.h	230;"	d
 CONFIG_LWIP_TCPIP_TASK_STACK_SIZE	build/config/sdkconfig.h	229;"	d
-CONFIG_LWIP_TCP_MAXRTX	build/config/sdkconfig.h	216;"	d
-CONFIG_LWIP_TCP_MSL	build/config/sdkconfig.h	220;"	d
-CONFIG_LWIP_TCP_MSS	build/config/sdkconfig.h	218;"	d
+CONFIG_LWIP_TCP_KEEP_CONNECTION_WHEN_IP_CHANGES	build/config/sdkconfig.h	224;"	d
+CONFIG_LWIP_TCP_MAXRTX	build/config/sdkconfig.h	215;"	d
+CONFIG_LWIP_TCP_MSL	build/config/sdkconfig.h	219;"	d
+CONFIG_LWIP_TCP_MSS	build/config/sdkconfig.h	217;"	d
 CONFIG_LWIP_TCP_OVERSIZE_MSS	build/config/sdkconfig.h	225;"	d
-CONFIG_LWIP_TCP_QUEUE_OOSEQ	build/config/sdkconfig.h	224;"	d
-CONFIG_LWIP_TCP_RECVMBOX_SIZE	build/config/sdkconfig.h	223;"	d
+CONFIG_LWIP_TCP_QUEUE_OOSEQ	build/config/sdkconfig.h	223;"	d
+CONFIG_LWIP_TCP_RECVMBOX_SIZE	build/config/sdkconfig.h	222;"	d
 CONFIG_LWIP_TCP_RTO_TIME	build/config/sdkconfig.h	226;"	d
-CONFIG_LWIP_TCP_SND_BUF_DEFAULT	build/config/sdkconfig.h	221;"	d
-CONFIG_LWIP_TCP_SYNMAXRTX	build/config/sdkconfig.h	217;"	d
-CONFIG_LWIP_TCP_TMR_INTERVAL	build/config/sdkconfig.h	219;"	d
-CONFIG_LWIP_TCP_WND_DEFAULT	build/config/sdkconfig.h	222;"	d
+CONFIG_LWIP_TCP_SND_BUF_DEFAULT	build/config/sdkconfig.h	220;"	d
+CONFIG_LWIP_TCP_SYNMAXRTX	build/config/sdkconfig.h	216;"	d
+CONFIG_LWIP_TCP_TMR_INTERVAL	build/config/sdkconfig.h	218;"	d
+CONFIG_LWIP_TCP_WND_DEFAULT	build/config/sdkconfig.h	221;"	d
 CONFIG_LWIP_TIMERS_ONDEMAND	build/config/sdkconfig.h	200;"	d
 CONFIG_LWIP_UDP_RECVMBOX_SIZE	build/config/sdkconfig.h	228;"	d
 CONFIG_MAIN_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	113;"	d
-CONFIG_MAIN_TASK_STACK_SIZE	build/config/sdkconfig.h	364;"	d
+CONFIG_MAIN_TASK_STACK_SIZE	build/config/sdkconfig.h	365;"	d
 CONFIG_MBEDTLS_AES_C	build/config/sdkconfig.h	267;"	d
 CONFIG_MBEDTLS_ASYMMETRIC_CONTENT_LEN	build/config/sdkconfig.h	236;"	d
 CONFIG_MBEDTLS_CCM_C	build/config/sdkconfig.h	269;"	d
@@ -1491,19 +1492,19 @@ CONFIG_MBEDTLS_TLS_SERVER	build/config/sdkconfig.h	244;"	d
 CONFIG_MBEDTLS_TLS_SERVER_AND_CLIENT	build/config/sdkconfig.h	243;"	d
 CONFIG_MBEDTLS_X509_CRL_PARSE_C	build/config/sdkconfig.h	273;"	d
 CONFIG_MBEDTLS_X509_CSR_PARSE_C	build/config/sdkconfig.h	274;"	d
-CONFIG_MB_CONTROLLER_NOTIFY_QUEUE_SIZE	build/config/sdkconfig.h	365;"	d
-CONFIG_MB_CONTROLLER_NOTIFY_TIMEOUT	build/config/sdkconfig.h	366;"	d
-CONFIG_MB_CONTROLLER_STACK_SIZE	build/config/sdkconfig.h	367;"	d
-CONFIG_MB_EVENT_QUEUE_TIMEOUT	build/config/sdkconfig.h	368;"	d
-CONFIG_MB_MASTER_DELAY_MS_CONVERT	build/config/sdkconfig.h	369;"	d
-CONFIG_MB_MASTER_TIMEOUT_MS_RESPOND	build/config/sdkconfig.h	370;"	d
-CONFIG_MB_QUEUE_LENGTH	build/config/sdkconfig.h	371;"	d
-CONFIG_MB_SERIAL_BUF_SIZE	build/config/sdkconfig.h	372;"	d
-CONFIG_MB_SERIAL_TASK_PRIO	build/config/sdkconfig.h	373;"	d
-CONFIG_MB_SERIAL_TASK_STACK_SIZE	build/config/sdkconfig.h	374;"	d
-CONFIG_MB_TIMER_GROUP	build/config/sdkconfig.h	375;"	d
-CONFIG_MB_TIMER_INDEX	build/config/sdkconfig.h	376;"	d
-CONFIG_MB_TIMER_PORT_ENABLED	build/config/sdkconfig.h	377;"	d
+CONFIG_MB_CONTROLLER_NOTIFY_QUEUE_SIZE	build/config/sdkconfig.h	366;"	d
+CONFIG_MB_CONTROLLER_NOTIFY_TIMEOUT	build/config/sdkconfig.h	367;"	d
+CONFIG_MB_CONTROLLER_STACK_SIZE	build/config/sdkconfig.h	368;"	d
+CONFIG_MB_EVENT_QUEUE_TIMEOUT	build/config/sdkconfig.h	369;"	d
+CONFIG_MB_MASTER_DELAY_MS_CONVERT	build/config/sdkconfig.h	370;"	d
+CONFIG_MB_MASTER_TIMEOUT_MS_RESPOND	build/config/sdkconfig.h	371;"	d
+CONFIG_MB_QUEUE_LENGTH	build/config/sdkconfig.h	372;"	d
+CONFIG_MB_SERIAL_BUF_SIZE	build/config/sdkconfig.h	373;"	d
+CONFIG_MB_SERIAL_TASK_PRIO	build/config/sdkconfig.h	374;"	d
+CONFIG_MB_SERIAL_TASK_STACK_SIZE	build/config/sdkconfig.h	375;"	d
+CONFIG_MB_TIMER_GROUP	build/config/sdkconfig.h	376;"	d
+CONFIG_MB_TIMER_INDEX	build/config/sdkconfig.h	377;"	d
+CONFIG_MB_TIMER_PORT_ENABLED	build/config/sdkconfig.h	378;"	d
 CONFIG_MDNS_MAX_SERVICES	build/config/sdkconfig.h	291;"	d
 CONFIG_MDNS_SERVICE_ADD_TIMEOUT_MS	build/config/sdkconfig.h	295;"	d
 CONFIG_MDNS_TASK_AFFINITY	build/config/sdkconfig.h	294;"	d
@@ -1511,7 +1512,7 @@ CONFIG_MDNS_TASK_AFFINITY_CPU0	build/config/sdkconfig.h	293;"	d
 CONFIG_MDNS_TASK_PRIORITY	build/config/sdkconfig.h	292;"	d
 CONFIG_MDNS_TIMER_PERIOD_MS	build/config/sdkconfig.h	296;"	d
 CONFIG_MONITOR_BAUD_115200B	build/bootloader/config/sdkconfig.h	114;"	d
-CONFIG_MONITOR_BAUD_115200B	build/config/sdkconfig.h	378;"	d
+CONFIG_MONITOR_BAUD_115200B	build/config/sdkconfig.h	379;"	d
 CONFIG_MQTT_PROTOCOL_311	build/config/sdkconfig.h	297;"	d
 CONFIG_MQTT_TRANSPORT_SSL	build/config/sdkconfig.h	298;"	d
 CONFIG_MQTT_TRANSPORT_WEBSOCKET	build/config/sdkconfig.h	299;"	d
@@ -1521,9 +1522,9 @@ CONFIG_NEWLIB_STDIN_LINE_ENDING_CR	build/config/sdkconfig.h	302;"	d
 CONFIG_NEWLIB_STDOUT_LINE_ENDING_CRLF	build/config/sdkconfig.h	301;"	d
 CONFIG_OPENSSL_ASSERT_EXIT	build/config/sdkconfig.h	303;"	d
 CONFIG_OPTIMIZATION_ASSERTIONS_ENABLED	build/bootloader/config/sdkconfig.h	115;"	d
-CONFIG_OPTIMIZATION_ASSERTIONS_ENABLED	build/config/sdkconfig.h	379;"	d
+CONFIG_OPTIMIZATION_ASSERTIONS_ENABLED	build/config/sdkconfig.h	380;"	d
 CONFIG_OPTIMIZATION_LEVEL_DEBUG	build/bootloader/config/sdkconfig.h	116;"	d
-CONFIG_OPTIMIZATION_LEVEL_DEBUG	build/config/sdkconfig.h	380;"	d
+CONFIG_OPTIMIZATION_LEVEL_DEBUG	build/config/sdkconfig.h	381;"	d
 CONFIG_PARTITION_TABLE_CUSTOM_FILENAME	build/bootloader/config/sdkconfig.h	38;"	d
 CONFIG_PARTITION_TABLE_CUSTOM_FILENAME	build/config/sdkconfig.h	40;"	d
 CONFIG_PARTITION_TABLE_FILENAME	build/bootloader/config/sdkconfig.h	39;"	d
@@ -1534,8 +1535,8 @@ CONFIG_PARTITION_TABLE_OFFSET	build/bootloader/config/sdkconfig.h	40;"	d
 CONFIG_PARTITION_TABLE_OFFSET	build/config/sdkconfig.h	42;"	d
 CONFIG_PARTITION_TABLE_TWO_OTA	build/bootloader/config/sdkconfig.h	37;"	d
 CONFIG_PARTITION_TABLE_TWO_OTA	build/config/sdkconfig.h	39;"	d
-CONFIG_POST_EVENTS_FROM_IRAM_ISR	build/config/sdkconfig.h	381;"	d
-CONFIG_POST_EVENTS_FROM_ISR	build/config/sdkconfig.h	382;"	d
+CONFIG_POST_EVENTS_FROM_IRAM_ISR	build/config/sdkconfig.h	382;"	d
+CONFIG_POST_EVENTS_FROM_ISR	build/config/sdkconfig.h	383;"	d
 CONFIG_PTHREAD_DEFAULT_CORE_NO_AFFINITY	build/config/sdkconfig.h	307;"	d
 CONFIG_PTHREAD_STACK_MIN	build/config/sdkconfig.h	306;"	d
 CONFIG_PTHREAD_TASK_CORE_DEFAULT	build/config/sdkconfig.h	308;"	d
@@ -1543,7 +1544,7 @@ CONFIG_PTHREAD_TASK_NAME_DEFAULT	build/config/sdkconfig.h	309;"	d
 CONFIG_PTHREAD_TASK_PRIO_DEFAULT	build/config/sdkconfig.h	304;"	d
 CONFIG_PTHREAD_TASK_STACK_SIZE_DEFAULT	build/config/sdkconfig.h	305;"	d
 CONFIG_REDUCE_PHY_TX_POWER	build/bootloader/config/sdkconfig.h	117;"	d
-CONFIG_REDUCE_PHY_TX_POWER	build/config/sdkconfig.h	383;"	d
+CONFIG_REDUCE_PHY_TX_POWER	build/config/sdkconfig.h	384;"	d
 CONFIG_SDK_TOOLPREFIX	build/bootloader/config/sdkconfig.h	10;"	d
 CONFIG_SDK_TOOLPREFIX	build/config/sdkconfig.h	10;"	d
 CONFIG_SEMIHOSTFS_HOST_PATH_MAX_LEN	build/config/sdkconfig.h	334;"	d
@@ -1572,48 +1573,48 @@ CONFIG_SPI_FLASH_SUPPORT_GD_CHIP	build/config/sdkconfig.h	316;"	d
 CONFIG_SPI_FLASH_SUPPORT_ISSI_CHIP	build/bootloader/config/sdkconfig.h	96;"	d
 CONFIG_SPI_FLASH_SUPPORT_ISSI_CHIP	build/config/sdkconfig.h	315;"	d
 CONFIG_SPI_FLASH_WRITING_DANGEROUS_REGIONS_ABORTS	build/bootloader/config/sdkconfig.h	118;"	d
-CONFIG_SPI_FLASH_WRITING_DANGEROUS_REGIONS_ABORTS	build/config/sdkconfig.h	384;"	d
+CONFIG_SPI_FLASH_WRITING_DANGEROUS_REGIONS_ABORTS	build/config/sdkconfig.h	385;"	d
 CONFIG_SPI_FLASH_YIELD_DURING_ERASE	build/bootloader/config/sdkconfig.h	93;"	d
 CONFIG_SPI_FLASH_YIELD_DURING_ERASE	build/config/sdkconfig.h	312;"	d
 CONFIG_SPI_MASTER_ISR_IN_IRAM	build/config/sdkconfig.h	62;"	d
 CONFIG_SPI_SLAVE_ISR_IN_IRAM	build/config/sdkconfig.h	63;"	d
 CONFIG_STACK_CHECK_NONE	build/bootloader/config/sdkconfig.h	119;"	d
-CONFIG_STACK_CHECK_NONE	build/config/sdkconfig.h	385;"	d
-CONFIG_SUPPORT_STATIC_ALLOCATION	build/config/sdkconfig.h	386;"	d
-CONFIG_SUPPORT_TERMIOS	build/config/sdkconfig.h	387;"	d
-CONFIG_SUPPRESS_SELECT_DEBUG_OUTPUT	build/config/sdkconfig.h	388;"	d
+CONFIG_STACK_CHECK_NONE	build/config/sdkconfig.h	386;"	d
+CONFIG_SUPPORT_STATIC_ALLOCATION	build/config/sdkconfig.h	387;"	d
+CONFIG_SUPPORT_TERMIOS	build/config/sdkconfig.h	388;"	d
+CONFIG_SUPPRESS_SELECT_DEBUG_OUTPUT	build/config/sdkconfig.h	389;"	d
 CONFIG_SYSTEM_EVENT_QUEUE_SIZE	build/bootloader/config/sdkconfig.h	120;"	d
-CONFIG_SYSTEM_EVENT_QUEUE_SIZE	build/config/sdkconfig.h	389;"	d
+CONFIG_SYSTEM_EVENT_QUEUE_SIZE	build/config/sdkconfig.h	390;"	d
 CONFIG_SYSTEM_EVENT_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	121;"	d
-CONFIG_SYSTEM_EVENT_TASK_STACK_SIZE	build/config/sdkconfig.h	390;"	d
+CONFIG_SYSTEM_EVENT_TASK_STACK_SIZE	build/config/sdkconfig.h	391;"	d
 CONFIG_TASK_WDT	build/bootloader/config/sdkconfig.h	122;"	d
-CONFIG_TASK_WDT	build/config/sdkconfig.h	391;"	d
+CONFIG_TASK_WDT	build/config/sdkconfig.h	392;"	d
 CONFIG_TASK_WDT_CHECK_IDLE_TASK_CPU0	build/bootloader/config/sdkconfig.h	123;"	d
-CONFIG_TASK_WDT_CHECK_IDLE_TASK_CPU0	build/config/sdkconfig.h	392;"	d
+CONFIG_TASK_WDT_CHECK_IDLE_TASK_CPU0	build/config/sdkconfig.h	393;"	d
 CONFIG_TASK_WDT_CHECK_IDLE_TASK_CPU1	build/bootloader/config/sdkconfig.h	124;"	d
-CONFIG_TASK_WDT_CHECK_IDLE_TASK_CPU1	build/config/sdkconfig.h	393;"	d
+CONFIG_TASK_WDT_CHECK_IDLE_TASK_CPU1	build/config/sdkconfig.h	394;"	d
 CONFIG_TASK_WDT_TIMEOUT_S	build/bootloader/config/sdkconfig.h	125;"	d
-CONFIG_TASK_WDT_TIMEOUT_S	build/config/sdkconfig.h	394;"	d
-CONFIG_TCPIP_RECVMBOX_SIZE	build/config/sdkconfig.h	395;"	d
-CONFIG_TCPIP_TASK_AFFINITY_NO_AFFINITY	build/config/sdkconfig.h	396;"	d
-CONFIG_TCPIP_TASK_STACK_SIZE	build/config/sdkconfig.h	397;"	d
-CONFIG_TCP_MAXRTX	build/config/sdkconfig.h	398;"	d
-CONFIG_TCP_MSL	build/config/sdkconfig.h	399;"	d
-CONFIG_TCP_MSS	build/config/sdkconfig.h	400;"	d
-CONFIG_TCP_OVERSIZE_MSS	build/config/sdkconfig.h	401;"	d
-CONFIG_TCP_QUEUE_OOSEQ	build/config/sdkconfig.h	402;"	d
-CONFIG_TCP_RECVMBOX_SIZE	build/config/sdkconfig.h	403;"	d
-CONFIG_TCP_SND_BUF_DEFAULT	build/config/sdkconfig.h	404;"	d
-CONFIG_TCP_SYNMAXRTX	build/config/sdkconfig.h	405;"	d
-CONFIG_TCP_WND_DEFAULT	build/config/sdkconfig.h	406;"	d
-CONFIG_TIMER_QUEUE_LENGTH	build/config/sdkconfig.h	407;"	d
-CONFIG_TIMER_TASK_PRIORITY	build/config/sdkconfig.h	408;"	d
-CONFIG_TIMER_TASK_STACK_DEPTH	build/config/sdkconfig.h	409;"	d
+CONFIG_TASK_WDT_TIMEOUT_S	build/config/sdkconfig.h	395;"	d
+CONFIG_TCPIP_RECVMBOX_SIZE	build/config/sdkconfig.h	396;"	d
+CONFIG_TCPIP_TASK_AFFINITY_NO_AFFINITY	build/config/sdkconfig.h	397;"	d
+CONFIG_TCPIP_TASK_STACK_SIZE	build/config/sdkconfig.h	398;"	d
+CONFIG_TCP_MAXRTX	build/config/sdkconfig.h	399;"	d
+CONFIG_TCP_MSL	build/config/sdkconfig.h	400;"	d
+CONFIG_TCP_MSS	build/config/sdkconfig.h	401;"	d
+CONFIG_TCP_OVERSIZE_MSS	build/config/sdkconfig.h	402;"	d
+CONFIG_TCP_QUEUE_OOSEQ	build/config/sdkconfig.h	403;"	d
+CONFIG_TCP_RECVMBOX_SIZE	build/config/sdkconfig.h	404;"	d
+CONFIG_TCP_SND_BUF_DEFAULT	build/config/sdkconfig.h	405;"	d
+CONFIG_TCP_SYNMAXRTX	build/config/sdkconfig.h	406;"	d
+CONFIG_TCP_WND_DEFAULT	build/config/sdkconfig.h	407;"	d
+CONFIG_TIMER_QUEUE_LENGTH	build/config/sdkconfig.h	408;"	d
+CONFIG_TIMER_TASK_PRIORITY	build/config/sdkconfig.h	409;"	d
+CONFIG_TIMER_TASK_STACK_DEPTH	build/config/sdkconfig.h	410;"	d
 CONFIG_TIMER_TASK_STACK_SIZE	build/bootloader/config/sdkconfig.h	126;"	d
-CONFIG_TIMER_TASK_STACK_SIZE	build/config/sdkconfig.h	410;"	d
+CONFIG_TIMER_TASK_STACK_SIZE	build/config/sdkconfig.h	411;"	d
 CONFIG_TOOLPREFIX	build/bootloader/config/sdkconfig.h	127;"	d
-CONFIG_TOOLPREFIX	build/config/sdkconfig.h	411;"	d
-CONFIG_UDP_RECVMBOX_SIZE	build/config/sdkconfig.h	412;"	d
+CONFIG_TOOLPREFIX	build/config/sdkconfig.h	412;"	d
+CONFIG_UDP_RECVMBOX_SIZE	build/config/sdkconfig.h	413;"	d
 CONFIG_UNITY_ENABLE_DOUBLE	build/config/sdkconfig.h	329;"	d
 CONFIG_UNITY_ENABLE_FLOAT	build/config/sdkconfig.h	328;"	d
 CONFIG_UNITY_ENABLE_IDF_TEST_RUNNER	build/config/sdkconfig.h	330;"	d
@@ -1669,6 +1670,7 @@ DEVICE_TYPE	components/usr/sys_def.h	37;"	d
 DEV_GEO_FIFO_SIZE	components/drv/adxl_drv.h	15;"	d
 DEV_GEO_RTX_SIZE	components/drv/adxl_drv.h	14;"	d
 ESP_INTR_FLAG_DEFAULT	components/drv/ads131_drv.c	37;"	d	file:
+ESP_INTR_FLAG_DEFAULT	components/drv/adxl_drv.c	37;"	d	file:
 ESP_INTR_FLAG_DEFAULT	components/drv/io_drv.c	30;"	d	file:
 FFT_MAX_ORD	components/kits/my_fft.h	14;"	d
 FRAME_CTRL_POS	components/usr/cmd_resolve.c	/^    FRAME_CTRL_POS = 2,$/;"	e	enum:__anon34	file:
@@ -1688,6 +1690,7 @@ GBM_TCP	components/usr/sys_def.h	/^    GBM_TCP,$/;"	e	enum:__anon43
 GBM_WIFI	components/usr/sys_def.h	/^    GBM_WIFI,$/;"	e	enum:__anon43
 GEO_THREAD_DELAY	components/usr/sys_conf.h	10;"	d
 GPIO_INPUT_PIN_SEL	components/drv/ads131_drv.c	28;"	d	file:
+GPIO_INPUT_PIN_SEL	components/drv/adxl_drv.c	36;"	d	file:
 GPIO_INPUT_PIN_SEL	components/drv/io_drv.c	31;"	d	file:
 GPIO_OUTPUT_PIN_SEL	components/drv/ads131_drv.c	29;"	d	file:
 GPIO_OUTPUT_PIN_SEL	components/drv/io_drv.c	32;"	d	file:
@@ -1756,14 +1759,15 @@ PFSM_THREAD_STACK_SIZE	main/main.c	48;"	d	file:
 PGA_GAIN0	components/drv/io_drv.c	23;"	d	file:
 PGA_GAIN1	components/drv/io_drv.c	24;"	d	file:
 PIN_NUM_CLK	components/drv/ads131_drv.c	23;"	d	file:
-PIN_NUM_CLK	components/drv/adxl_drv.c	31;"	d	file:
+PIN_NUM_CLK	components/drv/adxl_drv.c	32;"	d	file:
 PIN_NUM_CS	components/drv/ads131_drv.c	24;"	d	file:
-PIN_NUM_CS	components/drv/adxl_drv.c	32;"	d	file:
+PIN_NUM_CS	components/drv/adxl_drv.c	33;"	d	file:
 PIN_NUM_DVLD	components/drv/ads131_drv.c	25;"	d	file:
+PIN_NUM_DVLD	components/drv/adxl_drv.c	34;"	d	file:
 PIN_NUM_MISO	components/drv/ads131_drv.c	21;"	d	file:
-PIN_NUM_MISO	components/drv/adxl_drv.c	29;"	d	file:
+PIN_NUM_MISO	components/drv/adxl_drv.c	30;"	d	file:
 PIN_NUM_MOSI	components/drv/ads131_drv.c	22;"	d	file:
-PIN_NUM_MOSI	components/drv/adxl_drv.c	30;"	d	file:
+PIN_NUM_MOSI	components/drv/adxl_drv.c	31;"	d	file:
 PIN_NUM_NRST	components/drv/ads131_drv.c	26;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	307;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.9.5/CompilerIdC/CMakeCCompilerId.c	310;"	d	file:
@@ -2230,18 +2234,18 @@ addr	components/drv/ads131_drv.c	/^    struct arg_int *addr;$/;"	m	struct:__anon
 addr	components/drv/adxl_drv.c	/^    struct arg_int *addr;$/;"	m	struct:__anon61	typeref:struct:__anon61::arg_int	file:
 addr	components/usr/global_var.c	/^    struct arg_int *addr;$/;"	m	struct:__anon37	typeref:struct:__anon37::arg_int	file:
 adxl355_reset	components/drv/adxl_drv.c	/^void adxl355_reset(void)$/;"	f
-adxl355_scanfifo	components/drv/adxl_drv.c	/^static int16_t adxl355_scanfifo(void)$/;"	f	file:
 adxl_args	components/drv/adxl_drv.c	/^} adxl_args;$/;"	v	typeref:struct:__anon61	file:
 adxl_dout	components/drv/adxl_drv.c	/^int adxl_dout(uint8_t * dst_ptr, uint16_t max_len)$/;"	f
 adxl_info	components/drv/adxl_drv.c	/^static int adxl_info(int argc, char **argv)$/;"	f	file:
 adxl_init	components/drv/adxl_drv.c	/^void adxl_init(void)$/;"	f
+adxl_init_done	components/drv/adxl_drv.c	/^    uint16_t                        adxl_init_done;$/;"	m	struct:__anon60	file:
+adxl_pin_init	components/drv/adxl_drv.c	/^static void adxl_pin_init(void)$/;"	f	file:
 adxl_rd_reg	components/drv/adxl_drv.c	/^uint8_t adxl_rd_reg(uint8_t addr, uint8_t * rx_buf, uint8_t cnt)$/;"	f
+adxl_read_pcb	components/drv/adxl_drv.c	/^static void IRAM_ATTR adxl_read_pcb(spi_transaction_t* t)$/;"	f	file:
 adxl_register	components/drv/adxl_drv.c	/^static void adxl_register(void)$/;"	f	file:
-adxl_tim_start	components/drv/adxl_drv.c	/^void adxl_tim_start(int32_t tim_period)$/;"	f
-adxl_tim_stop	components/drv/adxl_drv.c	/^void adxl_tim_stop(void)$/;"	f
-adxl_timeout	components/drv/adxl_drv.c	/^static void adxl_timeout(void* arg)$/;"	f	file:
+adxl_sread	components/drv/adxl_drv.c	/^static uint16_t adxl_sread(uint16_t rx_len)$/;"	f	file:
+adxl_t	components/drv/adxl_drv.c	/^static spi_transaction_t adxl_t;$/;"	v	file:
 adxl_timer	components/drv/adxl_drv.c	/^esp_timer_handle_t adxl_timer;$/;"	v
-adxl_timer_init	components/drv/adxl_drv.c	/^static int adxl_timer_init(void)$/;"	f	file:
 adxl_wr_reg	components/drv/adxl_drv.c	/^uint8_t adxl_wr_reg(uint8_t addr, uint8_t data)$/;"	f
 analog_args	components/drv/bat_drv.c	/^} analog_args;$/;"	v	typeref:struct:__anon64	file:
 app_main	main/main.c	/^void app_main()$/;"	f
@@ -2431,6 +2435,7 @@ goertzel_coef_init	components/kits/goertzel.c	/^static void goertzel_coef_init(u
 goertzel_init	components/kits/goertzel.c	/^void goertzel_init(void)$/;"	f
 goertzel_lfilt	components/kits/goertzel.c	/^int16_t goertzel_lfilt(float din)$/;"	f
 gpio_isr_handler	components/drv/ads131_drv.c	/^static void IRAM_ATTR gpio_isr_handler(void* arg)$/;"	f	file:
+gpio_isr_handler	components/drv/adxl_drv.c	/^static void IRAM_ATTR gpio_isr_handler(void* arg)$/;"	f	file:
 gtz	components/usr/sys_conf.h	/^    conf_gtz_st gtz;$/;"	m	struct:__anon22
 gtz	components/usr/sys_conf.h	/^    stat_gtz_st		gtz;$/;"	m	struct:__anon29
 gtz_gap_init	components/kits/goertzel.c	/^static void gtz_gap_init(uint32_t gtz_n, uint16_t intv)$/;"	f	file:
@@ -2641,7 +2646,7 @@ meow_recursive_fft_mixed_meow_radix_dit	components/kits/meow_fft.h	/^void meow_r
 meow_recursive_fft_mixed_meow_radix_dit_i	components/kits/meow_fft.h	/^void meow_recursive_fft_mixed_meow_radix_dit_i$/;"	f
 meow_sub	components/kits/meow_fft.h	/^Meow_FFT_Complex inline meow_sub$/;"	f
 min	components/drv/ads131_drv.c	19;"	d	file:
-min	components/drv/adxl_drv.c	27;"	d	file:
+min	components/drv/adxl_drv.c	28;"	d	file:
 min	components/kits/kfifo.c	36;"	d	file:
 min	components/usr/sys_conf.h	/^    int32_t	    min;$/;"	m	struct:__anon31
 mod	components/usr/sys_conf.h	/^    conf_mod_st mod;$/;"	m	struct:__anon22

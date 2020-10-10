@@ -75,7 +75,7 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {47,  NULL,                            0,	    0,          0,       0,    NULL},
     {48,  NULL,                            0,	    0,          0,       0,    NULL},
     {49,  NULL,                            0,	    0,          0,       0,    NULL},
-    {50,  &g_sys.conf.geo.scan_period,     100,     1000000,    3000,    0,    NULL},
+    {50,  &g_sys.conf.geo.fifo_th,         1,       32,         16,      0,    NULL},
     {51,  &g_sys.conf.geo.axis,            0,       2,          2,       0,    NULL},
     {52,  &g_sys.conf.geo.pkg_en,          0,       1,          0,       0,    geo_pkg_en},
     {53,  &g_sys.conf.geo.filter,          0,       0x6,        0x2,     0,    NULL},

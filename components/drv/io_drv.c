@@ -14,7 +14,6 @@
 #define     BAT_CHRG        34	
 #define     BAT_PLUG        39	
 #define     VI_OD           33 
-#define     VI_EF           25	
 
 #define     PWR_EN          27	
 #define     LOW_PWR         4	
@@ -28,7 +27,7 @@
 #define     Bit_SET		    1	
 
 #define ESP_INTR_FLAG_DEFAULT 0
-#define GPIO_INPUT_PIN_SEL ( (1ULL<<PWR_ON) | (1ULL<<BAT_PLUG) | (1ULL<<BAT_CHRG) | (1ULL<<VI_EF) )
+#define GPIO_INPUT_PIN_SEL ( (1ULL<<PWR_ON) | (1ULL<<BAT_PLUG) | (1ULL<<BAT_CHRG))
 #define GPIO_OUTPUT_PIN_SEL (  (1ULL<<PWR_EN) | (1ULL<<LOCAL_LED) | (1ULL<<WIFI_LED0) | (1ULL<<WIFI_LED1) | (1ULL<<LOW_PWR) | (1ULL<<VI_OD) | (1ULL<<PGA_GAIN0) | (1ULL<<PGA_GAIN1) ) 
 
 static const char *TAG = "DRV_IO";

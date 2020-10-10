@@ -53,16 +53,18 @@ int16_t geo_pkg_en(uint32_t pram)
     if((pram == 1)&&((0 == bit_op_get(g_sys.stat.gen.status_bm,GBM_GEO))))
     {
         adxl_wr_reg(ADXL_SYNC,4);
+        adxl_wr_reg(ADXL_INT_MAP,2);
+        adxl_wr_reg(ADXL_FIFO_SAMPLES,g_sys.conf.geo.fifo_th*3);
         adxl_wr_reg(ADXL_FILTER,(g_sys.conf.geo.filter<<4)|g_sys.conf.geo.sample_rate);
         adxl_wr_reg(ADXL_POWER_CTL,0);
-        adxl_tim_start(g_sys.conf.geo.scan_period);
+        //adxl_tim_start(g_sys.conf.geo.scan_period);
         bit_op_set(&g_sys.stat.gen.status_bm,GBM_GEO,1);
         ret = 1;
     }
     else if((pram == 0)&&((1 == bit_op_get(g_sys.stat.gen.status_bm,GBM_GEO))))
     {
         adxl_wr_reg(ADXL_POWER_CTL,1);
-        adxl_tim_stop();
+        //adxl_tim_stop();
         bit_op_set(&g_sys.stat.gen.status_bm,GBM_GEO,0);
         ret = 0;
     }
