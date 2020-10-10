@@ -64,9 +64,9 @@ int16_t geo_pkg_en(uint32_t pram)
     }
     else if((pram == 0)&&((1 == bit_op_get(g_sys.stat.gen.status_bm,GBM_GEO))))
     {
+        bit_op_set(&g_sys.stat.gen.status_bm,GBM_GEO,0);
         adxl_wr_reg(ADXL_POWER_CTL,1);
         //adxl_tim_stop();
-        bit_op_set(&g_sys.stat.gen.status_bm,GBM_GEO,0);
         ret = 0;
     }
     return ret;

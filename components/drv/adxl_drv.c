@@ -99,7 +99,8 @@ uint8_t adxl_wr_reg(uint8_t addr, uint8_t data)
 
     t.tx_buffer=spi_geo_dev_inst.txd;
 
-    esp_err_t ret = spi_device_transmit(spi_geo_dev_inst.spi_device_h, &t);
+    //esp_err_t ret = spi_device_transmit(spi_geo_dev_inst.spi_device_h, &t);
+    esp_err_t ret = spi_device_queue_trans(spi_geo_dev_inst.spi_device_h, &t, 0);
 
     xSemaphoreGive( geospi_mutex );
     return ret;
@@ -126,7 +127,8 @@ uint8_t adxl_rd_reg(uint8_t addr, uint8_t * rx_buf, uint8_t cnt)
 
     t.tx_buffer=spi_geo_dev_inst.txd;
 
-    spi_device_transmit(spi_geo_dev_inst.spi_device_h, &t);
+    //spi_device_transmit(spi_geo_dev_inst.spi_device_h, &t);
+    spi_device_queue_trans(spi_geo_dev_inst.spi_device_h, &t, 1);
 
     xSemaphoreGive( geospi_mutex );
 
@@ -224,7 +226,7 @@ void adxl_init(void)
             .post_cb = adxl_read_pcb,
             .cs_ena_pretrans = 1,
             .cs_ena_posttrans = 1,
-            .queue_size=1,                          //We want to be able to queue 12 transactions at a time
+            .queue_size = 8,                          //We want to be able to queue 12 transactions at a time
             //        .pre_cb=lcd_spi_pre_transfer_callback,  //Specify pre-transfer callback to handle D/C line
     };
     //Initialize the SPI bus
