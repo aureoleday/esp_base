@@ -48,7 +48,7 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {20,  &g_sys.conf.bat.mav_cnt,         1,	    128,        32,      0,    NULL},
     {21,  &g_sys.conf.bat.low_pwr,         2700,    4200,       3200,    0,    NULL},
     {22,  &g_sys.conf.bat.up_lim,          3700,    4500,       4200,    0,    NULL},
-    {23,  &g_sys.conf.bat.low_lim,         2700,    3500,       3000,    0,    NULL},
+    {23,  &g_sys.conf.bat.low_lim,         2700,    3500,       2900,    0,    NULL},
     {24,  &g_sys.conf.gtz.res_pos,         0,       63,         0,       0,    NULL},
     {25,  &g_sys.conf.fft.intv_cnts,       1,       1024,       1,       0,    NULL},
     {26,  NULL,                            0,	    0,          0,       0,    NULL},

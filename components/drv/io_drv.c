@@ -19,8 +19,8 @@
 #define     LOW_PWR         4	
 #define     WIFI_LED0       0	
 #define     WIFI_LED1       2 
-#define     PGA_GAIN0       22 
 #define     PGA_GAIN1       21 
+#define     PGA_GAIN0       22 
 #define     LOCAL_LED       32 
 
 #define     Bit_RESET	    0
@@ -28,7 +28,12 @@
 
 #define ESP_INTR_FLAG_DEFAULT 0
 #define GPIO_INPUT_PIN_SEL ( (1ULL<<PWR_ON) | (1ULL<<BAT_PLUG) | (1ULL<<BAT_CHRG))
+
+#if (DEV_TYPE == DEV_DIGITAL) 
 #define GPIO_OUTPUT_PIN_SEL (  (1ULL<<PWR_EN) | (1ULL<<LOCAL_LED) | (1ULL<<WIFI_LED0) | (1ULL<<WIFI_LED1) | (1ULL<<LOW_PWR) | (1ULL<<VI_OD) | (1ULL<<PGA_GAIN0) | (1ULL<<PGA_GAIN1) ) 
+#else
+#define GPIO_OUTPUT_PIN_SEL (  (1ULL<<PWR_EN) | (1ULL<<LOCAL_LED) | (1ULL<<WIFI_LED0) | (1ULL<<WIFI_LED1) | (1ULL<<LOW_PWR) ) 
+#endif
 
 static const char *TAG = "DRV_IO";
 
@@ -127,13 +132,19 @@ void pwr_fsm_thread(void* param)
                     delay_cnt = 0;
                     ESP_LOGI(TAG,"to PWR_MODE_PROFF");
                 }
-                //else if(((g_sys.stat.gen.shutdown_cd == 0)&&(g_sys.conf.gen.shutdown_intv != 0)))
-                else if(((g_sys.stat.gen.shutdown_cd == 0)&&(g_sys.conf.gen.shutdown_intv != 0))||(g_sys.stat.bat.adc_raw < g_sys.conf.bat.low_lim))
+//                else if(((g_sys.stat.gen.shutdown_cd == 0)&&(g_sys.conf.gen.shutdown_intv != 0))||(g_sys.stat.bat.adc_raw < (g_sys.conf.bat.low_lim-20)))
+                else if((g_sys.stat.gen.shutdown_cd == 0)&&(g_sys.conf.gen.shutdown_intv != 0))
                 {
+                    ESP_LOGI(TAG,"CD expires, to PWR_MODE_PROFF");
                     io_inst.pwr_fsm = PWR_MODE_OFF;
                 }
                 else
                 {
+                    if(g_sys.stat.bat.adc_raw < (g_sys.conf.bat.low_lim-20))
+                    {
+                        ESP_LOGI(TAG,"Low battery, to PWR_MODE_OFF");
+                        io_inst.pwr_fsm = PWR_MODE_OFF;
+                    }
                     io_inst.pwr_fsm = PWR_MODE_ONGAP;
                     delay_cnt = 0;
                 }
@@ -202,9 +213,12 @@ static void output_init(void)
     gpio_set_level(WIFI_LED1, 0);
     gpio_set_level(LOW_PWR, 0);
     gpio_set_level(PWR_EN, 0);
+    
+#if (DEV_TYPE == DEV_ANALOG) 
     gpio_set_level(PGA_GAIN0, 0);
     gpio_set_level(PGA_GAIN0, 0);
     gpio_set_level(VI_OD, 0);
+#endif
 } 
 
 static void input_init(void)
