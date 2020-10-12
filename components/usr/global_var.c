@@ -34,7 +34,17 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {6,   &g_sys.conf.daq.filter,          0,       255,        64,      0,    NULL},
     {7,   &g_sys.conf.daq.pkg_en,          0,       1,          0,       0,    NULL},
     {8,   &g_sys.conf.daq.pkg_size,        0,       1400,       1024,    0,    NULL},
+<<<<<<< HEAD
     {9,   &g_sys.conf.per.adc_offset,      0,       200,        5,       0,    NULL},
+=======
+//    {9,   &g_sys.conf.geo.scan_period,     100,     1000000,    3000,    0,    NULL},
+//    {10,  &g_sys.conf.geo.axis,            0,       2,  //        2,       0,    NULL},
+//    {11,  &g_sys.conf.geo.pkg_en,          0,       1,  //        0,       0,    geo_pkg_en},
+//    {12,  &g_sys.conf.geo.filter,          0,       0x6,//        0x2,     0,    NULL},
+//    {13,  &g_sys.conf.geo.sample_rate,     0,       0x0b//,       0x00,    0,    NULL},
+//    {14,  &g_sys.conf.geo.gain,            0x01,    0x03,       0x01,    0,    NULL},
+    {9,   &g_sys.conf.per.adc_offset,      0,       200,        20,      0,    NULL},
+>>>>>>> 39e1416... change bat offset default to 20
     {10,  &g_sys.conf.per.dac_offset,      0,       200,        0,       0,    NULL},
     {11,  &g_sys.conf.per.dac_setval,      0,       255,        159,     0,    NULL},
     {12,  &g_sys.conf.gtz.en,              0,	    1,          1,       0,    gtz_rst_opt},
