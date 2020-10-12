@@ -41,8 +41,8 @@ typedef long				int32;
 
 #define DEV_ANALOG              0
 #define DEV_DIGITAL             1
-#define DEV_TYPE                DEV_ANALOG
-//#define DEV_TYPE                DEV_DIGITAL
+//#define DEV_TYPE                DEV_ANALOG
+#define DEV_TYPE                DEV_DIGITAL
 
 enum
 {

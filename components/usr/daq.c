@@ -69,8 +69,11 @@ static void daq_timeout(void* arg)
             daq_frame(daq_inst.tx_buf, out_len);
         for(int i=0;i<o_len;i++)
         {
+#if (DEV_TYPE == DEV_DIGITAL) 
             goertzel_lfilt(*((int32_t *)daq_inst.tx_buf+i)*0.0000039);
-            //goertzel_lfilt(*((int32_t *)daq_inst.tx_buf+i)*0.00000009933);
+#else
+            goertzel_lfilt(*((int32_t *)daq_inst.tx_buf+i)*0.00000009933);
+#endif
         }
     }   
     //}

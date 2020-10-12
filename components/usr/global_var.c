@@ -34,7 +34,7 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {6,   &g_sys.conf.daq.filter,          0,       255,        64,      0,    NULL},
     {7,   &g_sys.conf.daq.pkg_en,          0,       1,          0,       0,    NULL},
     {8,   &g_sys.conf.daq.pkg_size,        0,       1400,       1024,    0,    NULL},
-    {9,   &g_sys.conf.per.adc_offset,      0,       200,        5,      0,    NULL},
+    {9,   &g_sys.conf.per.adc_offset,      0,       200,        5,       0,    NULL},
     {10,  &g_sys.conf.per.dac_offset,      0,       200,        0,       0,    NULL},
     {11,  &g_sys.conf.per.dac_setval,      0,       255,        159,     0,    NULL},
     {12,  &g_sys.conf.gtz.en,              0,	    1,          1,       0,    gtz_rst_opt},
