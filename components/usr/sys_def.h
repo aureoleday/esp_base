@@ -39,6 +39,11 @@ typedef long				int32;
 #define MBM_TOTAL_SLAVE_NUM     32
 #define MBM_HOLDING_REGS_NUM    32
 
+#define DEV_ANALOG              0
+#define DEV_DIGITAL             1
+#define DEV_TYPE                DEV_ANALOG
+//#define DEV_TYPE                DEV_DIGITAL
+
 enum
 {
     REGMAP_ERR_NOERR = 0,

@@ -54,9 +54,11 @@ static void daq_timeout(void* arg)
     extern sys_reg_st  g_sys;
     int out_len = 0;
     int o_len = 0;
-    
-    //out_len = adc_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
+#if (DEV_TYPE == DEV_DIGITAL) 
     out_len = adxl_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
+#else
+    out_len = adc_dout(daq_inst.tx_buf ,g_sys.conf.daq.pkg_size);
+#endif
     o_len = out_len>>2;
     if(out_len == 0)
         ESP_LOGD(TAG,"No daq data");

@@ -51,8 +51,11 @@ void init_thread(void* param)
 {
     extern sys_reg_st  g_sys;
     vTaskDelay(INIT_THREAD_DELAY);
-    //adc_init();
+#if (DEV_TYPE == DEV_DIGITAL)
     adxl_init();
+#else
+    adc_init();
+#endif
     io_init();
     daq_init();
     bat_init();

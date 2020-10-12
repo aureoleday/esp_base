@@ -227,7 +227,7 @@ void adxl_init(void)
             .cs_ena_pretrans = 1,
             .cs_ena_posttrans = 1,
             .queue_size = 8,                          //We want to be able to queue 12 transactions at a time
-            //        .pre_cb=lcd_spi_pre_transfer_callback,  //Specify pre-transfer callback to handle D/C line
+            //.pre_cb=lcd_spi_pre_transfer_callback,  //Specify pre-transfer callback to handle D/C line
     };
     //Initialize the SPI bus
     ret=spi_bus_initialize(VSPI_HOST, &buscfg, 1);
