@@ -271,7 +271,12 @@ uint16 reg_map_read(uint16 reg_addr,uint32_t* reg_data,uint8_t read_cnt)
         {
             for(i=0;i<read_cnt;i++)
             {
-                *(reg_data+i) = *(status_reg_map_inst[reg_addr+i].reg_ptr);//read data from designated register
+                if(status_reg_map_inst[reg_addr+i].reg_ptr == NULL)
+                {
+                    *(reg_data+i) = 0;
+                }
+                else
+                    *(reg_data+i) = *(status_reg_map_inst[reg_addr+i].reg_ptr);//read data from designated register
             }
         }
     }

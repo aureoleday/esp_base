@@ -32,6 +32,7 @@ typedef struct
 typedef struct
 {
     uint64_t 	snr_slv[R_QBUF_MAX];
+    uint32_t 	slv[R_QBUF_MAX];
     uint16_t 	cnt;
 }rqueue_st;
 
@@ -44,6 +45,7 @@ static void rqueue_init(void)
     for(i=0;i<R_QBUF_MAX;i++)
     {
         rqueue_inst.snr_slv[i] = 0;
+        rqueue_inst.slv[i] = 0;
     }
     rqueue_inst.cnt = 0;         
 }
@@ -77,11 +79,9 @@ static int compare_uint64(const void * a, const void * b)
 
 static int16_t rqueue_qsort(void)
 {
-    int16_t ret;
     int16_t lsnr;
     int16_t i;
     extern sys_reg_st  g_sys;
-    ret = 0;
     qsort(rqueue_inst.snr_slv,rqueue_inst.cnt,sizeof(uint64_t),compare_uint64);
     
     lsnr = g_sys.conf.gtz.snr_th*10;
@@ -90,16 +90,14 @@ static int16_t rqueue_qsort(void)
     {
         //temp = (int)((rqueue_inst.snr_slv[rqueue_inst.cnt-i-1]>>32)&0x00000000ffffffff);
         //printf("d: %d ",temp);
-        if((int)((rqueue_inst.snr_slv[rqueue_inst.cnt-i-1]>>32)&0x00000000ffffffff) > lsnr) 
-        {
+        if((int)((rqueue_inst.snr_slv[i]>>32)&0x00000000ffffffff) < lsnr) 
             break;
-        }
+        else
+            rqueue_inst.slv[i] = rqueue_inst.snr_slv[i]&0x00000000ffffffff;
     }
-    //for(int i=0;i<5;i++)
-    //{
-    //    printf("snr:%lld,slv:%lld\n",(rqueue_inst.snr_slv[i]>>32),rqueue_inst.snr_slv[i]&0x00000000ffffffff);
-    //}
-    return rqueue_inst.cnt-i;
+    qsort(rqueue_inst.slv,i,sizeof(uint64_t),compare_uint64);
+    return i;
+    //return rqueue_inst.cnt-i;
 }
 
 static float goertzel_coef(uint32_t target_freq, uint32_t sample_freq, uint32_t N)
@@ -159,7 +157,7 @@ static void calc_snr(float* dbuf, uint16_t cnt)
             //g_sys.stat.gtz.res_snr_i = (rqueue_inst.snr_slv[g_sys.conf.gtz.res_pos]>>32)&0x00000000ffffffff; 
             //g_sys.stat.gtz.res_slv_i = rqueue_inst.snr_slv[g_sys.conf.gtz.res_pos]&0x00000000ffffffff; 
             g_sys.stat.gtz.res_snr_i = (rqueue_inst.snr_slv[vind>>1]>>32)&0x00000000ffffffff; 
-            g_sys.stat.gtz.res_slv_i = rqueue_inst.snr_slv[vind>>1]&0x00000000ffffffff; 
+            g_sys.stat.gtz.res_slv_i = rqueue_inst.slv[vind>>1]; 
             ESP_LOGI(TAG,"final snr:%d,slv:%d,vind:%d",g_sys.stat.gtz.res_snr_i,g_sys.stat.gtz.res_slv_i,vind);
             rqueue_init();
         }

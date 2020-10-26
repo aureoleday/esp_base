@@ -53,7 +53,7 @@ static void do_retransmit(const int sock)
             ESP_LOGW(TAG, "Connection closed");
         } else {
             rx_buffer[len] = 0; // Null-terminate whatever is received and treat it like a string
-            ESP_LOGI(TAG, "Received %d bytes: %s", len, rx_buffer);
+            ESP_LOGD(TAG, "Received %d bytes: %s", len, rx_buffer);
             cmd_stream_in(rx_buffer, len);
         }
         if(g_sys.conf.con.wifi_connect == 0)

@@ -120,6 +120,7 @@ int cmd_stream_in(void * src_data, int data_len)
  */
 void cmd_dev_init(void)
 {
+    esp_log_level_set(TAG,3);
     cmd_buf_init();
     //geo_timer_init();
 }
@@ -253,6 +254,7 @@ static uint16_t cmd_wr_reg(void)
     reg_addr = cmd_reg_inst.rx_buf[0];
     reg_data = *((uint32_t *)&cmd_reg_inst.rx_buf[1]);
 
+    ESP_LOGI(TAG,"waddr:%d,wdata:%d.",reg_addr,reg_data);
     err_code = reg_map_write(reg_addr, &reg_data, 1); //write conf reg map
 
     cmd_reg_inst.tx_buf[4] = reg_addr;
@@ -282,7 +284,7 @@ static uint16_t cmd_rd_reg(void)
     uint8_t err_code;
     uint16_t reg_addr;
     uint16_t reg_cnt;
-    uint32_t reg_data[16];
+    uint32_t reg_data[32];
 
     err_code = CMD_ERR_NOERR;
 
@@ -299,6 +301,7 @@ static uint16_t cmd_rd_reg(void)
     cmd_reg_inst.tx_buf[4] = cmd_reg_inst.rx_buf[0];
     err_code = reg_map_read(reg_addr, reg_data, reg_cnt);
 
+    ESP_LOGI(TAG,"raddr:%d,rdata:%d,cnt:%d.",reg_addr,reg_data[0],reg_cnt);
     //*((uint32_t *)&cmd_reg_inst.tx_buf[5]) = reg_data;
     memcpy(&cmd_reg_inst.tx_buf[5], reg_data, reg_cnt<<2);
 
@@ -365,19 +368,19 @@ uint16_t cmd_frame_resolve(void)
     switch (cmd_reg_inst.rx_cmd) {
     case (CMD_RD_REG): {
         err_code = cmd_rd_reg();
-        ESP_LOGI(TAG,"console: read reg.");
+        ESP_LOGD(TAG,"console: read reg.");
         break;
     }
     case (CMD_WR_REG): {
         err_code = cmd_wr_reg();
-        ESP_LOGI(TAG,"console: write reg.");
+        ESP_LOGD(TAG,"console: write reg.");
         break;
     }
     default: {
         cmd_reg_inst.rx_cnt = 0;								//clear rx_buffer
         cmd_reg_inst.rx_tag = 0;
-        ESP_LOGI(TAG,"console: unknow cmd.");
-        ESP_LOGI(TAG,"cmd:%x,len:%x",cmd_reg_inst.rx_cmd,cmd_reg_inst.rx_len);
+        ESP_LOGD(TAG,"console: unknow cmd.");
+        ESP_LOGD(TAG,"cmd:%x,len:%x",cmd_reg_inst.rx_cmd,cmd_reg_inst.rx_len);
         for(int i=0;i<cmd_reg_inst.rx_len;i++)
                 ESP_LOGI(TAG,"%x ",cmd_reg_inst.rx_buf[i]);
         err_code = CMD_ERR_UNKNOWN;
@@ -442,7 +445,7 @@ void recv_frame_fsm(void)
                     cmd_reg_inst.rx_tag = 0;
                     cmd_reg_inst.cmd_fsm_cstate = CMD_FRAME_FSM_DATA;
                     rd_cnt = 1;
-                    ESP_LOGI(TAG,"rx_len:%x,rx_cmd:%x",cmd_reg_inst.rx_len,cmd_reg_inst.rx_cmd);
+                    ESP_LOGD(TAG,"rx_len:%x,rx_cmd:%x",cmd_reg_inst.rx_len,cmd_reg_inst.rx_cmd);
                 } else {
                     cmd_reg_inst.rx_cnt = 0;
                     cmd_reg_inst.rx_tag = 0;
