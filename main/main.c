@@ -64,6 +64,7 @@ void init_thread(void* param)
         wifi_connect();
         service_opt(g_sys.conf.prt.service_bm);
     }
+   // service_opt(g_sys.conf.prt.service_bm);
 
     while(1)
     {

@@ -75,13 +75,31 @@ static int compare_uint64(const void * a, const void * b)
     //return (ua-ub)>0? -1:1;
 }
 
-static void rqueue_qsort(void)
+static int16_t rqueue_qsort(void)
 {
+    int16_t ret;
+    int16_t lsnr;
+    int16_t i;
+    extern sys_reg_st  g_sys;
+    ret = 0;
     qsort(rqueue_inst.snr_slv,rqueue_inst.cnt,sizeof(uint64_t),compare_uint64);
+    
+    lsnr = g_sys.conf.gtz.snr_th*10;
+    //printf("lsnr:%d\n",lsnr);
+    for(i=0;i<rqueue_inst.cnt;i++)
+    {
+        //temp = (int)((rqueue_inst.snr_slv[rqueue_inst.cnt-i-1]>>32)&0x00000000ffffffff);
+        //printf("d: %d ",temp);
+        if((int)((rqueue_inst.snr_slv[rqueue_inst.cnt-i-1]>>32)&0x00000000ffffffff) > lsnr) 
+        {
+            break;
+        }
+    }
     //for(int i=0;i<5;i++)
     //{
     //    printf("snr:%lld,slv:%lld\n",(rqueue_inst.snr_slv[i]>>32),rqueue_inst.snr_slv[i]&0x00000000ffffffff);
     //}
+    return rqueue_inst.cnt-i;
 }
 
 static float goertzel_coef(uint32_t target_freq, uint32_t sample_freq, uint32_t N)
@@ -109,6 +127,7 @@ int compare_float(const void * a, const void * b)
 static void calc_snr(float* dbuf, uint16_t cnt)
 {
     extern sys_reg_st  g_sys;
+    int16_t vind;
     float buf[2*FREQ_SPAN_MAX];
 
     uint16_t i;
@@ -136,10 +155,12 @@ static void calc_snr(float* dbuf, uint16_t cnt)
         if(g_sys.stat.gtz.res_cd == 0)
         {
             printf("\n");
-            rqueue_qsort();
-            g_sys.stat.gtz.res_snr_i = (rqueue_inst.snr_slv[g_sys.conf.gtz.res_pos]>>32)&0x00000000ffffffff; 
-            g_sys.stat.gtz.res_slv_i = rqueue_inst.snr_slv[g_sys.conf.gtz.res_pos]&0x00000000ffffffff; 
-            ESP_LOGI(TAG,"final snr:%d,slv:%d",g_sys.stat.gtz.res_snr_i,g_sys.stat.gtz.res_slv_i);
+            vind = rqueue_qsort();
+            //g_sys.stat.gtz.res_snr_i = (rqueue_inst.snr_slv[g_sys.conf.gtz.res_pos]>>32)&0x00000000ffffffff; 
+            //g_sys.stat.gtz.res_slv_i = rqueue_inst.snr_slv[g_sys.conf.gtz.res_pos]&0x00000000ffffffff; 
+            g_sys.stat.gtz.res_snr_i = (rqueue_inst.snr_slv[vind>>1]>>32)&0x00000000ffffffff; 
+            g_sys.stat.gtz.res_slv_i = rqueue_inst.snr_slv[vind>>1]&0x00000000ffffffff; 
+            ESP_LOGI(TAG,"final snr:%d,slv:%d,vind:%d",g_sys.stat.gtz.res_snr_i,g_sys.stat.gtz.res_slv_i,vind);
             rqueue_init();
         }
     }

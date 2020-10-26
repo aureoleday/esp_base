@@ -79,6 +79,7 @@ typedef struct
     uint32_t    en;
     uint32_t    res_cd;
     uint32_t    res_pos;
+    uint32_t    snr_th;
 }conf_gtz_st;
 
 typedef struct
