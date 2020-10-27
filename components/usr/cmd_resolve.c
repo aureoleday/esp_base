@@ -279,7 +279,7 @@ static uint16_t cmd_wr_reg(void)
     `CMD_ERR_WR_OR		   : write operation prohibited
     `CMD_ERR_UNKNOWN	   : unknown error
  */
-static uint16_t cmd_rd_reg(void)
+static int16_t cmd_rd_reg(void)
 {
     uint8_t err_code;
     uint16_t reg_addr;
@@ -297,12 +297,16 @@ static uint16_t cmd_rd_reg(void)
         reg_addr =  cmd_reg_inst.rx_buf[0];
 
     reg_cnt = cmd_reg_inst.rx_buf[1];
+    if(reg_cnt > 32)
+    {
+        ESP_LOGE(TAG,"Reg_cnt:%d exceed buffer cnt.",reg_cnt);
+        return -1;
+    }
 
     cmd_reg_inst.tx_buf[4] = cmd_reg_inst.rx_buf[0];
     err_code = reg_map_read(reg_addr, reg_data, reg_cnt);
 
     ESP_LOGI(TAG,"raddr:%d,rdata:%d,cnt:%d.",reg_addr,reg_data[0],reg_cnt);
-    //*((uint32_t *)&cmd_reg_inst.tx_buf[5]) = reg_data;
     memcpy(&cmd_reg_inst.tx_buf[5], reg_data, reg_cnt<<2);
 
     cmd_reg_inst.tx_cmd = cmd_reg_inst.rx_cmd;

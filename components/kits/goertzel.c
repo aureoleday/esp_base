@@ -154,11 +154,12 @@ static void calc_snr(float* dbuf, uint16_t cnt)
         {
             printf("\n");
             vind = rqueue_qsort();
-            //g_sys.stat.gtz.res_snr_i = (rqueue_inst.snr_slv[g_sys.conf.gtz.res_pos]>>32)&0x00000000ffffffff; 
-            //g_sys.stat.gtz.res_slv_i = rqueue_inst.snr_slv[g_sys.conf.gtz.res_pos]&0x00000000ffffffff; 
-            g_sys.stat.gtz.res_snr_i = (rqueue_inst.snr_slv[vind>>1]>>32)&0x00000000ffffffff; 
-            g_sys.stat.gtz.res_slv_i = rqueue_inst.slv[vind>>1]; 
-            ESP_LOGI(TAG,"final snr:%d,slv:%d,vind:%d",g_sys.stat.gtz.res_snr_i,g_sys.stat.gtz.res_slv_i,vind);
+            g_sys.stat.gtz.res_snr_i = (rqueue_inst.snr_slv[g_sys.conf.gtz.res_pos]>>32)&0x00000000ffffffff; 
+            if(vind == 0)
+                g_sys.stat.gtz.res_slv_i = rqueue_inst.snr_slv[0]; 
+            else
+                g_sys.stat.gtz.res_slv_i = rqueue_inst.slv[vind>>1]; 
+            ESP_LOGI(TAG,"snr:%d,slv:%d,vind:%d",g_sys.stat.gtz.res_snr_i,g_sys.stat.gtz.res_slv_i,vind);
             rqueue_init();
         }
     }
