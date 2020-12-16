@@ -159,6 +159,7 @@ static void calc_snr(float* dbuf, uint16_t cnt)
                 g_sys.stat.gtz.res_slv_i = rqueue_inst.snr_slv[0]; 
             else
                 g_sys.stat.gtz.res_slv_i = rqueue_inst.slv[vind>>1]; 
+            g_sys.stat.gtz.res_vind = vind;
             ESP_LOGI(TAG,"snr:%d,slv:%d,vind:%d",g_sys.stat.gtz.res_snr_i,g_sys.stat.gtz.res_slv_i,vind);
             rqueue_init();
         }

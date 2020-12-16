@@ -190,6 +190,7 @@ typedef struct
     uint32_t    res_snr_i;
     uint32_t    res_slv_i;
     uint32_t    res_nlv_i;
+    uint32_t    res_vind;
     float	   	snr_f;
     float		slv_f;
     float		nlv_f;
