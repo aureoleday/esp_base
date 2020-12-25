@@ -21,6 +21,7 @@
 #include "adxl_drv.h"
 #include "my_fft.h"
 #include "sys_conf.h"
+#include "bit_op.h"
 #include "kfifo.h"
 #include "goertzel.h"
 
@@ -30,6 +31,10 @@
 #define PIN_NUM_MOSI 23
 #define PIN_NUM_CLK  18
 #define PIN_NUM_CS   5
+#define PIN_NUM_FF   25 
+
+#define GPIO_INPUT_PIN_SEL  (1ULL<<PIN_NUM_FF)
+#define ESP_INTR_FLAG_DEFAULT 0
 
 static const char *TAG = "ADXL";
 
@@ -38,6 +43,7 @@ static uint8_t 	kf_buf_s[DEV_GEO_FIFO_SIZE];
 kfifo_t 		kf_s;
 
 static SemaphoreHandle_t geospi_mutex = NULL;
+static spi_transaction_t adxl_t;
 
 esp_timer_handle_t adxl_timer;
 
@@ -46,40 +52,13 @@ typedef struct
     spi_device_handle_t     		spi_device_h;
     uint8_t                         txd[DEV_GEO_RTX_SIZE];
     uint8_t                         rxd[DEV_GEO_RTX_SIZE];
+    uint16_t                        adxl_init_done;
 }spi_geo_device_st;
 
 spi_geo_device_st spi_geo_dev_inst;
-//fft_st fft_inst;
 
-static int16_t adxl355_scanfifo(void);
 static void adxl_register(void);
-
-static void adxl_timeout(void* arg)
-{
-    adxl355_scanfifo();
-}
-
-static int adxl_timer_init(void)
-{
-    const esp_timer_create_args_t adxl_timer_args = {
-            .callback = &adxl_timeout,
-            /* name is optional, but may help identify the timer when debugging */
-            .name = "periodic"
-    };
-
-    ESP_ERROR_CHECK(esp_timer_create(&adxl_timer_args, &adxl_timer));
-    return 0;
-}
-
-void adxl_tim_stop(void)
-{
-    esp_timer_stop(adxl_timer);
-}
-
-void adxl_tim_start(int32_t tim_period)
-{
-    ESP_ERROR_CHECK(esp_timer_start_periodic(adxl_timer, tim_period));
-}
+static int16_t raw_data_buf(uint32_t din, uint8_t axis);
 
 static void kf_init(void)
 {
@@ -96,95 +75,11 @@ static int32_t decode(uint32_t din)
     return (int32_t)temp;
 }
 
-//int16_t geo_get_time(float* dst_ptr,uint16_t len)
-//{
-//    int16_t ret;
-//
-//    ret = kfifo_out_peek(&kf_s,dst_ptr,(len<<2));
-//    fft_inst.ibuf_cnt = ret/4;
-//    memcpy(fft_inst.ibuf,dst_ptr,ret);
-//
-//    ret /= 4;
-//    return ret;
-//}
-//
-//static void fft_max_ind(void)
-//{
-//    extern sys_reg_st  g_sys;
-//    uint16_t fft_max = 0,i;
-//
-//    float max_temp;
-//    float max_ind;
-//    //	float tt1;
-//
-//    fft_max = (1<<g_sys.conf.fft.n);
-//    max_temp = fft_inst.obuf[0];
-//    max_ind = 0.001;
-//    for(i=1;i<fft_max;i++)
-//    {
-//        if(max_temp < fft_inst.obuf[i])
-//        {
-//            max_temp = fft_inst.obuf[i];
-//            max_ind = ((float)4000/(float)((1<<(g_sys.conf.geo.filter&0x0f))<<g_sys.conf.fft.n))*(float)i;
-//        }
-//    }
-//
-//    if(fft_inst.arr_cnt <16)
-//    {
-//        fft_inst.ampl_arr[fft_inst.arr_cnt] = max_temp;
-//        fft_inst.freq_arr[fft_inst.arr_cnt] = max_ind;
-//        fft_inst.arr_cnt++;
-//    }
-//    else
-//    {
-//        for(i=0;i<15;i++)
-//        {
-//            fft_inst.ampl_arr[i] = fft_inst.ampl_arr[i+1];
-//            fft_inst.freq_arr[i] = fft_inst.freq_arr[i+1];
-//        }
-//        fft_inst.ampl_arr[15] = max_temp;
-//        fft_inst.freq_arr[15] = max_ind;
-//    }
-//}
-//
-//float* geo_get_fft(uint16_t* fft_len)
-//{
-//    extern sys_reg_st  g_sys;
-//    uint16_t fft_max = 0,off;
-//
-//    fft_max = (1<<g_sys.conf.fft.n);
-//
-//    off = fft_inst.ibuf_cnt - min(fft_max,fft_inst.ibuf_cnt);
-//
-//    if(fft_inst.ibuf_cnt > 0)
-//    {
-//        fft_new(1<<g_sys.conf.fft.n);
-//        fft_calc((fft_inst.ibuf+off),fft_inst.obuf);
-//        fft_inst.state = 1;
-//        *fft_len = fft_inst.ibuf_cnt;
-//        fft_max_ind();
-//        return fft_inst.obuf;
-//    }
-//    else
-//    {
-//        fft_inst.state = 0;
-//        *fft_len = 0;
-//        return NULL;
-//    }
-//}
-
-
 void geo_ds_init(void)
 {
     kf_init();
-//    fft_inst.arr_cnt = 0;
-//    for(int i=0;i<16;i++)
-//    {
-//        fft_inst.freq_arr[i] = 0.00000001;
-//        fft_inst.ampl_arr[i] = 0.00000001;
-//    }
     geospi_mutex = xSemaphoreCreateMutex();
-
+    spi_geo_dev_inst.adxl_init_done = 0;
 }
 
 uint8_t adxl_wr_reg(uint8_t addr, uint8_t data)
@@ -204,8 +99,8 @@ uint8_t adxl_wr_reg(uint8_t addr, uint8_t data)
 
     t.tx_buffer=spi_geo_dev_inst.txd;
 
-    esp_err_t ret = spi_device_transmit(spi_geo_dev_inst.spi_device_h, &t);
-//    esp_err_t ret = spi_device_polling_transmit(spi_geo_dev_inst.spi_device_h, &t);
+    //esp_err_t ret = spi_device_transmit(spi_geo_dev_inst.spi_device_h, &t);
+    esp_err_t ret = spi_device_queue_trans(spi_geo_dev_inst.spi_device_h, &t, 0);
 
     xSemaphoreGive( geospi_mutex );
     return ret;
@@ -232,11 +127,82 @@ uint8_t adxl_rd_reg(uint8_t addr, uint8_t * rx_buf, uint8_t cnt)
 
     t.tx_buffer=spi_geo_dev_inst.txd;
 
-    spi_device_transmit(spi_geo_dev_inst.spi_device_h, &t);
+    //spi_device_transmit(spi_geo_dev_inst.spi_device_h, &t);
+    spi_device_queue_trans(spi_geo_dev_inst.spi_device_h, &t, 1);
 
     xSemaphoreGive( geospi_mutex );
 
     return *(rx_buf+1);
+}
+
+static void IRAM_ATTR adxl_read_pcb(spi_transaction_t* t)
+{
+	extern sys_reg_st g_sys;
+    uint16_t i,rd_cnt;
+    uint32_t buf_temp;
+
+    rd_cnt = g_sys.conf.geo.fifo_th*3;
+
+    for(i=0;i<rd_cnt;i++)
+    {
+        buf_temp = (spi_geo_dev_inst.rxd[1+i*3]<<16)|(spi_geo_dev_inst.rxd[2+i*3]<<8)|(spi_geo_dev_inst.rxd[3+i*3]);
+        raw_data_buf(buf_temp,g_sys.conf.geo.axis);
+    }
+}
+
+static uint16_t adxl_sread(uint16_t rx_len)
+{
+    uint16_t ret = 0;
+    uint16_t i=0;
+    uint16_t rx_bytes =0;
+    //spi_transaction_t t;
+    //memset(&t, 0, sizeof(t));
+    memset(&adxl_t, 0, sizeof(adxl_t));
+    //xSemaphoreTake( adcspi_mutex, portMAX_DELAY );
+
+    rx_bytes = rx_len*9;
+    adxl_t.length= 8*(rx_bytes + 1);
+    adxl_t.rx_buffer = spi_geo_dev_inst.rxd;
+
+    spi_geo_dev_inst.txd[0] = (ADXL_FIFO_DATA<<1)|0x01;
+    
+    for(i=0;i<rx_bytes;i++)
+    {
+        spi_geo_dev_inst.txd[i+1] = 0;
+    }
+
+    adxl_t.tx_buffer=spi_geo_dev_inst.txd;
+    spi_device_queue_trans(spi_geo_dev_inst.spi_device_h, &adxl_t, 0);
+
+    ret = rx_bytes;
+    return ret;
+}
+
+static void IRAM_ATTR int_isr_handler(void* arg)
+{
+    extern sys_reg_st  g_sys;
+    if(bit_op_get(g_sys.stat.gen.status_bm,GBM_GEO) == 1)
+        adxl_sread(g_sys.conf.geo.fifo_th); 
+}
+
+static void adxl_pin_init(void)
+{
+    gpio_config_t io_conf;
+    //interrupt of falling edge
+    io_conf.intr_type = GPIO_PIN_INTR_NEGEDGE;
+    //bit mask of the pins, use GPIO4/5 here
+    io_conf.pin_bit_mask = GPIO_INPUT_PIN_SEL;
+    //set as input mode    
+    io_conf.mode = GPIO_MODE_INPUT;
+    //enable pull-up mode
+    io_conf.pull_up_en = 1;
+    io_conf.pull_down_en = 0;
+    gpio_config(&io_conf);
+
+    //install gpio isr service
+    gpio_install_isr_service(ESP_INTR_FLAG_DEFAULT);
+    //hook isr handler for specific gpio pin
+    gpio_isr_handler_add(PIN_NUM_FF, int_isr_handler, (void*) PIN_NUM_FF);
 }
 
 void adxl_init(void)
@@ -257,17 +223,21 @@ void adxl_init(void)
             .clock_speed_hz=16*1000*1000,           //Clock out at 16 MHz
             .mode=0,                                //SPI mode 0
             .spics_io_num=PIN_NUM_CS,               //CS pin
-            .queue_size=12,                          //We want to be able to queue 12 transactions at a time
-            //        .pre_cb=lcd_spi_pre_transfer_callback,  //Specify pre-transfer callback to handle D/C line
+            .post_cb = adxl_read_pcb,
+            .cs_ena_pretrans = 1,
+            .cs_ena_posttrans = 1,
+            .queue_size = 8,                          //We want to be able to queue 12 transactions at a time
+            //.pre_cb=lcd_spi_pre_transfer_callback,  //Specify pre-transfer callback to handle D/C line
     };
     //Initialize the SPI bus
     ret=spi_bus_initialize(VSPI_HOST, &buscfg, 1);
     geo_ds_init();
-    adxl_timer_init();
+    //adxl_timer_init();
     ESP_ERROR_CHECK(ret);
     //Attach the device to the SPI bus
     ret=spi_bus_add_device(VSPI_HOST, &devcfg, &spi_geo_dev_inst.spi_device_h);
     ESP_ERROR_CHECK(ret);
+    adxl_pin_init();
     adxl_register();
 }
 
@@ -283,7 +253,8 @@ static int16_t raw_data_buf(uint32_t din, uint8_t axis)
     extern sys_reg_st  g_sys;
     static uint8_t stage = 0;  //0: idle;1:x;2:y;3:z;
     static uint32_t dbuf[3]={0,0,0};
-    float temp;
+    //float temp;
+    int32_t temp;
     uint32_t dummy;
     int16_t ret = 0;
 
@@ -339,7 +310,8 @@ static int16_t raw_data_buf(uint32_t din, uint8_t axis)
         if(!(din & 0x1))
         {
             dbuf[2] = din;
-            temp = (float)decode(dbuf[axis])*0.0000039;
+            //temp = (float)decode(dbuf[axis])*0.0000039;
+            temp = decode(dbuf[axis]);
             //goertzel_lfilt(temp);
             if(g_sys.conf.geo.pkg_en)
             {
@@ -373,51 +345,6 @@ static int16_t raw_data_buf(uint32_t din, uint8_t axis)
     return ret;
 }
 
-static int16_t adxl355_scanfifo(void)
-{
-    static int16_t cooldown = 0;
-    extern sys_reg_st  g_sys;
-    int16_t  err_no;
-    uint16_t i;
-    uint16_t total_cnt;
-    uint8_t  sample_cnt;
-    uint32_t buf_temp;
-    uint8_t status;
-
-    err_no = 0;
-    status = adxl_rd_reg(ADXL_STATUS,rxd_temp,2);
-    if((status&0x4) != 0)
-    {
-        if(cooldown==0)
-        {
-            cooldown = 1000;
-            ESP_LOGW(TAG,"F_OVR!");
-        }
-        adxl_rd_reg(ADXL_FIFO_DATA, rxd_temp, 96*2);
-        err_no = -1;
-        return err_no;
-    }
-
-    if(cooldown > 0)
-        cooldown--;
-
-    sample_cnt = rxd_temp[2];
-
-    total_cnt = sample_cnt*3;
-    //printf("%d\n",sample_cnt);
-
-    if(status > 0)
-    {
-        adxl_rd_reg(ADXL_FIFO_DATA, rxd_temp, total_cnt);
-        for(i=0;i<sample_cnt;i++)
-        {
-            buf_temp = (rxd_temp[1+i*3]<<16)|(rxd_temp[2+i*3]<<8)|(rxd_temp[3+i*3]);
-            err_no = raw_data_buf(buf_temp,g_sys.conf.geo.axis);
-        }
-    }
-    return err_no;
-}
-
 int adxl_dout(uint8_t * dst_ptr, uint16_t max_len)
 {
     int rd_len = 0;
@@ -439,34 +366,6 @@ static int adxl_info(int argc, char **argv)
             adxl_rd_reg(ADXL_POWER_CTL,rxd_temp,1));
     return 0;
 }
-
-//static int fft_info(int argc, char **argv)
-//{
-//	uint32_t temp[16];
-//	int len;
-//	int i;
-//	for(i=0;i<16;i++)
-//		temp[i] = 0;
-//	len = kfifo_out_peek(&kf_s,temp,16*4);
-//	for(i=0;i<16;i++)
-//	{
-//		printf("%d:%x\n",i,temp[i]);
-//	}
-//	printf("rd len:%d\n",len);
-//
-//	return 0;
-//}
-
-//static int fft_info(int argc, char **argv)
-//{
-//    int i;
-//    printf("ind\tfreq\t\tamp\n");
-//    for(i=0;i<16;i++)
-//    {
-//        printf("%d\t%f\t%f\n",i,fft_inst.freq_arr[i],fft_inst.ampl_arr[i]);
-//    }
-//    return 0;
-//}
 
 /** Arguments used by 'join' function */
 static struct {
@@ -549,17 +448,6 @@ static void register_adxl_info()
     };
     ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
 }
-
-//static void register_fft_info()
-//{
-//    const esp_console_cmd_t cmd = {
-//            .command = "fft_info",
-//            .help = "Get fft infomation",
-//            .hint = NULL,
-//            .func = &fft_info
-//    };
-//    ESP_ERROR_CHECK( esp_console_cmd_register(&cmd) );
-//}
 
 static void adxl_register(void)
 {
