@@ -30,7 +30,7 @@ typedef long				int32;
 //#define SYS_DEBUG
 #define STAT_REG_MAP_NUM        64 
 #define CONF_REG_MAP_NUM        64 
-#define SOFTWARE_VER            0x00030002
+#define SOFTWARE_VER            0x00040002
 #define HARDWARE_VER            0x00010000
 #define SERIAL_NO               0
 #define MAN_DATE                0
@@ -38,6 +38,11 @@ typedef long				int32;
 
 #define MBM_TOTAL_SLAVE_NUM     32
 #define MBM_HOLDING_REGS_NUM    32
+
+#define DEV_ANALOG              0
+#define DEV_DIGITAL             1
+//#define DEV_TYPE                DEV_ANALOG
+#define DEV_TYPE                DEV_DIGITAL
 
 enum
 {
