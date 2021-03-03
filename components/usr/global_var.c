@@ -42,7 +42,7 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {14,  &g_sys.conf.gtz.n,               256,     8000000,    4000,    0,    NULL},
     {15,  &g_sys.conf.gtz.intv,            0,       6,          3,       0,    NULL},
     {16,  &g_sys.conf.gtz.target_freq,     1,       1000,       470,     0,    NULL},
-    {17,  &g_sys.conf.gtz.sample_freq,     4000,    16000,      4000,    0,    NULL},
+    {17,  &g_sys.conf.gtz.sample_freq,     200,     16000,      4000,    0,    NULL},
     {18,  &g_sys.conf.gtz.target_span,     0,	    16,         3,       0,    NULL},
     {19,  &g_sys.conf.gtz.res_cd,          3,	    1000,       40,      0,    gtz_rcd_opt},
     {20,  &g_sys.conf.bat.mav_cnt,         1,	    128,        32,      0,    NULL},
