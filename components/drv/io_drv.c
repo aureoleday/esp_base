@@ -22,6 +22,7 @@
 #define     PGA_GAIN1       21 
 #define     PGA_GAIN0       22 
 #define     LOCAL_LED       32 
+#define     PWR_LED         PGA_GAIN1 
 
 #define     Bit_RESET	    0
 #define     Bit_SET		    1	
@@ -32,7 +33,7 @@
 #if (DEV_TYPE == DEV_ANALOG) 
 #define GPIO_OUTPUT_PIN_SEL (  (1ULL<<PWR_EN) | (1ULL<<LOCAL_LED) | (1ULL<<WIFI_LED0) | (1ULL<<WIFI_LED1) | (1ULL<<LOW_PWR) | (1ULL<<VI_OD) | (1ULL<<PGA_GAIN0) | (1ULL<<PGA_GAIN1) ) 
 #else
-#define GPIO_OUTPUT_PIN_SEL (  (1ULL<<PWR_EN) | (1ULL<<LOCAL_LED) | (1ULL<<WIFI_LED0) | (1ULL<<WIFI_LED1) | (1ULL<<LOW_PWR) ) 
+#define GPIO_OUTPUT_PIN_SEL (  (1ULL<<PWR_EN) |  (1ULL<<PWR_LED) | (1ULL<<LOCAL_LED) | (1ULL<<WIFI_LED0) | (1ULL<<WIFI_LED1) | (1ULL<<LOW_PWR) ) 
 #endif
 
 static const char *TAG = "DRV_IO";
@@ -215,7 +216,7 @@ static void output_init(void)
     gpio_set_level(PWR_EN, 0);
     
 #if (DEV_TYPE == DEV_ANALOG) 
-    gpio_set_level(PGA_GAIN0, 0);
+    gpio_set_level(PWR_LED, 1);
     gpio_set_level(PGA_GAIN0, 0);
     gpio_set_level(VI_OD, 0);
 #endif

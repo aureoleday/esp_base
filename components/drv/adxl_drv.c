@@ -24,6 +24,7 @@
 #include "bit_op.h"
 #include "kfifo.h"
 #include "goertzel.h"
+#include "reg_map_check.h"
 
 #define min(a,b)  ((a)>(b) ? (b) : (a))            /*  */
 
@@ -239,6 +240,8 @@ void adxl_init(void)
     ESP_ERROR_CHECK(ret);
     adxl_pin_init();
     adxl_register();
+	//geo_pkg_en(1);
+    //ESP_LOGI(TAG,"adxl driver initiated!");
 }
 
 void adxl355_reset(void)

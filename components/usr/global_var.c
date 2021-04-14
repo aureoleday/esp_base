@@ -26,7 +26,7 @@ sys_reg_st  g_sys; 	    //global parameter declairation
 const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
 {//id     mapped registers                 min      max         default  type  chk_prt
     {0,   &g_sys.conf.con.wifi_mode,       0,       1,          0,       0,    NULL},
-    {1,   &g_sys.conf.con.wifi_connect,    0,       1,          0,       0,    set_wifi_con_opt},
+    {1,   &g_sys.conf.con.wifi_connect,    0,       1,          1,       0,    set_wifi_con_opt},
     {2,   &g_sys.conf.prt.service_bm,      0,       0xffffffff, 0x1,     0,    NULL},
     {3,   &g_sys.conf.gen.shutdown_intv,   0,	    10000,      600,     0,    pwr_cut_opt},
     {4,   &g_sys.conf.daq.en,              0,       1,          1,       0,    daq_en},
@@ -39,10 +39,10 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {11,  &g_sys.conf.per.dac_setval,      0,       255,        159,     0,    NULL},
     {12,  &g_sys.conf.gtz.en,              0,	    1,          1,       0,    gtz_rst_opt},
     {13,  &g_sys.conf.gtz.span_gap,        0,       8,          3,       0,    NULL},
-    {14,  &g_sys.conf.gtz.n,               256,     8000000,    4000,    0,    NULL},
+    {14,  &g_sys.conf.gtz.n,               256,     8000000,    4096,    0,    NULL},
     {15,  &g_sys.conf.gtz.intv,            0,       6,          3,       0,    NULL},
     {16,  &g_sys.conf.gtz.target_freq,     1,       1000,       470,     0,    NULL},
-    {17,  &g_sys.conf.gtz.sample_freq,     200,     16000,      4000,    0,    NULL},
+    {17,  &g_sys.conf.gtz.sample_freq,     200,     16000,      4096,    0,    NULL},
     {18,  &g_sys.conf.gtz.target_span,     0,	    16,         3,       0,    NULL},
     {19,  &g_sys.conf.gtz.res_cd,          3,	    1000,       40,      0,    gtz_rcd_opt},
     {20,  &g_sys.conf.bat.mav_cnt,         1,	    128,        32,      0,    NULL},
