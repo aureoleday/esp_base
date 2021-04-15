@@ -172,6 +172,7 @@ typedef struct
     uint32_t   	drop_cnt;
     uint32_t   	peak;
     uint32_t   	raw;
+    uint32_t   	rtx_cnt;
 }stat_adc_st;
 
 typedef struct

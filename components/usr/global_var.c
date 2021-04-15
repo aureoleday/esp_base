@@ -118,7 +118,7 @@ const sts_reg_map_st status_reg_map_inst[STAT_REG_MAP_NUM]=
     {	21,     &g_sys.stat.adc.raw,                    0},
     {	22,     &g_sys.stat.adc.drop_cnt,               0},
     {	23,     &g_sys.stat.adc.peak,                   0},
-    {	24,  	NULL,                                   0},
+    {	24,     &g_sys.stat.adc.rtx_cnt,                0},
     {	25,  	NULL,                                   0},
     {	26,  	NULL,                                   0},
     {	27,  	NULL,                                   0},

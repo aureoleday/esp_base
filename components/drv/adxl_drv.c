@@ -153,6 +153,7 @@ static void IRAM_ATTR adxl_read_pcb(spi_transaction_t* t)
 
 static uint16_t adxl_sread(uint16_t rx_len)
 {
+	extern sys_reg_st g_sys;
     uint16_t ret = 0;
     uint16_t i=0;
     uint16_t rx_bytes =0;
@@ -176,6 +177,7 @@ static uint16_t adxl_sread(uint16_t rx_len)
     spi_device_queue_trans(spi_geo_dev_inst.spi_device_h, &adxl_t, 0);
 
     ret = rx_bytes;
+	g_sys.stat.adc.rtx_cnt++;
     return ret;
 }
 
@@ -208,7 +210,9 @@ static void adxl_pin_init(void)
 
 void adxl_init(void)
 {
+    extern sys_reg_st  g_sys;
     esp_err_t ret;
+    geo_ds_init();
     //    spi_device_handle_t spi;
     spi_bus_config_t buscfg=
     {
@@ -232,16 +236,17 @@ void adxl_init(void)
     };
     //Initialize the SPI bus
     ret=spi_bus_initialize(VSPI_HOST, &buscfg, 1);
-    geo_ds_init();
-    //adxl_timer_init();
     ESP_ERROR_CHECK(ret);
     //Attach the device to the SPI bus
     ret=spi_bus_add_device(VSPI_HOST, &devcfg, &spi_geo_dev_inst.spi_device_h);
     ESP_ERROR_CHECK(ret);
     adxl_pin_init();
+	
     adxl_register();
-	//geo_pkg_en(1);
-    //ESP_LOGI(TAG,"adxl driver initiated!");
+	adxl355_reset();
+    bit_op_set(&g_sys.stat.gen.status_bm,GBM_GEO,0);
+	if(g_sys.conf.geo.pkg_en == 1)
+		geo_pkg_en(1);
 }
 
 void adxl355_reset(void)
@@ -313,9 +318,7 @@ static int16_t raw_data_buf(uint32_t din, uint8_t axis)
         if(!(din & 0x1))
         {
             dbuf[2] = din;
-            //temp = (float)decode(dbuf[axis])*0.0000039;
             temp = decode(dbuf[axis]);
-            //goertzel_lfilt(temp);
             if(g_sys.conf.geo.pkg_en)
             {
                 if(kfifo_len(&kf_s) >= kf_s.size)

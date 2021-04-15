@@ -119,6 +119,8 @@ void app_main()
     extern sys_reg_st  g_sys;
     gvar_init();
     tasks_create();
+	vTaskDelay(1000 / portTICK_PERIOD_MS);
+	//reg_map_write(52,&data,1);
     while(1)
     {
 		vTaskDelay(1000 / portTICK_PERIOD_MS);

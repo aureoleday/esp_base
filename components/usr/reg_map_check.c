@@ -58,7 +58,6 @@ int16_t geo_pkg_en(uint32_t pram)
         adxl_wr_reg(ADXL_FIFO_SAMPLES,g_sys.conf.geo.fifo_th*3);
         adxl_wr_reg(ADXL_FILTER,(g_sys.conf.geo.filter<<4)|g_sys.conf.geo.sample_rate);
         adxl_wr_reg(ADXL_POWER_CTL,0);
-        //adxl_tim_start(g_sys.conf.geo.scan_period);
         bit_op_set(&g_sys.stat.gen.status_bm,GBM_GEO,1);
         ret = 1;
     }
@@ -66,7 +65,6 @@ int16_t geo_pkg_en(uint32_t pram)
     {
         bit_op_set(&g_sys.stat.gen.status_bm,GBM_GEO,0);
         adxl_wr_reg(ADXL_POWER_CTL,1);
-        //adxl_tim_stop();
         ret = 0;
     }
     return ret;
