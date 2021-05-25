@@ -123,11 +123,11 @@ static void sig_mav(int32_t din)
     static int16_t cnt = 0;
     static int16_t init = 0;
     uint16_t atten = g_sys.conf.adc.mav_atten;
-    if(cnt < g_sys.conf.gtz.sample_freq)
+    if(cnt < g_sys.conf.adc.swindow)
     {
-        if(din > peak_val)
+        if(abs(din) > peak_val)
         {
-            peak_val = din;
+            peak_val = abs(din);
         }
         cnt++;
     }
@@ -146,6 +146,7 @@ static void sig_mav(int32_t din)
         cnt = 0;
     }
 }
+
 static int32_t data_delay(int32_t* dout, int32_t din)
 {
 	extern sys_reg_st g_sys;
@@ -160,14 +161,14 @@ static int32_t data_delay(int32_t* dout, int32_t din)
     }
     else
     {
-        if(temp > (((int32_t)g_sys.stat.adc.peak)<<g_sys.conf.adc.drop_th))
+        if(abs(temp) > (((int32_t)g_sys.stat.adc.peak)<<g_sys.conf.adc.drop_th))
         {
+			//printf("din:%d,peak:%d",temp,(int32_t)g_sys.stat.adc.peak);
             dlbuf_inst.stat = 2;
             dlbuf_inst.cd = g_sys.conf.adc.drop - g_sys.conf.adc.pre_drop - 1;
             kfifo_reset(&kf_dl);
         }
         else
-
         {
             len = kfifo_len(&kf_dl)>>2;
           
@@ -217,8 +218,10 @@ static void IRAM_ATTR adc_read_pcb(spi_transaction_t* t)
             if(0 == data_delay(dummy,temp[0]))
             {
                 kfifo_in(&kf_s,dummy,cnt*sizeof(int32_t));
-                sig_mav(dummy[0]);
+                //sig_mav(dummy[0]);
+            	//sig_mav(temp[0]);
             }
+            sig_mav(temp[0]);
         }
         else
         {

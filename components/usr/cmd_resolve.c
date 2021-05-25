@@ -120,7 +120,7 @@ int cmd_stream_in(void * src_data, int data_len)
  */
 void cmd_dev_init(void)
 {
-    esp_log_level_set(TAG,3);
+    esp_log_level_set(TAG,2);
     cmd_buf_init();
     //geo_timer_init();
 }

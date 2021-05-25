@@ -101,6 +101,7 @@ typedef struct
     uint32_t    pre_drop;
     uint32_t    drop_th;
     uint32_t    mav_atten;
+    uint32_t    swindow;
 }conf_adc_st;
 
 typedef struct
