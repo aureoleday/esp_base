@@ -108,9 +108,14 @@ static uint32_t bat_mav_calc(uint16_t mav_cnt_set)
 static uint32_t bat_pwr_calc(uint32_t up_lim, uint32_t low_lim, uint32_t bat_volt)
 {
 	uint32_t res_pwr = 0;
-	res_pwr = 100*(bat_volt-low_lim)/(up_lim-low_lim);
-	if(res_pwr > 100)
-		res_pwr = 100;
+	if(bat_volt >= low_lim)
+	{
+		res_pwr = 100*(bat_volt-low_lim)/(up_lim-low_lim);
+		if(res_pwr > 100)
+			res_pwr = 100;
+	}
+	else
+		res_pwr = 0;
 	return res_pwr;
 }
 
