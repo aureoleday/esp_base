@@ -51,7 +51,6 @@ static void print_char_val_type(esp_adc_cal_value_t val_type)
     }
 }
 
-
 static void adc_init(void)
 {
     check_efuse();
@@ -107,15 +106,33 @@ static uint32_t bat_mav_calc(uint16_t mav_cnt_set)
 
 static uint32_t bat_pwr_calc(uint32_t up_lim, uint32_t low_lim, uint32_t bat_volt)
 {
+	extern sys_reg_st g_sys;
+	uint32_t bat_volt_reg = 0;
 	uint32_t res_pwr = 0;
-	if(bat_volt >= low_lim)
+	if(g_sys.stat.bat.pwr_sts != 0 )
+		bat_volt_reg = bat_volt - 350;
+	else
+		bat_volt_reg = bat_volt;
+
+	if(bat_volt_reg >= low_lim)
 	{
-		res_pwr = 100*(bat_volt-low_lim)/(up_lim-low_lim);
+		res_pwr = 100*(bat_volt_reg-low_lim)/(up_lim-low_lim);
 		if(res_pwr > 100)
 			res_pwr = 100;
 	}
 	else
 		res_pwr = 0;
+
+	if((g_sys.stat.bat.pwr_sts&0x0001) != 0 )
+	{
+		if(res_pwr<g_sys.stat.bat.pwr_val)	
+			res_pwr =g_sys.stat.bat.pwr_val;
+	}
+	else
+	{
+		if(res_pwr>g_sys.stat.bat.pwr_val)	
+			res_pwr = g_sys.stat.bat.pwr_val;
+	}
 	return res_pwr;
 }
 

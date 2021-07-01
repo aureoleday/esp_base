@@ -223,8 +223,8 @@ ARG_TYPE_STR	components/cmd_nvs/cmd_nvs.c	/^static const char *ARG_TYPE_STR = "t
 BAT_CHRG	components/drv/io_drv.c	14;"	d	file:
 BAT_PLUG	components/drv/io_drv.c	15;"	d	file:
 BKG_THREAD_DELAY	components/usr/sys_conf.h	9;"	d
-Bit_RESET	components/drv/io_drv.c	26;"	d	file:
-Bit_SET	components/drv/io_drv.c	27;"	d	file:
+Bit_RESET	components/drv/io_drv.c	27;"	d	file:
+Bit_SET	components/drv/io_drv.c	28;"	d	file:
 CLI_THREAD_PRIO	main/main.c	/^    CLI_THREAD_PRIO,$/;"	e	enum:__anon1	file:
 CLI_THREAD_STACK_SIZE	main/main.c	45;"	d	file:
 CMD_ERR_ADDR_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_ADDR_OR,$/;"	e	enum:__anon33	file:
@@ -2309,10 +2309,10 @@ DEV_ANALOG	components/usr/sys_def.h	42;"	d
 DEV_DIGITAL	components/usr/sys_def.h	43;"	d
 DEV_GEO_FIFO_SIZE	components/drv/adxl_drv.h	15;"	d
 DEV_GEO_RTX_SIZE	components/drv/adxl_drv.h	14;"	d
-DEV_TYPE	components/usr/sys_def.h	45;"	d
+DEV_TYPE	components/usr/sys_def.h	44;"	d
 ESP_INTR_FLAG_DEFAULT	components/drv/ads131_drv.c	37;"	d	file:
-ESP_INTR_FLAG_DEFAULT	components/drv/adxl_drv.c	37;"	d	file:
-ESP_INTR_FLAG_DEFAULT	components/drv/io_drv.c	29;"	d	file:
+ESP_INTR_FLAG_DEFAULT	components/drv/adxl_drv.c	38;"	d	file:
+ESP_INTR_FLAG_DEFAULT	components/drv/io_drv.c	30;"	d	file:
 FFT_MAX_ORD	components/kits/my_fft.h	14;"	d
 FRAME_CTRL_POS	components/usr/cmd_resolve.c	/^    FRAME_CTRL_POS = 2,$/;"	e	enum:__anon34	file:
 FRAME_PLD_APOS	components/usr/cmd_resolve.c	/^    FRAME_PLD_APOS = 0,$/;"	e	enum:__anon34	file:
@@ -2331,11 +2331,11 @@ GBM_TCP	components/usr/sys_def.h	/^    GBM_TCP,$/;"	e	enum:__anon43
 GBM_WIFI	components/usr/sys_def.h	/^    GBM_WIFI,$/;"	e	enum:__anon43
 GEO_THREAD_DELAY	components/usr/sys_conf.h	10;"	d
 GPIO_INPUT_PIN_SEL	components/drv/ads131_drv.c	28;"	d	file:
-GPIO_INPUT_PIN_SEL	components/drv/adxl_drv.c	36;"	d	file:
-GPIO_INPUT_PIN_SEL	components/drv/io_drv.c	30;"	d	file:
+GPIO_INPUT_PIN_SEL	components/drv/adxl_drv.c	37;"	d	file:
+GPIO_INPUT_PIN_SEL	components/drv/io_drv.c	31;"	d	file:
 GPIO_OUTPUT_PIN_SEL	components/drv/ads131_drv.c	29;"	d	file:
-GPIO_OUTPUT_PIN_SEL	components/drv/io_drv.c	33;"	d	file:
-GPIO_OUTPUT_PIN_SEL	components/drv/io_drv.c	35;"	d	file:
+GPIO_OUTPUT_PIN_SEL	components/drv/io_drv.c	34;"	d	file:
+GPIO_OUTPUT_PIN_SEL	components/drv/io_drv.c	36;"	d	file:
 GTZ_FLOWS_MAX	components/kits/goertzel.c	19;"	d	file:
 HARDWARE_VER	components/usr/sys_def.h	34;"	d
 HEX	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	507;"	d	file:
@@ -2407,15 +2407,15 @@ PFSM_THREAD_STACK_SIZE	main/main.c	48;"	d	file:
 PGA_GAIN0	components/drv/io_drv.c	23;"	d	file:
 PGA_GAIN1	components/drv/io_drv.c	22;"	d	file:
 PIN_NUM_CLK	components/drv/ads131_drv.c	23;"	d	file:
-PIN_NUM_CLK	components/drv/adxl_drv.c	32;"	d	file:
+PIN_NUM_CLK	components/drv/adxl_drv.c	33;"	d	file:
 PIN_NUM_CS	components/drv/ads131_drv.c	24;"	d	file:
-PIN_NUM_CS	components/drv/adxl_drv.c	33;"	d	file:
+PIN_NUM_CS	components/drv/adxl_drv.c	34;"	d	file:
 PIN_NUM_DVLD	components/drv/ads131_drv.c	25;"	d	file:
-PIN_NUM_FF	components/drv/adxl_drv.c	34;"	d	file:
+PIN_NUM_FF	components/drv/adxl_drv.c	35;"	d	file:
 PIN_NUM_MISO	components/drv/ads131_drv.c	21;"	d	file:
-PIN_NUM_MISO	components/drv/adxl_drv.c	30;"	d	file:
+PIN_NUM_MISO	components/drv/adxl_drv.c	31;"	d	file:
 PIN_NUM_MOSI	components/drv/ads131_drv.c	22;"	d	file:
-PIN_NUM_MOSI	components/drv/adxl_drv.c	31;"	d	file:
+PIN_NUM_MOSI	components/drv/adxl_drv.c	32;"	d	file:
 PIN_NUM_NRST	components/drv/ads131_drv.c	26;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	337;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	340;"	d	file:
@@ -2792,6 +2792,7 @@ PLATFORM_ID	components/usr/build/CMakeFiles/3.9.5/CompilerIdCXX/CMakeCXXCompiler
 PORT	components/mqtt_tcp/tcp_server.c	30;"	d	file:
 PROJECT_NAME	Makefile	/^PROJECT_NAME := console$/;"	m
 PWR_EN	components/drv/io_drv.c	18;"	d	file:
+PWR_LED	components/drv/io_drv.c	25;"	d	file:
 PWR_MODE_IDLE	components/usr/sys_def.h	/^    PWR_MODE_IDLE = 0,    $/;"	e	enum:__anon45
 PWR_MODE_OFF	components/usr/sys_def.h	/^    PWR_MODE_OFF,$/;"	e	enum:__anon45
 PWR_MODE_ON	components/usr/sys_def.h	/^    PWR_MODE_ON,$/;"	e	enum:__anon45
@@ -3508,7 +3509,7 @@ meow_recursive_fft_mixed_meow_radix_dit	components/kits/meow_fft.h	/^void meow_r
 meow_recursive_fft_mixed_meow_radix_dit_i	components/kits/meow_fft.h	/^void meow_recursive_fft_mixed_meow_radix_dit_i$/;"	f
 meow_sub	components/kits/meow_fft.h	/^Meow_FFT_Complex inline meow_sub$/;"	f
 min	components/drv/ads131_drv.c	19;"	d	file:
-min	components/drv/adxl_drv.c	28;"	d	file:
+min	components/drv/adxl_drv.c	29;"	d	file:
 min	components/kits/kfifo.c	36;"	d	file:
 min	components/usr/sys_conf.h	/^    int32_t	    min;$/;"	m	struct:__anon31
 mod	components/usr/sys_conf.h	/^    conf_mod_st mod;$/;"	m	struct:__anon22
@@ -3640,6 +3641,7 @@ rqueue_init	components/kits/goertzel.c	/^static void rqueue_init(void)$/;"	f	fil
 rqueue_inst	components/kits/goertzel.c	/^rqueue_st rqueue_inst;$/;"	v
 rqueue_qsort	components/kits/goertzel.c	/^static int16_t rqueue_qsort(void)$/;"	f	file:
 rqueue_st	components/kits/goertzel.c	/^}rqueue_st;$/;"	t	typeref:struct:__anon8	file:
+rtx_cnt	components/usr/sys_conf.h	/^    uint32_t   	rtx_cnt;$/;"	m	struct:__anon26
 rtx_timeout	components/usr/cmd_resolve.c	/^    uint16_t rtx_timeout;$/;"	m	struct:__anon35	file:
 rx_buf	components/usr/cmd_resolve.c	/^    uint8_t rx_buf[CMD_RTX_BUF_DEPTH];$/;"	m	struct:__anon35	file:
 rx_buf	components/usr/daq.c	/^    uint8_t  rx_buf[DAQ_RX_BUF_DEPTH];$/;"	m	struct:__anon46	file:
@@ -3714,6 +3716,7 @@ str	components/cmd_nvs/cmd_nvs.c	/^    const char *str;$/;"	m	struct:__anon47	fi
 str_to_type	components/cmd_nvs/cmd_nvs.c	/^static nvs_type_t str_to_type(const char *type)$/;"	f	file:
 sts_reg_map_st	components/usr/sys_conf.h	/^}sts_reg_map_st;$/;"	t	typeref:struct:__anon32
 sub_topic	components/mqtt_tcp/mqtt_tcp.c	/^    char sub_topic[MQ_NVS_STR_SIZE];$/;"	m	struct:__anon4	file:
+swindow	components/usr/sys_conf.h	/^    uint32_t    swindow;$/;"	m	struct:__anon19
 symbol_period	components/usr/sys_conf.h	/^    uint32_t	symbol_period;$/;"	m	struct:__anon21
 sys_reg_st	components/usr/sys_conf.h	/^}sys_reg_st;$/;"	t	typeref:struct:__anon30
 target_freq	components/usr/sys_conf.h	/^    uint32_t    target_freq;$/;"	m	struct:__anon17
