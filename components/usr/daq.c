@@ -49,6 +49,32 @@ static void daq_buf_init(void)
     daq_inst.channel_bm = 0x0001;
 }
 
+static void daq_timeout_v2(void* arg)
+{
+    extern sys_reg_st  g_sys;
+    int o_len = 0;
+    if((bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) != 0)&&(g_sys.conf.daq.pkg_en == 1))
+    	o_len = daq_frame_wo();
+	else
+		return;
+
+	if(g_sys.conf.adc.ch_num > 1)
+		return;
+	else
+	{
+		o_len = o_len>>2;
+    	for(int i=0;i<o_len;i++)
+    	{
+#if (DEV_TYPE == DEV_DIGITAL) 
+            goertzel_lfilt(*((int32_t *)daq_inst.tx_buf+i)*0.0000039);
+#else
+            goertzel_lfilt(*((int32_t *)daq_inst.tx_buf+i)*0.00000009933);
+#endif
+    	}
+	}
+}
+
+
 static void daq_timeout(void* arg)
 {
     extern sys_reg_st  g_sys;
@@ -67,6 +93,9 @@ static void daq_timeout(void* arg)
         //if(bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) != 0)
         if((bit_op_get(g_sys.stat.gen.status_bm,GBM_TCP) != 0)&&(g_sys.conf.daq.pkg_en == 1))
             daq_frame(daq_inst.tx_buf, out_len);
+		if(g_sys.conf.adc.ch_num > 1)
+			return;
+
         for(int i=0;i<o_len;i++)
         {
 #if (DEV_TYPE == DEV_DIGITAL) 
@@ -92,7 +121,7 @@ void daq_tim_start(int32_t tim_period)
 static int daq_timer_init(void)
 {
     const esp_timer_create_args_t daq_timer_args = {
-            .callback = &daq_timeout,
+            .callback = &daq_timeout_v2,
             /* name is optional, but may help identify the timer when debugging */
             .name = "periodic"
     };

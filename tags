@@ -233,29 +233,29 @@ CMD_ERR_DATA_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_DATA_OR,$/;"	e	enum:_
 CMD_ERR_NOERR	components/usr/cmd_resolve.c	/^    CMD_ERR_NOERR = 0,$/;"	e	enum:__anon33	file:
 CMD_ERR_UNKNOWN	components/usr/cmd_resolve.c	/^    CMD_ERR_UNKNOWN$/;"	e	enum:__anon33	file:
 CMD_ERR_WR_OR	components/usr/cmd_resolve.c	/^    CMD_ERR_WR_OR,$/;"	e	enum:__anon33	file:
-CMD_FRAME_FSM_DATA	components/usr/cmd_resolve.c	40;"	d	file:
-CMD_FRAME_FSM_SYNC	components/usr/cmd_resolve.c	38;"	d	file:
-CMD_FRAME_FSM_TL	components/usr/cmd_resolve.c	39;"	d	file:
-CMD_FRAME_OVSIZE	components/usr/cmd_resolve.c	33;"	d	file:
+CMD_FRAME_FSM_DATA	components/usr/cmd_resolve.c	41;"	d	file:
+CMD_FRAME_FSM_SYNC	components/usr/cmd_resolve.c	39;"	d	file:
+CMD_FRAME_FSM_TL	components/usr/cmd_resolve.c	40;"	d	file:
+CMD_FRAME_OVSIZE	components/usr/cmd_resolve.c	34;"	d	file:
 CMD_FRAME_TAG_M_SYNC	components/usr/cmd_resolve.c	/^const static unsigned char CMD_FRAME_TAG_M_SYNC[2]={0x1b,0xdf};$/;"	v	file:
 CMD_FRAME_TAG_S_SYNC	components/usr/cmd_resolve.c	/^const static unsigned char CMD_FRAME_TAG_S_SYNC[2]={0x9b,0xdf};$/;"	v	file:
-CMD_FSM_TIMEOUT	components/usr/cmd_resolve.c	36;"	d	file:
-CMD_LOCK	components/drv/ads131_drv.c	33;"	d	file:
+CMD_FSM_TIMEOUT	components/usr/cmd_resolve.c	37;"	d	file:
+CMD_LOCK	components/drv/ads131_drv.c	34;"	d	file:
 CMD_NOT_READY	components/usr/cmd_resolve.c	/^    CMD_NOT_READY,$/;"	e	enum:__anon33	file:
-CMD_NULL	components/drv/ads131_drv.c	31;"	d	file:
+CMD_NULL	components/drv/ads131_drv.c	32;"	d	file:
 CMD_RDFIFO_EMPTY	components/usr/cmd_resolve.c	/^    CMD_RDFIFO_EMPTY,$/;"	e	enum:__anon33	file:
-CMD_RD_REG	components/usr/cmd_resolve.c	42;"	d	file:
-CMD_RP_PKG	components/usr/cmd_resolve.c	44;"	d	file:
-CMD_RST	components/drv/ads131_drv.c	32;"	d	file:
-CMD_RTX_BUF_DEPTH	components/usr/cmd_resolve.c	35;"	d	file:
-CMD_STDBY	components/drv/ads131_drv.c	36;"	d	file:
+CMD_RD_REG	components/usr/cmd_resolve.c	43;"	d	file:
+CMD_RP_PKG	components/usr/cmd_resolve.c	45;"	d	file:
+CMD_RST	components/drv/ads131_drv.c	33;"	d	file:
+CMD_RTX_BUF_DEPTH	components/usr/cmd_resolve.c	36;"	d	file:
+CMD_STDBY	components/drv/ads131_drv.c	37;"	d	file:
 CMD_THREAD_DELAY	components/usr/sys_conf.h	7;"	d
 CMD_THREAD_PRIO	main/main.c	/^    CMD_THREAD_PRIO,$/;"	e	enum:__anon1	file:
 CMD_THREAD_STACK_SIZE	main/main.c	46;"	d	file:
-CMD_UNLOCK	components/drv/ads131_drv.c	34;"	d	file:
-CMD_WAKEUP	components/drv/ads131_drv.c	35;"	d	file:
+CMD_UNLOCK	components/drv/ads131_drv.c	35;"	d	file:
+CMD_WAKEUP	components/drv/ads131_drv.c	36;"	d	file:
 CMD_WRFIFO_FULL	components/usr/cmd_resolve.c	/^    CMD_WRFIFO_FULL,$/;"	e	enum:__anon33	file:
-CMD_WR_REG	components/usr/cmd_resolve.c	43;"	d	file:
+CMD_WR_REG	components/usr/cmd_resolve.c	44;"	d	file:
 COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	101;"	d	file:
 COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	108;"	d	file:
 COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	123;"	d	file:
@@ -2310,7 +2310,7 @@ DEV_DIGITAL	components/usr/sys_def.h	43;"	d
 DEV_GEO_FIFO_SIZE	components/drv/adxl_drv.h	15;"	d
 DEV_GEO_RTX_SIZE	components/drv/adxl_drv.h	14;"	d
 DEV_TYPE	components/usr/sys_def.h	44;"	d
-ESP_INTR_FLAG_DEFAULT	components/drv/ads131_drv.c	37;"	d	file:
+ESP_INTR_FLAG_DEFAULT	components/drv/ads131_drv.c	38;"	d	file:
 ESP_INTR_FLAG_DEFAULT	components/drv/adxl_drv.c	38;"	d	file:
 ESP_INTR_FLAG_DEFAULT	components/drv/io_drv.c	30;"	d	file:
 FFT_MAX_ORD	components/kits/my_fft.h	14;"	d
@@ -2330,10 +2330,10 @@ GBM_MQTT	components/usr/sys_def.h	/^    GBM_MQTT,$/;"	e	enum:__anon43
 GBM_TCP	components/usr/sys_def.h	/^    GBM_TCP,$/;"	e	enum:__anon43
 GBM_WIFI	components/usr/sys_def.h	/^    GBM_WIFI,$/;"	e	enum:__anon43
 GEO_THREAD_DELAY	components/usr/sys_conf.h	10;"	d
-GPIO_INPUT_PIN_SEL	components/drv/ads131_drv.c	28;"	d	file:
+GPIO_INPUT_PIN_SEL	components/drv/ads131_drv.c	29;"	d	file:
 GPIO_INPUT_PIN_SEL	components/drv/adxl_drv.c	37;"	d	file:
 GPIO_INPUT_PIN_SEL	components/drv/io_drv.c	31;"	d	file:
-GPIO_OUTPUT_PIN_SEL	components/drv/ads131_drv.c	29;"	d	file:
+GPIO_OUTPUT_PIN_SEL	components/drv/ads131_drv.c	30;"	d	file:
 GPIO_OUTPUT_PIN_SEL	components/drv/io_drv.c	34;"	d	file:
 GPIO_OUTPUT_PIN_SEL	components/drv/io_drv.c	36;"	d	file:
 GTZ_FLOWS_MAX	components/kits/goertzel.c	19;"	d	file:
@@ -2406,17 +2406,17 @@ PFSM_THREAD_PRIO	main/main.c	/^    PFSM_THREAD_PRIO,$/;"	e	enum:__anon1	file:
 PFSM_THREAD_STACK_SIZE	main/main.c	48;"	d	file:
 PGA_GAIN0	components/drv/io_drv.c	23;"	d	file:
 PGA_GAIN1	components/drv/io_drv.c	22;"	d	file:
-PIN_NUM_CLK	components/drv/ads131_drv.c	23;"	d	file:
+PIN_NUM_CLK	components/drv/ads131_drv.c	24;"	d	file:
 PIN_NUM_CLK	components/drv/adxl_drv.c	33;"	d	file:
-PIN_NUM_CS	components/drv/ads131_drv.c	24;"	d	file:
+PIN_NUM_CS	components/drv/ads131_drv.c	25;"	d	file:
 PIN_NUM_CS	components/drv/adxl_drv.c	34;"	d	file:
-PIN_NUM_DVLD	components/drv/ads131_drv.c	25;"	d	file:
+PIN_NUM_DVLD	components/drv/ads131_drv.c	26;"	d	file:
 PIN_NUM_FF	components/drv/adxl_drv.c	35;"	d	file:
-PIN_NUM_MISO	components/drv/ads131_drv.c	21;"	d	file:
+PIN_NUM_MISO	components/drv/ads131_drv.c	22;"	d	file:
 PIN_NUM_MISO	components/drv/adxl_drv.c	31;"	d	file:
-PIN_NUM_MOSI	components/drv/ads131_drv.c	22;"	d	file:
+PIN_NUM_MOSI	components/drv/ads131_drv.c	23;"	d	file:
 PIN_NUM_MOSI	components/drv/adxl_drv.c	32;"	d	file:
-PIN_NUM_NRST	components/drv/ads131_drv.c	26;"	d	file:
+PIN_NUM_NRST	components/drv/ads131_drv.c	27;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	337;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	340;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	343;"	d	file:
@@ -3088,7 +3088,7 @@ buffer_ff	components/drv/bat_drv.c	/^	uint32_t	buffer_ff;$/;"	m	struct:__anon63	
 calc_snr	components/kits/goertzel.c	/^static void calc_snr(float* dbuf, uint16_t cnt)$/;"	f	file:
 calc_sps	components/drv/ads131_drv.c	/^static uint16_t calc_sps(uint16_t freq_mode)$/;"	f	file:
 cd	components/drv/ads131_drv.c	/^    uint16_t                        cd;$/;"	m	struct:__anon55	file:
-ch_bm	components/usr/sys_conf.h	/^    uint32_t    ch_bm;$/;"	m	struct:__anon19
+ch_num	components/usr/sys_conf.h	/^    uint32_t    ch_num;$/;"	m	struct:__anon19
 channel_bm	components/usr/daq.c	/^    uint16_t channel_bm;$/;"	m	struct:__anon46	file:
 check_efuse	components/drv/bat_drv.c	/^static void check_efuse(void)$/;"	f	file:
 chk_ptr	components/usr/sys_conf.h	/^    int16_t     (*chk_ptr)(uint32_t pram);$/;"	m	struct:__anon31
@@ -3150,6 +3150,7 @@ daq	components/usr/sys_conf.h	/^    conf_daq_st daq;$/;"	m	struct:__anon22
 daq_buf_init	components/usr/daq.c	/^static void daq_buf_init(void)$/;"	f	file:
 daq_en	components/usr/reg_map_check.c	/^int16_t daq_en(uint32_t pram)$/;"	f
 daq_frame	components/usr/cmd_resolve.c	/^int daq_frame(const void *dbuf_ptr,int d_len)$/;"	f
+daq_frame_wo	components/usr/cmd_resolve.c	/^int daq_frame_wo(void)$/;"	f
 daq_init	components/usr/daq.c	/^void daq_init(void)$/;"	f
 daq_inst	components/usr/daq.c	/^static daq_st daq_inst;$/;"	v	file:
 daq_st	components/usr/daq.c	/^}daq_st;$/;"	t	typeref:struct:__anon46	file:
@@ -3508,7 +3509,7 @@ meow_radix_8_dit_i	components/kits/meow_fft.h	/^static void meow_radix_8_dit_i$/
 meow_recursive_fft_mixed_meow_radix_dit	components/kits/meow_fft.h	/^void meow_recursive_fft_mixed_meow_radix_dit$/;"	f
 meow_recursive_fft_mixed_meow_radix_dit_i	components/kits/meow_fft.h	/^void meow_recursive_fft_mixed_meow_radix_dit_i$/;"	f
 meow_sub	components/kits/meow_fft.h	/^Meow_FFT_Complex inline meow_sub$/;"	f
-min	components/drv/ads131_drv.c	19;"	d	file:
+min	components/drv/ads131_drv.c	20;"	d	file:
 min	components/drv/adxl_drv.c	29;"	d	file:
 min	components/kits/kfifo.c	36;"	d	file:
 min	components/usr/sys_conf.h	/^    int32_t	    min;$/;"	m	struct:__anon31

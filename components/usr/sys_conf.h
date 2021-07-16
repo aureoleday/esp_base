@@ -95,7 +95,7 @@ typedef struct
     uint32_t    filter;
     uint32_t    sps;
     uint32_t    gain;
-    uint32_t    ch_bm;
+    uint32_t    ch_num;
     uint32_t    drop;
     uint32_t    drop_en;
     uint32_t    pre_drop;

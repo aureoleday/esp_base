@@ -15,6 +15,7 @@
 #include "sys_conf.h"
 #include "kfifo.h"
 #include "ads131_drv.h"
+#include "cmd_resolve.h"
 
 #define min(a,b)  ((a)>(b) ? (b) : (a))            /*  */
 
@@ -196,14 +197,11 @@ static void IRAM_ATTR adc_read_pcb(spi_transaction_t* t)
     int32_t temp[4];
     int32_t dummy[4];
     uint8_t cnt=0;
-    for(int i=0;i<3;i++)
+    for(int i=0;i<g_sys.conf.adc.ch_num;i++)
     {
-        if(((g_sys.conf.adc.ch_bm>>i)&0x01) == 1)
-        {
-            dummy[i]=((spi_geo_dev_inst.rxd[i*3+3]<<16)|(spi_geo_dev_inst.rxd[i*3+4]<<8)|spi_geo_dev_inst.rxd[i*3+5]);
-            temp[cnt] = decode(dummy[i],g_sys.conf.adc.gain);
-            cnt++;
-        }
+    	dummy[i]=((spi_geo_dev_inst.rxd[i*3+3]<<16)|(spi_geo_dev_inst.rxd[i*3+4]<<8)|spi_geo_dev_inst.rxd[i*3+5]);
+    	temp[cnt] = decode(dummy[i],g_sys.conf.adc.gain);
+        cnt++;
     }
 
     if(g_sys.conf.adc.enable == 1)
@@ -228,6 +226,8 @@ static void IRAM_ATTR adc_read_pcb(spi_transaction_t* t)
             kfifo_in(&kf_s,&temp,cnt*sizeof(int32_t));
             sig_mav(temp[0]);
         }
+        //if(kfifo_len(&kf_s) >= (kf_s.size>>1))
+		//	daq_frame_wo();
         spi_geo_dev_inst.adc_val = temp[0];
     }
 }
@@ -371,20 +371,23 @@ static uint16_t adc_cmd(uint16_t cmd_type)
 
 static uint16_t adc_sread(void)
 {
+	extern sys_reg_st g_sys;
     uint16_t ret = 0;
     uint16_t i=0;
+    uint16_t tx_bytes=0;
     //spi_transaction_t t;
     //memset(&t, 0, sizeof(t));
     memset(&adc_t, 0, sizeof(adc_t));
     //xSemaphoreTake( adcspi_mutex, portMAX_DELAY );
+	tx_bytes = 3*(g_sys.conf.adc.ch_num + 1);
 
-    adc_t.length=72;//8*3*3 bits
+    adc_t.length=8*tx_bytes;//8*3*3 bits
     adc_t.rx_buffer = spi_geo_dev_inst.rxd;
 
     spi_geo_dev_inst.txd[0] = (spi_geo_dev_inst.adc_cmd>>8)&0x00ff;
     spi_geo_dev_inst.txd[1] = spi_geo_dev_inst.adc_cmd&0x00ff;
     
-    for(i=2;i<9;i++)
+    for(i=2;i<=tx_bytes;i++)
     {
         spi_geo_dev_inst.txd[i] = 0;
     }
@@ -503,8 +506,7 @@ static uint16_t adc_init_conf(void)
     ret = adc_cmd(CMD_UNLOCK);
     //ESP_LOGD(TAG,"adc:%x",ret);
     adc_set_sps(g_sys.conf.adc.sps);
-    ret = adc_wr_reg(15, 0x03);//adc enable 
-    //ESP_LOGD(TAG,"adc:%x",ret);
+    ret = adc_wr_reg(15, (0x01<<g_sys.conf.adc.ch_num)-1);//adc enable 
     ret = adc_cmd(CMD_WAKEUP);
     //ESP_LOGD(TAG,"adc:%x",ret);
     ret = adc_cmd(CMD_LOCK);

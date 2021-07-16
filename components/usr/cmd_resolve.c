@@ -5,6 +5,7 @@
 #include "esp_log.h"
 #include "kfifo.h"
 #include "mqtt_tcp.h"
+#include "ads131_drv.h"
 //#include "tlvparse.h"
 
 static const char *TAG = "CMD_RSV";
@@ -32,7 +33,7 @@ enum
 
 #define CMD_FRAME_OVSIZE        4
 
-#define CMD_RTX_BUF_DEPTH       1024
+#define CMD_RTX_BUF_DEPTH       1536
 #define CMD_FSM_TIMEOUT         2
 
 #define CMD_FRAME_FSM_SYNC      0x01
@@ -328,9 +329,10 @@ static int16_t cmd_rd_reg(void)
  */
 int daq_frame(const void *dbuf_ptr,int d_len)
 {
+    extern sys_reg_st  g_sys;
     uint8_t err_code;
     static uint8_t index=0;
-
+	
     err_code = CMD_ERR_NOERR;
 
     cmd_reg_inst.rx_cnt = 0;								//clear rx_buffer
@@ -341,12 +343,40 @@ int daq_frame(const void *dbuf_ptr,int d_len)
     index++;
     memcpy(&cmd_reg_inst.tx_buf[5],dbuf_ptr,d_len);
 
-    cmd_reg_inst.tx_cmd = CMD_RP_PKG;
+    cmd_reg_inst.tx_cmd = CMD_RP_PKG + g_sys.conf.adc.ch_num -1;
     cmd_reg_inst.tx_errcode = err_code;
     cmd_response();
     return err_code;
 }
+//daq without sd pointers
+int daq_frame_wo(void)
+{
+    extern sys_reg_st  g_sys;
+    uint8_t err_code;
+    static uint8_t index=0;
+	uint16_t out_len = 0;
+	
+    err_code = CMD_ERR_NOERR;
 
+    cmd_reg_inst.rx_cnt = 0;								//clear rx_buffer
+    cmd_reg_inst.rx_tag = 0;
+    
+    //cmd_reg_inst.tx_cnt = d_len + 1;
+    cmd_reg_inst.tx_buf[4] = index;
+    index++;
+
+#if (DEV_TYPE == DEV_DIGITAL) 
+    out_len = adxl_dout(&cmd_reg_inst.tx_buf[5],g_sys.conf.daq.pkg_size);
+#else
+    out_len = adc_dout(&cmd_reg_inst.tx_buf[5],g_sys.conf.daq.pkg_size);
+#endif
+
+    cmd_reg_inst.tx_cnt = out_len + 1;
+    cmd_reg_inst.tx_cmd = CMD_RP_PKG + g_sys.conf.adc.ch_num -1;
+    cmd_reg_inst.tx_errcode = err_code;
+    cmd_response();
+    return out_len;
+}
 /**
  * @brief  cmd command write reg operation
  * @param  none
