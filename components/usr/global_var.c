@@ -63,7 +63,7 @@ const conf_reg_map_st conf_reg_map_inst[CONF_REG_MAP_NUM]=
     {35,  &g_sys.conf.adc.gain,            1,       3,          2,       0,    adc_gain_opt},
     {36,  &g_sys.conf.adc.ch_num,          1,    	4,          4,       0,    NULL},
     {37,  &g_sys.conf.adc.drop,            0,       100000,     400,     0,    adc_drop_opt},
-    {38,  &g_sys.conf.adc.drop_en,         0,       1,          1,       0,    NULL},
+    {38,  &g_sys.conf.adc.drop_en,         0,       1,          0,       0,    NULL},
     {39,  &g_sys.conf.adc.drop_th,         0,       16,         1,       0,    NULL},
     {40,  &g_sys.conf.adc.pre_drop,        1,       256,        16,      0,    NULL},
     {41,  &g_sys.conf.adc.mav_atten,       0,       32,         8,       0,    NULL},

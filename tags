@@ -3157,6 +3157,7 @@ daq_st	components/usr/daq.c	/^}daq_st;$/;"	t	typeref:struct:__anon46	file:
 daq_tim_start	components/usr/daq.c	/^void daq_tim_start(int32_t tim_period)$/;"	f
 daq_tim_stop	components/usr/daq.c	/^void daq_tim_stop(void)$/;"	f
 daq_timeout	components/usr/daq.c	/^static void daq_timeout(void* arg)$/;"	f	file:
+daq_timeout_v2	components/usr/daq.c	/^static void daq_timeout_v2(void* arg)$/;"	f	file:
 daq_timer	components/usr/daq.c	/^esp_timer_handle_t daq_timer;$/;"	v
 daq_timer_init	components/usr/daq.c	/^static int daq_timer_init(void)$/;"	f	file:
 data	components/drv/ads131_drv.c	/^    struct arg_int *data;$/;"	m	struct:__anon57	typeref:struct:__anon57::arg_int	file:

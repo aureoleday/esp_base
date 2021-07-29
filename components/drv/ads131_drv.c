@@ -84,32 +84,33 @@ static void IRAM_ATTR gpio_isr_handler(void* arg)
 }
 static int32_t decode(uint32_t din, uint16_t gain)
 {
-    uint32_t temp;
+    int32_t temp;
     int32_t res;
     temp = din;
-    if((temp&0x800000) != 0)
-        temp |= 0xff000000;
+	temp = ((temp<<8)>>8);
+    //if((temp&0x800000) != 0)
+    //    temp |= 0xff000000;
 
     switch(gain)
     {
         case(1):
         {
-            res = ((int)temp)*5;
+            res = temp*5;
             break;
         }
         case(2):
         {
-            res = (int)temp;
+            res = temp;
             break;
         }
         case(3):
         {
-            res = ((int)temp)/5;
+            res = temp/5;
             break;
         }
         default:
         {
-            res = (int)temp;
+            res = temp;
             break;
         }
     }
@@ -196,26 +197,26 @@ static void IRAM_ATTR adc_read_pcb(spi_transaction_t* t)
 	extern sys_reg_st g_sys;
     int32_t temp[4];
     int32_t dummy[4];
-    uint8_t cnt=0;
-    for(int i=0;i<g_sys.conf.adc.ch_num;i++)
+	int i = 0;
+	
+    for(i=0;i<g_sys.conf.adc.ch_num;i++)
     {
     	dummy[i]=((spi_geo_dev_inst.rxd[i*3+3]<<16)|(spi_geo_dev_inst.rxd[i*3+4]<<8)|spi_geo_dev_inst.rxd[i*3+5]);
-    	temp[cnt] = decode(dummy[i],g_sys.conf.adc.gain);
-        cnt++;
+    	temp[i] = decode(dummy[i],g_sys.conf.adc.gain);
     }
 
     if(g_sys.conf.adc.enable == 1)
     {
         if(kfifo_len(&kf_s) >= kf_s.size)
         {
-            kfifo_out(&kf_s,&dummy,cnt*sizeof(int32_t));
+            kfifo_out(&kf_s,&dummy,i*sizeof(int32_t));
             g_sys.stat.geo.kfifo_drop_cnt++;
         }
         if(g_sys.conf.adc.drop_en == 1)
         {
             if(0 == data_delay(dummy,temp[0]))
             {
-                kfifo_in(&kf_s,dummy,cnt*sizeof(int32_t));
+                kfifo_in(&kf_s,dummy,i*sizeof(int32_t));
                 //sig_mav(dummy[0]);
             	//sig_mav(temp[0]);
             }
@@ -223,11 +224,9 @@ static void IRAM_ATTR adc_read_pcb(spi_transaction_t* t)
         }
         else
         {
-            kfifo_in(&kf_s,&temp,cnt*sizeof(int32_t));
+            kfifo_in(&kf_s,temp,i*sizeof(int32_t));
             sig_mav(temp[0]);
         }
-        //if(kfifo_len(&kf_s) >= (kf_s.size>>1))
-		//	daq_frame_wo();
         spi_geo_dev_inst.adc_val = temp[0];
     }
 }
@@ -548,7 +547,6 @@ static void adc_pin_init(void)
     gpio_config(&io_conf);
 
     gpio_set_level(PIN_NUM_NRST, 1);
-
 }
 
 void adc_init(void)
