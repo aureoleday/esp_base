@@ -212,21 +212,29 @@ static void IRAM_ATTR adc_read_pcb(spi_transaction_t* t)
             kfifo_out(&kf_s,&dummy,i*sizeof(int32_t));
             g_sys.stat.geo.kfifo_drop_cnt++;
         }
-        if(g_sys.conf.adc.drop_en == 1)
-        {
-            if(0 == data_delay(dummy,temp[0]))
-            {
-                kfifo_in(&kf_s,dummy,i*sizeof(int32_t));
-                //sig_mav(dummy[0]);
-            	//sig_mav(temp[0]);
-            }
-            sig_mav(temp[0]);
-        }
-        else
-        {
+
+		if(g_sys.conf.adc.ch_num>1)
+		{
             kfifo_in(&kf_s,temp,i*sizeof(int32_t));
-            sig_mav(temp[0]);
-        }
+		}
+		else
+		{
+			if(g_sys.conf.adc.drop_en == 1)
+        	{
+        	    if(0 == data_delay(dummy,temp[0]))
+        	    {
+        	        kfifo_in(&kf_s,dummy,sizeof(int32_t));
+        	        //sig_mav(dummy[0]);
+        	    	//sig_mav(temp[0]);
+        	    }
+        	    sig_mav(temp[0]);
+        	}
+            else
+        	{
+        	    kfifo_in(&kf_s,temp,sizeof(int32_t));
+        	    sig_mav(temp[0]);
+        	}
+		}
         spi_geo_dev_inst.adc_val = temp[0];
     }
 }
