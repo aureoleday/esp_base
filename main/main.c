@@ -71,7 +71,6 @@ void init_thread(void* param)
         service_opt(g_sys.conf.prt.service_bm);
     }
    // service_opt(g_sys.conf.prt.service_bm);
-
     while(1)
     {
 		vTaskDelay(100000 / portTICK_PERIOD_MS);
